@@ -1,0 +1,13 @@
+# requirements_base.txt
+pandas
+numpy
+requests
+scikit-learn
+nltk
+sentence-transformers
+pylatexenc
+tqdm
+
+torch
+torchvision
+torchaudio

@@ -1,0 +1,16 @@
+*.pdf
+*.jpeg
+*.png
+*.jpg
+*.bmp
+*.svg
+* .gif
+*.log
+*.tmp
+__pycache__/
+*.pyc
+.env
+nlp/
+arxiv_pdf_cache/
+arxiv_cache
+logs/
