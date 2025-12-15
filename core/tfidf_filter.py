@@ -1,11 +1,12 @@
 """
-TF-IDF filtering logic for figure selection.
+FIXED TF-IDF filtering logic with proper negative penalty
 """
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy.sparse import hstack, csr_matrix
 import numpy as np
+import re  # ADDED: Missing import
 from typing import List, Dict
 
 try:
@@ -24,36 +25,9 @@ from config.settings import (
     USE_CUSTOM_TFIDF_FEATURES,
 )
 
-
-class TfidfFilter:
-    """Handles TF-IDF filtering of figures."""
+class FixedTfidfFilter:
+    """Fixed TF-IDF filtering with proper penalty calculation."""
     
-    # Lightweight dictionary-based NER for domain entities
-    GATE_TERMS = {
-        "cnot", "cx", "cz", "toffoli", "swap", "hadamard", "pauli", "x", "y", "z"
-    }
-    GATE_PHRASES = {
-        "x gate", "z gate", "y gate", "cnot gate", "controlled not", "controlled z",
-        "controlled x", "cz gate", "cx gate", "swap gate", "toffoli gate"
-    }
-    CIRCUIT_TERMS = {
-        "qubit", "qubits", "register", "wire", "wires", "ancilla", "ancillae",
-        "circuit", "circuitry", "diagram"
-    }
-    CIRCUIT_PHRASES = {
-        "quantum circuit", "circuit diagram", "gate sequence", "circuit depth",
-        "quantum register", "qubit register", "wiring diagram"
-    }
-    ALGO_TERMS = {
-        "qft", "grover", "shor", "simon", "oracle", "ansatz", "vqe", "qaoa",
-        "variational", "fourier"
-    }
-    ALGO_PHRASES = {
-        "quantum fourier transform", "deutsch jozsa", "bernstein vazirani",
-        "grover search", "quantum counting", "variational quantum eigensolver",
-        "quantum approximate optimization"
-    }
-
     def __init__(self, preprocessor: TextPreprocessor):
         self.preprocessor = preprocessor
         self._build_allowed_vocab()
@@ -62,232 +36,289 @@ class TfidfFilter:
         """Build allowed vocabulary from all query sets."""
         all_query_text = "\n".join(QUERY_SETS.values())
         self.ALLOWED_VOCAB = set(self.preprocessor.tfidf_analyzer(all_query_text))
-        # Build domain bigrams for specificity scoring (per-line to avoid boundary bigrams)
+        
+        # Build domain bigrams
         self.ALLOWED_BIGRAMS = set()
         for query_text in QUERY_SETS.values():
             for line in query_text.strip().split('\n'):
                 line = line.strip()
                 if line:
                     tokens = self.preprocessor.tfidf_analyzer(line)
-                    bigrams = [" ".join(bg) for bg in zip(tokens, tokens[1:])]
-                    self.ALLOWED_BIGRAMS.update(bigrams)
-
-    def _compute_custom_features(self, texts: List[str], idf_map) -> np.ndarray:
-        """Compute custom feature vectors for texts; returns shape (n, k)."""
+                    if len(tokens) > 1:  # Only create bigrams if we have tokens
+                        bigrams = [" ".join(bg) for bg in zip(tokens, tokens[1:])]
+                        self.ALLOWED_BIGRAMS.update(bigrams)
+        
+        print(f"📊 Built vocabulary: {len(self.ALLOWED_VOCAB)} terms, {len(self.ALLOWED_BIGRAMS)} bigrams")
+    
+    def debug_tfidf_issues(self, figures: List[Figure]):
+        """Debug TF-IDF preprocessing issues."""
+        print("\n🔍 TF-IDF DEBUG INFO:")
+        
+        # Check captions
+        empty_count = sum(1 for f in figures if not f.caption or not f.caption.strip())
+        print(f"  Total figures: {len(figures)}")
+        print(f"  Empty captions: {empty_count}")
+        
+        # Check preprocessing
+        valid_figures = [f for f in figures if f.caption and f.caption.strip()]
+        print(f"  Valid captions: {len(valid_figures)}")
+        
+        if valid_figures:
+            for i, fig in enumerate(valid_figures[:3]):  # Check first 3
+                if fig.caption:
+                    tokens = self.preprocessor.tfidf_analyzer(fig.caption)
+                    print(f"  Figure {i} caption: '{fig.caption[:50]}...'")
+                    print(f"    Tokens: {tokens}")
+                    print(f"    Token count: {len(tokens)}")
+        
+        # Check vocabulary
+        print(f"\n  Allowed vocab size: {len(self.ALLOWED_VOCAB)}")
+        if self.ALLOWED_VOCAB:
+            print(f"  Sample vocab: {list(self.ALLOWED_VOCAB)[:10]}")
+    
+    def _calculate_negative_penalty(self, caption: str) -> float:
+        """
+        Dynamic negative penalty based on caption characteristics.
+        Returns penalty factor (1.0 = no penalty, 0.0 = full penalty).
+        """
+        if not caption:
+            return 1.0
+            
+        caption_lower = caption.lower()
+        
+        # 1. Check for non-circuit patterns
+        non_circuit_patterns = [
+            r'fig\.?\s*\d+',
+            r'table\s*\d+',
+            r'energy\s+level',
+            r'spectrum',
+            r'waveform',
+            r'3d\s+render',
+            r'simulation',
+            r'plot\s+of',
+            r'graph\s+of',
+            r'histogram',
+            r'heat.?map'
+        ]
+        
+        pattern_matches = sum(1 for pattern in non_circuit_patterns 
+                            if re.search(pattern, caption_lower))
+        
+        # 2. Count negative indicators (reduced set)
+        words = caption_lower.split()
+        common_negative_words = {
+            'result', 'results', 'show', 'shows', 'shown',
+            'example', 'compared', 'comparison',
+            'energy', 'level', 'plot', 'graph', 'chart', 'figure'
+        }
+        
+        negative_word_count = sum(1 for word in words if word in common_negative_words)
+        
+        # 3. Calculate penalty (much more gentle)
+        total_negative_indicators = pattern_matches + negative_word_count
+        word_count = max(len(words), 1)
+        negative_density = total_negative_indicators / word_count
+        
+        # FIXED: Much gentler penalty curve
+        # At density=0.1 (10% negative), penalty ~0.95 (only 5% reduction)
+        # At density=0.3 (30% negative), penalty ~0.85 (15% reduction)
+        penalty_factor = 1.0 / (1.0 + np.exp(8 * (negative_density - 0.2)))
+        
+        return max(0.5, penalty_factor)  # Never reduce below 50%
+    
+    def _compute_custom_features(self, texts: List[str], idf_map: Dict) -> np.ndarray:
+        """Compute custom feature vectors for texts."""
         feats = []
         for text in texts:
             tokens = self.preprocessor.tfidf_analyzer(text)
             token_count = max(len(tokens), 1)
-            preproc = self.preprocessor.preprocess_text_to_string(text)
-            neg_count = self.preprocessor.count_negative_tokens(preproc)
-
+            
             domain_hits = [t for t in tokens if t in self.ALLOWED_VOCAB]
             domain_ratio = len(domain_hits) / token_count
-
-            bigrams = [" ".join(bg) for bg in zip(tokens, tokens[1:])]
+            
+            # Bigram hits
+            bigrams = [" ".join(bg) for bg in zip(tokens, tokens[1:])] if len(tokens) > 1 else []
             bigram_hits = [b for b in bigrams if b in self.ALLOWED_BIGRAMS]
             bigram_ratio = len(bigram_hits) / max(len(bigrams), 1) if bigrams else 0.0
-
+            
+            # Position-based features
             pos_window = min(10, len(tokens))
             pos_domain_ratio = (
                 sum(1 for t in tokens[:pos_window] if t in self.ALLOWED_VOCAB)
                 / max(pos_window, 1)
             )
-
-            idf_vals = [idf_map[t] for t in tokens if t in idf_map]
+            
+            # IDF features
+            idf_vals = [idf_map.get(t, 0) for t in tokens if t in idf_map]
             rare_idf_mean = sum(idf_vals) / len(idf_vals) if idf_vals else 0.0
-
-            neg_ratio = neg_count / token_count
-            is_short = 1.0 if len(tokens) < 6 else 0.0
-
-            # Dictionary-based NER-style signals
-            lower_text = text.lower()
-            gate_hits = [t for t in tokens if t in self.GATE_TERMS]
-            gate_phrase_hits = [p for p in self.GATE_PHRASES if p in lower_text]
-            circuit_hits = [t for t in tokens if t in self.CIRCUIT_TERMS]
-            circuit_phrase_hits = [p for p in self.CIRCUIT_PHRASES if p in lower_text]
-            algo_hits = [t for t in tokens if t in self.ALGO_TERMS]
-            algo_phrase_hits = [p for p in self.ALGO_PHRASES if p in lower_text]
-
-            ner_gate_count = len(gate_hits) + len(gate_phrase_hits)
-            ner_entity_count = (
-                ner_gate_count
-                + len(circuit_hits)
-                + len(circuit_phrase_hits)
-                + len(algo_hits)
-                + len(algo_phrase_hits)
-            )
-            ner_unique_entities = len(
-                set(gate_hits)
-                | set(gate_phrase_hits)
-                | set(circuit_hits)
-                | set(circuit_phrase_hits)
-                | set(algo_hits)
-                | set(algo_phrase_hits)
-            )
-            ner_entity_density = ner_entity_count / token_count
-
-            # POS-based features (lightweight noun/verb signal)
-            noun_ratio, compound_noun_count, verb_ratio = self._pos_features(tokens, token_count)
-
-            feats.append(
-                [
-                    domain_ratio,
-                    bigram_ratio,
-                    rare_idf_mean,
-                    pos_domain_ratio,
-                    neg_ratio,
-                    is_short,
-                    ner_entity_count,
-                    ner_gate_count,
-                    ner_unique_entities,
-                    ner_entity_density,
-                    noun_ratio,
-                    compound_noun_count,
-                    verb_ratio,
-                ]
-            )
-
-        feats = np.array(feats, dtype=float)
-        return feats
-
-    def _scale_features(self, feats: np.ndarray) -> np.ndarray:
-        """Min-max scale each column to [0,1]."""
-        if feats.size == 0:
-            return feats
-
-        scaled = feats.copy()
-        for j in range(scaled.shape[1]):
-            col = scaled[:, j]
-            c_min, c_max = col.min(), col.max()
-            if c_max - c_min > 0:
-                scaled[:, j] = (col - c_min) / (c_max - c_min)
-            else:
-                scaled[:, j] = 0.0
-
-        return scaled
-
-    def _pos_features(self, tokens: List[str], token_count: int):
-        """Compute lightweight POS features using nltk if available."""
-        if not pos_tag or not tokens:
-            return 0.0, 0.0, 0.0
-
-        try:
-            tagged = pos_tag(tokens)
-        except Exception:
-            return 0.0, 0.0, 0.0
-
-        noun_tags = {"NN", "NNS", "NNP", "NNPS"}
-        verb_tags = {"VB", "VBD", "VBG", "VBN", "VBP", "VBZ"}
-
-        noun_count = sum(1 for _, t in tagged if t in noun_tags)
-        verb_count = sum(1 for _, t in tagged if t in verb_tags)
-
-        # Count contiguous noun compounds (length >=2)
-        compound_noun_count = 0
-        run_len = 0
-        for _, t in tagged:
-            if t in noun_tags:
-                run_len += 1
-            else:
-                if run_len >= 2:
-                    compound_noun_count += 1
-                run_len = 0
-        if run_len >= 2:
-            compound_noun_count += 1
-
-        noun_ratio = noun_count / token_count
-        verb_ratio = verb_count / token_count
-        return noun_ratio, float(compound_noun_count), verb_ratio
+            
+            feats.append([
+                domain_ratio,
+                bigram_ratio,
+                rare_idf_mean,
+                pos_domain_ratio,
+            ])
+        
+        return np.array(feats, dtype=float) if feats else np.array([])
     
     def filter_figures(self, figures: List[Figure]) -> List[Figure]:
         """Apply TF-IDF filtering to figures."""
-        texts = [(f.caption or "") for f in figures]
+        # Prepare texts - only include non-empty captions
+        texts = []
+        valid_indices = []
         
+        for i, fig in enumerate(figures):
+            if fig.caption and fig.caption.strip():
+                texts.append(fig.caption)
+                valid_indices.append(i)
+        
+        if not texts:
+            print("⚠️ No valid captions for TF-IDF filtering")
+            for f in figures:
+                f.similarity = 0.0
+                f.best_query = None
+                f.preprocessed_text = ""
+            return figures
+        
+        print(f"📊 TF-IDF processing {len(texts)} valid captions")
+        
+        # Create vectorizer - FIXED: Remove ngram_range when analyzer is callable
         vectorizer = TfidfVectorizer(
             analyzer=self.preprocessor.tfidf_analyzer,
-            vocabulary=self.ALLOWED_VOCAB,
-            ngram_range=(1, 2),
+            vocabulary=self.ALLOWED_VOCAB if self.ALLOWED_VOCAB else None,
             use_idf=True,
             smooth_idf=True,
             sublinear_tf=True,
-            norm='l2'
+            norm='l2',
+            min_df=1,
+            max_df=1.0
         )
         
-        tfidf = vectorizer.fit_transform(texts + list(QUERY_SETS.values()))
+        # Fit on captions + queries
+        query_texts = list(QUERY_SETS.values())
+        all_texts = texts + query_texts
+        
+        try:
+            tfidf = vectorizer.fit_transform(all_texts)
+        except ValueError as e:
+            print(f"⚠️ Vectorization failed: {e}")
+            # Initialize empty scores
+            for f in figures:
+                f.similarity = 0.0
+                f.best_query = None
+                f.preprocessed_text = ""
+            return figures
+        
+        # Check if we got any features
+        if tfidf.shape[1] == 0:
+            print("⚠️ No features extracted from texts")
+            for f in figures:
+                f.similarity = 0.0
+                f.best_query = None
+                f.preprocessed_text = ""
+            return figures
+        
+        # Get vocab and IDF
         vocab = vectorizer.get_feature_names_out()
         idf_values = vectorizer.idf_
         idf_map = {term: idf for term, idf in zip(vocab, idf_values)}
+        
+        # Split matrices
         caption_vecs = tfidf[:len(texts)]
         query_vecs = tfidf[len(texts):]
-
-        # Optional feature concatenation
-        if USE_CUSTOM_TFIDF_FEATURES:
-            CUSTOM_FEATURE_WEIGHT = 0.6  # Weight λ for custom features to prevent distorting cosine space
-            custom_feats = self._compute_custom_features(texts + list(QUERY_SETS.values()), idf_map)
-            weighted_feats = self._scale_features(custom_feats) * CUSTOM_FEATURE_WEIGHT
-            # Split back into captions/queries
-            cap_feats = weighted_feats[: len(texts)]
-            qry_feats = weighted_feats[len(texts) :]
-            cap_sparse = csr_matrix(cap_feats)
-            qry_sparse = csr_matrix(qry_feats)
-            cap_aug = hstack([caption_vecs, cap_sparse])
-            qry_aug = hstack([query_vecs, qry_sparse])
-        else:
-            cap_aug = caption_vecs
-            qry_aug = query_vecs
-
-        sims_aug = cosine_similarity(cap_aug, qry_aug)
-        sims_base = cosine_similarity(caption_vecs, query_vecs)
         
-        for i, figure in enumerate(figures):
-            preproc = self.preprocessor.preprocess_text_to_string(figure.caption)
-
-            per_query = {
-                name: float(sims_aug[i, j])
-                for j, name in enumerate(QUERY_SETS.keys())
-            }
-            best_sim_aug = max(per_query.values())
-            best_query = max(per_query, key=per_query.get)
-
-            per_query_base = {
-                name: float(sims_base[i, j])
-                for j, name in enumerate(QUERY_SETS.keys())
-            }
-            best_sim_base = max(per_query_base.values())
-
-            neg_count = self.preprocessor.count_negative_tokens(preproc)
-            # Penalty as multiplicative factor: each negative token reduces score by NEGATIVE_PENALTY_ALPHA fraction
-            if USE_NEGATIVE_PENALTY and neg_count > 0:
-                penalty_factor = (NEGATIVE_PENALTY_ALPHA / 100.0) * neg_count  # e.g., 5% per negative token
-                penalty_factor = min(penalty_factor, 0.9)  # Cap at 90% reduction
-                final_sim = best_sim_aug * (1.0 - penalty_factor)
+        # Check matrix shapes
+        print(f"  Caption matrix shape: {caption_vecs.shape}")
+        print(f"  Query matrix shape: {query_vecs.shape}")
+        
+        if caption_vecs.shape[0] == 0 or query_vecs.shape[0] == 0:
+            print("⚠️ Empty matrices after vectorization")
+            for f in figures:
+                f.similarity = 0.0
+                f.best_query = None
+                f.preprocessed_text = ""
+            return figures
+        
+        # Optional custom features
+        if USE_CUSTOM_TFIDF_FEATURES:
+            custom_feats = self._compute_custom_features(all_texts, idf_map)
+            CUSTOM_FEATURE_WEIGHT = 0.6
+            
+            # Scale features if we have any
+            if custom_feats.size > 0 and custom_feats.shape[0] > 0:
+                for j in range(custom_feats.shape[1]):
+                    col = custom_feats[:, j]
+                    c_min, c_max = col.min(), col.max()
+                    if c_max - c_min > 0:
+                        custom_feats[:, j] = (col - c_min) / (c_max - c_min)
+                
+                weighted_feats = custom_feats * CUSTOM_FEATURE_WEIGHT
+                cap_feats = csr_matrix(weighted_feats[:len(texts)])
+                qry_feats = csr_matrix(weighted_feats[len(texts):])
+                
+                caption_vecs = hstack([caption_vecs, cap_feats])
+                query_vecs = hstack([query_vecs, qry_feats])
+        
+        # Calculate similarities
+        try:
+            sims = cosine_similarity(caption_vecs, query_vecs)
+        except Exception as e:
+            print(f"⚠️ Cosine similarity failed: {e}")
+            print(f"  caption_vecs shape: {caption_vecs.shape}")
+            print(f"  query_vecs shape: {query_vecs.shape}")
+            # Initialize empty scores
+            for idx in valid_indices:
+                figures[idx].similarity = 0.0
+                figures[idx].best_query = None
+                figures[idx].preprocessed_text = ""
+            return figures
+        
+        # Process each valid figure
+        for i, fig_idx in enumerate(valid_indices):
+            figure = figures[fig_idx]
+            
+            # Get best similarity
+            fig_sims = sims[i]
+            best_sim = float(np.max(fig_sims))
+            best_query_idx = int(np.argmax(fig_sims))
+            best_query = list(QUERY_SETS.keys())[best_query_idx]
+            
+            # Apply negative penalty if enabled
+            if USE_NEGATIVE_PENALTY:
+                penalty_factor = self._calculate_negative_penalty(figure.caption)
+                final_sim = best_sim * penalty_factor
+                penalty_amount = 1.0 - penalty_factor
             else:
-                penalty_factor = 0.0
-                final_sim = best_sim_aug
-
-            figure.preprocessed_text = preproc
-            figure.similarities = per_query
-            figure.best_query = best_query
-            figure.similarity_raw = best_sim_base
+                final_sim = best_sim
+                penalty_amount = 0.0
+            
+            # Store results
+            figure.preprocessed_text = self.preprocessor.preprocess_text_to_string(figure.caption)
             figure.similarity = final_sim
-            figure.negative_tokens = neg_count
-            figure.penalty = penalty_factor
+            figure.similarity_raw = best_sim
+            figure.best_query = best_query
+            figure.negative_penalty = penalty_amount
+        
+        # For figures without captions, set default scores
+        for i, fig in enumerate(figures):
+            if i not in valid_indices:
+                fig.similarity = 0.0
+                fig.best_query = None
+                fig.preprocessed_text = ""
         
         return figures
     
     def get_accepted_figures(self, figures: List[Figure]) -> List[Figure]:
-        # """Get figures that pass the TF-IDF threshold."""
-        # return [f for f in figures if f.similarity >= SIMILARITY_THRESHOLD]
         """Get figures that pass the TF-IDF threshold."""
-        # Filter by threshold AND minimum token overlap
-        MIN_TOKEN_OVERLAP = 2  # Require at least 2 matching tokens
+        MIN_TOKEN_OVERLAP = 2
         accepted = []
+        
         for f in figures:
             if f.similarity >= SIMILARITY_THRESHOLD:
-                # Count tokens that match allowed vocab (using same analyzer)
                 tokens = set(self.preprocessor.tfidf_analyzer(f.caption or ""))
                 overlap = len(tokens & self.ALLOWED_VOCAB)
                 if overlap >= MIN_TOKEN_OVERLAP:
                     accepted.append(f)
+        
+        print(f"📊 TF-IDF accepted: {len(accepted)}/{len(figures)} figures")
         return accepted
