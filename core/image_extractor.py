@@ -12,7 +12,7 @@ import time
 
 from models.figure_data import Figure, ExtractedImage
 from core.preprocessor import TextPreprocessor
-from config.settings import SUPPORTED_EXT, REQUEST_DELAY, OUTPUT_DIR, CACHE_DIR, PDF_CACHE_DIR
+from config.settings import SUPPORTED_EXT, REQUEST_DELAY, OUTPUT_DIR, CACHE_DIR, PDF_CACHE_DIR, ENABLE_PDF_EXTRACTION
 from config.queries import FILENAME_NEGATIVE_TOKENS
 
 
@@ -22,7 +22,14 @@ class ImageExtractor:
     # Regular expressions for LaTeX parsing
     FIG_RE = re.compile(r"\\begin{figure}.*?\\end{figure}", re.DOTALL)
     CAP_RE = re.compile(r"\\caption\{([^}]*)\}", re.DOTALL)
+    SUBCAP_RE = re.compile(r"\\subcaption\{([^}]*)\}", re.DOTALL)
     IMG_RE = re.compile(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]*)\}", re.DOTALL)
+    SUBFIG_RE = re.compile(r"\\begin\{subfigure\}.*?\\end\{subfigure\}", re.DOTALL)
+    # LaTeX drawing environments/macros commonly used for circuits
+    TIKZ_RE = re.compile(r"\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}", re.DOTALL)
+    CIRCUITIKZ_RE = re.compile(r"\\begin\{circuitikz\}.*?\\end\{circuitikz\}", re.DOTALL)
+    QUANTIKZ_RE = re.compile(r"\\begin\{quantikz\}.*?\\end\{quantikz\}", re.DOTALL)
+    QCIRCUIT_RE = re.compile(r"\\Qcircuit[\s\S]*?\\end{array}", re.DOTALL)
     
     def __init__(self, preprocessor: TextPreprocessor):
         self.preprocessor = preprocessor
@@ -137,29 +144,94 @@ class ImageExtractor:
         return any(t in FILENAME_NEGATIVE_TOKENS for t in tokens)
     
     def extract_figures_from_tex(self, tex: str) -> List[Figure]:
-        """Extract figures from LaTeX text."""
-        figures = []
-        
+        r"""Extract figures from LaTeX text.
+        Handles multiple \includegraphics within a single figure block and subfigures.
+        """
+        figures: List[Figure] = []
+
         for block in self.FIG_RE.findall(tex):
             cap = self.CAP_RE.search(block)
-            img = self.IMG_RE.search(block)
-            
-            if not (cap and img):
+            if not cap:
+                # No caption; skip to reduce false positives
                 continue
-            
+
+            # Decode caption text safely
             try:
                 from pylatexenc.latex2text import LatexNodes2Text
-                caption = LatexNodes2Text().latex_to_text(cap.group(1))
+                caption_text = LatexNodes2Text().latex_to_text(cap.group(1))
             except Exception:
-                caption = cap.group(1)
-            
-            figures.append(Figure(
-                caption=caption.strip(),
-                img_path=img.group(1).strip()
-            ))
-        
+                caption_text = cap.group(1)
+
+            caption_text = caption_text.strip()
+
+            # Collect all image paths within the figure block
+            img_paths = self.IMG_RE.findall(block) or []
+
+            # If subfigures exist, also search within subfigure blocks explicitly
+            for sub in self.SUBFIG_RE.findall(block):
+                img_paths.extend(self.IMG_RE.findall(sub))
+
+            # Attempt to extract subcaptions if present
+            subcaptions = []
+            # Collect explicit \subcaption{...}
+            for sub in self.SUBFIG_RE.findall(block):
+                subs = self.SUBCAP_RE.findall(sub)
+                subcaptions.extend([s.strip() for s in subs if s.strip()])
+
+            # If no \subcaption, try to split main caption by panel markers (a), (b), (c)...
+            if not subcaptions:
+                # Patterns like "a)" or "(a)" often separate panels in the raw caption
+                # We split on occurrences of (a)/(b)/... while keeping text order.
+                parts = re.split(r"\s*\(?([a-zA-Z])\)\s*", caption_text)
+                # re.split returns separators; rebuild chunks labeled by a,b,c...
+                labeled = []
+                i = 0
+                while i < len(parts):
+                    if i + 1 < len(parts) and len(parts[i+1]) == 1:
+                        label = parts[i+1].lower()
+                        text_chunk = parts[i].strip()
+                        if text_chunk:
+                            labeled.append(text_chunk)
+                        i += 2
+                    else:
+                        # Leading or trailing text without label
+                        chunk = parts[i].strip()
+                        if chunk:
+                            labeled.append(chunk)
+                        i += 1
+                # If we got multiple chunks, treat them as subcaptions in order
+                if len(labeled) > 1:
+                    subcaptions = labeled
+
+            # Deduplicate while preserving order
+            seen = set()
+            unique_paths = []
+            for p in img_paths:
+                p = p.strip()
+                if p and p not in seen:
+                    seen.add(p)
+                    unique_paths.append(p)
+
+            # Create a Figure per image. If we have subcaptions and counts match, align them; else use shared caption.
+            if subcaptions and len(subcaptions) == len(unique_paths):
+                for path, subcap in zip(unique_paths, subcaptions):
+                    figures.append(Figure(
+                        caption=subcap,
+                        img_path=path
+                    ))
+            else:
+                for path in unique_paths:
+                    figures.append(Figure(
+                        caption=caption_text,
+                        img_path=path
+                    ))
+
+
+
         return figures
-    
+
+
+
     def extract_images(self, tar: tarfile.TarFile, figures: List[Figure], 
                       paper_id: str) -> List[ExtractedImage]:
         """Extract images from tar file for selected figures."""

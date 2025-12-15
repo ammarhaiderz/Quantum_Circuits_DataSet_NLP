@@ -15,7 +15,8 @@ from core.image_extractor import ImageExtractor
 from config.settings import (
     MAX_IMAGES, TOP_K_PER_PAPER, PRINT_TOP_CAPTIONS,
     OUTPUT_DIR, ENABLE_DEBUG_PRINTS, SBERT_MIN_SIM,
-    USE_COMBINED_SCORE, TFIDF_WEIGHT, SBERT_WEIGHT, COMBINED_THRESHOLD
+    USE_COMBINED_SCORE, TFIDF_WEIGHT, SBERT_WEIGHT, COMBINED_THRESHOLD,
+    SIMILARITY_THRESHOLD
 )
 
 
@@ -67,12 +68,16 @@ class ExtractionPipeline:
     def process_paper(self, paper_id: str) -> Tuple[List[ExtractedImage], List[Figure]]:
         """Process a single paper."""
         self.stats['papers_checked'] += 1
+        print(f"\n{'='*80}")
+        print(f"📄 PAPER: {paper_id}")
+        print(f"{'='*80}")
         
         # Cache PDF paper as we process it
         self.image_extractor.download_pdf_paper(paper_id)
         
         src = self.image_extractor.download_source(paper_id)
         if not src:
+            print(f"❌ Failed to download source for {paper_id}")
             return [], []
         
         try:
@@ -92,6 +97,7 @@ class ExtractionPipeline:
                     print(f"⚠️ Failed to parse {m.name}: {e}")
         
         if not figures:
+            print(f"⚠️ No figures found in LaTeX")
             return [], []
         
         # Set paper ID for all figures
@@ -100,6 +106,8 @@ class ExtractionPipeline:
         
         self.stats['papers_with_figures'] += 1
         self.stats['total_figures_seen'] += len(figures)
+        print(f"\n🔍 GATE 0: FIGURE EXTRACTION")
+        print(f"   ✓ Figures extracted: {len(figures)}")
         
         # Apply TF-IDF filtering
         figures = self.tfidf_filter.filter_figures(figures)
@@ -111,11 +119,24 @@ class ExtractionPipeline:
         # Get TF-IDF accepted figures
         accepted_tfidf = self.tfidf_filter.get_accepted_figures(figures)
         
+        print(f"\n🔍 GATE 1: TF-IDF FILTER (threshold={SIMILARITY_THRESHOLD})")
+        print(f"   → Input: {len(figures)} figures")
+        print(f"   ✓ Passed: {len(accepted_tfidf)} figures")
+        print(f"   ✗ Rejected: {len(figures) - len(accepted_tfidf)} figures")
+        
         if accepted_tfidf:
             self.stats['papers_with_candidates'] += 1
+            # Statistics for tuning
+            tfidf_scores = [f.similarity for f in accepted_tfidf]
+            raw_scores = [f.similarity_raw for f in accepted_tfidf]
+            neg_counts = [f.negative_tokens for f in accepted_tfidf]
+            print(f"   📊 TF-IDF scores - Min: {min(tfidf_scores):.4f}, Max: {max(tfidf_scores):.4f}, Avg: {sum(tfidf_scores)/len(tfidf_scores):.4f}")
+            print(f"   📊 Raw scores - Min: {min(raw_scores):.4f}, Max: {max(raw_scores):.4f}")
+            print(f"   📊 Negative tokens - Min: {min(neg_counts)}, Max: {max(neg_counts)}, Avg: {sum(neg_counts)/len(neg_counts):.1f}")
         
         # Limit pool for SBERT reranking
         accepted_tfidf = accepted_tfidf[:TOP_K_PER_PAPER * 3]
+        print(f"   → Limited to top {len(accepted_tfidf)} for SBERT reranking")
         
         # Initialize accepted list
         accepted = []
@@ -123,6 +144,12 @@ class ExtractionPipeline:
         # Apply SBERT reranking
         if accepted_tfidf:
             accepted_tfidf = self.sbert_reranker.rerank_figures(accepted_tfidf)
+            
+            print(f"\n🔍 GATE 2: SBERT RERANKING")
+            print(f"   → Input: {len(accepted_tfidf)} figures")
+
+            sbert_scores = [f.sbert_sim for f in accepted_tfidf]
+            print(f"   📊 SBERT scores - Min: {min(sbert_scores):.4f}, Max: {max(sbert_scores):.4f}, Avg: {sum(sbert_scores)/len(sbert_scores):.4f}")
             
             # Compute combined scores
             if USE_COMBINED_SCORE:
@@ -141,6 +168,11 @@ class ExtractionPipeline:
                 
                 # Final selection: filter by combined threshold
                 accepted = [f for f in accepted_tfidf if f.combined_score >= COMBINED_THRESHOLD]
+                
+                combined_scores = [f.combined_score for f in accepted_tfidf]
+                print(f"\n🔍 GATE 3: COMBINED SCORE FILTER (threshold={COMBINED_THRESHOLD})")
+                print(f"   Weights: TF-IDF={TFIDF_WEIGHT}, SBERT={SBERT_WEIGHT}")
+                print(f"   📊 Combined scores - Min: {min(combined_scores):.4f}, Max: {max(combined_scores):.4f}, Avg: {sum(combined_scores)/len(combined_scores):.4f}")
             else:
                 # Legacy cascade approach: sort by SBERT only
                 accepted_tfidf = sorted(
@@ -150,8 +182,15 @@ class ExtractionPipeline:
                 )
                 # Final selection: filter by SBERT threshold
                 accepted = [f for f in accepted_tfidf if f.sbert_sim >= SBERT_MIN_SIM]
+                
+                print(f"\n🔍 GATE 3: SBERT FILTER (threshold={SBERT_MIN_SIM})")
             
+            # Common pass/reject logging for both modes
+            print(f"   ✓ Passed: {len(accepted)} figures")
+            print(f"   ✗ Rejected: {len(accepted_tfidf) - len(accepted)} figures")
+
             accepted = accepted[:TOP_K_PER_PAPER]
+            print(f"   → Limited to top {TOP_K_PER_PAPER} for final output")
         
         # Mark selected figures
         for f in accepted:
@@ -160,14 +199,23 @@ class ExtractionPipeline:
         # Extract images
         extracted = self.image_extractor.extract_images(tar, accepted, paper_id)
         
+        print(f"\n🔍 GATE 4: IMAGE EXTRACTION")
+        print(f"   → Input: {len(accepted)} figures")
+        print(f"   ✓ Successfully extracted: {len(extracted)} images")
+        print(f"   ✗ Failed: {len(accepted) - len(extracted)} images")
+        
         if extracted:
             self.stats['papers_with_extracted'] += 1
         
         self.stats['total_saved'] += len(extracted)
         self.all_extracted.extend(extracted)
         
-        # Create records for DataFrame
-        self._create_records(paper_id, figures, extracted)
+        print(f"\n📈 CUMULATIVE STATS")
+        print(f"   Total papers processed: {self.stats['papers_checked']}")
+        print(f"   Total images saved: {self.stats['total_saved']}/{MAX_IMAGES}")
+        
+        # Create records for DataFrame (only TF-IDF accepted figures, not all)
+        self._create_records(paper_id, accepted_tfidf, extracted)
         
         # Print summary for this paper
         self._print_paper_summary(paper_id, figures, accepted_tfidf, accepted, extracted)

@@ -124,8 +124,8 @@ class Logger:
         for threshold in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]:
             count = (tfidf_scores >= threshold).sum()
             pct = (count / len(df)) * 100
-            marker = " ← CURRENT" if abs(threshold - SIMILARITY_THRESHOLD) < 0.01 else ""
-            self.info(f"  ≥{threshold:.1f}: {count:4d} ({pct:5.1f}%){marker}")
+            marker = " <- CURRENT" if abs(threshold - SIMILARITY_THRESHOLD) < 0.01 else ""
+            self.info(f"  >={threshold:.1f}: {count:4d} ({pct:5.1f}%){marker}")
         
         # SBERT stats (if available)
         if "sbert_sim" in df.columns:
@@ -155,7 +155,7 @@ class Logger:
                     count = (sbert_scores >= threshold).sum()
                     pct = (count / len(sbert_scores)) * 100
                     marker = " ← CURRENT" if abs(threshold - SBERT_MIN_SIM) < 0.01 else ""
-                    self.info(f"  ≥{threshold:.1f}: {count:4d} ({pct:5.1f}%){marker}")
+                    self.info(f"  >={threshold:.1f}: {count:4d} ({pct:5.1f}%){marker}")
                 
                 # Combined score stats (if available)
                 if "combined_score" in df.columns:
@@ -189,8 +189,8 @@ class Logger:
                         for threshold in [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]:
                             count = (combined_scores >= threshold).sum()
                             pct = (count / len(combined_scores)) * 100
-                            marker = " ← CURRENT" if abs(threshold - COMBINED_THRESHOLD) < 0.01 else ""
-                            self.info(f"  ≥{threshold:.1f}: {count:4d} ({pct:5.1f}%){marker}")
+                            marker = " <- CURRENT" if abs(threshold - COMBINED_THRESHOLD) < 0.01 else ""
+                            self.info(f"  >={threshold:.1f}: {count:4d} ({pct:5.1f}%){marker}")
                 
                 # Selection funnel
                 self.info("\n" + "="*88)
@@ -210,7 +210,7 @@ class Logger:
                 if 'token_overlap_count' in df.columns:
                     overlap_passed = (df['token_overlap_count'] >= 2).sum()
                     self.info(f"Passed Token overlap:    {overlap_passed:4d} "
-                              f"({(overlap_passed/len(df)*100):5.1f}%)  (≥2 tokens)")
+                              f"({(overlap_passed/len(df)*100):5.1f}%)  (>=2 tokens)")
                 
                 if USE_COMBINED_SCORE and 'combined_score' in df.columns:
                     combined_passed = (df['combined_score'] >= COMBINED_THRESHOLD).sum()

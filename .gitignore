@@ -9,6 +9,7 @@
 *.tmp
 __pycache__/
 *.pyc
+*.eps
 .env
 nlp/
 arxiv_pdf_cache/

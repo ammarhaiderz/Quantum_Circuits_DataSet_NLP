@@ -136,3 +136,51 @@ class TextPreprocessor:
         name = re.sub(r"[^a-z0-9]+", " ", name)
         tokens = name.split()
         return [self.stemmer.stem(t) if USE_STEMMING else t for t in tokens]
+    
+
+if __name__ == "__main__":
+    tp = TextPreprocessor()
+
+    test_captions = [
+        "FIG. 1. Schematic diagrams of (a) discrete-variable and (b) continuous-variable quantum teleportation.",
+        """FIG. 1. Experimental setup with the DC circuit on the
+left in purple and the reflectometry circuit on the right in
+green. The Keysight chassis handles control and readout of
+the SiGe quantum dot device. On the quantum dot (QD)
+device schematic, red gates act as barrier gates, green gates
+as plunger gates, blue gates as reservoirs and purple gates as
+confinement gates. A voltage divider is used to increase the
+resolution of the M3201A’s voltage applied to the ohmic con-
+tacts by a factor of 100""",
+        "A list of topics to categorize the field of quantum machine learning and its algorithms.",
+        r"Fig. 5: Circuit $U(\theta)$ acting on qubit$_i$ with H_1 and R_z(\phi).",
+        "A typical quantum circuit synthesis flow.",
+        "Equivalent electrical circuit representation of the resonator system.",
+    ]
+
+    print("=" * 80)
+    print(" QUICK TEXT PREPROCESSING CHECK ")
+    print("=" * 80)
+
+    for i, caption in enumerate(test_captions, 1):
+        print(f"\n--- Case {i} ---")
+        print("ORIGINAL:")
+        print(caption)
+
+        tfidf_tokens = tp.tfidf_analyzer(caption)
+        tfidf_text = tp.preprocess_text_to_string(caption)
+        neg_count = tp.count_negative_tokens(tfidf_text)
+        sbert_text = tp.light_clean_for_sbert(caption)
+
+        print("\nTF-IDF TOKENS:")
+        print(tfidf_tokens)
+
+        print("\nTF-IDF STRING:")
+        print(tfidf_text)
+
+        print(f"\nNEGATIVE TOKEN COUNT: {neg_count}")
+
+        print("\nSBERT INPUT:")
+        print(sbert_text)
+
+        print("-" * 80)

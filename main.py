@@ -1,7 +1,24 @@
 import pandas as pd
 from typing import List
 
-from config.settings import ID_FILE, MAX_IMAGES, setup_directories
+from config.settings import (
+    ID_FILE,
+    MAX_IMAGES,
+    TOP_K_PER_PAPER,
+    SIMILARITY_THRESHOLD,
+    SBERT_MIN_SIM,
+    USE_COMBINED_SCORE,
+    TFIDF_WEIGHT,
+    SBERT_WEIGHT,
+    COMBINED_THRESHOLD,
+    USE_STEMMING,
+    USE_STOPWORDS,
+    NORMALIZE_HYPHENS,
+    USE_NEGATIVE_PENALTY,
+    NEGATIVE_PENALTY_ALPHA,
+    USE_CUSTOM_TFIDF_FEATURES,
+    setup_directories,
+)
 from utils.file_utils import FileUtils
 from utils.logging_utils import Logger
 from pipeline.extraction_pipeline import ExtractionPipeline
@@ -9,11 +26,30 @@ from core.arxiv_validator import ArxivFilter
 
 
 def print_final_stats(logger, pipeline, processed_count, skipped_count, arxiv_filter):
-    logger.info(f"\n=== Summary ===")
-    logger.info(f"Total papers checked: {processed_count + skipped_count}")
-    logger.info(f"Quantum papers processed: {processed_count}")
-    logger.info(f"Non-quantum papers skipped: {skipped_count}")
-    logger.info(f"Images saved: {pipeline.stats['total_saved']}")
+    print(f"\n{'='*80}")
+    print(f"📊 FINAL EXTRACTION SUMMARY")
+    print(f"{'='*80}")
+    
+    print(f"\n🎯 PAPERS:")
+    print(f"   Total papers checked: {processed_count + skipped_count}")
+    print(f"   Quantum papers processed: {processed_count}")
+    print(f"   Non-quantum papers skipped: {skipped_count}")
+    if processed_count > 0:
+        print(f"   Quantum percentage: {100*processed_count/(processed_count+skipped_count):.1f}%")
+    
+    print(f"\n📸 EXTRACTION FUNNEL:")
+    print(f"   Total figures found: {pipeline.stats['total_figures_seen']}")
+    if pipeline.stats['total_figures_seen'] > 0:
+        papers_with_figures = pipeline.stats['papers_with_figures']
+        papers_with_candidates = pipeline.stats['papers_with_candidates']
+        papers_with_extracted = pipeline.stats['papers_with_extracted']
+        
+        print(f"   Papers with figures: {papers_with_figures}")
+        print(f"   Papers with TF-IDF candidates: {papers_with_candidates} ({100*papers_with_candidates/papers_with_figures:.1f}%)")
+        print(f"   Papers with SBERT-selected figures: {papers_with_extracted} ({100*papers_with_extracted/papers_with_figures:.1f}%)")
+        print(f"   Final images saved: {pipeline.stats['total_saved']} ({100*pipeline.stats['total_saved']/pipeline.stats['total_figures_seen']:.1f}% of figures)")
+    
+    logger.info(f"\nImages saved: {pipeline.stats['total_saved']}")
 
     final_stats = arxiv_filter.get_cache_stats()
     logger.info(f"\nCache now has {final_stats['total']} entries")
@@ -30,6 +66,38 @@ def main():
     if not pipeline.initialize():
         logger.error("Failed to initialize pipeline")
         return
+    # Print configuration settings for tuning reference
+    print(f"\n{'='*80}")
+    print(f"⚙️  PIPELINE CONFIGURATION")
+    print(f"{'='*80}")
+    print(f"📊 THRESHOLDS & LIMITS:")
+    print(f"   MAX_IMAGES: {MAX_IMAGES}")
+    print(f"   TOP_K_PER_PAPER: {TOP_K_PER_PAPER}")
+    print(f"   SIMILARITY_THRESHOLD (TF-IDF gate): {SIMILARITY_THRESHOLD}")
+
+    if USE_COMBINED_SCORE:
+        print(f"\n📊 SCORING MODE: COMBINED WEIGHTED")
+        print(f"   TF-IDF Weight: {TFIDF_WEIGHT}")
+        print(f"   SBERT Weight: {SBERT_WEIGHT}")
+        print(f"   Combined Threshold: {COMBINED_THRESHOLD}")
+    else:
+        print(f"\n📊 SCORING MODE: CASCADE GATES")
+        print(f"   SBERT_MIN_SIM (SBERT gate): {SBERT_MIN_SIM}")
+
+    print(f"\n📊 TEXT PROCESSING:")
+    print(f"   USE_STEMMING: {USE_STEMMING}")
+    print(f"   USE_STOPWORDS: {USE_STOPWORDS}")
+    print(f"   NORMALIZE_HYPHENS: {NORMALIZE_HYPHENS}")
+
+    print(f"\n📊 NEGATIVE PENALTY:")
+    print(f"   USE_NEGATIVE_PENALTY: {USE_NEGATIVE_PENALTY}")
+    if USE_NEGATIVE_PENALTY:
+        print(f"   NEGATIVE_PENALTY_ALPHA: {NEGATIVE_PENALTY_ALPHA}")
+
+    print(f"\n📊 CUSTOM TF-IDF FEATURES:")
+    print(f"   USE_CUSTOM_TFIDF_FEATURES: {USE_CUSTOM_TFIDF_FEATURES}")
+
+    print(f"{'='*80}\n")
     
     # Read arXiv IDs
     arxiv_ids = FileUtils.read_arxiv_ids(ID_FILE)
@@ -76,24 +144,6 @@ def main():
     if pipeline.text_records:
         df = pd.DataFrame(pipeline.text_records)
         FileUtils.save_dataframe(df)
-        
-        # Print current threshold settings
-        from config.settings import (
-            SIMILARITY_THRESHOLD, SBERT_MIN_SIM,
-            USE_COMBINED_SCORE, TFIDF_WEIGHT, SBERT_WEIGHT, COMBINED_THRESHOLD
-        )
-        logger.info("\n Current Settings:")
-        logger.info(f"  SIMILARITY_THRESHOLD (TF-IDF gate): {SIMILARITY_THRESHOLD}")
-        
-        if USE_COMBINED_SCORE:
-            logger.info(f"  Scoring Mode: COMBINED WEIGHTED")
-            logger.info(f"    TF-IDF Weight: {TFIDF_WEIGHT}")
-            logger.info(f"    SBERT Weight: {SBERT_WEIGHT}")
-            logger.info(f"    Combined Threshold: {COMBINED_THRESHOLD}")
-        else:
-            logger.info(f"  Scoring Mode: CASCADE GATES")
-            logger.info(f"    SBERT_MIN_SIM (SBERT gate): {SBERT_MIN_SIM}")
-        
         logger.print_statistics(pipeline.stats, df)
     else:
         logger.warning("No images were extracted")

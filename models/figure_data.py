@@ -12,6 +12,8 @@ class Figure:
     caption: str
     img_path: str
     paper_id: str = ""
+    # Optional raw LaTeX drawing block (e.g., tikzpicture, circuitikz)
+    latex_block: Optional[str] = None
     
     # TF-IDF fields
     preprocessed_text: str = ""
@@ -49,6 +51,7 @@ class Figure:
             "best_sbert_query": self.best_sbert_query,
             "selected": self.selected,
             "extracted": self.extracted,
+            "has_latex": self.latex_block is not None,
             **{f"sim_{k}": v for k, v in self.similarities.items()}
         }
 

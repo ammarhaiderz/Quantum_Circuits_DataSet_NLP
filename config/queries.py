@@ -57,11 +57,18 @@ QUERY_SETS = {
         multi-qubit gate
         single-qubit rotation
         entangling gate
-        measurement circuit
         two-qubit gate
+        circuit schematic
+        quantum gate circuit
+        qubit connectivity
+        circuit topology
     """,
 
     "quantum_algorithms": """
+        ghz
+        bell state
+        Josephson tunnel junction
+        cooper pair box
         deutsch-jozsa algorithm circuit
         deutsch-jozsa quantum circuit diagram
         bernstein-vazirani circuit
@@ -105,8 +112,8 @@ QUERY_SETS = {
 PROTECTED_TOKENS = {
     "cnot", "cx", "cz",
     "rx", "ry", "rz",
-    "qft", "qaoa", "vqe", "vqc",
-    "iswap",
+    "qft", "qaoa", "vqe", "vqc", "vqa",
+    "iswap", "ladder"
     # Compound terms from infix normalization
     "multiqubit", "twoqubit", "threequbit", "singlequbit", "nqubit",
     "multigate", "twogate", "threegate",
@@ -120,11 +127,22 @@ QUANTUM_POSITIVE_TOKENS = {
     "superposition", "entanglement", "coherence", "decoherence",
     "algorithm", "grover", "shor", "qft", "vqe", "qaoa", "ansatz",
     "rx", "ry", "rz", "swap", "iswap", "toffoli", "fredkin",
-    "measurement", "observable", "expectation", "fidelity"
+    "fidelity", "ladder",
+    "oracle", "teleportation", "bell", "ghz", "epr",
+    "deutsch-jozsa", "bernstein-vazirani", "simon",
+    
+    "cnot", "cx", "cz",
+    "qft", "qaoa", "vqe", "vqc", "vqa",
+    "iswap",
 }
 
 # Negative tokens for penalty calculation
 NEGATIVE_RAW_TOKENS = {
+    "equivalent", "simu", "simulation", "simulated", "simul", "theoretical",
+    "walk", "grid", "lattice", "lattic", "array", "atom", "molecule", "molecular",
+    "atomic", "photon", "spin", "nuclei", "electron", "ionic", "ion",
+    "list", "topics", "overview", "summary", "introduction", "conclusion", "refer", "reference", "bibliographi",
+    "table", "tabular", "flow", "workflow",
     "axis", "xaxis", "yaxis", "zaxis",
     "label", "title", "legend",
     "plot", "graph", "chart", "histogram",
@@ -135,7 +153,7 @@ NEGATIVE_RAW_TOKENS = {
     "demonstr",
     "code", "kernel", "notebook", "script", "function",
     "cuda", "cpu", "gpu", "illustration", "pulse", "duration", "scatter",
-    "energy", "level", "spectrum", "eigenvalu", "matrix", "numerics",
+    "energy", "level", "spectrum", "eigenvalu","eigenstates" "matrix", "numerics",
     "overlap", "correlation", "concurrence", "log", "coefficient", "covariance",
     "heat", "thermal", "thermodynam", "engin", "temperatur", "entropi",
     "dataset", "benchmark", "simulation", "simul", "iqm", "qpu", "hardware", "outlier",
@@ -143,7 +161,7 @@ NEGATIVE_RAW_TOKENS = {
     "data", "dyson", "fit", "regress", "classif", "clust", "latice", "lattice", 
     "geometry", "graph", "network", "geometric", "time", "population", "ms","frequency", "domain", "duration", "mod", "modulus",
     "rate", "decay", "decoher", "nois", "signal", "volt", "current", "microsecond", "nanosecond", "millisecond",
-    "distribut", "probabl", "expect",
+    "distribution", "probabl", "expect",
     "varianc", "mean", "averag",
     "standard", "deviat", "confid",
     "interval", "percent", "ratio",
@@ -178,6 +196,9 @@ NEGATIVE_RAW_TOKENS = {
     "3d", "three", "dimensional", "isometric", "perspective",
     "render", "rendering", "visualization", "volume", "mesh",
     "wireframe", "solid", "shaded", "lit", "lighting", "camera",
+    "apparatus", "trap", "cavity", "setup", "experiment", "measurem", "detec",
+    "atom", "ion", "photon", "spin", "nuclei", "electron",
+    "realization", "implement", "experimental",
 }
 
 NEGATIVE_TOKENS = {STEMMER.stem(token) for token in NEGATIVE_RAW_TOKENS}
