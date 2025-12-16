@@ -6,6 +6,8 @@ import pandas as pd
 from typing import List, Tuple
 import tarfile
 import os
+import shutil
+from pathlib import Path
 
 from models.figure_data import Figure, ExtractedImage
 from core.preprocessor import TextPreprocessor
@@ -45,8 +47,28 @@ class ExtractionPipeline:
     def initialize(self) -> bool:
         """Initialize the pipeline components."""
         print("🚀 Initializing Quantum Circuit Image Extractor Pipeline")
-        
-        # Clear output directory
+
+        # Start fresh: remove contents of `circuit_images/` to avoid stale outputs
+        ci = Path('circuit_images')
+        if ci.exists():
+            for p in ci.iterdir():
+                try:
+                    if p.is_dir():
+                        shutil.rmtree(p)
+                    else:
+                        p.unlink()
+                except Exception as e:
+                    print(f"⚠️ Failed to remove {p}: {e}")
+        else:
+            ci.mkdir(parents=True, exist_ok=True)
+
+        # Ensure common subdirectories exist after cleanup
+        (ci / 'live_blocks').mkdir(parents=True, exist_ok=True)
+        (ci / 'rendered_pdflatex').mkdir(parents=True, exist_ok=True)
+        (ci / 'blocks').mkdir(parents=True, exist_ok=True)
+        (ci / 'rendered').mkdir(parents=True, exist_ok=True)
+
+        # Clear output directory (also clears OUTPUT_DIR images)
         self.image_extractor.clear_output_dir()
         
         # # Test SBERT

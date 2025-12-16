@@ -6,6 +6,12 @@ import json
 import argparse
 import sys
 from core.latex_extractor import render_saved_blocks_with_pdflatex_module
+import shutil
+from typing import Optional
+try:
+    import fitz  # PyMuPDF
+except Exception:
+    fitz = None
 import re
 
 def extract_qcircuit_blocks_from_text(text: str):
@@ -81,7 +87,37 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
     if render:
         try:
             # Render only the current paper's blocks (dest contains this paper's raw_blocks)
-            render_saved_blocks_with_pdflatex_module(blocks_root=str(dest), out_dir=str(dest / 'rendered'))
+            rendered_dir = dest / 'rendered'
+            render_saved_blocks_with_pdflatex_module(blocks_root=str(dest), out_dir=str(rendered_dir))
+
+            # Also copy rendered PDFs into a common folder with a paper-specific prefix
+            common_dir = Path('circuit_images/rendered_pdflatex')
+            common_dir.mkdir(parents=True, exist_ok=True)
+
+            safe_src = _safe_name(source_name)
+            if rendered_dir.exists():
+                for f in rendered_dir.iterdir():
+                    if f.is_file() and f.suffix.lower() == '.pdf':
+                        try:
+                            dest_name = f"{safe_src}__{f.name}"
+                            shutil.copyfile(f, common_dir / dest_name)
+                            # Convert per-paper PDF to PNG (same folder)
+                            try:
+                                png_out = f.with_suffix('.png')
+                                _pdf_to_png(f, png_out)
+                            except Exception:
+                                pass
+                            # Convert copied common PDF to PNG
+                            try:
+                                common_pdf = common_dir / dest_name
+                                common_png = common_pdf.with_suffix('.png')
+                                _pdf_to_png(common_pdf, common_png)
+                            except Exception:
+                                pass
+                        except Exception:
+                            # Non-fatal; continue copying other files
+                            pass
+
         except ImportError:
             pass
 
@@ -100,4 +136,27 @@ def process_file(path: str, out_root: str = 'circuit_images/live_blocks', render
         text = raw.decode('latin-1', errors='ignore')
 
     return process_text(text, source_name=p.name, out_root=out_root, render=render, render_with_module=render_with_module)
+
+
+def _pdf_to_png(pdf_path: Path, png_path: Path, dpi: int = 300) -> bool:
+    """Convert a single-page PDF to PNG.
+    Uses PyMuPDF (fitz) if available. Returns True on success.
+    """
+    if fitz is None:
+        return False
+
+    try:
+        doc = fitz.open(str(pdf_path))
+        page = doc.load_page(0)
+        mat = fitz.Matrix(dpi / 72.0, dpi / 72.0)
+        pix = page.get_pixmap(matrix=mat, alpha=False)
+        pix.save(str(png_path))
+        doc.close()
+        return True
+    except Exception:
+        try:
+            doc.close()
+        except Exception:
+            pass
+        return False
 
