@@ -88,13 +88,29 @@ class ExtractionPipeline:
         
         # Extract figures from LaTeX
         figures = []
-        for m in tar.getmembers():
-            if m.name.endswith(".tex"):
-                try:
-                    tex = tar.extractfile(m).read().decode("utf-8", "ignore")
-                    figures.extend(self.image_extractor.extract_figures_from_tex(tex))
-                except Exception as e:
-                    print(f"⚠️ Failed to parse {m.name}: {e}")
+        try:
+            for m in tar.getmembers():
+                if m.name.endswith(".tex"):
+                    try:
+                        tex = tar.extractfile(m).read().decode("utf-8", "ignore")
+                        figures.extend(self.image_extractor.extract_figures_from_tex(tex))
+                    except Exception as e:
+                        print(f"⚠️ Failed to parse {m.name}: {e}")
+        except KeyboardInterrupt:
+            # Ensure tarfile is closed on user interrupt and re-raise to allow
+            # program to terminate normally.
+            try:
+                tar.close()
+            except Exception:
+                pass
+            raise
+        except Exception as e:
+            try:
+                tar.close()
+            except Exception:
+                pass
+            print(f"⚠️ Error iterating archive for {paper_id}: {e}")
+            return [], []
         
         if not figures:
             print(f"⚠️ No figures found in LaTeX")

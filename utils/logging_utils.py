@@ -6,6 +6,30 @@ import logging
 from typing import List, Dict, Any
 from datetime import datetime
 from config.settings import LOG_LEVEL, ENABLE_DEBUG_PRINTS, SAVE_INTERMEDIATE_RESULTS
+import sys
+from logging import Formatter
+
+
+class SafeFormatter(Formatter):
+    """Formatter that replaces characters not encodable by the stream encoding.
+
+    This prevents UnicodeEncodeError when logging to consoles with limited
+    encodings (e.g., cp1252 on Windows). It emits a sanitized string where
+    unencodable characters are replaced.
+    """
+    def __init__(self, fmt=None, datefmt=None, stream_encoding=None):
+        super().__init__(fmt=fmt, datefmt=datefmt)
+        self.stream_encoding = stream_encoding
+
+    def format(self, record):
+        s = super().format(record)
+        enc = self.stream_encoding or getattr(sys.stderr, 'encoding', None) or 'utf-8'
+        try:
+            # encode+decode with replace to ensure the string is safe for the stream
+            return s.encode(enc, errors='replace').decode(enc)
+        except Exception:
+            # fallback: replace non-ascii
+            return s.encode('utf-8', errors='replace').decode('utf-8')
 
 
 class Logger:
@@ -18,27 +42,34 @@ class Logger:
     def setup_logging(self):
         """Setup logging configuration."""
         log_level = getattr(logging, LOG_LEVEL.upper(), logging.INFO)
-        
+        # avoid adding multiple handlers if setup_logging called repeatedly
+        if self.logger.handlers:
+            for h in list(self.logger.handlers):
+                self.logger.removeHandler(h)
+
         # Console handler
         console_handler = logging.StreamHandler()
         console_handler.setLevel(log_level)
-        console_formatter = logging.Formatter(
+        console_formatter = SafeFormatter(
             '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-            datefmt='%H:%M:%S'
+            datefmt='%H:%M:%S',
+            stream_encoding=getattr(console_handler.stream, 'encoding', None)
         )
         console_handler.setFormatter(console_formatter)
-        
+
         self.logger.setLevel(log_level)
         self.logger.addHandler(console_handler)
         
         # File handler for intermediate results
         if SAVE_INTERMEDIATE_RESULTS:
             file_handler = logging.FileHandler(
-                f"logs/extraction_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+                f"logs/extraction_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log",
+                encoding='utf-8'
             )
             file_handler.setLevel(logging.DEBUG)
-            file_formatter = logging.Formatter(
-                '%(asctime)s - %(levelname)s - %(message)s'
+            file_formatter = SafeFormatter(
+                '%(asctime)s - %(levelname)s - %(message)s',
+                stream_encoding='utf-8'
             )
             file_handler.setFormatter(file_formatter)
             self.logger.addHandler(file_handler)

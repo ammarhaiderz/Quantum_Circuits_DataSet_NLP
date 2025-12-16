@@ -1,0 +1,16 @@
+{
+  "source": "inline_from_extract",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "inline_from_extract\\raw_blocks\\inline_from_extract_block_000.tex",
+      "length": 235
+    },
+    {
+      "index": 1,
+      "block_file": "inline_from_extract\\raw_blocks\\inline_from_extract_block_001.tex",
+      "length": 1005
+    }
+  ]
+}

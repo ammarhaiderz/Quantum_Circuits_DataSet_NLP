@@ -15,6 +15,12 @@ from core.preprocessor import TextPreprocessor
 from config.settings import SUPPORTED_EXT, REQUEST_DELAY, OUTPUT_DIR, CACHE_DIR, PDF_CACHE_DIR, ENABLE_PDF_EXTRACTION
 from config.queries import FILENAME_NEGATIVE_TOKENS
 
+# Optional live LaTeX extractor (single-file/text processor)
+try:
+    from core.live_latex_extractor import process_text as _live_process_text
+except Exception:
+    _live_process_text = None
+
 
 class ImageExtractor:
     """Handles extraction of images from arXiv sources."""
@@ -227,6 +233,16 @@ class ImageExtractor:
                     ))
 
 
+
+        # Additionally: if any raw \Qcircuit blocks are embedded in the tex,
+        # extract them live (single-file mode) and save under
+        # `circuit_images/live_blocks/` using `core.live_latex_extractor`.
+        # This is optional and non-blocking; failures are ignored.
+        try:
+            if _live_process_text and ('\\Qcircuit' in tex or self.QCIRCUIT_RE.search(tex)):
+                _live_process_text(tex, source_name='inline_from_extract', render=True, render_with_module=True)
+        except Exception:
+            pass
 
         return figures
 
