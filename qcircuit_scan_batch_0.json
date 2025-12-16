@@ -1,0 +1,382 @@
+{
+  "scan_summary": {
+    "total_tar_files": 2766,
+    "valid_tar_files": 0,
+    "corrupted_tar_files": 0,
+    "total_papers_scanned": 106,
+    "papers_with_circuits": 6,
+    "total_circuit_blocks": 39,
+    "average_blocks_per_paper": 0.0,
+    "max_blocks_in_paper": 0,
+    "papers_by_block_count": {
+      "13": 2,
+      "5": 1,
+      "2": 2,
+      "4": 1
+    }
+  },
+  "paper_details": [
+    {
+      "paper_id": "main",
+      "tex_file": "main.tex",
+      "circuit_blocks_count": 13,
+      "blocks_found": 13,
+      "block_examples": [
+        {
+          "index": 0,
+          "preview": "\\Qcircuit @C=1em @R=.7em {\n &\\lstick{1}&\\qw& \\gate{\\circ} &\\gate{\\circ} &\\qw & \\hdots\\vdots &\\gate{\\circ} &\\gate{\\circ}&\\qw\\\\\n &\\lstick{2}&\\qw&\\gate{\\circ}\\qwx[-1] &\\gate{\\circ}\\qwx[-1] &\\qw & \\hdots\\...",
+          "length": 701
+        },
+        {
+          "index": 1,
+          "preview": "\\Qcircuit @C=1em @R=.7em {&\\gate{\\circ}&\\qw\\\\}",
+          "length": 46
+        }
+      ]
+    },
+    {
+      "paper_id": "graph-example",
+      "tex_file": "figures/graph-example.tex",
+      "circuit_blocks_count": 13,
+      "blocks_found": 13,
+      "block_examples": [
+        {
+          "index": 0,
+          "preview": "\\Qcircuit @C=.3em @R=1em {\n            \\lstick{q_1} & \\targ & \\qw  \\\\\n            \\lstick{q_2} & \\ctrl{-1} & \\qw  \\\\\n            \\lstick{q_3} & \\qw & \\qw  \n        }",
+          "length": 165
+        },
+        {
+          "index": 1,
+          "preview": "\\Qcircuit @C=.3em @R=1em {\n            & \\ctrl{2} & \\qw  \\\\\n            & \\qw & \\qw  \\\\\n            & \\targ & \\qw \n        }",
+          "length": 124
+        }
+      ]
+    },
+    {
+      "paper_id": "main",
+      "tex_file": "main.tex",
+      "circuit_blocks_count": 5,
+      "blocks_found": 5,
+      "block_examples": [
+        {
+          "index": 0,
+          "preview": "\\Qcircuit @C=.7em @R=1em {\n        \\lstick{q_1: \\ket{0}} & \\rypi{2} & \\ctrlo{1} & \\ctrl{1}  & \\ctrlo{1} & \\ctrl{1}  & \\qw  \\gategroup{1}{3}{2}{4}{.5em}{--}\\gategroup{1}{5}{3}{6}{.5em}{-}\\\\\n        \\ls...",
+          "length": 388
+        },
+        {
+          "index": 1,
+          "preview": "\\Qcircuit @C=.7em @R=1em {\n            \\lstick{q_1: \\ket{0}} & \\gate{R_y(\\frac{2\\pi}{3})} & \\ctrl{1} \\ar@{--}[]+<.7em,1em>;[d]+<.7em,-3em> & \\qw & \\gate{R_y(-1.2)} & \\ctrl{2}\\ar@{--}[]+<.7em,1em>;[d]+...",
+          "length": 710
+        }
+      ]
+    },
+    {
+      "paper_id": "appendix-complexity",
+      "tex_file": "sections/appendix-complexity.tex",
+      "circuit_blocks_count": 2,
+      "blocks_found": 2,
+      "block_examples": [
+        {
+          "index": 0,
+          "preview": "\\Qcircuit @C=.7em @R=1em {\n        \\lstick{q_1:} & \\qw &  \\qw      & \\qw \\\\ \n        \\lstick{q_2:} & \\qw & \\ctrlo{1} & \\qw \\\\\n        \\lstick{q_3:} & \\qw & \\rypi{2}  & \\qw\n        }",
+          "length": 181
+        },
+        {
+          "index": 1,
+          "preview": "\\Qcircuit @C=.7em @R=1em {\n         \\lstick{q_1:} & \\qw & \\qw      & \\qw       & \\qw       & \\qw       & \\qw \\\\ \n         \\lstick{q_2:} & \\qw & \\qw      & \\ctrlo{1} & \\qw       & \\ctrlo{1} & \\qw \\\\\n  ...",
+          "length": 289
+        }
+      ]
+    },
+    {
+      "paper_id": "appendix-mcry",
+      "tex_file": "sections/appendix-mcry.tex",
+      "circuit_blocks_count": 2,
+      "blocks_found": 2,
+      "block_examples": [
+        {
+          "index": 0,
+          "preview": "\\Qcircuit @C=.7em @R=1em {\n         \\lstick{q_1:} & \\qw & \\qw           & \\qw          & \\qw           & \\ctrl{2}  & \\qw           & \\qw       & \\qw           & \\ctrl{2}   & \\qw \\\\ \n         \\lstick{q...",
+          "length": 492
+        },
+        {
+          "index": 1,
+          "preview": "\\Qcircuit @C=.7em @R=1em {\n         \\lstick{q_1:} & \\qw & \\qw           & \\ctrl{2}          & \\qw           & \\qw  & \\qw           &  \\qw \\\\ \n         \\lstick{q_2:} & \\qw & \\qw           & \\qw     & \\...",
+          "length": 389
+        }
+      ]
+    },
+    {
+      "paper_id": "cnot-costs",
+      "tex_file": "tables/cnot-costs.tex",
+      "circuit_blocks_count": 4,
+      "blocks_found": 4,
+      "block_examples": [
+        {
+          "index": 0,
+          "preview": "\\Qcircuit @C=.3em @R=.5em {\n                &&\\\\\n                 & \\gate{\\text{R}_y} & \\qw  \\\\\n                &&\\\\\n            }",
+          "length": 130
+        },
+        {
+          "index": 1,
+          "preview": "\\Qcircuit @C=.3em @R=.5em {\n            &&\\\\\n                & \\ctrl{1} & \\qw \\\\\n                & \\targ & \\qw  \\\\\n            }",
+          "length": 128
+        }
+      ]
+    }
+  ],
+  "corrupted_files": [
+    {
+      "file": "1801.09882.tar.gz",
+      "status": "corrupted",
+      "error": "invalid header"
+    },
+    {
+      "file": "1502.04008.tar.gz",
+      "status": "corrupted",
+      "error": "not a gzip file"
+    },
+    {
+      "file": "2401.01352.tar.gz",
+      "status": "corrupted",
+      "error": "not a gzip file"
+    },
+    {
+      "file": "2401.01793.tar.gz",
+      "status": "corrupted",
+      "error": "invalid header"
+    },
+    {
+      "file": "2401.03902.tar.gz",
+      "status": "corrupted",
+      "error": "invalid header"
+    }
+  ],
+  "tar_file_stats": {
+    "1707.04930.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "1909.12264.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "1710.10252.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2201.02333.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2203.11245.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2302.10778.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "1903.00221.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2304.14096.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 1,
+      "total_blocks": 13
+    },
+    "2306.09974.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2308.06669.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2208.03726.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2307.16166.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2312.13246.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2105.04346.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2312.05552.tar.gz": {
+      "papers_scanned": 9,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.00149.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.00326.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.00505.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2312.13233.tar.gz": {
+      "papers_scanned": 2,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.01009.tar.gz": {
+      "papers_scanned": 20,
+      "papers_with_circuits": 5,
+      "total_blocks": 26
+    },
+    "2401.01703.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.01962.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.03475.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.01776.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.01534.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.03780.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.03773.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2312.16114.tar.gz": {
+      "papers_scanned": 16,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.03845.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.04327.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.05246.tar.gz": {
+      "papers_scanned": 2,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.04193.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.04271.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.06036.tar.gz": {
+      "papers_scanned": 2,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.06042.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.03759.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.06227.tar.gz": {
+      "papers_scanned": 2,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.05301.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.06423.tar.gz": {
+      "papers_scanned": 4,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.06474.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.06850.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.05854.tar.gz": {
+      "papers_scanned": 2,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.06617.tar.gz": {
+      "papers_scanned": 2,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.07120.tar.gz": {
+      "papers_scanned": 1,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    },
+    "2401.07043.tar.gz": {
+      "papers_scanned": 11,
+      "papers_with_circuits": 0,
+      "total_blocks": 0
+    }
+  }
+}

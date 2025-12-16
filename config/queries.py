@@ -44,69 +44,99 @@ STEMMER = PorterStemmer()
 #     """
 # }
 
+# QUERY_SETS = {
+#     "circuit_fundamentals": """
+#         quantum circuit diagram
+#         circuit with gates
+#         qubit circuit
+#         gate based quantum circuit
+#         gate sequence
+#         controlled gate
+#         qubit register
+#         circuit depth
+#         multi-qubit gate
+#         single-qubit rotation
+#         entangling gate
+#         two-qubit gate
+#         circuit schematic
+#         quantum gate circuit
+#         qubit connectivity
+#         circuit topology
+#     """,
+
+#     "quantum_algorithms": """
+#         ghz
+#         bell state
+#         Josephson tunnel junction
+#         cooper pair box
+#         deutsch-jozsa algorithm circuit
+#         deutsch-jozsa quantum circuit diagram
+#         bernstein-vazirani circuit
+#         bernstein-vazirani algorithm circuit
+#         simon algorithm circuit
+#         quantum query algorithm circuit
+#         quantum fourier transform circuit
+#         qft circuit diagram
+#         shor algorithm circuit
+#         grover algorithm circuit
+#         grover search quantum circuit
+#         quantum counting circuit
+#         quantum walk circuit
+#     """,
+
+#     "variational_circuits": """
+#         variational quantum circuit
+#         parameterized circuit
+#         ansatz circuit
+#         vqe circuit
+#         variational quantum eigensolver
+#         qaoa circuit
+#         quantum approximate optimization
+#         hardware efficient ansatz
+#         variational quantum classifier
+#     """,
+
+#     "communication_and_entanglement": """
+#         quantum key distribution circuit
+#         quantum teleportation circuit
+#         bell state measurement circuit
+#         superdense coding circuit
+#         quantum communication protocol
+#         epr pair distribution circuit
+#         entanglement circuit
+#         entangling gates
+#     """
+# }
+
 QUERY_SETS = {
     "circuit_fundamentals": """
-        quantum circuit diagram
-        circuit with gates
-        qubit circuit
-        gate based quantum circuit
-        gate sequence
-        controlled gate
-        qubit register
-        circuit depth
-        multi-qubit gate
-        single-qubit rotation
-        entangling gate
-        two-qubit gate
-        circuit schematic
-        quantum gate circuit
-        qubit connectivity
-        circuit topology
-    """,
+                A schematic diagram of a quantum circuit showing gates on qubit wires.
+                Includes gate symbols like CNOT, Hadamard, Pauli, Toffoli, SWAP.
+                Shows horizontal lines representing qubits with gates arranged in sequence.
+                May include measurement operations and classical control lines.
+            """,
+            
+            "quantum_algorithms": """
+                A quantum circuit implementing a specific quantum algorithm.
+                Shows algorithm-specific patterns like QFT, Grover oracle, phase estimation.
+                Circuit structure matches known algorithms (Deutsch-Jozsa, Bernstein-Vazirani, Shor, Grover).
+                Includes specialized components like oracles or Fourier transform blocks.
+            """,
+            
+            "variational_circuits": """
+                A parameterized quantum circuit (ansatz) for variational algorithms.
+                Shows parameterized rotation gates (RX, RY, RZ) with angle symbols (θ, φ).
+                Circuit has repetitive layers with entangling gates between rotations.
+                Used for VQE, QAOA, or quantum machine learning applications.
+            """,
+            
+            "communication_and_entanglement": """
+                A quantum circuit for quantum communication protocols or entanglement generation.
+                Shows Bell state preparation, quantum teleportation, or superdense coding.
+                Includes EPR pairs, Bell measurements, and classical communication channels.
+                """
+    }
 
-    "quantum_algorithms": """
-        ghz
-        bell state
-        Josephson tunnel junction
-        cooper pair box
-        deutsch-jozsa algorithm circuit
-        deutsch-jozsa quantum circuit diagram
-        bernstein-vazirani circuit
-        bernstein-vazirani algorithm circuit
-        simon algorithm circuit
-        quantum query algorithm circuit
-        quantum fourier transform circuit
-        qft circuit diagram
-        shor algorithm circuit
-        grover algorithm circuit
-        grover search quantum circuit
-        quantum counting circuit
-        quantum walk circuit
-    """,
-
-    "variational_circuits": """
-        variational quantum circuit
-        parameterized circuit
-        ansatz circuit
-        vqe circuit
-        variational quantum eigensolver
-        qaoa circuit
-        quantum approximate optimization
-        hardware efficient ansatz
-        variational quantum classifier
-    """,
-
-    "communication_and_entanglement": """
-        quantum key distribution circuit
-        quantum teleportation circuit
-        bell state measurement circuit
-        superdense coding circuit
-        quantum communication protocol
-        epr pair distribution circuit
-        entanglement circuit
-        entangling gates
-    """
-}
 
 # ================ TOKEN CONFIGURATIONS ================
 PROTECTED_TOKENS = {
