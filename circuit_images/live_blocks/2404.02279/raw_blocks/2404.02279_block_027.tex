@@ -1,0 +1,6 @@
+\Qcircuit @C=0.5em @R=0.4em @!R { 
+	 	\nghost{{C}_{1} :  } & \lstick{{C}_{1} :  } & \qw {/^{n_1}}  & \qw  & \ctrl{2} & \qw & \multigate{1}{\mathrm{\Delta_1}}  & \qw & \qw  & \qw & \multigate{1}{\mathrm{\Delta_2}} & \qw  & \ctrl{2} & \qw & \multigate{1}{\mathrm{\Delta_1^\dagger}} & \qw & \qw & \qw & \multigate{1}{\mathrm{\Delta_2^\dagger}} & \qw \\
+	 	\nghost{{C}_{2} :  } & \lstick{{C}_{2} :  } & \qw {/^{n_2}}  & \qw & \qw & \qw & \ghost{\mathrm{\Delta_1}}   & \qw  & \ctrl{1} & \qw& \ghost{\mathrm{\Delta_1}} & \qw & \qw  & \qw & \ghost{\mathrm{\Delta_1}} & \qw  & \ctrl{1} & \qw & \ghost{\mathrm{\Delta_1}} & \qw \\
+	 	\nghost{{t} :  } & \lstick{{t} :  }  & \gate{\mathrm{A_4}} & \targ & \ctrl{0} & \targ & \gate{\mathrm{A_2}} & \targ & \ctrl{0} & \targ & \gate{\mathrm{A_3}} & \targ & \ctrl{0} & \targ & \gate{\mathrm{A_2}} & \targ & \ctrl{0} & \targ & \gate{\mathrm{A_1}} & \qw \\
+\nghost{{a}_{\ket{0}} :  } & \lstick{{a}_{\ket{0}} :  }  & \gate{\mathrm{H}} & \ctrl{-1} & \qw & \ctrl{-1} & \gate{\mathrm{B_1}} & \ctrl{-1} & \qw & \ctrl{-1} & \gate{\mathrm{B_2}} & \ctrl{-1} & \qw & \ctrl{-1} & \gate{\mathrm{B_1}} & \ctrl{-1} & \qw & \ctrl{-1} & \gate{\mathrm{H}} & \qw \\   
+ }

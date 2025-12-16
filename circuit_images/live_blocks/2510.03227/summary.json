@@ -1,0 +1,16 @@
+{
+  "source": "2510.03227",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2510.03227\\raw_blocks\\2510.03227_block_000.tex",
+      "length": 534
+    },
+    {
+      "index": 1,
+      "block_file": "2510.03227\\raw_blocks\\2510.03227_block_001.tex",
+      "length": 594
+    }
+  ]
+}

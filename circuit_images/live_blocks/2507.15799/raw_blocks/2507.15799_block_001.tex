@@ -1,0 +1,10 @@
+\Qcircuit @C=1em @R=2em {
+\lstick{\ket{000}} & \qw & \sgate{R_y(\theta_1)}{7} & \sgate{R_y(\theta_2)}{6} & \sgate{R_y(\theta_3)}{5} & \sgate{R_y(\theta_4)}{4} & \sgate{R_y(\theta_5)}{3} & \sgate{R_y(\theta_6)}{2} & \sgate{R_y(\theta_7)}{1} & \qw \\
+\lstick{\ket{001}} & \qw & \qw                      & \qw                      & \qw                      & \qw                      & \qw                      & \qw                      & \gate{R_y(\theta_7)}     & \qw \\
+\lstick{\ket{010}} & \qw & \qw                      & \qw                      & \qw                      & \qw                      & \qw                      & \gate{R_y(\theta_6)}     & \qw                      & \qw \\
+\lstick{\ket{011}} & \qw & \qw                      & \qw                      & \qw                      & \qw                      & \gate{R_y(\theta_5)}     & \qw                      & \qw                      & \qw \\
+\lstick{\ket{100}} & \qw & \qw                      & \qw                      & \qw                      & \gate{R_y(\theta_4)}     & \qw                      & \qw                      & \qw                      & \qw \\
+\lstick{\ket{101}} & \qw & \qw                      & \qw                      & \gate{R_y(\theta_3)}     & \qw                      & \qw                      & \qw                      & \qw                      & \qw \\
+\lstick{\ket{110}} & \qw & \qw                      & \gate{R_y(\theta_2)}     & \qw                      & \qw                      & \qw                      & \qw                      & \qw                      & \qw \\
+\lstick{\ket{111}} & \qw & \gate{R_y(\theta_1)}     & \qw                      & \qw                      & \qw                      & \qw                      & \qw                      & \qw                      & \qw \\
+}

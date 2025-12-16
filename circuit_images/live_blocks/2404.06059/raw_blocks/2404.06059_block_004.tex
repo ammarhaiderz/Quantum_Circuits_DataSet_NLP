@@ -1,0 +1,15 @@
+\Qcircuit @C=1.7em @R=0.2em @!R{
+        \lstick{\ket{x_1}} & \gate{X} & \ctrl{1} & \ctrl{2} & \ctrl{3} & \ctrl{4} & \gate{X} \barrier[-1.1em]{12} & \ctrl{1} & \ctrl{2} & \ctrl{3} & \ctrl{4} & \ctrl{5} & \ctrl{6} & \ctrl{7} & \ctrl{8} & \qw \\
+        \lstick{\ket{x_2}} & \qw & \ctrl{5} & \qw & \qw & \qw & \qw & \ctrl{8} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+        \lstick{\ket{x_3}} & \qw & \qw & \ctrl{5} & \qw & \qw & \qw & \qw & \ctrl{8} & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+        \lstick{\ket{x_4}} & \qw & \qw & \qw & \ctrl{5} & \qw & \qw & \qw & \qw & \ctrl{8} & \qw & \qw & \qw & \qw & \qw & \qw \\
+        \lstick{\ket{x_5}} & \qw & \qw & \qw & \qw & \ctrl{5} & \qw & \qw & \qw & \qw & \ctrl{8} & \qw & \qw & \qw & \qw & \qw \\
+        \lstick{\ket{0}_1} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \targ & \qw & \qw & \qw & \qw \\
+        \lstick{\ket{0}_2} & \qw & \targ & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \targ & \qw & \qw & \qw \\
+        \lstick{\ket{0}_3} & \qw & \qw & \targ & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \targ & \qw & \qw \\
+        \lstick{\ket{0}_4} & \qw & \qw & \qw & \targ & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \targ & \qw \\
+        \lstick{\ket{0}_5} & \qw & \qw & \qw & \qw & \targ & \qw & \targ & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+        \lstick{\ket{0}_6} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \targ & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+        \lstick{\ket{0}_7} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \targ & \qw & \qw & \qw & \qw & \qw & \qw \\
+        \lstick{\ket{0}_8} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \targ & \qw & \qw & \qw & \qw & \qw \gategroup{1}{13}{9}{15}{1.7em}{--}
+    }

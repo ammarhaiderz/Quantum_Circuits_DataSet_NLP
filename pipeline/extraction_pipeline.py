@@ -93,7 +93,7 @@ class ExtractionPipeline:
                 if m.name.endswith(".tex"):
                     try:
                         tex = tar.extractfile(m).read().decode("utf-8", "ignore")
-                        figures.extend(self.image_extractor.extract_figures_from_tex(tex))
+                        figures.extend(self.image_extractor.extract_figures_from_tex(tex, paper_id=paper_id))
                     except Exception as e:
                         print(f"⚠️ Failed to parse {m.name}: {e}")
         except KeyboardInterrupt:

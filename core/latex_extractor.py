@@ -124,7 +124,7 @@ def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/
 		return
 
 	wrapper = (
-		'\\documentclass{standalone}\n'
+		'\\documentclass[border=30pt]{standalone}\n'
 		'\\usepackage{amsmath}\n'
 		'\\usepackage{amssymb}\n'
 		'\\usepackage{braket}\n'
@@ -301,8 +301,8 @@ def process_all_tars(tar_folder: str = 'arxiv_cache', out_root: str = 'circuit_i
 							'blocks': []
 						}
 
-						# Write blocks as separate files and collect previews
-						raw_blocks_dir = subdir / 'raw_blocks'
+						# Write blocks into a member-specific folder to avoid re-rendering other papers
+						raw_blocks_dir = subdir / member_safe / 'raw_blocks'
 						raw_blocks_dir.mkdir(parents=True, exist_ok=True)
 
 						for i, block in enumerate(blocks):
@@ -321,6 +321,13 @@ def process_all_tars(tar_folder: str = 'arxiv_cache', out_root: str = 'circuit_i
 
 						total_blocks += len(blocks)
 
+						# Render blocks for this paper only (member-specific folder)
+						try:
+							render_saved_blocks_with_pdflatex_module(blocks_root=str(subdir / member_safe), out_dir='circuit_images/rendered_pdflatex')
+						except Exception:
+							# don't fail the extraction process if rendering fails
+							pass
+
 					except Exception as e:
 						# continue on errors per file
 						continue
@@ -336,7 +343,5 @@ def process_all_tars(tar_folder: str = 'arxiv_cache', out_root: str = 'circuit_i
 
 if __name__ == '__main__':
     process_all_tars()
-    render_saved_blocks_with_pdflatex_module(
-        blocks_root='circuit_images/blocks',
-        out_dir='circuit_images/rendered_pdflatex'
-    )
+	# Rendering is performed per-paper during extraction to avoid re-rendering
+	# all papers repeatedly.

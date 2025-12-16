@@ -1,0 +1,11 @@
+\Qcircuit @C=0.6em @R=0em @!R { 
+	 	\nghost{} & \lstick{} & \gate{\mathrm{B_{2}H}} & \qswap & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \ctrl{1} & \qw & \qw & \qw & \qw & \qw & \qw & \qswap & \gate{\mathrm{H}} & \qw & \qw\\
+	 	\nghost{} & \lstick{} & \qw & \ctrlzr{-1} & \qswap & \qw & \qw & \qw & \qw & \qw & \qw & \ctrl{2} & \qw & \qw & \qw & \qw & \qw & \qswap & \ctrlzl{-1} & \qw & \qw & \qw\\
+	 	\nghost{} & \lstick{} & \gate{\mathrm{A_4}} & \qswap & \ctrlzr{-1} & \qswap & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qswap & \ctrlzl{-1} & \qswap & \gate{\mathrm{A_1}} & \qw & \qw\\
+	 	\nghost{} & \lstick{} & \qw & \ctrlzr{-1} & \qswap & \ctrlzr{-1} & \qswap & \qw & \qw & \qw & \qw & \ctrl{1} & \qw & \qw & \qw & \qswap & \ctrlzl{-1} & \qswap & \ctrlzl{-1} & \qw & \qw & \qw\\
+	 	\nghost{} & \lstick{} & \qw & \qw & \ctrlzr{-1} & \qswap & \ctrlzr{-1} & \qswap & \qw & \qw & \qw & \ctrl{2} & \qw & \qw & \qswap & \ctrlzl{-1} & \qswap & \ctrlzl{-1} & \qw & \qw & \qw & \qw\\
+	 	\nghost{} & \lstick{} & \qw & \qw & \qw & \ctrlzr{-1} & \qswap & \ctrlzr{-1} & \qswap & \qw & \qw & \qw & \qw & \qswap & \ctrlzl{-1} & \qswap & \ctrlzl{-1} & \qw & \qw & \qw & \qw & \qw\\
+	 	\nghost{} & \lstick{} & \qw & \qw & \qw & \qw & \ctrlzr{-1} & \qswap & \ctrlzr{-1} & \qswap & \qw & \ctrl{1} & \qswap & \ctrlzl{-1} & \qswap & \ctrlzl{-1} & \qw & \qw & \qw & \qw & \qw & \qw\\
+	 	\nghost{} & \lstick{} & \qw & \qw & \qw & \qw & \qw & \ctrlzr{-1} & \qswap & \ctrlzr{-1} & \gate{\mathrm{B_2^\dagger}} & \rvgate{-2\psi}{\hat{x}}\ar @{-} [1,0] & \ctrlzl{-1} & \qswap & \ctrlzl{-1}& \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+	 	\nghost{} & \lstick{} & \qw & \qw & \qw & \qw & \qw & \qw & \ctrlzr{-1} & \qw & \qw & \rvgate{\lambda}{\hat{x}} & \gate{\mathrm{A_3^\dagger}} & \ctrlzl{-1} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+ }

@@ -1,0 +1,21 @@
+{
+  "source": "2403.04704",
+  "blocks_count": 3,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2403.04704\\raw_blocks\\2403.04704_block_000.tex",
+      "length": 245
+    },
+    {
+      "index": 1,
+      "block_file": "2403.04704\\raw_blocks\\2403.04704_block_001.tex",
+      "length": 347
+    },
+    {
+      "index": 2,
+      "block_file": "2403.04704\\raw_blocks\\2403.04704_block_002.tex",
+      "length": 829
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+\Qcircuit @C=0.4em @R=0.2em @!R { 
+	 	\nghost{{C_1} :  } & \lstick{{C_1} :  } & \qw {/^{n_1}}  & \qw & \qw & \qw & \ctrl{1} & \qw & \qw & \qw & \qw & \qw  \\
+   \nghost{{C_2} :  } & \lstick{{C_2} :  } & \qw {/^{n_2}} & \qw  & \qw & \qw & \ctrl{1} & \qw  & \qw & \qw & \qw & \qw  \\
+	 	\nghost{{t}_{1} :  } & \lstick{{t}_{1} :  } & \gate{\mathrm{H}}  & \targ & \targ & \targ & \control\qw & \targ & \targ & \targ & \gate{\mathrm{H}} & \qw \\
+	 	\nghost{{t}_{5} :  } & \lstick{{t}_{5} :  } & \gate{\mathrm{H}} & \ctrl{-1} & \qw & \qw & \qw & \qw & \qw & \ctrl{-1} & \gate{\mathrm{H}}  & \qw\\
+	 	\nghost{{t}_{3} :  } & \lstick{{t}_{3} :  } & \gate{\mathrm{H}} & \targ & \ctrl{-2} & \qw & \qw & \qw & \ctrl{-2} & \targ & \gate{\mathrm{H}}  & \qw\\
+	 	\nghost{{t}_{7} :  } & \lstick{{t}_{7} :  } & \gate{\mathrm{H}} & \ctrl{-1} & \qw & \qw & \qw & \qw & \qw & \ctrl{-1} & \gate{\mathrm{H}}  & \qw\\
+	 	\nghost{{t}_{2} :  } & \lstick{{t}_{2} :  } & \gate{\mathrm{H}} & \targ & \targ & \ctrl{-4} & \qw & \ctrl{-4} & \targ & \targ & \gate{\mathrm{H}} & \qw \\
+	 	\nghost{{t}_{6} :  } & \lstick{{t}_{6} :  } & \gate{\mathrm{H}} & \ctrl{-1} & \qw & \qw & \qw & \qw & \qw & \ctrl{-1} & \gate{\mathrm{H}}  & \qw\\
+	 	\nghost{{t}_{4} :  } & \lstick{{t}_{4} :  } & \gate{\mathrm{H}} & \targ & \ctrl{-2} & \qw & \qw & \qw & \ctrl{-2} & \targ & \gate{\mathrm{H}}  & \qw\\
+	 	\nghost{{t}_{8} :  } & \lstick{{t}_{8} :  } & \gate{\mathrm{H}} & \ctrl{-1} & \qw & \qw & \qw & \qw & \qw & \ctrl{-1} & \gate{\mathrm{H}} & \qw \\
+ }

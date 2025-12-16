@@ -1,0 +1,41 @@
+{
+  "source": "2404.06059",
+  "blocks_count": 7,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2404.06059\\raw_blocks\\2404.06059_block_000.tex",
+      "length": 1269
+    },
+    {
+      "index": 1,
+      "block_file": "2404.06059\\raw_blocks\\2404.06059_block_001.tex",
+      "length": 739
+    },
+    {
+      "index": 2,
+      "block_file": "2404.06059\\raw_blocks\\2404.06059_block_002.tex",
+      "length": 597
+    },
+    {
+      "index": 3,
+      "block_file": "2404.06059\\raw_blocks\\2404.06059_block_003.tex",
+      "length": 2030
+    },
+    {
+      "index": 4,
+      "block_file": "2404.06059\\raw_blocks\\2404.06059_block_004.tex",
+      "length": 1786
+    },
+    {
+      "index": 5,
+      "block_file": "2404.06059\\raw_blocks\\2404.06059_block_005.tex",
+      "length": 1013
+    },
+    {
+      "index": 6,
+      "block_file": "2404.06059\\raw_blocks\\2404.06059_block_006.tex",
+      "length": 1844
+    }
+  ]
+}

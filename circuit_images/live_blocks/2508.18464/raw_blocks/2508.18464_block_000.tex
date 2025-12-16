@@ -1,0 +1,10 @@
+\Qcircuit @C=0.4em @R=0.2em @!R { \\
+	 	 & \lstick{\ket{0}_{a_0} :  } & \gate{\mathrm{H}}  & \qw &\ustick{\textcolor{mycolor}{A}} \qw & \qw & \ctrl{5} & \qw & \qw & \qw & \qw & \qw & \ctrl{5} & \qw & \qw & \qw & \qw & \qw & \ctrl{5} & \qw & \qw & \qw & \qw & \qw & \ctrl{5}  & \qw & \push{\cdots~~}  \barrier[0em]{5} & \qw & \qw  & \qw & \qw & \qw & \meter &\rstick{c_0}  \\
+	 	 & \lstick{\ket{0}_{a_1} :  } & \gate{\mathrm{H}} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \ctrl{3} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw&\push{\cdots~~}  & \qw    & \qw  & \qw& \qw& \qw  & \meter &\rstick{c_1}  \\
+	 	 & \lstick{\ket{0}_{a_2} :  } & \gate{\mathrm{H}} & \qw & \qw & \qw & \qw & \qw & \ctrl{2} & \qw & \qw & \qw & \qw & \qw & \qw & \ctrl{3} & \qw & \qw & \qw & \qw & \ctrl{2} & \qw & \qw & \qw & \qw  & \qw &\push{\cdots~~} & \qw & \qw  & \qw& \qw & \qw & \meter &\rstick{c_2}\\
+	 	 & \lstick{\ket{0}_{a_3} :  } & \gate{\mathrm{H}} & \qw & \qw & \ctrl{1} & \qw & \qw & \qw & \ctrl{2} & \qw & \ctrl{1} & \qw & \qw & \qw & \qw & \qw & \ctrl{1} & \qw & \qw & \qw & \ctrl{2} & \qw & \ctrl{1} & \qw &   \qw &\push{\cdots~~} & \qw & \qw & \qw  & \qw & \qw & \meter &\rstick{c_3}\\
+	 	 & \lstick{\ket{0}_{x} :  } & \qw & \qw & \gate{\mathrm{Ry}} & \targ & \qw & \gate{\mathrm{Ry}} & \targ & \qw & \gate{\mathrm{Ry}} & \targ & \qw & \gate{\mathrm{Ry}} & \targ & \qw & \gate{\mathrm{Ry}} & \targ & \qw & \gate{\mathrm{Ry}} & \targ & \qw & \gate{\mathrm{Ry}} & \targ & \qw & \qw & \push{\cdots~~} & \qw  & \qw & \ustick{\textcolor{mycolor}{B}} \qw &\ctrl{1}& \qw& \qw \\
+	 	 & \lstick{\ket{0}_{y} :  } & \qw & \qw & \gate{\mathrm{Ry}} & \qw & \targ & \gate{\mathrm{Ry}} & \qw & \targ & \gate{\mathrm{Ry}} & \qw & \targ & \gate{\mathrm{Ry}} & \qw & \targ & \gate{\mathrm{Ry}} & \qw & \targ & \gate{\mathrm{Ry}} & \qw & \targ & \gate{\mathrm{Ry}} & \qw & \targ & \qw  & \push{\cdots~~} & \qw  & \qw  &\gate{\mathrm{Rz(\frac{\pi}{2})}}  &\targ & \qw  & \measuretab{Z} &\rstick{c_5} 
+        % \\ \gategroup{2}{3}{7}{25}{1.2em}{--}
+        % \gategroup{6}{30}{7}{31}{.5em}{--}
+\\ }

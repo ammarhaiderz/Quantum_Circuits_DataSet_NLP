@@ -1,0 +1,6 @@
+\Qcircuit @C=1em @R=2em {
+\lstick{\ket{00}} & \qw & \sgate{R_y(-\pi/2)}{3} & \sgate{R_y(\theta_1)}{1} & \sgate{R_y(-4\pi/3)}{2} & \sgate{R_y(\pi+\theta_2)}{1} & \sgate{R_y(\pi/2)}{3} & \qw \\
+\lstick{\ket{01}} & \qw & \qw                    & \gate{R_y(\theta_1)}     & \qw                     & \gate{R_y(\pi+\theta_2)}     & \qw                   & \qw \\
+\lstick{\ket{10}} & \qw & \qw                    & \qw                      & \gate{R_y(-4\pi/3)}     & \qw                          & \qw                   & \qw \\
+\lstick{\ket{11}} & \qw & \gate{R_y(-\pi/2)}     & \qw                      & \qw                     & \qw                          & \gate{R_y(\pi/2)}     & \qw \\
+}

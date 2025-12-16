@@ -1,0 +1,61 @@
+{
+  "source": "2504.06948",
+  "blocks_count": 11,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_000.tex",
+      "length": 172
+    },
+    {
+      "index": 1,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_001.tex",
+      "length": 200
+    },
+    {
+      "index": 2,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_002.tex",
+      "length": 770
+    },
+    {
+      "index": 3,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_003.tex",
+      "length": 179
+    },
+    {
+      "index": 4,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_004.tex",
+      "length": 167
+    },
+    {
+      "index": 5,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_005.tex",
+      "length": 479
+    },
+    {
+      "index": 6,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_006.tex",
+      "length": 342
+    },
+    {
+      "index": 7,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_007.tex",
+      "length": 189
+    },
+    {
+      "index": 8,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_008.tex",
+      "length": 189
+    },
+    {
+      "index": 9,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_009.tex",
+      "length": 730
+    },
+    {
+      "index": 10,
+      "block_file": "2504.06948\\raw_blocks\\2504.06948_block_010.tex",
+      "length": 414
+    }
+  ]
+}

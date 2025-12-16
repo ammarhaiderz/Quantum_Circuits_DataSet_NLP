@@ -15,11 +15,9 @@ from core.preprocessor import TextPreprocessor
 from config.settings import SUPPORTED_EXT, REQUEST_DELAY, OUTPUT_DIR, CACHE_DIR, PDF_CACHE_DIR, ENABLE_PDF_EXTRACTION
 from config.queries import FILENAME_NEGATIVE_TOKENS
 
-# Optional live LaTeX extractor (single-file/text processor)
-try:
-    from core.live_latex_extractor import process_text as _live_process_text
-except Exception:
-    _live_process_text = None
+
+from core.live_latex_extractor import process_text
+
 
 
 class ImageExtractor:
@@ -149,7 +147,7 @@ class ImageExtractor:
         tokens = self.preprocessor.preprocess_filename(fname)
         return any(t in FILENAME_NEGATIVE_TOKENS for t in tokens)
     
-    def extract_figures_from_tex(self, tex: str) -> List[Figure]:
+    def extract_figures_from_tex(self, tex: str, paper_id: Optional[str] = None) -> List[Figure]:
         r"""Extract figures from LaTeX text.
         Handles multiple \includegraphics within a single figure block and subfigures.
         """
@@ -239,8 +237,12 @@ class ImageExtractor:
         # `circuit_images/live_blocks/` using `core.live_latex_extractor`.
         # This is optional and non-blocking; failures are ignored.
         try:
-            if _live_process_text and ('\\Qcircuit' in tex or self.QCIRCUIT_RE.search(tex)):
-                _live_process_text(tex, source_name='inline_from_extract', render=True, render_with_module=True)
+            if ('\\Qcircuit' in tex or self.QCIRCUIT_RE.search(tex)):
+                # Use the paper_id as the source name when available so raw blocks are
+                # saved under a paper-specific folder and rendering only targets
+                # the current paper being processed.
+                source_name = paper_id
+                process_text(tex, source_name=source_name, render=True, render_with_module=True)
         except Exception:
             pass
 

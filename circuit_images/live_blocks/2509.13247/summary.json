@@ -1,0 +1,26 @@
+{
+  "source": "2509.13247",
+  "blocks_count": 4,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2509.13247\\raw_blocks\\2509.13247_block_000.tex",
+      "length": 272
+    },
+    {
+      "index": 1,
+      "block_file": "2509.13247\\raw_blocks\\2509.13247_block_001.tex",
+      "length": 566
+    },
+    {
+      "index": 2,
+      "block_file": "2509.13247\\raw_blocks\\2509.13247_block_002.tex",
+      "length": 841
+    },
+    {
+      "index": 3,
+      "block_file": "2509.13247\\raw_blocks\\2509.13247_block_003.tex",
+      "length": 1334
+    }
+  ]
+}
