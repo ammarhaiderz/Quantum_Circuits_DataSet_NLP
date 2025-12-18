@@ -1,61 +1,15 @@
 {
   "source": "2509.14196",
-  "blocks_count": 11,
+  "blocks_count": 1,
   "blocks": [
     {
       "index": 0,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_000.tex",
-      "length": 2201
-    },
-    {
-      "index": 1,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_001.tex",
-      "length": 156
-    },
-    {
-      "index": 2,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_002.tex",
-      "length": 358
-    },
-    {
-      "index": 3,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_003.tex",
-      "length": 155
-    },
-    {
-      "index": 4,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_004.tex",
-      "length": 300
-    },
-    {
-      "index": 5,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_005.tex",
-      "length": 171
-    },
-    {
-      "index": 6,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_006.tex",
-      "length": 155
-    },
-    {
-      "index": 7,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_007.tex",
-      "length": 3288
-    },
-    {
-      "index": 8,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_008.tex",
-      "length": 6323
-    },
-    {
-      "index": 9,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_009.tex",
-      "length": 7615
-    },
-    {
-      "index": 10,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_block_010.tex",
-      "length": 281
+      "block_file": "2509.14196\\raw_blocks\\2509.14196_fig5p1_559b23323a946c9a.tex",
+      "length": 281,
+      "block_id": "2509.14196_559b23323a946c9a",
+      "figure_number": 5,
+      "panel": 1,
+      "label": "fig:pauli_twriling"
     }
   ]
 }

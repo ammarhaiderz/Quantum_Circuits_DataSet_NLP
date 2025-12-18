@@ -1,0 +1,8 @@
+\Qcircuit @C=3.5em @R=1em {
+        \lstick{d_{1} \to \textcolor{cyan}{d_{1,0}}}   & \ctrl{1} \barrier[-2em]{5} & \qw       \barrier[-2em]{5} & \qw      & \meter \\ 
+        \lstick{d_{2} \to \textcolor{teal}{d_{2,0}}}   & \targ                        & \ctrl{1}                      & \qw      & \meter \\
+        \lstick{d_{3} \to \textcolor{violet}{d_{3,0}}} & \qw                          & \targ                         & \ctrl{1} & \meter \\
+        \lstick{d_{4} \to \textcolor{violet}{d_{3,1}}} & \qw                          & \targ                         & \targ    & \meter \\
+        \lstick{d_{5} \to \textcolor{teal}{d_{2,1}}}   & \targ                        & \ctrl{-1}                     & \qw      & \meter \\
+        \lstick{d_{6} \to \textcolor{cyan}{d_{1,1}}}   & \ctrl{-1}                    & \qw                           & \qw      & \meter \\
+        }

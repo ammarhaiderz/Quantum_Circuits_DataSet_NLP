@@ -26,6 +26,7 @@ class ImageExtractor:
     # Regular expressions for LaTeX parsing
     FIG_RE = re.compile(r"\\begin{figure}.*?\\end{figure}", re.DOTALL)
     CAP_RE = re.compile(r"\\caption\{([^}]*)\}", re.DOTALL)
+    LABEL_RE = re.compile(r"\\label\{([^}]*)\}")
     SUBCAP_RE = re.compile(r"\\subcaption\{([^}]*)\}", re.DOTALL)
     IMG_RE = re.compile(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]*)\}", re.DOTALL)
     SUBFIG_RE = re.compile(r"\\begin\{subfigure\}.*?\\end\{subfigure\}", re.DOTALL)
@@ -147,7 +148,7 @@ class ImageExtractor:
         tokens = self.preprocessor.preprocess_filename(fname)
         return any(t in FILENAME_NEGATIVE_TOKENS for t in tokens)
     
-    def extract_figures_from_tex(self, tex: str, paper_id: Optional[str] = None) -> List[Figure]:
+    def extract_figures_from_tex(self, tex: str, paper_id: Optional[str] = None, figure_counter: Optional[int] = 1) -> (List[Figure], int):
         r"""Extract figures from LaTeX text.
         Handles multiple \includegraphics within a single figure block and subfigures.
         """
@@ -232,21 +233,29 @@ class ImageExtractor:
 
 
 
-        # Additionally: if any raw \Qcircuit blocks are embedded in the tex,
-        # extract them live (single-file mode) and save under
-        # `circuit_images/live_blocks/` using `core.live_latex_extractor`.
-        # This is optional and non-blocking; failures are ignored.
-        try:
-            if ('\\Qcircuit' in tex or self.QCIRCUIT_RE.search(tex)):
-                # Use the paper_id as the source name when available so raw blocks are
-                # saved under a paper-specific folder and rendering only targets
-                # the current paper being processed.
-                source_name = paper_id
-                process_text(tex, source_name=source_name, render=True, render_with_module=True)
-        except Exception:
-            pass
+            # If this figure block contains a \Qcircuit or quantikz, save the contained blocks
+            # using the live extractor, passing the figure caption so records
+            # include descriptions/text positions. Increment figure_counter by
+            # the number of blocks found in this figure.
+            if ('\\Qcircuit' in block or self.QCIRCUIT_RE.search(block) or 
+                'quantikz' in block or self.QUANTIKZ_RE.search(block)):
+                try:
+                    source_name = paper_id
+                    # attempt to extract a \label{...} inside the figure block
+                    lab_m = self.LABEL_RE.search(block)
+                    figure_label = lab_m.group(1).strip() if lab_m else None
+                    from core.live_latex_extractor import process_text
+                    process_text(block, source_name=source_name, render=True, render_with_module=True, arxiv_id=paper_id, start_figure_num=figure_counter, caption_text=caption_text, figure_label=figure_label)
+                    try:
+                        from core.latex_extractor import extract_qcircuit_blocks_from_text
+                        n = len(extract_qcircuit_blocks_from_text(block))
+                    except Exception:
+                        n = 0
+                    figure_counter = (figure_counter or 1) + n
+                except Exception:
+                    pass
 
-        return figures
+        return figures, figure_counter
 
 
 

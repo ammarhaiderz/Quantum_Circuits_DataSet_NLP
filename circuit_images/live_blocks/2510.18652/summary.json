@@ -1,0 +1,15 @@
+{
+  "source": "2510.18652",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2510.18652\\raw_blocks\\2510.18652_fig2p1_4b91f68a6c27ccb3.tex",
+      "length": 599,
+      "block_id": "2510.18652_4b91f68a6c27ccb3",
+      "figure_number": 2,
+      "panel": 1,
+      "label": "fig:golay-distillation-hadamard-test-implementation"
+    }
+  ]
+}

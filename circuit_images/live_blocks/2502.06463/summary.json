@@ -1,0 +1,24 @@
+{
+  "source": "2502.06463",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2502.06463\\raw_blocks\\2502.06463_fig1p1_b98ddf0ed387eef2.tex",
+      "length": 730,
+      "block_id": "2502.06463_b98ddf0ed387eef2",
+      "figure_number": 1,
+      "panel": 1,
+      "label": "fig:TrapAndTestDepiction"
+    },
+    {
+      "index": 1,
+      "block_file": "2502.06463\\raw_blocks\\2502.06463_fig2p2_4fc8c40dbad9f402.tex",
+      "length": 770,
+      "block_id": "2502.06463_4fc8c40dbad9f402",
+      "figure_number": 2,
+      "panel": 2,
+      "label": "fig:TrapAndTestDepiction"
+    }
+  ]
+}

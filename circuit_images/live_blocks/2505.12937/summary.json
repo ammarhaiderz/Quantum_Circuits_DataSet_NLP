@@ -1,26 +1,15 @@
 {
   "source": "2505.12937",
-  "blocks_count": 4,
+  "blocks_count": 1,
   "blocks": [
     {
       "index": 0,
-      "block_file": "2505.12937\\raw_blocks\\2505.12937_block_000.tex",
-      "length": 459
-    },
-    {
-      "index": 1,
-      "block_file": "2505.12937\\raw_blocks\\2505.12937_block_001.tex",
-      "length": 684
-    },
-    {
-      "index": 2,
-      "block_file": "2505.12937\\raw_blocks\\2505.12937_block_002.tex",
-      "length": 696
-    },
-    {
-      "index": 3,
-      "block_file": "2505.12937\\raw_blocks\\2505.12937_block_003.tex",
-      "length": 579
+      "block_file": "2505.12937\\raw_blocks\\2505.12937_fig4p1_55b45b9bbaee8ba2.tex",
+      "length": 579,
+      "block_id": "2505.12937_55b45b9bbaee8ba2",
+      "figure_number": 4,
+      "panel": 1,
+      "label": "Fig: QND with ZBS"
     }
   ]
 }

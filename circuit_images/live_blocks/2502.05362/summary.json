@@ -4,8 +4,12 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2502.05362\\raw_blocks\\2502.05362_block_000.tex",
-      "length": 299
+      "block_file": "2502.05362\\raw_blocks\\2502.05362_fig1p1_7b73c07754535096.tex",
+      "length": 299,
+      "block_id": "2502.05362_7b73c07754535096",
+      "figure_number": 1,
+      "panel": 1,
+      "label": "qc:exp3"
     }
   ]
 }

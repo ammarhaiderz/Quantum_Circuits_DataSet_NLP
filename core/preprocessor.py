@@ -3,7 +3,6 @@ Text preprocessing utilities.
 """
 
 import re
-from nltk.stem import PorterStemmer
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 
 from config.settings import USE_STEMMING, USE_STOPWORDS, NORMALIZE_HYPHENS

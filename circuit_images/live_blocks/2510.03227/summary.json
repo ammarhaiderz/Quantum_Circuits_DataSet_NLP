@@ -1,16 +1,15 @@
 {
   "source": "2510.03227",
-  "blocks_count": 2,
+  "blocks_count": 1,
   "blocks": [
     {
       "index": 0,
-      "block_file": "2510.03227\\raw_blocks\\2510.03227_block_000.tex",
-      "length": 534
-    },
-    {
-      "index": 1,
-      "block_file": "2510.03227\\raw_blocks\\2510.03227_block_001.tex",
-      "length": 594
+      "block_file": "2510.03227\\raw_blocks\\2510.03227_fig2p1_325db2c0e8787f34.tex",
+      "length": 594,
+      "block_id": "2510.03227_325db2c0e8787f34",
+      "figure_number": 2,
+      "panel": 1,
+      "label": "fig:tomo-attack"
     }
   ]
 }

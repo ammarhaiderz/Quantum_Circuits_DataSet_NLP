@@ -4,8 +4,12 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2410.00155\\raw_blocks\\2410.00155_block_000.tex",
-      "length": 184
+      "block_file": "2410.00155\\raw_blocks\\2410.00155_fig1p1_268c753b871212f4.tex",
+      "length": 184,
+      "block_id": "2410.00155_268c753b871212f4",
+      "figure_number": 1,
+      "panel": 1,
+      "label": "fig:nonunitary"
     }
   ]
 }

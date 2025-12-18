@@ -1,0 +1,7 @@
+\begin{quantikz}[thin lines]
+    \lstick{$\ket{0}$} & \gate{R_x(2^{1-n})} & \gate{R_x(2^{2-n})} & \ \cdots\ & \gate{R_x(2^{0})} & \qw \\
+    \lstick{$\ket{i_1}$} & \ctrl{-1} & & \ \cdots\ & & \qw \\
+    \lstick{$\ket{i_2}$} & & \ctrl{-2} & \ \cdots\ & & \qw \\
+    \lstick{$\vdots$} & \setwiretype{n} & & & & \\
+    \lstick{$\ket{i_n}$} & & &\ \cdots\ &\ctrl{-4} &
+\end{quantikz}

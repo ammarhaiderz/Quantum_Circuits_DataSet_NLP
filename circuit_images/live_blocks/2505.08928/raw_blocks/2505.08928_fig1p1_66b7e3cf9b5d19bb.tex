@@ -1,0 +1,6 @@
+\begin{quantikz}[row sep=0.2cm, column sep=0.2cm]
+            \lstick{$p_0\xleftarrow{}q_1$} & \snapstep{1}       &           & \ctrl{1}  &           & \permute{3,2,1,4}\hh{q0}& \snapstep{2} & \ctrl{1}  &\permute{1,2,4,3}\hh{q0}& \snapstep{3} &           &         &\ctrl{1}&\permute{1,4,3,2}\hh{q0}&\snapstep{4}&\ctrl{1}&\gate{T}&\ctrl{1}&\rstick{$p_0\xleftarrow{}q_0$} \\ 
+            \lstick{$p_1\xleftarrow{}q_2$} &                    & \gate{H}  & \targ{}   & \tdag{}   &                  \hh{q2}&              & \targ{}   &        \gate{T} \hh{q2}&              & \targ{}   & \tdag{} &\targ{} &                 \hh{q1}&            &\targ{} &\tdag{} &\targ{} &\rstick{$p_1\xleftarrow{}q_1$} \\
+            \lstick{$p_2\xleftarrow{}q_0$} &                    & \ghost{H} &           &           &                  \hh{q1}&              &           &                 \hh{--}&              &           &         &        &                 \hh{--}&            &        &        &        &\rstick{$p_2$}\\
+            \lstick{$p_3\,\phantom{\xleftarrow{}q_0}$} &        &           &           &           &                  \hh{--}&              &           &                 \hh{q1}&              & \ctrl{-2} & \gate{T}&        &                 \hh{q2}&            &\gate{T}&\gate{H}&        &\rstick{$p_3\xleftarrow{}q_2$}
+        \end{quantikz}

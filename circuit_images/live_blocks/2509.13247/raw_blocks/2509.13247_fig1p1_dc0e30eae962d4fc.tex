@@ -1,0 +1,26 @@
+\Qcircuit @C=1em @R=1em {
+    \lstick{}                                 & \qw      & \qw                        & \qw \barrier[0em]{15}      & \qw & \ctrl{2} & \qw \barrier[0em]{15} & \qw & \qw      & \meter & \cw                        & \cw                        & \cw \\     
+    \lstick{}                                 & \qw      & \qw                        & \qw                        & \qw & \qw      & \ctrl{2}              & \qw & \qw      & \meter & \cw                        & \cw                        & \cw \\
+    \lstick{}                                 & \gate{H} & \ctrl{2}                   & \qw                        & \qw & \targ    & \qw                   & \qw & \qw      & \meter & \cw                        & \push{\oplus}\cw \cwx[2]   &     \\     
+    \lstick{}                                 & \gate{H} & \qw                        & \ctrl{2}                   & \qw & \qw      & \targ                 & \qw & \qw      & \meter & \push{\oplus}\cw \cwx[2]   &                            &     \\
+    \lstick{}                                 & \qw      & \targ                      & \qw                        & \qw & \ctrl{2} & \qw                   & \qw & \qw      & \meter & \cw                        & \push{\oplus} \cw \cwx[2]  & \cw \\
+    \lstick{}                                 & \qw      & \qw                        & \targ                      & \qw & \qw      & \ctrl{2}              & \qw & \qw      & \meter & \push{\oplus} \cw \cwx[2]  & \cw                        & \cw \\
+    \lstick{}                                 & \gate{H} & \ctrl{2}                   & \qw                        & \qw & \targ    & \qw                   & \qw & \qw      & \meter & \cw                        & \push{\oplus} \cw \cwx[2]  &     \\     
+    \lstick{}                                 & \gate{H} & \qw                        & \ctrl{1}                   & \qw & \qw      & \targ                 & \qw & \qw      & \meter & \push{\oplus} \cw \cwx[1]  &                            &     \\
+                                              &          &                            &                            &     &          &                       &     &          &        &                            &                            &     \\
+                                              &          &                            &                            &     &          &    
+                                              &     &          &        &                            &                            &     \\
+    \hspace{-4em}\raisebox{1.5em}{$\vdots$} &          & \raisebox{1.5em}{$\vdots$} & \raisebox{1.5em}{$\vdots$} &     &          &                       &     &          &        & \raisebox{1.5em}{$\vdots$} & \raisebox{1.5em}{$\vdots$} &     \\
+                                              &          & \qwx[1]                    & \qwx[2]                    &     &          &                       &     &          &        & \cwx[2]                    & \cwx[1]                    &     \\
+    \lstick{}                                 & \qw      & \targ                      & \qw                        & \qw & \ctrl{2} & \qw                   & \qw & \qw      & \meter & \cw                        & \push{\oplus} \cw \cwx[2]  & \cw \\
+    \lstick{}                                 & \qw      & \qw                        & \targ                      & \qw & \qw      & \ctrl{2}              & \qw & \qw      & \meter & \push{\oplus} \cw \cwx[2]  & \cw                        & \cw \\
+    \lstick{}                                 & \qw      & \qw                        & \qw                        & \qw & \targ    & \qw                   & \qw & \ctrl{1} & \meter & \cw                        & \push{\oplus} \cw \cwx[1]  & \cw \\
+    \lstick{}                                 & \qw      & \qw                        & \qw                        & \qw & \qw      & \targ                 & \qw & \targ    & \meter & \push{\oplus} \cw          & \push{\oplus} \cw          & \cw 
+    \inputgroupv{1}{2}{0.8em}{0.8em}{\ket{00}_L\;\;}
+    \inputgroupv{3}{4}{0.8em}{0.8em}{\ket{00}_L\;\;}
+    \inputgroupv{5}{6}{0.8em}{0.8em}{\ket{00}_L\;\;}
+    \inputgroupv{7}{8}{0.8em}{0.8em}{\ket{00}_L\;\;}
+    \inputgroupv{13}{14}{0.8em}{0.8em}{\ket{00}_L\;\;}
+    \inputgroupv{15}{16}{0.8em}{0.8em}{\ket{00}_L\;\;}
+    \\
+    }

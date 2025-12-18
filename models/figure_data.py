@@ -12,6 +12,8 @@ class Figure:
     caption: str
     img_path: str
     paper_id: str = ""
+    figure_number: int = 0
+    panel: int = 0
     # Optional raw LaTeX drawing block (e.g., tikzpicture, circuitikz)
     latex_block: Optional[str] = None
     
@@ -39,6 +41,8 @@ class Figure:
         """Convert to dictionary for DataFrame export."""
         return {
             "paper_id": self.paper_id,
+            "figure_number": self.figure_number,
+            "panel": self.panel,
             "img_name": os.path.basename(self.img_path),
             "raw_caption": self.caption,
             "preprocessed_text": self.preprocessed_text,

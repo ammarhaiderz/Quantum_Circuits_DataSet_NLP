@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""
+r"""
 Simple tar-based Qcircuit block extractor.
 
 Scans tar archives in `arxiv_cache/` for `.tex` files, uses a regex-driven
 extractor to find `\Qcircuit` blocks (optionally preceded by `\label{}`),
-and saves per-tex-file JSON and raw block files under `circuit_images/blocks/`.
+and saves per-tex-file JSON and raw block files under `circuit_images/blocks`.
 
 Usage: run `python test_qc.py` from the workspace root.
 """
@@ -20,88 +20,117 @@ import sys
 
 
 def render_saved_blocks(blocks_root: str = 'circuit_images/blocks', out_pdf_dir: str = 'circuit_images/rendered'):
-    """Render all saved raw block files to PDF using system `pdflatex`.
+	"""Render all saved raw block files to PDF using system `pdflatex`.
 
-    Looks for `*/raw_blocks/*.tex` under `blocks_root`, wraps each block into a
-    standalone LaTeX document, runs `pdflatex` twice, saves `.log` files and
-    copies resulting PDFs to `out_pdf_dir`.
-    """
-    blocks_root = Path(blocks_root)
-    out_pdf_dir = Path(out_pdf_dir)
-    out_pdf_dir.mkdir(parents=True, exist_ok=True)
+	Looks for `*/raw_blocks/*.tex` under `blocks_root`, wraps each block into a
+	standalone LaTeX document, runs `pdflatex` twice, saves `.log` files and
+	copies resulting PDFs to `out_pdf_dir`.
+	"""
+	blocks_root = Path(blocks_root)
+	out_pdf_dir = Path(out_pdf_dir)
+	out_pdf_dir.mkdir(parents=True, exist_ok=True)
 
-    latex_template = (
-        "\\documentclass[border=30pt]{standalone}\n"
-        "\\usepackage{amsmath}\n"
-        "\\usepackage{amssymb}\n"
-        "\\usepackage{braket}\n"
-        "\\usepackage{qcircuit}\n"
+	# Default wrapper uses qcircuit; quantikz-only wrappers are chosen per-file
+	latex_template = (
+		"\\documentclass[border=30pt]{standalone}\n"
+		"\\usepackage{amsmath}\n"
+		"\\usepackage{amssymb}\n"
+		"\\usepackage{braket}\n"
+		"\\usepackage{qcircuit}\n"
+		"% Fallback macro definitions for extracted snippets (non-invasive)\n"
+		"\\providecommand{\\psx}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\psr}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\pst}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\rec}{\\mathrm{Rec}}\n"
+		"\\providecommand{\\tra}{\\mathrm{Tr}}\n"
+		"\\providecommand{\\ora}{\\mathcal{O}}\n"
 
-        "\\begin{document}\n"
-        # "\\vspace{50pt}\n"
-        "{circuit_code}\n"
-        # "\\hspace{50pt}\n"
-        "\\end{document}\n"
-    )
+		"\\begin{document}\n"
+		"{circuit_code}\n"
+		"\\end{document}\n"
+	)
 
-    tex_files = list(blocks_root.rglob('raw_blocks/*.tex'))
-    if not tex_files:
-        print(f"No raw block .tex files found under {blocks_root}")
-        return
+	tex_files = list(blocks_root.rglob('raw_blocks/*.tex'))
+	if not tex_files:
+		print(f"No raw block .tex files found under {blocks_root}")
+		return
 
-    print(f"Rendering {len(tex_files)} blocks to PDF...")
+	print(f"Rendering {len(tex_files)} blocks to PDF...")
 
-    for tex_path in tqdm(tex_files, desc='Rendering blocks'):
-        try:
-            block_text = tex_path.read_text(encoding='utf-8')
-        except Exception:
-            continue
+	for tex_path in tqdm(tex_files, desc='Rendering blocks'):
+		try:
+			block_text = tex_path.read_text(encoding='utf-8')
+		except Exception:
+			continue
 
-        # Build wrapper tex
-        wrapper_tex = latex_template.replace('{circuit_code}', block_text)
+		# Choose wrapper: if this block appears to use quantikz, use a quantikz-friendly wrapper
+		lower = block_text.lower()
+		if ('quantikz' in lower) or ('\\begin{quantikz' in block_text):
+			quantikz_template = (
+				"\\documentclass[border=30pt]{standalone}\n"
+				"\\usepackage{amsmath}\n"
+				"\\usepackage{amssymb}\n"
+				"\\usepackage{braket}\n"
+				"\\usepackage{tikz}\n"
+				"\\usepackage{quantikz}\n"
+				"% Fallback macro definitions for extracted snippets (non-invasive)\n"
+				"\\providecommand{\\psx}[1]{\\psi_{#1}}\n"
+				"\\providecommand{\\psr}[1]{\\psi_{#1}}\n"
+				"\\providecommand{\\pst}[1]{\\psi_{#1}}\n"
+				"\\providecommand{\\rec}{\\mathrm{Rec}}\n"
+				"\\providecommand{\\tra}{\\mathrm{Tr}}\n"
+				"\\providecommand{\\ora}{\\mathcal{O}}\n"
+				"\\begin{document}\n"
+				"{circuit_code}\n"
+				"\\end{document}\n"
+			)
+			wrapper_tex = quantikz_template.replace('{circuit_code}', block_text)
+		else:
+			wrapper_tex = latex_template.replace('{circuit_code}', block_text)
 
-        # Use a temporary directory to compile to avoid name collisions
-        with tempfile.TemporaryDirectory() as td:
-            td_path = Path(td)
-            wrap_name = tex_path.stem + '_wrap.tex'
-            wrap_path = td_path / wrap_name
-            wrap_path.write_text(wrapper_tex, encoding='utf-8')
+		# Use a temporary directory to compile to avoid name collisions
+		with tempfile.TemporaryDirectory() as td:
+			td_path = Path(td)
+			wrap_name = tex_path.stem + '_wrap.tex'
+			wrap_path = td_path / wrap_name
+			wrap_path.write_text(wrapper_tex, encoding='utf-8')
 
-            # Run pdflatex twice
-            cmd = ['pdflatex', '-interaction=nonstopmode', '-halt-on-error', str(wrap_path)]
-            log_text = ''
-            success = False
-            for _ in range(2):
-                try:
-                    res = subprocess.run(cmd, cwd=td, capture_output=True, text=True, timeout=45)
-                    log_text += res.stdout + '\n' + res.stderr + '\n'
-                    if res.returncode != 0:
-                        success = False
-                        break
-                    else:
-                        success = True
-                except subprocess.TimeoutExpired:
-                    log_text += 'pdflatex timeout\n'
-                    success = False
-                    break
+			# Run pdflatex twice
+			# invoke pdflatex from the temp directory and pass the filename (avoids issues with spaces in full path)
+			cmd = ['pdflatex', '-interaction=nonstopmode', '-halt-on-error', wrap_path.name]
+			log_text = ''
+			success = False
+			for _ in range(2):
+				try:
+					res = subprocess.run(cmd, cwd=td, capture_output=True, text=True, timeout=45)
+					log_text += res.stdout + '\n' + res.stderr + '\n'
+					if res.returncode != 0:
+						success = False
+						break
+					else:
+						success = True
+				except subprocess.TimeoutExpired:
+					log_text += 'pdflatex timeout\n'
+					success = False
+					break
 
-            # Save log next to original tex block for debugging
-            log_dir = tex_path.parent
-            log_dir.mkdir(parents=True, exist_ok=True)
-            log_file = log_dir / (tex_path.stem + '.pdflatex.log')
-            log_file.write_text(log_text, encoding='utf-8')
+			# Save log next to original tex block for debugging
+			log_dir = tex_path.parent
+			log_dir.mkdir(parents=True, exist_ok=True)
+			log_file = log_dir / (tex_path.stem + '.pdflatex.log')
+			log_file.write_text(log_text, encoding='utf-8')
 
-            if success:
-                produced_pdf = td_path / (wrap_path.stem + '.pdf')
-                if produced_pdf.exists():
-                    dest_pdf = out_pdf_dir / (tex_path.stem + '.pdf')
-                    shutil.copyfile(produced_pdf, dest_pdf)
-                else:
-                    found = list(td_path.glob('*.pdf'))
-                    if found:
-                        shutil.copyfile(found[0], out_pdf_dir / (tex_path.stem + '.pdf'))
+			if success:
+				produced_pdf = td_path / (wrap_path.stem + '.pdf')
+				if produced_pdf.exists():
+					dest_pdf = out_pdf_dir / (tex_path.stem + '.pdf')
+					shutil.copyfile(produced_pdf, dest_pdf)
+				else:
+					found = list(td_path.glob('*.pdf'))
+					if found:
+						shutil.copyfile(found[0], out_pdf_dir / (tex_path.stem + '.pdf'))
 
-    print('Rendering complete. PDFs in', out_pdf_dir)
+	print('Rendering complete. PDFs in', out_pdf_dir)
 
 def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/blocks', out_dir: str = 'circuit_images/rendered_pdflatex'):
 	"""Render saved raw block files using the `pdflatex` Python wrapper (PDFLaTeX).
@@ -123,12 +152,20 @@ def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/
 		print(f'No raw block .tex files found under {blocks_root}')
 		return
 
+	# default wrapper uses qcircuit; per-file selection below will use quantikz if needed
 	wrapper = (
 		'\\documentclass[border=30pt]{standalone}\n'
 		'\\usepackage{amsmath}\n'
 		'\\usepackage{amssymb}\n'
 		'\\usepackage{braket}\n'
 		'\\usepackage{qcircuit}\n'
+		"% Fallback macro definitions for extracted snippets (non-invasive)\n"
+		"\\providecommand{\\psx}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\psr}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\pst}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\rec}{\\mathrm{Rec}}\n"
+		"\\providecommand{\\tra}{\\mathrm{Tr}}\n"
+		"\\providecommand{\\ora}{\\mathcal{O}}\n"
 		'\\begin{document}\n'
 		'{circuit_code}\n'
 		'\\end{document}\n'
@@ -140,8 +177,22 @@ def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/
 		except Exception:
 			continue
 
-		# Build wrapper tex content and write a temp file
-		content = wrapper.replace('{circuit_code}', block_text)
+		# Build wrapper tex content and write a temp file; choose quantikz wrapper if block uses quantikz
+		lower = block_text.lower()
+		if ('quantikz' in lower) or ('\\begin{quantikz' in block_text):
+			content = (
+				'\\documentclass[border=30pt]{standalone}\n'
+				'\\usepackage{amsmath}\n'
+				'\\usepackage{amssymb}\n'
+				'\\usepackage{braket}\n'
+				'\\usepackage{tikz}\n'
+				'\\usepackage{quantikz}\n'
+				'\\begin{document}\n'
+				f"{block_text}\n"
+				'\\end{document}\n'
+			)
+		else:
+			content = wrapper.replace('{circuit_code}', block_text)
 		# Use temp directory to compile
 		with tempfile.TemporaryDirectory() as td:
 			td_path = Path(td)
@@ -191,7 +242,7 @@ def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/
 
 
 def extract_qcircuit_blocks_from_text(text: str):
-	"""Extract complete `\Qcircuit{...}` blocks from `text`.
+	r"""Extract complete `\Qcircuit{...}` blocks from `text`.
 
 	Strategy:
 	- Find occurrences of optional `\label{...}` followed by `\Qcircuit`.
@@ -199,12 +250,37 @@ def extract_qcircuit_blocks_from_text(text: str):
 	  to extract the full block.
 	- Return a list of blocks (strings).
 	"""
+
 	blocks = []
+
+	def _line_is_commented(txt: str, idx: int) -> bool:
+		"""Return True if the position `idx` lies on a line that is commented out
+		(i.e. there is an unescaped `%` between the start of the line and idx).
+		"""
+		ls = txt.rfind('\n', 0, idx)
+		start = ls + 1 if ls != -1 else 0
+		segment = txt[start:idx]
+		i = 0
+		while True:
+			p = segment.find('%', i)
+			if p == -1:
+				return False
+			# count backslashes before % to see if escaped
+			back = 0
+			j = p - 1
+			while j >= 0 and segment[j] == '\\':
+				back += 1
+				j -= 1
+			if back % 2 == 0:
+				return True
+			i = p + 1
 
 	# Pattern matches optional label then \Qcircuit
 	start_pattern = re.compile(r'(?:\\label\{[^}]*\}\s*)?\\Qcircuit\b', re.IGNORECASE)
 
 	for m in start_pattern.finditer(text):
+		if _line_is_commented(text, m.start()):
+			continue
 		start_idx = m.start()
 
 		# find first '{' after the match

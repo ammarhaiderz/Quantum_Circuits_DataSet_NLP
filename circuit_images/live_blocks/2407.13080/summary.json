@@ -1,0 +1,15 @@
+{
+  "source": "2407.13080",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2407.13080\\raw_blocks\\2407.13080_fig7p1_a48d50048beab7ee.tex",
+      "length": 424,
+      "block_id": "2407.13080_a48d50048beab7ee",
+      "figure_number": 7,
+      "panel": 1,
+      "label": "fig:grover"
+    }
+  ]
+}

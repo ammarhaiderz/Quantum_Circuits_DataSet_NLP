@@ -1,0 +1,24 @@
+{
+  "source": "2409.00792",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2409.00792\\raw_blocks\\2409.00792_fig1p1_978bac1f993fd485.tex",
+      "length": 660,
+      "block_id": "2409.00792_978bac1f993fd485",
+      "figure_number": 1,
+      "panel": 1,
+      "label": "fig:example"
+    },
+    {
+      "index": 1,
+      "block_file": "2409.00792\\raw_blocks\\2409.00792_fig2p2_e0b75b5dd8b45286.tex",
+      "length": 651,
+      "block_id": "2409.00792_e0b75b5dd8b45286",
+      "figure_number": 2,
+      "panel": 2,
+      "label": "fig:example"
+    }
+  ]
+}

@@ -1,11 +1,5 @@
 {
   "source": "2406.16595",
-  "blocks_count": 1,
-  "blocks": [
-    {
-      "index": 0,
-      "block_file": "2406.16595\\raw_blocks\\2406.16595_block_000.tex",
-      "length": 1747
-    }
-  ]
+  "blocks_count": 0,
+  "blocks": []
 }

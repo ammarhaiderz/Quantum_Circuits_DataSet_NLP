@@ -70,6 +70,20 @@ class ExtractionPipeline:
 
         # Clear output directory (also clears OUTPUT_DIR images)
         self.image_extractor.clear_output_dir()
+        # Remove previous circuits JSONL so we start fresh
+        try:
+            data_file = Path('data') / 'circuits.jsonl'
+            if data_file.exists():
+                data_file.unlink()
+        except Exception:
+            pass
+        
+        # Reset the processed blocks set to start fresh
+        try:
+            from core.live_latex_extractor import reset_processed_blocks
+            reset_processed_blocks()
+        except Exception:
+            pass
         
         # # Test SBERT
         # if not self.sbert_reranker.test_implementation():
@@ -110,12 +124,19 @@ class ExtractionPipeline:
         
         # Extract figures from LaTeX
         figures = []
+        figure_counter = 1
         try:
             for m in tar.getmembers():
                 if m.name.endswith(".tex"):
                     try:
                         tex = tar.extractfile(m).read().decode("utf-8", "ignore")
-                        figures.extend(self.image_extractor.extract_figures_from_tex(tex, paper_id=paper_id))
+                        res = self.image_extractor.extract_figures_from_tex(tex, paper_id=paper_id)
+                        # extract_figures_from_tex now may return (figures, figure_counter)
+                        if isinstance(res, tuple):
+                            new_figs, figure_counter = res
+                            figures.extend(new_figs)
+                        else:
+                            figures.extend(res)
                     except Exception as e:
                         print(f"⚠️ Failed to parse {m.name}: {e}")
         except KeyboardInterrupt:
@@ -137,6 +158,19 @@ class ExtractionPipeline:
         if not figures:
             print(f"⚠️ No figures found in LaTeX")
             return [], []
+
+        # Try to populate page numbers for records from this paper (best-effort)
+        try:
+            from core.circuit_store import update_pages_in_jsonl
+            try:
+                updated = update_pages_in_jsonl(paper_id)
+                if updated:
+                    print(f"   ✓ Updated {updated} page numbers for {paper_id}")
+            except Exception:
+                pass
+        except Exception:
+            # circuit_store or PyMuPDF not available; skip silently
+            pass
         
         # Set paper ID for all figures
         for f in figures:
