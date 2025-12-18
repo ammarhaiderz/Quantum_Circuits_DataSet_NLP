@@ -77,6 +77,20 @@ class ExtractionPipeline:
                 data_file.unlink()
         except Exception:
             pass
+        # Ensure data files exist and start fresh
+        try:
+            data_dir = Path('data')
+            data_dir.mkdir(parents=True, exist_ok=True)
+            jsonl = data_dir / 'circuits.jsonl'
+            jsonf = data_dir / 'circuits.json'
+            # create empty JSONL file (overwrite if present)
+            with open(jsonl, 'w', encoding='utf-8') as f:
+                pass
+            # create empty JSON array for circuits.json
+            with open(jsonf, 'w', encoding='utf-8') as f:
+                f.write('[]')
+        except Exception:
+            pass
         
         # Reset the processed blocks set to start fresh
         try:

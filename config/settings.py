@@ -12,7 +12,7 @@ CACHE_DIR = "arxiv_cache"  # Tar.gz source cache
 PDF_CACHE_DIR = "arxiv_pdf_cache"  # Extracted PDF cache (faster reaccess)
 
 # ================ EXTRACTION LIMITS ================
-MAX_IMAGES = 350
+MAX_IMAGES = 250
 REQUEST_DELAY = 6  # seconds
 TOP_K_PER_PAPER = 10
 PRINT_TOP_CAPTIONS = 5
@@ -26,7 +26,7 @@ USE_COMBINED_SCORE = True  # If True, uses weighted combo; if False, uses cascad
 APLHA = 0.6  # Adjusted alpha for combined scoring
 TFIDF_WEIGHT = APLHA  # Weight for TF-IDF score (lexical precision)
 SBERT_WEIGHT = 1- APLHA  # Weight for SBERT score (semantic understanding)
-COMBINED_THRESHOLD = 0.50  # Combined score threshold for selection (raised to reduce false positives)
+COMBINED_THRESHOLD = 0.55  # Combined score threshold for selection (raised to reduce false positives)
 
 # Custom TF-IDF feature augmentation (can be toggled off)
 USE_CUSTOM_TFIDF_FEATURES = True

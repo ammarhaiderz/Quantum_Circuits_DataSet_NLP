@@ -13,6 +13,21 @@ from config.settings import PDF_CACHE_DIR
 DATA_DIR = Path('data')
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 JSONL_PATH = DATA_DIR / 'circuits.jsonl'
+JSON_PATH = DATA_DIR / 'circuits.json'
+# metadata path
+META_PATH = DATA_DIR / 'circuits_meta.json'
+LATEX_META_PATH = DATA_DIR / 'latex_checkpoint.json'
+# Ensure files exist so other modules can rely on their presence
+try:
+    if not JSONL_PATH.exists():
+        JSONL_PATH.write_text('', encoding='utf-8')
+except Exception:
+    pass
+try:
+    if not JSON_PATH.exists():
+        JSON_PATH.write_text('[]', encoding='utf-8')
+except Exception:
+    pass
 
 
 def emit_record(record: dict):
@@ -20,10 +35,106 @@ def emit_record(record: dict):
     try:
         with open(JSONL_PATH, 'a', encoding='utf-8') as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
+        # After appending to JSONL, regenerate a proper JSON array file.
+        try:
+            _regenerate_json()
+        except Exception:
+            # Non-fatal; JSONL still contains the record.
+            pass
     except Exception as e:
         # Non-fatal: print for debugging
         print(f"⚠️ Failed to write circuit record: {e}")
 
+
+def _regenerate_json():
+    """Read `circuits.jsonl` and write `circuits.json` as a JSON array (atomic)."""
+    if not JSONL_PATH.exists():
+        # ensure empty JSON file
+        JSON_PATH.write_text('[]', encoding='utf-8')
+        return
+
+    tmp = JSON_PATH.with_suffix('.json.tmp')
+    records_dict = {}
+    common_png_dir = Path('circuit_images') / 'rendered_pdflatex' / 'png'
+    with open(JSONL_PATH, 'r', encoding='utf-8') as rf:
+        for line in rf:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                rec = json.loads(line)
+
+                # derive stem from raw_block_file
+                rb = rec.get('raw_block_file', '')
+                if not rb:
+                    continue
+                try:
+                    tex_name = Path(rb).name
+                    stem = Path(tex_name).stem
+                except Exception:
+                    continue
+
+                # Only include records that have a matching PNG in the common rendered_pdflatex/png folder
+                if common_png_dir.exists():
+                    matches = list(common_png_dir.glob(f"*{stem}*.png"))
+                else:
+                    matches = []
+
+                if not matches:
+                    # skip records without a final PNG in the canonical folder
+                    continue
+
+                # choose most recently modified match
+                try:
+                    chosen = max(matches, key=lambda p: p.stat().st_mtime)
+                    img_name = chosen.name
+                except Exception:
+                    img_name = matches[0].name
+
+                rec['image_filename'] = img_name
+                # Use the PNG filename as the main key in the JSON output
+                records_dict[img_name] = rec
+            except Exception:
+                # skip malformed lines
+                continue
+    # write atomically a JSON object mapping image_filename -> record
+    with open(tmp, 'w', encoding='utf-8') as wf:
+        wf.write(json.dumps(records_dict, ensure_ascii=False, indent=2))
+
+    try:
+        tmp.replace(JSON_PATH)
+    except Exception:
+        # fallback: try rename
+        try:
+            tmp.rename(JSON_PATH)
+        except Exception:
+            raise
+
+    # Latex-specific checkpoint: count records that came from `live_blocks` (code-block extraction)
+    try:
+        # identify latex records by presence of 'live_blocks' in raw_block_file
+        latex_records = [r for r in records_dict.values() if r.get('raw_block_file') and 'live_blocks' in r.get('raw_block_file')]
+        latex_count = len(latex_records)
+        if latex_count >= 250:
+            # load existing latex meta if present
+            try:
+                existing = json.loads(LATEX_META_PATH.read_text(encoding='utf-8')) if LATEX_META_PATH.exists() else {}
+            except Exception:
+                existing = {}
+
+            if 'papers_for_250_images' not in existing:
+                papers = len({rec.get('arxiv_id') for rec in latex_records if rec.get('arxiv_id')})
+                meta = {
+                    'papers_for_250_images': papers,
+                    'images_at_record': latex_count,
+                    'timestamp': int(__import__('time').time())
+                }
+                try:
+                    LATEX_META_PATH.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding='utf-8')
+                except Exception:
+                    pass
+    except Exception:
+        pass
 
 def _normalize_text(s: str) -> str:
     """Normalize text for comparison."""

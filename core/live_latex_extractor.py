@@ -108,70 +108,247 @@ def _extract_gates_from_block(block: str):
     - Fallback: find textual gate names (H, X, Y, Z, CNOT, CX, Toffoli, SWAP, Rz, Rx).
     Returns a unique list of uppercase gate tokens.
     """
-    gates = []
+    # Implement full spec parser: detect qcircuit vs quantikz then parse grid
+    found = []
     try:
-        # 1) \\gate{...}
-        for m in re.findall(r"\\\\gate\{([^}]*)\}", block):
-            # split on non-alphanumeric to get tokens like H, X, R_z(\theta)
-            parts = re.split(r"[^A-Za-z0-9_\\]+", m)
-            for p in parts:
-                if not p:
-                    continue
-                # normalize common forms
-                token = p.strip()
-                token_upper = token.upper()
-                # Map common names
-                if token_upper in ("HADAMARD",):
-                    gates.append('H')
-                elif token_upper in ("CNOT", "CX"):
-                    gates.append('CNOT')
-                elif token_upper in ("TOFFOLI", "CCX"):
-                    gates.append('TOFFOLI')
-                elif token_upper.startswith('R') and any(ch.isdigit() or ch in 'ZXY' for ch in token_upper):
-                    # RZ, RX, RY, R1, R2 -> keep prefix
-                    gates.append(token_upper)
+        # determine environment
+        is_qc = '\\Qcircuit' in block
+        is_qk = re.search(r'\\begin\{quantikz\}', block, re.IGNORECASE) is not None
+
+        # extract inner grid text
+        inner = block
+        if is_qk:
+            # strip \begin{quantikz}[...]
+            inner = re.sub(r'\\begin\{quantikz\}(?:\[[^\]]*\])?', '', inner, flags=re.IGNORECASE)
+            inner = re.sub(r'\\end\{quantikz\}', '', inner, flags=re.IGNORECASE)
+        elif is_qc:
+            # remove leading \Qcircuit...{ and trailing }
+            # find first { after \Qcircuit
+            m = re.search(r'\\Qcircuit[^\{]*\{', block)
+            if m:
+                start = m.end()
+                # find matching closing brace
+                depth = 1
+                i = start
+                while i < len(block) and depth > 0:
+                    if block[i] == '{':
+                        depth += 1
+                    elif block[i] == '}':
+                        depth -= 1
+                    i += 1
+                inner = block[start:i-1]
+
+        # split rows by TeX row separator \\\\ (allow whitespace)
+        rows = [r.strip() for r in re.split(r'\\\\\s*', inner) if r.strip()]
+
+        # parse each row into cells by &
+        grid = []
+        maxcols = 0
+        for r in rows:
+            # remove LaTeX comments
+            r2 = re.sub(r'%.*', '', r)
+            cells = [c.strip() for c in r2.split('&')]
+            grid.append(cells)
+            if len(cells) > maxcols:
+                maxcols = len(cells)
+
+        # pad rows
+        for row in grid:
+            while len(row) < maxcols:
+                row.append('')
+
+        # helper detectors
+        def canonicalize_label(lbl: str) -> str:
+            """Normalize LaTeX label text to a simple token.
+
+            - remove common LaTeX wrappers (\mathcal, \hat, \mathrm, \mathbf, \text)
+            - replace dagger markers with DG suffix
+            - remove remaining backslashes and non-alphanumerics
+            - collapse underscores and return uppercase
+            """
+            if not lbl:
+                return ''
+            s = lbl
+            # common wrappers
+            s = re.sub(r'\\mathcal\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
+            s = re.sub(r'\\hat\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
+            s = re.sub(r'\\mathrm\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
+            s = re.sub(r'\\mathbf\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
+            s = re.sub(r'\\text\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
+            # dagger -> DG
+            s = re.sub(r'\^?\\dagger', 'DG', s)
+            s = re.sub(r'\\dagger', 'DG', s)
+            # remove remaining backslashes
+            s = re.sub(r'\\+', '', s)
+            # remove braces and non-alphanumerics (keep underscore for now)
+            s = re.sub(r'[^A-Za-z0-9_]', '', s)
+            # collapse underscores
+            s = re.sub(r'_+', '', s)
+            s = s.strip()
+            s = s.upper()
+            # skip pure numeric labels
+            if re.fullmatch(r'\d+', s):
+                return ''
+            return s
+
+
+        def detect_cell(cell_text):
+            tokens = []
+            t = cell_text
+            # multigate / ghost (qcircuit)
+            if re.search(r'\\multigate\{\d+\}\{[^}]+\}', t):
+                tokens.append(('U', None))
+            if re.search(r'\\ghost\{[^}]+\}', t):
+                tokens.append(('GHOST', None))
+            # quantikz multi-wire gate: \gate[wires=2]{...}
+            m = re.search(r'\\gate\s*\[([^\]]*)\]\s*\{([^}]*)\}', t)
+            if m:
+                params = m.group(1)
+                label = m.group(2)
+                wires_m = re.search(r'wires\s*=\s*(\d+)', params)
+                if wires_m and int(wires_m.group(1)) >= 2:
+                    tokens.append(('U', label.strip()))
                 else:
-                    # Single-letter common gates
-                    if token_upper in ('H', 'X', 'Y', 'Z', 'S', 'T'):
-                        gates.append(token_upper)
-                    else:
-                        # generic token
-                        gates.append(token_upper)
+                    tokens.append(('G', label.strip()))
+            # quantikz single gate: \gate{...}
+            m2 = re.search(r'\\gate(?:\[[^\]]*\])?\{([^}]*)\}', t)
+            if m2:
+                lbl = m2.group(1).strip()
+                tokens.append(('G', lbl))
+            # qcircuit single gate: \gate{...}
+            m3 = re.search(r'\\gate\{([^}]*)\}', t)
+            if m3:
+                lbl = m3.group(1).strip()
+                tokens.append(('G', lbl))
+            # controls
+            if re.search(r'\\o?ctrl\{?-?\d+\}', t) or re.search(r'\\control\b', t) or re.search(r'\\cctrl\{?-?\d+\}', t):
+                if re.search(r'\\octrl', t):
+                    tokens.append(('O', None))
+                else:
+                    tokens.append(('C', None))
+            # targets
+            if re.search(r'\\otarg\b|\\targ\b', t):
+                tokens.append(('X', None))
+            # swap
+            if re.search(r'\\swap\b|\\qswap\b', t):
+                tokens.append(('S', None))
+            # measure/reset
+            if re.search(r'\\meter\b|\\measure\b', t):
+                tokens.append(('M', None))
+            if re.search(r'\\reset\b', t):
+                tokens.append(('R', None))
+            return tokens
 
-        # 2) detect ctrl/targ pattern -> CNOT
-        if re.search(r"\\\\ctrl\b", block) and re.search(r"\\\\targ\b", block):
-            gates.append('CNOT')
+        # collect tokens per column
+        cols = [ [] for _ in range(maxcols) ]
+        for ri, row in enumerate(grid):
+            for ci, cell in enumerate(row):
+                toks = detect_cell(cell)
+                for tk, lbl in toks:
+                    cols[ci].append((tk, lbl, ri))
 
-        # 3) detect swap
-        if re.search(r"\\\\swap\b", block) or re.search(r"\\\\qswap\b", block):
-            gates.append('SWAP')
+        # inference per column
+        inferred = []
+        for col in cols:
+            if not col:
+                continue
+            # prioritize multi-qubit U if present
+            if any(tk == 'U' for tk,_,_ in col):
+                inferred.append('U')
+                continue
+            # count controls and targets and gates
+            control_count = sum(1 for tk,_,_ in col if tk == 'C')
+            open_control = any(tk == 'O' for tk,_,_ in col)
+            x_count = sum(1 for tk,_,_ in col if tk == 'X')
+            gates_in_col = [lbl for tk,lbl,_ in col if tk == 'G' and lbl]
+            swap_present = any(tk == 'S' for tk,_,_ in col)
+            measure_present = any(tk == 'M' for tk,_,_ in col)
+            reset_present = any(tk == 'R' for tk,_,_ in col)
 
-        # 4) detect meter/measure
-        if re.search(r"\\\\meter\b|\\\\measure\b", block):
-            gates.append('MEASURE')
+            # SWAP
+            if swap_present:
+                inferred.append('SWAP')
+                continue
+            # Measurement
+            if measure_present:
+                inferred.append('MEASURE')
+                continue
+            if reset_present:
+                inferred.append('RESET')
+                continue
 
-        # 5) detect targs alone
-        if re.search(r"\\\\targ\b", block) and 'CNOT' not in gates:
-            gates.append('TARG')
+            # Controls + targets
+            if x_count > 0 and control_count > 0:
+                if control_count == 1 and x_count == 1:
+                    inferred.append('CNOT')
+                    continue
+                elif control_count == 2 and x_count == 1:
+                    inferred.append('TOFFOLI')
+                    continue
+                else:
+                    inferred.append(f'MCX_{control_count}')
+                    continue
 
-        # 6) textual fallbacks: look for known gate names
-        for txt in re.findall(r"\b(H|X|Y|Z|CNOT|CX|SWAP|TOFFOLI|CCX|S|T|RZ|RX|RY)\b", block, flags=re.IGNORECASE):
-            gates.append(txt.upper())
+            # Control + single-qubit gate -> Controlled-Gate
+            if control_count > 0 and gates_in_col:
+                # use first gate label for representation
+                g = gates_in_col[0]
+                gl = canonicalize_label(g)
+                if gl:
+                    # map DAGGER ending (e.g., VDG) to VDG preserved
+                    inferred.append(f'CTRL-{gl}')
+                else:
+                    inferred.append('CTRL')
+                continue
 
+            # single-qubit gates present
+            for g in gates_in_col:
+                gl = canonicalize_label(g)
+                if not gl:
+                    continue
+                # map common names
+                if gl in ('HADAMARD', 'HAT'):
+                    inferred.append('H')
+                else:
+                    inferred.append(gl)
+                # continue to collect other gates in column
+
+            # lone targets => X gates
+            if x_count > 0 and control_count == 0:
+                inferred.append('X')
+
+        # fallback: if nothing inferred, look for textual known gates
+        if not inferred:
+            for txt in re.findall(r"\b(H|X|Y|Z|CNOT|CX|SWAP|TOFFOLI|CCX|S|T|RZ|RX|RY)\b", block, flags=re.IGNORECASE):
+                inferred.append(txt.upper())
+
+        # unique preserve order
+        out = []
+        seen = set()
+        for g in inferred:
+            if not g:
+                continue
+            g2 = g.upper()
+            if g2 not in seen:
+                seen.add(g2)
+                out.append(g2)
+        return out
     except Exception:
-        pass
-
-    # normalize unique preserving order
-    seen = set()
-    out = []
-    for g in gates:
-        if not g:
-            continue
-        g2 = g.upper()
-        if g2 not in seen:
-            seen.add(g2)
-            out.append(g2)
-    return out
+        # preserve old fallback behavior: simple textual search
+        try:
+            found = []
+            for txt in re.findall(r"\b(H|X|Y|Z|CNOT|CX|SWAP|TOFFOLI|CCX|S|T|RZ|RX|RY)\b", block, flags=re.IGNORECASE):
+                found.append(txt.upper())
+            # unique
+            out = []
+            seen = set()
+            for g in found:
+                if g not in seen:
+                    seen.add(g)
+                    out.append(g)
+            return out
+        except Exception:
+            return []
 
 
 def process_text(text: str, source_name: str = 'inline', out_root: str = 'circuit_images/live_blocks', render: bool = True, render_with_module: bool = False, arxiv_id: Optional[str] = None, start_figure_num: Optional[int] = None, caption_text: Optional[str] = None, figure_number: Optional[int] = None, panel: Optional[int] = None, figure_label: Optional[str] = None):
@@ -265,14 +442,13 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
                     'arxiv_id': str(arxiv_id),
                     'page': None,
                     'figure_number': int(fig_num),
-                    'panel': int(pnl),
                     'label': figure_label,
                     'gates': gates,
                     'quantum_problem': None,
                     'descriptions': descriptions,
                     'text_positions': text_positions,
-                    'raw_block_file': str((raw_dir / name).as_posix()),
-                    'block_id': block_id
+                    'block_id': block_id,
+                    'raw_block_file': str((raw_dir / name).as_posix())
                 }
                 # Defer emitting to JSONL until after successful rendering
                 if 'pending_records' not in locals():
