@@ -1,5 +1,49 @@
 {
-  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766181380541.png": {
+  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766182871087.png": {
+    "arxiv_id": "2509.13247",
+    "figure": 4,
+    "page": 6,
+    "label": "fig:cdcx_unencoded",
+    "gates": [
+      "H",
+      "CNOT",
+      "MCX_2",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Logical circuit for a 5 CNOT, constant-depth CNOT-ladder on a 4×2 grid of qubits. The brackets surround qubits on the same row. The dashed lines separate the circuit into three parts: the first creates a Bell pair between the ancilla row and the second data row, the second consists of the CNOTs from the first two sections of the original circuit (Figure <ref>) being executed in parallel, and the third consists of the final CNOT from the original circuit, measurement, and classical correction."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.13247__2509.13247_p1_221364ed016a64f3__1766182872900.png": {
+    "arxiv_id": "2509.13247",
+    "figure": 7,
+    "page": 8,
+    "label": "fig:placeholder",
+    "gates": [
+      "TEXTH",
+      "CNOT",
+      "MCX_2",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "L=2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩ L state of the [[4,2,2]] code (Equation <ref>)."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766182874772.png": {
     "arxiv_id": "2509.13247",
     "figure": 15,
     "page": 14,
@@ -22,20 +66,17 @@
       ]
     ]
   },
-  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766181382303.png": {
-    "arxiv_id": "2509.13247",
-    "figure": 4,
-    "page": 6,
-    "label": "fig:cdcx_unencoded",
+  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766182895231.png": {
+    "arxiv_id": "2509.04761",
+    "figure": 1,
+    "page": 2,
+    "label": "fig:decompos",
     "gates": [
-      "H",
-      "CNOT",
-      "MCX_2",
-      "MEASURE"
+      "CTRL-U"
     ],
     "quantum_problem": null,
     "descriptions": [
-      "Logical circuit for a 5 CNOT, constant-depth CNOT-ladder on a 4×2 grid of qubits. The brackets surround qubits on the same row. The dashed lines separate the circuit into three parts: the first creates a Bell pair between the ancilla row and the second data row, the second consists of the CNOTs from the first two sections of the original circuit (Figure <ref>) being executed in parallel, and the third consists of the final CNOT from the original circuit, measurement, and classical correction."
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
     ],
     "text_positions": [
       [
@@ -44,20 +85,2446 @@
       ]
     ]
   },
-  "2509.13247__2509.13247_p1_221364ed016a64f3__1766181384171.png": {
-    "arxiv_id": "2509.13247",
-    "figure": 7,
-    "page": 8,
-    "label": "fig:placeholder",
+  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766182895307.png": {
+    "arxiv_id": "2509.04761",
+    "figure": 1,
+    "page": 2,
+    "label": "fig:decompos",
     "gates": [
-      "TEXTH",
+      "TOFFOLI",
+      "CTRL-U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766182895406.png": {
+    "arxiv_id": "2509.04761",
+    "figure": 1,
+    "page": 2,
+    "label": "fig:decompos",
+    "gates": [
       "CNOT",
-      "MCX_2",
+      "CTRL-U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766182895506.png": {
+    "arxiv_id": "2509.04761",
+    "figure": 1,
+    "page": 2,
+    "label": "fig:decompos",
+    "gates": [
+      "CNOT",
+      "CTRL-U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.04761__2509.04761_p5_48127125a9bc080b__1766182895582.png": {
+    "arxiv_id": "2509.04761",
+    "figure": 1,
+    "page": 2,
+    "label": "fig:decompos",
+    "gates": [
+      "CTRL-U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_b6756454e84f6705__1766182904550.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 1,
+    "page": 5,
+    "label": "fig:MCT gates",
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "MCT gates with positive condition (closed circle) and negative condition (open circle)"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766182904608.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 1,
+    "page": 5,
+    "label": "fig:MCT gates",
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "MCT gates with positive condition (closed circle) and negative condition (open circle)"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766182904663.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 1,
+    "page": 5,
+    "label": "fig:MCT gates",
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "MCT gates with positive condition (closed circle) and negative condition (open circle)"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766182910300.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 2,
+    "page": 5,
+    "label": "fig:NCV library",
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "NCV quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766182910332.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 2,
+    "page": 5,
+    "label": "fig:NCV library",
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "NCV quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766182910380.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 2,
+    "page": 5,
+    "label": "fig:NCV library",
+    "gates": [
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "NCV quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766182910433.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 2,
+    "page": 5,
+    "label": "fig:NCV library",
+    "gates": [
+      "CTRL-VDG"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "NCV quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_bc58770175544b8c__1766182919696.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 3,
+    "page": 5,
+    "label": "fig:clifford library",
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Clifford +T quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766182919725.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 3,
+    "page": 5,
+    "label": "fig:clifford library",
+    "gates": [
+      "T"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Clifford +T quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766182919771.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 3,
+    "page": 5,
+    "label": "fig:clifford library",
+    "gates": [
+      "T"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Clifford +T quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766182919820.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 3,
+    "page": 5,
+    "label": "fig:clifford library",
+    "gates": [
+      "H"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Clifford +T quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766182919876.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 3,
+    "page": 5,
+    "label": "fig:clifford library",
+    "gates": [
+      "H"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Clifford +T quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766182919937.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 3,
+    "page": 5,
+    "label": "fig:clifford library",
+    "gates": [
+      "S"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Clifford +T quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p7_b698de4b847b9673__1766182919988.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 3,
+    "page": 5,
+    "label": "fig:clifford library",
+    "gates": [
+      "S"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Clifford +T quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766182920040.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 3,
+    "page": 5,
+    "label": "fig:clifford library",
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Clifford +T quantum gate library"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_349982884b4d4708__1766182926895.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 4,
+    "page": 5,
+    "label": "Decomposition positive CNOT",
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_787f76d104d6fb82__1766182926953.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 4,
+    "page": 5,
+    "label": "Decomposition positive CNOT",
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_df01852945231c65__1766182927010.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 4,
+    "page": 5,
+    "label": "Decomposition positive CNOT",
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p4_01768c686acefd8b__1766182927068.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 4,
+    "page": 5,
+    "label": "Decomposition positive CNOT",
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_15df5acee9859e41__1766182933172.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 5,
+    "page": 5,
+    "label": "Decomposition negative CNOT",
+    "gates": [
+      "V",
+      "X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_d2670275e7081542__1766182933241.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 5,
+    "page": 5,
+    "label": "Decomposition negative CNOT",
+    "gates": [
+      "V",
+      "X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_96b201becd63fe56__1766182933299.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 5,
+    "page": 5,
+    "label": "Decomposition negative CNOT",
+    "gates": [
+      "V",
+      "X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p4_eb8e7aa6d5bf6ecb__1766182933356.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 5,
+    "page": 5,
+    "label": "Decomposition negative CNOT",
+    "gates": [
+      "V",
+      "X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_45afa3233b7781a5__1766182937453.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 6,
+    "page": 6,
+    "label": "CTR fig",
+    "gates": [
+      "MCX_4",
+      "MCX_3"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Common-Target Rule (CTR) <cit.>"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_5e972e7d667e3cdd__1766182937518.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 6,
+    "page": 6,
+    "label": "CTR fig",
+    "gates": [
+      "MCX_3",
+      "MCX_4"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Common-Target Rule (CTR) <cit.>"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_e4107cba88e0580d__1766182937577.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 6,
+    "page": 6,
+    "label": "CTR fig",
+    "gates": [
+      "MCX_3"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Common-Target Rule (CTR) <cit.>"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_e20a2224fd36eece__1766182939181.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 7,
+    "page": 7,
+    "label": "f.direct method",
+    "gates": [
+      "MCX_4",
+      "TOFFOLI",
+      "X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The synthesized quantum circuit using the direct method <cit.> of the Boolean function in Eq.(<ref>)"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_8925e40534e8b75c__1766182943067.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 8,
+    "page": 12,
+    "label": "circuit f1 before decom",
+    "gates": [
+      "MCX_4",
+      "CNOT",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Reversible circuit of f 1 where (a) represents f 1 in Eq.(<ref>), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_435f93dd67d152ee__1766182943129.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 8,
+    "page": 12,
+    "label": "circuit f1 before decom",
+    "gates": [
+      "TOFFOLI",
+      "MCX_3",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Reversible circuit of f 1 where (a) represents f 1 in Eq.(<ref>), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_36deffd1a100709b__1766182943200.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 8,
+    "page": 12,
+    "label": "circuit f1 before decom",
+    "gates": [
+      "TOFFOLI",
+      "MCX_3",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Reversible circuit of f 1 where (a) represents f 1 in Eq.(<ref>), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_7ad6a73f493bcad6__1766182947327.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 8,
+    "page": 12,
+    "label": "circuit f2 before decom",
+    "gates": [
+      "CNOT",
+      "TOFFOLI",
+      "MCX_4"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Reversible circuit of f 2 where (a) represents f 2 in Eq.(<ref>), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_3230d0ee612c9123__1766182947403.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 8,
+    "page": 12,
+    "label": "circuit f2 before decom",
+    "gates": [
+      "CNOT",
+      "TOFFOLI",
+      "MCX_3"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Reversible circuit of f 2 where (a) represents f 2 in Eq.(<ref>), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_32ca383f5d4d2532__1766182947472.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 8,
+    "page": 12,
+    "label": "circuit f2 before decom",
+    "gates": [
+      "CNOT",
+      "TOFFOLI",
+      "MCX_3"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Reversible circuit of f 2 where (a) represents f 2 in Eq.(<ref>), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_6df15b86d4a17bc6__1766182958673.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_7e986fca9394d5eb__1766182958721.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_b90c5becb1ad1666__1766182958771.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p4_9a894e204d75442c__1766182958824.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p5_2a3e51967b1311ca__1766182958870.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p6_33fe17306d39bc31__1766182958920.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CNOT",
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p7_25a6774e014fd879__1766182958972.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p8_ca3203ad15956ac1__1766182959021.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p9_302fdbf76d14257c__1766182959069.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 10,
+    "page": 15,
+    "label": "optimization rules fig",
+    "gates": [
+      "CNOT",
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Merge Rules"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_39652ed36e5f17f8__1766182963490.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 11,
+    "page": 15,
+    "label": "delete rules fig",
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Delete Rule"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_72b7a783533cad4d__1766182963537.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 11,
+    "page": 15,
+    "label": "delete rules fig",
+    "gates": [
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Delete Rule"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_579550cbc1cca90c__1766182963586.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 11,
+    "page": 15,
+    "label": "delete rules fig",
+    "gates": [
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Delete Rule"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_f9244f2a4287feec__1766182965312.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 14,
+    "page": 21,
+    "label": "fn_reorder1_ex",
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "the 4 gt 4 2 0 quantum circuit after applying the reorder method <cit.>"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_86b97eb26408d475__1766182969734.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 15,
+    "page": 22,
+    "label": "fn_ex_extraline",
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The 4 gt 4 2 0 quantum circuit in Eq. <ref> after adding extra line."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_0774582c98a4990d__1766182969818.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 15,
+    "page": 22,
+    "label": "fn_ex_extraline",
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The 4 gt 4 2 0 quantum circuit in Eq. <ref> after adding extra line."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_3275e6f2c1a18b87__1766182974823.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 17,
+    "page": 23,
+    "label": "fig:a",
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The 4 gt 4 2 0 circuit."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_50bf9c553809ea9b__1766182974893.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 17,
+    "page": 23,
+    "label": "fig:a",
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The 4 gt 4 2 0 circuit."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_c9af940ae2fd428e__1766182974959.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 17,
+    "page": 23,
+    "label": "fig:a",
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The 4 gt 4 2 0 circuit."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_c1d8a642b676454c__1766182978899.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 17,
+    "page": 23,
+    "label": "fn_ex_decompose_ncv",
+    "gates": [
+      "CNOT",
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_5a8777560b57b164__1766182979019.png": {
+    "arxiv_id": "2407.04826",
+    "figure": 17,
+    "page": 23,
+    "label": "fn_ex_decompose_ncv",
+    "gates": [
+      "CNOT",
+      "CTRL-V"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.00155__2410.00155_p1_268c753b871212f4__1766182985269.png": {
+    "arxiv_id": "2410.00155",
+    "figure": 4,
+    "page": 9,
+    "label": "fig:nonunitary",
+    "gates": [
+      "U",
       "MEASURE"
     ],
     "quantum_problem": null,
     "descriptions": [
-      "L=2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩ L state of the [[4,2,2]] code (Equation <ref>)."
+      "Quantum circuit to implement any arbitrary non-unitary operation."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2510.04993__2510.04993_p1_b4cac79b824cfc2a__1766182987906.png": {
+    "arxiv_id": "2510.04993",
+    "figure": 1,
+    "page": 3,
+    "label": "fig:seven_perm_ext",
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A permutation gate in staircase form, consisting of 6 Toffoli gates."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2510.04993__2510.04993_p1_d0b4ae7becd6c16b__1766182990857.png": {
+    "arxiv_id": "2510.04993",
+    "figure": 2,
+    "page": 6,
+    "label": "fig:circ_gottesman_Mochon",
+    "gates": [
+      "SWAP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with time flowing from left to right)."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2510.04993__2510.04993_p1_01e57b5ee7d6ffef__1766182993296.png": {
+    "arxiv_id": "2510.04993",
+    "page": 25,
+    "label": "fig:eg_staircase",
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "This circuit for 1,2,4 1,3,4 1,2,3 is in staircase form but not mismatch-free, as qubit 3 is used as a control for 1,3,4 and a target for 1,2,3."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2405.14951__2405.14951_p1_91ae5b15b77ba16d__1766182997819.png": {
+    "arxiv_id": "2405.14951",
+    "figure": 4,
+    "page": 22,
+    "label": "Cyclic3CircuitDiagram",
+    "gates": [
+      "H",
+      "CNOT",
+      "RYTHETAA",
+      "RYTHETAB",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit used in our simulations of rendezvous games on the 3-vertex cycle graph K 3. From top to bottom, the first qubit represents the quantum subs-system held by Alice and the second qubit that held by Bob."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2405.14951__2405.14951_p1_6aa324e8cfad8bff__1766182999875.png": {
+    "arxiv_id": "2405.14951",
+    "figure": 4,
+    "page": 22,
+    "label": "fig:CubicCircuitDiagram",
+    "gates": [
+      "U",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit used in our simulations of rendezvous games on cubic graphs. From top to bottom, the first two qubits represent the part of the share quantum system held by Alice and the third and fourth qubits represent the subs-system held by Bob."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.01912__2509.01912_p1_296633dc4067c631__1766183016647.png": {
+    "arxiv_id": "2509.01912",
+    "figure": 4,
+    "page": 4,
+    "label": "fig:circuit",
+    "gates": [
+      "MCX_3",
+      "X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "An example of algorithm:1."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.01912__2509.01912_p1_39b391794b911208__1766183018511.png": {
+    "arxiv_id": "2509.01912",
+    "figure": 5,
+    "page": 6,
+    "label": "fig:example1",
+    "gates": [
+      "CNOT",
+      "X",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "An example of a quantum circuit for the oracle of a 4-bit Boolean function."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.01912__2509.01912_p1_331fb3ece9f2cc13__1766183019872.png": {
+    "arxiv_id": "2509.01912",
+    "figure": 3,
+    "page": 2,
+    "label": "fig:oracle",
+    "gates": [
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Circuit demonstration of a Quantum Oracle where the input is |x⟩ and the output result is stored on |y⟩, along with k auxiliary qubits initialized to |0⟩."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2404.06059__2404.06059_p1_7705162a32204381__1766183024677.png": {
+    "arxiv_id": "2404.06059",
+    "figure": 2,
+    "page": 3,
+    "label": "fig:F_8",
+    "gates": [
+      "MCX_1",
+      "MCX_4",
+      "MCX_2",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The quantum circuit implementing the F 8 gate."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2404.06059__2404.06059_p1_31afe0d7d855b945__1766183026383.png": {
+    "arxiv_id": "2404.06059",
+    "figure": 2,
+    "page": 3,
+    "label": "fig:ReLU",
+    "gates": [
+      "X",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The quantum circuit implementing the ReLU function with input x∈{0,1}^5 includes input qubits |x i⟩ and output qubits |0⟩ j."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2404.06059__2404.06059_p1_db1ede68fee28060__1766183028237.png": {
+    "arxiv_id": "2404.06059",
+    "figure": 8,
+    "page": 10,
+    "label": "fig:SWAP",
+    "gates": [
+      "SWAP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The quantum circuit of SWAP operator for x∈{0,1}^3."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_e0956826a8d1e552__1766183034070.png": {
+    "arxiv_id": "2504.06948",
+    "figure": 1,
+    "page": 12,
+    "label": "bc:m1",
+    "gates": [
+      "CTRL-X",
+      "ADD"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit implementing the block-encoding of 1, denoted by U 1."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_c9c30f41a735d3b3__1766183035496.png": {
+    "arxiv_id": "2504.06948",
+    "figure": 2,
+    "page": 12,
+    "label": "bc:m2",
+    "gates": [
+      "X",
+      "HOTIMESMATHFRAKK"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 2, denoted by U 2."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_545549325443f8f9__1766183038022.png": {
+    "arxiv_id": "2504.06948",
+    "figure": 2,
+    "page": 12,
+    "label": "bc:m4",
+    "gates": [
+      "CTRL-X",
+      "Z",
+      "ADD"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 4, denoted by U 4."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_25437688f3127f6c__1766183039594.png": {
+    "arxiv_id": "2504.06948",
+    "figure": 2,
+    "page": 12,
+    "label": "bc:m5",
+    "gates": [
+      "RYTHETA0"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 5, denoted by U 5."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_16322b34f3d26d1b__1766183041074.png": {
+    "arxiv_id": "2504.06948",
+    "figure": 2,
+    "page": 12,
+    "label": "bc:B",
+    "gates": [
+      "RY",
+      "H",
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of ℬ, denoted by U ℬ."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_1dc2cb034ca4f7ae__1766183042528.png": {
+    "arxiv_id": "2504.06948",
+    "figure": 2,
+    "page": 12,
+    "label": "bc:l1",
+    "gates": [
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 1, denoted by U 1."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_585d39f42af4bdf6__1766183043939.png": {
+    "arxiv_id": "2504.06948",
+    "figure": 2,
+    "page": 12,
+    "label": "bc:m6",
+    "gates": [
+      "X",
+      "WIDETILDEHMATHFRAKK"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 6, denoted by U 6."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_6b9163ff82ea93f6__1766183045583.png": {
+    "arxiv_id": "2504.06948",
+    "figure": 2,
+    "page": 12,
+    "label": "bc:m7",
+    "gates": [
+      "CTRL-X"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 7, denoted by U 7."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2409.00792__2409.00792_p1_cbcabf2542785e65__1766183053208.png": {
+    "arxiv_id": "2409.00792",
+    "figure": 3,
+    "page": 3,
+    "label": "fig:main_circuit",
+    "gates": [
+      "UPHIL",
+      "UPSI",
+      "CNOT",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Binary neuron quantum circuit to calculate neuron activation between a fingerprint sample Φ^l, and a user sample Ψ. |γ i⟩ represents the joint system state at different positions in the circuit."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2409.00792__2409.00792_p1_978bac1f993fd485__1766183057015.png": {
+    "arxiv_id": "2409.00792",
+    "figure": 4,
+    "page": 4,
+    "label": "fig:example",
+    "gates": [
+      "H",
+      "CTRL-Z",
+      "X",
+      "TOFFOLI",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Binary neuron quantum circuits to calculate neuron activation values between the fingerprint samples Φ^l i and the user sample Ψ=[1,1,1,1]."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2409.00792__2409.00792_p2_e0b75b5dd8b45286__1766183057111.png": {
+    "arxiv_id": "2409.00792",
+    "figure": 4,
+    "page": 4,
+    "label": "fig:example",
+    "gates": [
+      "H",
+      "Z",
+      "X",
+      "TOFFOLI",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Binary neuron quantum circuits to calculate neuron activation values between the fingerprint samples Φ^l i and the user sample Ψ=[1,1,1,1]."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2502.05362__2502.05362_p1_b6b20833aa9bb723__1766183061488.png": {
+    "arxiv_id": "2502.05362",
+    "figure": 6,
+    "page": 4,
+    "label": "qc:exp2",
+    "gates": [
+      "RZDELTAPHI",
+      "RXHATOMEGA",
+      "RXFA"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit for the 2-qubits experiment used to measure cross-talk induced on qubit a due to simultaneous drive b."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2502.05362__2502.05362_p1_7b73c07754535096__1766183062824.png": {
+    "arxiv_id": "2502.05362",
+    "figure": 6,
+    "page": 4,
+    "label": "qc:exp3",
+    "gates": [
+      "RZDELTAPHI",
+      "RXHATOMEGA",
+      "RXFA"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit for 3 qubits experiment used to verify learned cross-talk model."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2507.20599__2507.20599_p2_13fb31c44db8ddd7__1766183071296.png": {
+    "arxiv_id": "2507.20599",
+    "figure": 15,
+    "page": 22,
+    "label": "sec2:fig3",
+    "gates": [
+      "UPSI",
+      "H",
+      "MCX_1",
+      "CTRL-U1"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit for the (even) extension operator U ext,ψ. Here, U +1 denotes the quantum incrementer gate."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2507.20599__2507.20599_p2_04027fe306322b22__1766183085715.png": {
+    "arxiv_id": "2507.20599",
+    "figure": 15,
+    "page": 22,
+    "label": "appA:fig3",
+    "gates": [
+      "H",
+      "MCX_1",
+      "CTRL-U1"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit for an extension operator U ext, 0. Here, U +1 denotes the quantum incrementer gate."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2507.20599__2507.20599_p2_685a9b8195c26c90__1766183089239.png": {
+    "arxiv_id": "2507.20599",
+    "figure": 16,
+    "page": 25,
+    "label": "appC:fig1",
+    "gates": [
+      "UPSI",
+      "H",
+      "MCX_1",
+      "CTRL-U1",
+      "Z",
+      "UTEXTGP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A quantum circuit for the odd extension operator Ũ ext,ψ. Here, U +1 and U gp(π/2) denote the quantum incrementer gate and a global phase gate with the phase rotation of π/2 radians, respectively."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2508.07026__2508.07026_p1_9cfd407ecb32cffa__1766183102828.png": {
+    "arxiv_id": "2508.07026",
+    "figure": 1,
+    "page": 3,
+    "label": "fig:basic_gates",
+    "gates": [
+      "RYTHETA",
+      "RZPHI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Rotation gates"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2508.07026__2508.07026_p2_648613f79cc6c18e__1766183102887.png": {
+    "arxiv_id": "2508.07026",
+    "figure": 1,
+    "page": 3,
+    "label": "fig:basic_gates",
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Rotation gates"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2412.13160__2412.13160_p1_d9263ae9aa8c709d__1766183115095.png": {
+    "arxiv_id": "2412.13160",
+    "figure": 6,
+    "page": 12,
+    "label": "fig:U_BE",
+    "gates": [
+      "H",
+      "HATW",
+      "HATG",
+      "CTRL-HATG",
+      "XZX"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "(a) Full circuit for Û BE, the diagonal block encoding of the amplitudes of |λ max⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components Ŵ 0 and Ĝ 0 are given in (b) and (c) respectively. See <cit.> for the full details of this block encoding procedure."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2412.13160__2412.13160_p2_8028fb648ab53d7e__1766183115177.png": {
+    "arxiv_id": "2412.13160",
+    "figure": 6,
+    "page": 12,
+    "label": "fig:U_BE",
+    "gates": [
+      "H",
+      "HATU",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "(a) Full circuit for Û BE, the diagonal block encoding of the amplitudes of |λ max⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components Ŵ 0 and Ĝ 0 are given in (b) and (c) respectively. See <cit.> for the full details of this block encoding procedure."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2412.13160__2412.13160_p3_a055a24ffa2906a3__1766183115255.png": {
+    "arxiv_id": "2412.13160",
+    "figure": 6,
+    "page": 12,
+    "label": "fig:U_BE",
+    "gates": [
+      "Z",
+      "U",
+      "XZX"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "(a) Full circuit for Û BE, the diagonal block encoding of the amplitudes of |λ max⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components Ŵ 0 and Ĝ 0 are given in (b) and (c) respectively. See <cit.> for the full details of this block encoding procedure."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.14196__2509.14196_p1_c5ab65eea86aee81__1766183123076.png": {
+    "arxiv_id": "2509.14196",
+    "figure": 1,
+    "page": 4,
+    "label": "fig:single-trotter-step",
+    "gates": [
+      "HATU",
+      "U",
+      "SWAP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit representation of the single Trotter step used in the first-order Trotterization for L=4 fermion sites (N=8 qubits)."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.14196__2509.14196_p1_ac916bdc4288d766__1766183125144.png": {
+    "arxiv_id": "2509.14196",
+    "figure": 2,
+    "page": 6,
+    "label": "fig:single-trotter-step-2nd",
+    "gates": [
+      "U",
+      "HATU",
+      "SWAP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit of the single Trotter step in the second-order Trotterization for L=4 fermion sites (N=8 qubits)."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.14196__2509.14196_p1_d2421b8f1e8e7483__1766183127870.png": {
+    "arxiv_id": "2509.14196",
+    "figure": 3,
+    "page": 6,
+    "label": "fig:second-trotter-two-steps",
+    "gates": [
+      "U",
+      "HATU",
+      "SWAP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit of the second-order Trotterization with two Trotter steps r=2 for L=4 fermion sites (N=8 qubits)."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.14196__2509.14196_p1_6a5c89d11ca6903d__1766183131072.png": {
+    "arxiv_id": "2509.14196",
+    "figure": 4,
+    "page": 7,
+    "label": "fig:second-trotter-optimized",
+    "gates": [
+      "U",
+      "HATU",
+      "SWAP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit of the optimized second-order Trotterization with three Trotter steps r=3."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.14196__2509.14196_p1_559b23323a946c9a__1766183132793.png": {
+    "arxiv_id": "2509.14196",
+    "figure": 10,
+    "page": 15,
+    "label": "fig:pauli_twriling",
+    "gates": [
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A circuit diagram for Pauli twirling for gate. At positions 1,2,3, and 4, Pauli gates, { I, σ^x, σ^y, σ^z } are placed."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.22295__2410.22295_p1_c8b35514ba2e7def__1766183138553.png": {
+    "arxiv_id": "2410.22295",
+    "figure": 10,
+    "page": 27,
+    "label": "fig:ZZZZ",
+    "gates": [
+      "X1Z1",
+      "X2Z2",
+      "X3Z3",
+      "X4Z4",
+      "CNOT",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "ZZZZ check."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.22295__2410.22295_p1_b3ab9c868845d685__1766183140808.png": {
+    "arxiv_id": "2410.22295",
+    "figure": 11,
+    "page": 28,
+    "label": "fig:XXXX",
+    "gates": [
+      "X1Z1",
+      "X2Z2",
+      "X3Z3",
+      "CNOT",
+      "H",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "XXXX check following ZZZZ check."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.22295__2410.22295_p1_5639fab39719cc7e__1766183142602.png": {
+    "arxiv_id": "2410.22295",
+    "figure": 5,
+    "page": 10,
+    "label": "fig:Bell",
+    "gates": [
+      "XZ"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "|B x,z⟩"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.22295__2410.22295_p1_2b32f8c33c06ba0f__1766183146023.png": {
+    "arxiv_id": "2410.22295",
+    "page": 3,
+    "label": "fig:bilateral-XOR",
+    "gates": [
+      "X1Z1",
+      "X2Z2",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Bilateral XOR applied after Pauli noise, x,z denotes the application of the Pauli error X^xZ^z."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.22295__2410.22295_p2_3f999aa7a88cb2ca__1766183146116.png": {
+    "arxiv_id": "2410.22295",
+    "page": 3,
+    "label": "fig:bilateral-XOR",
+    "gates": [
+      "XZ",
+      "H"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Bilateral XOR applied after Pauli noise, x,z denotes the application of the Pauli error X^xZ^z."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.22295__2410.22295_p1_17dfe687c9848a05__1766183151906.png": {
+    "arxiv_id": "2410.22295",
+    "page": 13,
+    "label": "fig:Z",
+    "gates": [
+      "X1Z1",
+      "X2Z2",
+      "CNOT",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Z-Recurrence, state before measurement:|B x 1,z 1⊕ z 2⟩|B x 1⊕ x 2,z 2⟩"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.22295__2410.22295_p2_3e05005c9848668f__1766183151984.png": {
+    "arxiv_id": "2410.22295",
+    "page": 13,
+    "label": "fig:Z",
+    "gates": [
+      "X1Z1",
+      "X2Z2",
+      "H",
+      "CNOT",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Z-Recurrence, state before measurement:|B x 1,z 1⊕ z 2⟩|B x 1⊕ x 2,z 2⟩"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.22295__2410.22295_p3_67a3da8b47525f1d__1766183152069.png": {
+    "arxiv_id": "2410.22295",
+    "page": 13,
+    "label": "fig:Z",
+    "gates": [
+      "X1Z1",
+      "X2Z2",
+      "CNOT",
+      "H",
+      "MEASURE"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Z-Recurrence, state before measurement:|B x 1,z 1⊕ z 2⟩|B x 1⊕ x 2,z 2⟩"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2503.09214__2503.09214_p1_9b5779342c75386c__1766183158161.png": {
+    "arxiv_id": "2503.09214",
+    "page": 45,
+    "label": "fig:app:circuit_blocks_one_body_exci",
+    "gates": [
+      "EXPIFRACTHETA"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The circuit representation of the exponential operators obtained from the single excitation operator pool in Eq. (<ref>). Here, σ i ∈{X,Y} and R i = {H, HS^†}. If σ i = X then R i=H and if σ i = Y then R i=HS^†."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2503.09214__2503.09214_p2_8690eb41d4d2ef69__1766183158228.png": {
+    "arxiv_id": "2503.09214",
+    "page": 45,
+    "label": "fig:app:circuit_blocks_one_body_exci",
+    "gates": [
+      "R1",
+      "R2",
+      "CNOT",
+      "RZTHETA",
+      "RDG1",
+      "RDG2"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The circuit representation of the exponential operators obtained from the single excitation operator pool in Eq. (<ref>). Here, σ i ∈{X,Y} and R i = {H, HS^†}. If σ i = X then R i=H and if σ i = Y then R i=HS^†."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2503.09214__2503.09214_p1_0b518ed337438d38__1766183162739.png": {
+    "arxiv_id": "2503.09214",
+    "page": 45,
+    "label": "fig:app:circuit_blocks_two_body_exci",
+    "gates": [
+      "EXPIFRACTHETA"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The circuit representation of the exponential operators obtained from the double excitation operator pool in Eq. (<ref>). Here, σ i ∈{X,Y} and R i = {H, HS^†}. If σ i = X then R i=H and if σ i = Y then R i=HS^†."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2503.09214__2503.09214_p2_f85cd35daf365bfa__1766183162818.png": {
+    "arxiv_id": "2503.09214",
+    "page": 45,
+    "label": "fig:app:circuit_blocks_two_body_exci",
+    "gates": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "CNOT",
+      "RZTHETA",
+      "RDG1",
+      "RDG2",
+      "RDG3",
+      "RDG4"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The circuit representation of the exponential operators obtained from the double excitation operator pool in Eq. (<ref>). Here, σ i ∈{X,Y} and R i = {H, HS^†}. If σ i = X then R i=H and if σ i = Y then R i=HS^†."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2503.09214__2503.09214_p1_79a7b1936391e47f__1766183165466.png": {
+    "arxiv_id": "2503.09214",
+    "page": 46,
+    "label": "fig:app:OH_circuit",
+    "gates": [
+      "UTEXTHF",
+      "TEXTEXP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The qubit-ADAPT(3,3) circuit for the hydroxyl radical (OH^∙) molecule. The circuit representation of the exponential operators are shown in Figs. <ref> and <ref>, and U HF=X 0 X 1 X 3 prepares the Hartree-Fock state. The circuit parameters are given in (<ref>)."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2503.09214__2503.09214_p1_91c36538ac2a04f4__1766183167820.png": {
+    "arxiv_id": "2503.09214",
+    "page": 48,
+    "label": "fig:app:NO_circuit",
+    "gates": [
+      "UTEXTHF",
+      "TEXTEXP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The qubit-ADAPT(3,3) circuit for the nitric oxide (NO^∙) molecule. The circuit representation of the exponential operators are shown in Figs. <ref> and <ref>, and U HF=X 0 X 1 X 3 prepares the Hartree-Fock state."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2503.09214__2503.09214_p1_e4ed181b7f154dbf__1766183170105.png": {
+    "arxiv_id": "2503.09214",
+    "page": 46,
+    "label": "fig:app:OH+_circuit",
+    "gates": [
+      "UTEXTHF",
+      "TEXTEXP"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "The qubit-ADAPT(4,4) circuit for the hydroxyl cation (OH^+) molecule. The circuit representation of the exponential operators are shown in Figs. <ref> and <ref>, and U HF=X 0 X 1 X 2 X 4 prepares the Hartree-Fock state. The circuit parameters are given in (<ref>)."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.19827__2504.19827_p1_37d12289860535e3__1766183180204.png": {
+    "arxiv_id": "2504.19827",
+    "page": 7,
+    "label": "fig:nr",
+    "gates": [
+      "MATHRMNRS",
+      "PRODD0",
+      "MATHRMNR"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Full quantum Newton-Raphson method. The Newton-Raphson steps (NRS) are described in <ref>."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.19827__2504.19827_p1_3759320e172831bf__1766183185866.png": {
+    "arxiv_id": "2504.19827",
+    "page": 13,
+    "label": "fig:kronecker",
+    "gates": [
+      "MATHRMCNOT",
+      "XOTIMESR",
+      "CNOT"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit for the Kronecker delta operation for two r-qubit registers |a⟩ and |b⟩. The CNOT^⊗ r represents r parallel CNOT gates while the center gate is an r-qubit controlled NOT gate with r-2 hidden ancilla qubits."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.19827__2504.19827_p1_277af9e38f2c79fb__1766183190617.png": {
+    "arxiv_id": "2504.19827",
+    "figure": 16,
+    "page": 20,
+    "label": "fig:conjunction",
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit and Venn diagrams for the conjunction (, and) and the disjunction (, or) operation in (a) and (b), respectively. A and B are boolean variables being either 0 or 1 for and ."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.19827__2504.19827_p2_9ad534e84468ccff__1766183190689.png": {
+    "arxiv_id": "2504.19827",
+    "figure": 16,
+    "page": 20,
+    "label": "fig:conjunction",
+    "gates": [
+      "X",
+      "TOFFOLI"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit and Venn diagrams for the conjunction (, and) and the disjunction (, or) operation in (a) and (b), respectively. A and B are boolean variables being either 0 or 1 for and ."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2505.12937__2505.12937_p1_dac030b3aee747a7__1766183215954.png": {
+    "arxiv_id": "2505.12937",
+    "figure": 6,
+    "page": 9,
+    "label": "Fig: BS by ZBS",
+    "gates": [
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Implementation of a beamsplitter operation using the ZBS gate. When the internal qubit is prepared in a computational basis state, the ZBS gate implements a beamsplitter operation in a phononic network. In this case, the internal qubit is initialized in the ground state ↓."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2505.12937__2505.12937_p1_afa0d5ed348ef3b9__1766183218580.png": {
+    "arxiv_id": "2505.12937",
+    "figure": 10,
+    "page": 13,
+    "label": "Fig: CBS with BS and ZBS",
+    "gates": [
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "CBS gate implementation using a ZBS gate and a beamsplitter operator, based on the relation between σ̂ z and 1 1."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2505.12937__2505.12937_p1_55b45b9bbaee8ba2__1766183220217.png": {
+    "arxiv_id": "2505.12937",
+    "figure": 20,
+    "page": 25,
+    "label": "Fig: QND with ZBS",
+    "gates": [
+      "HATMATHCALR",
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "QND measurements for total number parity with the ZBS gate. When the modes are in the Fock states, the internal qubit encodes the total number parity of the two modes without changing their states."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.18347__2407.18347_p1_c20c2b9089a5e766__1766183236501.png": {
+    "arxiv_id": "2407.18347",
+    "figure": 4,
+    "page": 24,
+    "label": "fig:dirichlet lcu circuit",
+    "gates": [
+      "H",
+      "DD",
+      "TEXTSCPREP",
+      "CTRL-SLJRALJ",
+      "SLJ",
+      "DDDG"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit for LCU of second derivative operator with boundary conditions on a simply or non-simply connected domain in d-dimensions using low-order stencil ℒ^(BC). The subnormalization 4 d results from λ = 4 for the 3 point stencil, which we then combine d times. Here we use the notation prep as the unitary which prepares the finite difference coefficients on the stencil register and D d as the unitary which prepares the equal superposition over d states on the dim register where S^j l refers to the modular increment-by-j operator in direction l. We use the ⊘ convention to mean controlled over every state. Appending an additional register of log(η) qubits and selecting over shift operators both in dimension and particle indices will implement the η-particle Laplacian over d-dimensions."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.18347__2407.18347_p1_08ff024de317d119__1766183239102.png": {
+    "arxiv_id": "2407.18347",
+    "page": 4,
+    "label": "fig:enter-label",
+    "gates": [
+      "H",
+      "TEXTSCDOM",
+      "UL",
+      "CTRL-UF",
+      "CTRL-UB"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "Quantum circuit to implement (2(λ + β), m+l)-block encoding of a finite difference approximation to the differential operator with arbitrary boundary conditions. dom is an oracle which marks each point |x⟩ in the [N^d] with a two-bit label |x⟩|b 0,b 1⟩, with '0 0' indicating interior points, '0 1' indicating boundary points and '1 0' indicating exterior points. Here, U L is a block encoding of the differential operator defined with periodic boundary conditions on [0,L]^d in matrix form and U B is a block encoding of the Dirichlet, Neumann, or Robin boundary condition in matrix form. U f implements the unitary transformation |b 0,b 1⟩→ (-1)^b 0⊕ b 1|b 0,b 1⟩ and U f' implements |b 0,b 1⟩→ (-1)^b 0⊕ 1 ⊕ b 1|b 0,b 1⟩, to cause the summed operators to be projected onto the appropriate boundary modes. Because dom is not restricted to marking points that correspond to a domain with orthogonal boundary faces, this procedure can be used to implement a broad family of boundary conditions."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2502.06463__2502.06463_p1_c46d791464dfd4f4__1766183243190.png": {
+    "arxiv_id": "2502.06463",
+    "figure": 1,
+    "page": 3,
+    "label": "fig:basecircuitForwardEvolution",
+    "gates": [
+      "MATHCALI",
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A depiction of ℬ(ℋ , t, ϵ, 0), that is equivalent to e^-i ℋ t."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2502.06463__2502.06463_p1_15184d0489f1a20b__1766183245231.png": {
+    "arxiv_id": "2502.06463",
+    "figure": 2,
+    "page": 3,
+    "label": "fig:basecircuitInversionSubcircuit",
+    "gates": [
+      "MATHCALB",
+      "U"
+    ],
+    "quantum_problem": null,
+    "descriptions": [
+      "A depiction of a subcircuit, ℬ(ℋ, t, ϵ, 1), that is approximately equal to e^i ℋ t/(L - 1), where each ℬ^(k) j is an independent – from all other ℬ^(k) j – uniformly chosen element of the relevant 𝔾 ℋ'."
     ],
     "text_positions": [
       [

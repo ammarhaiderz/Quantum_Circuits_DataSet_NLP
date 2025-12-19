@@ -1,0 +1,30 @@
+{
+  "source": "2502.06463",
+  "blocks_count": 3,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2502.06463\\raw_blocks\\2502.06463_p1_e4d35e1048472fe7.tex",
+      "length": 92,
+      "block_id": "2502.06463_e4d35e1048472fe7",
+      "panel": 1,
+      "label": "fig:redactionClassExample"
+    },
+    {
+      "index": 1,
+      "block_file": "2502.06463\\raw_blocks\\2502.06463_p2_4af9ca5301286338.tex",
+      "length": 92,
+      "block_id": "2502.06463_4af9ca5301286338",
+      "panel": 2,
+      "label": "fig:redactionClassExample"
+    },
+    {
+      "index": 2,
+      "block_file": "2502.06463\\raw_blocks\\2502.06463_p3_cf484b834b91e023.tex",
+      "length": 92,
+      "block_id": "2502.06463_cf484b834b91e023",
+      "panel": 3,
+      "label": "fig:redactionClassExample"
+    }
+  ]
+}

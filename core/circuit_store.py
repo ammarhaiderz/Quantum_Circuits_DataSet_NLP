@@ -11,6 +11,16 @@ except Exception:
     fitz = None
 
 from config.settings import PDF_CACHE_DIR, USE_STOPWORDS, NORMALIZE_HYPHENS
+try:
+    from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+except Exception:
+    ENGLISH_STOP_WORDS = set()
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+except Exception:
+    TfidfVectorizer = None
+    cosine_similarity = None
 
 DATA_DIR = Path('data')
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -345,57 +355,37 @@ def _tokenize_for_comparison(text: str, is_latex: bool = False, min_len: int = 3
 
 
 def _compute_tfidf_similarity(query_tokens: Counter, doc_tokens_list: list[Counter]) -> list[float]:
-    """Compute TF-IDF cosine similarity between a query token Counter and
-    a list of document token Counters. Returns list of similarity scores.
+    if TfidfVectorizer is None or cosine_similarity is None:
+        return [0.0] * len(doc_tokens_list)
 
-    Lightweight TF-IDF implementation (no external deps):
-    - tf = term_count / doc_length
-    - idf = log((N + 1) / (df + 1)) + 1
-    - tf-idf vector built from vocabulary across docs+query
-    - cosine similarity between query vector and each doc vector
-    """
-    # Build document frequencies
-    N = len(doc_tokens_list)
-    df = defaultdict(int)
+    # Build texts as UNIQUE tokens only (presence-based)
+    query_text = " ".join(query_tokens.keys())
+    doc_texts = [" ".join(d.keys()) for d in doc_tokens_list]
+
+    # Caption-constrained vocabulary
+    vocab = set(query_tokens.keys())
     for d in doc_tokens_list:
-        for term in d.keys():
-            df[term] += 1
-    # include query terms in df if absent
-    for t in query_tokens.keys():
-        if t not in df:
-            df[t] += 0
+        vocab.update(d.keys())
 
-    # compute idf
-    idf = {t: math.log((N + 1) / (df.get(t, 0) + 1)) + 1.0 for t in set(df) | set(query_tokens.keys())}
+    if USE_STOPWORDS:
+        stopset = set(ENGLISH_STOP_WORDS)
+        vocab = {t for t in vocab if (t not in stopset) or (t in query_tokens)}
 
-    # helper to build tf-idf vector
-    def tfidf_vec(counter: Counter) -> dict:
-        l = sum(counter.values())
-        if l == 0:
-            return {}
-        vec = {}
-        for t, c in counter.items():
-            tf = c / l
-            vec[t] = tf * idf.get(t, 1.0)
-        return vec
+    if not vocab:
+        return [0.0] * len(doc_texts)
 
-    qvec = tfidf_vec(query_tokens)
-    # precompute norm of qvec
-    qnorm = math.sqrt(sum(v * v for v in qvec.values()))
-    scores = []
-    for d in doc_tokens_list:
-        dvec = tfidf_vec(d)
-        dnorm = math.sqrt(sum(v * v for v in dvec.values()))
-        if qnorm == 0 or dnorm == 0:
-            scores.append(0.0)
-            continue
-        # dot product
-        dot = 0.0
-        for t, qv in qvec.items():
-            dv = dvec.get(t, 0.0)
-            dot += qv * dv
-        scores.append(dot / (qnorm * dnorm))
-    return scores
+    vec = TfidfVectorizer(
+        vocabulary=sorted(vocab),
+        tokenizer=str.split,
+        lowercase=False,
+        ngram_range=(1, 1),
+        norm="l2"
+    )
+
+    mat = vec.fit_transform([query_text] + doc_texts)
+    sims = cosine_similarity(mat[0], mat[1:])[0]
+
+    return sims.tolist()
 
 
 def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.08) -> tuple[int, int | None] | None:

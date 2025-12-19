@@ -1,0 +1,30 @@
+{
+  "source": "2412.13160",
+  "blocks_count": 3,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2412.13160\\raw_blocks\\2412.13160_p1_d9263ae9aa8c709d.tex",
+      "length": 433,
+      "block_id": "2412.13160_d9263ae9aa8c709d",
+      "panel": 1,
+      "label": "fig:U_BE"
+    },
+    {
+      "index": 1,
+      "block_file": "2412.13160\\raw_blocks\\2412.13160_p2_8028fb648ab53d7e.tex",
+      "length": 368,
+      "block_id": "2412.13160_8028fb648ab53d7e",
+      "panel": 2,
+      "label": "fig:U_BE"
+    },
+    {
+      "index": 2,
+      "block_file": "2412.13160\\raw_blocks\\2412.13160_p3_a055a24ffa2906a3.tex",
+      "length": 473,
+      "block_id": "2412.13160_a055a24ffa2906a3",
+      "panel": 3,
+      "label": "fig:U_BE"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+\begin{quantikz}
+    \lstick{$\ket{0}^{\otimes2}$}&\gate{S^2}
+    \gategroup[5,steps=8,style={dashed,rounded
+    corners,fill=blue!20, inner
+    xsep=2pt},background,label style={label
+    position=below,anchor=north,yshift=-0.2cm}]{{$(\zeta, \ceil{\log(n+1)}+ 2\ceil{\log(d)}+\ceil{\log(p)}+6)$-BE$({\nabla^i V_{ij} \cdot \nabla^i})$}}
+    &&&\gate{S^{-1}}\vqw{2}&&&&\gate{S^{-1}}\vqw{2}&\rstick{$\bra{0}^{\otimes 2}$}\\    \lstick{$\ket{0}^{\otimes\ceil{\log(d)}}$}&\gate{D(d)}&\oslash\vqw{1}&&&&\oslash\vqw{1}&\gate{D^\dagger(d)}&&\rstick{$\bra{0}^{\otimes \ceil{\log(d)}}$}\\
+    \lstick{$\ket{0}^{\otimes \ceil{\log(p)}}$}&\gate[1]{\textsc{prep}_D}&\gate[2]{\textsc{sel}^{i}_k(D)}&\gate{\textsc{prep}_D^\dag}&\octrl{0}&\gate{\textsc{prep}_D}&\gate[3]{\textsc{sel}_{k}^{ij}(V)}&\gate[1]{\textsc{prep}_D^\dag}&\octrl{0}&\rstick{$\bra{0}^{\otimes \ceil{\log(p)}}$}\\
+    \lstick{$\ket{b}$}& & & &\hphantomgate{0} & & &&&\\
+    \lstick{$\ket{0}$}&\qwbundle{anc}&&&\hphantomgate{0}&&&&& \rstick{$\bra{0}$}
+    \end{quantikz}
