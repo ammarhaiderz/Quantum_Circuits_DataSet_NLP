@@ -4,6 +4,7 @@ Main pipeline for quantum circuit image extraction.
 
 import pandas as pd
 from typing import List, Tuple
+import re
 import tarfile
 import os
 import shutil
@@ -65,8 +66,6 @@ class ExtractionPipeline:
         # Ensure common subdirectories exist after cleanup
         (ci / 'live_blocks').mkdir(parents=True, exist_ok=True)
         (ci / 'rendered_pdflatex').mkdir(parents=True, exist_ok=True)
-        (ci / 'blocks').mkdir(parents=True, exist_ok=True)
-        (ci / 'rendered').mkdir(parents=True, exist_ok=True)
 
         # Clear output directory (also clears OUTPUT_DIR images)
         self.image_extractor.clear_output_dir()
@@ -139,20 +138,115 @@ class ExtractionPipeline:
         # Extract figures from LaTeX
         figures = []
         figure_counter = 1
+
+        # Heuristic: only process .tex files that are actually included from a
+        # root document. Many arXiv source tarballs contain extra/auxiliary .tex
+        # files that are not part of the compiled PDF; scanning only included
+        # files avoids rendering unrelated circuits.
         try:
+            # Read all .tex members first
+            tex_members = {}
             for m in tar.getmembers():
-                if m.name.endswith(".tex"):
+                if m.name.endswith('.tex'):
                     try:
-                        tex = tar.extractfile(m).read().decode("utf-8", "ignore")
-                        res = self.image_extractor.extract_figures_from_tex(tex, paper_id=paper_id)
-                        # extract_figures_from_tex now may return (figures, figure_counter)
-                        if isinstance(res, tuple):
-                            new_figs, figure_counter = res
-                            figures.extend(new_figs)
+                        tex_members[m.name] = tar.extractfile(m).read().decode('utf-8', 'ignore')
+                    except Exception:
+                        tex_members[m.name] = ''
+
+            def find_included_tex_names(tex_dict: dict) -> set:
+                r"""Return set of tex member names that are directly referenced from a
+                single chosen main/root file.
+
+                Behavior changed: do NOT recursively traverse included files. Only
+                parse the chosen root's text for top-level \input/\include/.. targets
+                and match those targets against archive member names (by suffix).
+                """
+                include_re = re.compile(r"\\(?:input|include|subfile|import|subimport)\{([^}]+)\}")
+
+                # choose a single main root as before (prefer \documentclass)
+                docclass_roots = [name for name, txt in tex_dict.items() if '\\documentclass' in txt]
+                if docclass_roots:
+                    if 'main.tex' in docclass_roots:
+                        root = 'main.tex'
+                    else:
+                        root = sorted(docclass_roots, key=lambda s: (s.count('/'), len(s)))[0]
+                else:
+                    begin_roots = [name for name, txt in tex_dict.items() if '\\begin{document}' in txt]
+                    if begin_roots:
+                        root = sorted(begin_roots, key=lambda s: (s.count('/'), len(s)))[0]
+                    else:
+                        tops = [name for name in tex_dict.keys() if '/' not in name and '\\' not in name]
+                        if tops:
+                            root = tops[0]
                         else:
-                            figures.extend(res)
-                    except Exception as e:
-                        print(f"⚠️ Failed to parse {m.name}: {e}")
+                            root = sorted(tex_dict.keys(), key=lambda s: (s.count('/'), len(s)))[0]
+
+                # Start with root itself
+                referenced = set([root])
+                txt = tex_dict.get(root, '')
+                for mm in include_re.finditer(txt):
+                    ref = mm.group(1).strip()
+                    # normalize: remove leading ./ and trailing .tex
+                    ref_norm = ref.lstrip('./')
+                    if ref_norm.endswith('.tex'):
+                        ref_norm = ref_norm[:-4]
+
+                    # match against available member names by suffix only (no recursion)
+                    for member_name in tex_dict.keys():
+                        cand = member_name
+                        cand_norm = cand[:-4] if cand.endswith('.tex') else cand
+                        if cand_norm == ref_norm or cand_norm.endswith('/' + ref_norm) or cand_norm.endswith(ref_norm):
+                            referenced.add(member_name)
+
+                return referenced
+
+            included_names = find_included_tex_names(tex_members)
+
+            # If nothing found (empty included_names), fall back to processing all .tex files
+            if not included_names:
+                included_iter = [name for name in tex_members.keys()]
+                chosen_root = None
+            else:
+                included_iter = included_names
+                # the find_included_tex_names now selects a single root; try to surface it
+                # find the single root as the one that is referenced but not referenced by others
+                chosen_root = None
+                # attempt to infer root by checking which included file appears at start of traversal
+                # (we used a deterministic choice in traversal - select the first of included_iter by path depth)
+                try:
+                    chosen_root = sorted(list(included_iter), key=lambda s: (s.count('/'), len(s)))[0]
+                except Exception:
+                    chosen_root = None
+
+            # Debug: report which .tex files are being skipped to help triage auxiliary files
+            try:
+                if ENABLE_DEBUG_PRINTS:
+                    all_names = set(tex_members.keys())
+                    skipped = sorted(list(all_names - set(included_iter)))
+                    if chosen_root:
+                        print(f"   [INFO] Chosen main root .tex: {chosen_root}")
+                    # Print the canonical included list (sorted) so the chosen root is obvious
+                    try:
+                        inc_list = sorted(list(included_iter), key=lambda s: (s.count('/'), s))
+                    except Exception:
+                        inc_list = list(included_iter)
+                    print(f"   [INFO] Included .tex files ({len(inc_list)}): {inc_list}")
+                    if skipped:
+                        print(f"   [INFO] Skipping {len(skipped)} auxiliary .tex files (not included by root): {skipped[:10]}{'...' if len(skipped)>10 else ''}")
+            except Exception:
+                pass
+
+            for name in included_iter:
+                try:
+                    tex = tex_members.get(name, '')
+                    res = self.image_extractor.extract_figures_from_tex(tex, paper_id=paper_id)
+                    if isinstance(res, tuple):
+                        new_figs, figure_counter = res
+                        figures.extend(new_figs)
+                    else:
+                        figures.extend(res)
+                except Exception as e:
+                    print(f"⚠️ Failed to parse {name}: {e}")
         except KeyboardInterrupt:
             # Ensure tarfile is closed on user interrupt and re-raise to allow
             # program to terminate normally.

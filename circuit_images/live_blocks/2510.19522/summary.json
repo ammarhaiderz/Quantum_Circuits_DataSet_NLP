@@ -1,0 +1,15 @@
+{
+  "source": "2510.19522",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2510.19522\\raw_blocks\\2510.19522_fig1p1_ec6932e7126f4e99.tex",
+      "length": 533,
+      "block_id": "2510.19522_ec6932e7126f4e99",
+      "figure_number": 1,
+      "panel": 1,
+      "label": "fig:2qubits_circuit"
+    }
+  ]
+}

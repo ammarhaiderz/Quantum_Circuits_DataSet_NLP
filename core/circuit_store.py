@@ -1,14 +1,16 @@
 import json
 from pathlib import Path
 import re
-from difflib import SequenceMatcher
+import unicodedata
+from collections import Counter, defaultdict
+import math
 
 try:
     import fitz
 except Exception:
     fitz = None
 
-from config.settings import PDF_CACHE_DIR
+from config.settings import PDF_CACHE_DIR, USE_STOPWORDS, NORMALIZE_HYPHENS
 
 DATA_DIR = Path('data')
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -110,31 +112,6 @@ def _regenerate_json():
         except Exception:
             raise
 
-    # Latex-specific checkpoint: count records that came from `live_blocks` (code-block extraction)
-    try:
-        # identify latex records by presence of 'live_blocks' in raw_block_file
-        latex_records = [r for r in records_dict.values() if r.get('raw_block_file') and 'live_blocks' in r.get('raw_block_file')]
-        latex_count = len(latex_records)
-        if latex_count >= 250:
-            # load existing latex meta if present
-            try:
-                existing = json.loads(LATEX_META_PATH.read_text(encoding='utf-8')) if LATEX_META_PATH.exists() else {}
-            except Exception:
-                existing = {}
-
-            if 'papers_for_250_images' not in existing:
-                papers = len({rec.get('arxiv_id') for rec in latex_records if rec.get('arxiv_id')})
-                meta = {
-                    'papers_for_250_images': papers,
-                    'images_at_record': latex_count,
-                    'timestamp': int(__import__('time').time())
-                }
-                try:
-                    LATEX_META_PATH.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding='utf-8')
-                except Exception:
-                    pass
-    except Exception:
-        pass
 
 def _normalize_text(s: str) -> str:
     """Normalize text for comparison."""
@@ -158,17 +135,145 @@ def _clean_caption_for_search(caption: str) -> str:
     
     return cleaned
 
+def _tokenize_for_comparison(text: str, is_latex: bool = False, min_len: int = 3):
+    """Normalize and tokenize text for caption comparison.
 
-def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.5) -> int:
+    - If `is_latex` and `pylatexenc` is available, convert LaTeX to plain text.
+    - Normalize unicode (NFKC), remove soft-hyphens, strip combining marks.
+    - Lowercase and extract words with length >= `min_len`.
+    - Return a set of word tokens.
+    """
+    if not text:
+        return set()
+
+    s = text
+    if is_latex:
+        try:
+            from pylatexenc.latex2text import LatexNodes2Text
+            s = LatexNodes2Text().latex_to_text(s)
+        except Exception:
+            # fallback: remove simple \command{...} constructs
+            s = re.sub(r"\\[a-zA-Z]+\{[^}]*\}", " ", s)
+
+    # remove soft hyphen and non-printing spaces
+    s = s.replace('\u00AD', '')
+    s = s.replace('\xa0', ' ')
+    # optional: normalize hyphenation across line breaks (e.g. "multi-\nqubit" -> "multiqubit")
+    if NORMALIZE_HYPHENS:
+        s = re.sub(r"-\s+", "", s)
+
+    # Unicode normalize and remove combining marks
+    s = unicodedata.normalize('NFKD', s)
+    s = ''.join(ch for ch in s if not unicodedata.category(ch).startswith('M'))
+    s = unicodedata.normalize('NFKC', s)
+
+    s = s.lower()
+    # collapse whitespace
+    s = re.sub(r"\s+", " ", s).strip()
+
+    # Domain whitelist: keep these even if short
+    DOMAIN_WHITELIST = {
+        'cx', 'cnot', 'ccx', 'rccx', 'toffoli', 'mcx', 'measure', 'measurements',
+        'h', 'x', 'y', 'z', 'u', 'mct', 'mcx'
+    }
+
+    # small stopword list (keeps domain tokens)
+    STOPWORDS = {
+        'a', 'an', 'and', 'the', 'of', 'in', 'on', 'for', 'to', 'is', 'are', 'be', 'by',
+        'with', 'that', 'this', 'it', 'as', 'from', 'at', 'which', 'or', 'we', 'will',
+        'can', 'our', 'such', 'these', 'those', 'their', 'has', 'have', 'was', 'were',
+        'but', 'not', 'also', 'than', 'then', 'itself'
+    }
+
+    # extract all word-like tokens then filter
+    raw_tokens = re.findall(r"\w+", s)
+    tokens_final = []
+    for t in raw_tokens:
+        if not t:
+            continue
+        # drop long numeric sequences (arXiv ids, page numbers, years)
+        if re.search(r"\d{3,}", t):
+            continue
+        # drop purely numeric tokens
+        if t.isdigit():
+            continue
+
+        # apply min length unless whitelisted domain token
+        if len(t) < min_len and t not in DOMAIN_WHITELIST:
+            continue
+
+        # stopword removal (configurable)
+        if USE_STOPWORDS and t in STOPWORDS and t not in DOMAIN_WHITELIST:
+            continue
+
+        tokens_final.append(t)
+
+    return set(tokens_final)
+
+
+def _compute_tfidf_similarity(query_tokens: Counter, doc_tokens_list: list[Counter]) -> list[float]:
+    """Compute TF-IDF cosine similarity between a query token Counter and
+    a list of document token Counters. Returns list of similarity scores.
+
+    Lightweight TF-IDF implementation (no external deps):
+    - tf = term_count / doc_length
+    - idf = log((N + 1) / (df + 1)) + 1
+    - tf-idf vector built from vocabulary across docs+query
+    - cosine similarity between query vector and each doc vector
+    """
+    # Build document frequencies
+    N = len(doc_tokens_list)
+    df = defaultdict(int)
+    for d in doc_tokens_list:
+        for term in d.keys():
+            df[term] += 1
+    # include query terms in df if absent
+    for t in query_tokens.keys():
+        if t not in df:
+            df[t] += 0
+
+    # compute idf
+    idf = {t: math.log((N + 1) / (df.get(t, 0) + 1)) + 1.0 for t in set(df) | set(query_tokens.keys())}
+
+    # helper to build tf-idf vector
+    def tfidf_vec(counter: Counter) -> dict:
+        l = sum(counter.values())
+        if l == 0:
+            return {}
+        vec = {}
+        for t, c in counter.items():
+            tf = c / l
+            vec[t] = tf * idf.get(t, 1.0)
+        return vec
+
+    qvec = tfidf_vec(query_tokens)
+    # precompute norm of qvec
+    qnorm = math.sqrt(sum(v * v for v in qvec.values()))
+    scores = []
+    for d in doc_tokens_list:
+        dvec = tfidf_vec(d)
+        dnorm = math.sqrt(sum(v * v for v in dvec.values()))
+        if qnorm == 0 or dnorm == 0:
+            scores.append(0.0)
+            continue
+        # dot product
+        dot = 0.0
+        for t, qv in qvec.items():
+            dv = dvec.get(t, 0.0)
+            dot += qv * dv
+        scores.append(dot / (qnorm * dnorm))
+    return scores
+
+
+def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.02) -> int | None:
     """Find page number (1-based) in the cached PDF matching the caption.
 
-    Uses multiple robust strategies with PyMuPDF:
-    1. Clean caption text and use PyMuPDF's search_for() for fuzzy matching
-    2. Extract distinctive phrases (5-10 words) and search for those
-    3. Search for circuit-related keywords near caption words
-    4. Fallback to word overlap with reasonable threshold
-    
-    Returns page number or None when not found.
+    TF-IDF based approach:
+    - Preprocess LaTeX caption into normalized tokens (no minimum length)
+    - For each PDF page build candidate caption windows (anchor windows if anchors
+      present, otherwise whole page)
+    - Compute TF-IDF cosine similarity between the caption and each window
+    - Return the page of the best-scoring window if score >= threshold
     """
     if fitz is None:
         return None
@@ -182,95 +287,89 @@ def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.5
     except Exception:
         return None
 
-    # Clean the caption
     clean_caption = _clean_caption_for_search(caption)
-    if not clean_caption or len(clean_caption) < 10:
+    if not clean_caption:
         try:
             doc.close()
         except:
             pass
         return None
 
-    # Strategy 1: Use PyMuPDF's search_for with distinctive phrases
-    # Extract first meaningful 8-15 words (skip very short captions)
-    words = clean_caption.split()
-    if len(words) >= 5:
-        # Try different phrase lengths for robustness
-        for phrase_len in [10, 8, 6, 5]:
-            if len(words) >= phrase_len:
-                search_phrase = " ".join(words[:phrase_len])
-                for page_num in range(doc.page_count):
-                    try:
-                        page = doc.load_page(page_num)
-                        # search_for returns list of Rect objects if found
-                        hits = page.search_for(search_phrase, quads=False)
-                        if hits:
-                            doc.close()
-                            return page_num + 1
-                    except:
-                        continue
-
-    # Strategy 2: Search for distinctive terms (longer words that are more unique)
-    distinctive_words = [w for w in words if len(w) > 6][:5]
-    if len(distinctive_words) >= 2:
-        # Try combinations of distinctive words
-        for i in range(len(distinctive_words) - 1):
-            phrase = f"{distinctive_words[i]} {distinctive_words[i+1]}"
-            for page_num in range(doc.page_count):
-                try:
-                    page = doc.load_page(page_num)
-                    hits = page.search_for(phrase, quads=False)
-                    if hits:
-                        doc.close()
-                        return page_num + 1
-                except:
-                    continue
-
-    # Strategy 3: Regex search for circuit/quantum keywords + caption fragments
-    circuit_keywords = r"(circuit|quantum|gate|qubit|implementation|algorithm)"
-    for page_num in range(doc.page_count):
+    # tokenize caption (allow single-char tokens)
+    qtokens = _tokenize_for_comparison(clean_caption, is_latex=True, min_len=1)
+    if not qtokens:
         try:
-            page = doc.load_page(page_num)
-            page_text = page.get_text("text").lower()
-            
-            # Check if page has circuit keywords and caption words nearby
-            if re.search(circuit_keywords, page_text):
-                # Count how many caption words appear on this page
-                caption_words = [w for w in words if len(w) > 3]
-                matches = sum(1 for w in caption_words[:15] if w.lower() in page_text)
-                if matches >= min(5, len(caption_words) * 0.6):
-                    doc.close()
-                    return page_num + 1
+            doc.close()
         except:
-            continue
+            pass
+        return None
 
-    # Strategy 4: Improved word overlap with better threshold
-    caption_words = [w for w in words if len(w) > 2][:20]  # Limit to first 20 meaningful words
-    best_match = None
-    best_ratio = 0
-    
-    for page_num in range(doc.page_count):
+    # Build candidate windows per page
+    anchor_re = re.compile(r"(?:Fig\.?|Figure)\s*\d+\b", re.IGNORECASE)
+    stop_re = re.compile(r"\b(?:Fig\.?|Figure|Table)\s*\d+\b", re.IGNORECASE)
+
+    page_candidates = []  # list of (page_num, window_text)
+    try:
+        for page_num in range(doc.page_count):
+            try:
+                page = doc.load_page(page_num)
+                page_text = page.get_text("text")
+            except Exception:
+                continue
+
+            text_norm = _normalize_text(page_text)
+
+            # find anchors; if none, use whole page as single candidate
+            anchors = list(anchor_re.finditer(text_norm))
+            if not anchors:
+                page_candidates.append((page_num, text_norm))
+                continue
+
+            for m in anchors:
+                start = m.end()
+                window = text_norm[start:start + 200]
+                # stop at next anchor/table reference
+                s = stop_re.search(window)
+                if s:
+                    window = window[:s.start()]
+                page_candidates.append((page_num, window))
+
+        # prepare token counters for each candidate
+        docs = []
+        pages = []
+        for pnum, win in page_candidates:
+            tokens = _tokenize_for_comparison(win, is_latex=False, min_len=1)
+            docs.append(Counter(tokens))
+            pages.append(pnum)
+
+        qcounter = Counter(_tokenize_for_comparison(clean_caption, is_latex=True, min_len=1))
+        if not docs:
+            try:
+                doc.close()
+            except:
+                pass
+            return None
+
+        scores = _compute_tfidf_similarity(qcounter, docs)
+        # find best score
+        best_idx = max(range(len(scores)), key=lambda i: scores[i])
+        best_score = scores[best_idx]
+        best_page = pages[best_idx]
+
         try:
-            page = doc.load_page(page_num)
-            page_text = _normalize_text(page.get_text("text"))
-            page_words = set(re.findall(r"\w{3,}", page_text))  # Words with 3+ chars
-            
-            if page_words:
-                match_count = sum(1 for w in caption_words if w in page_words)
-                ratio = match_count / max(1, len(caption_words))
-                if ratio > best_ratio:
-                    best_ratio = ratio
-                    best_match = page_num + 1
+            doc.close()
         except:
-            continue
+            pass
 
-    doc.close()
-    
-    # Return best match if it meets threshold
-    if best_ratio >= threshold:
-        return best_match
-    
-    return None
+        if best_score >= threshold:
+            return best_page + 1
+        return None
+    finally:
+        try:
+            doc.close()
+        except Exception:
+            pass
+
 
 
 def update_pages_in_jsonl(arxiv_id: str = None):

@@ -1,0 +1,22 @@
+\begin{quantikz}[row sep=0.6cm, column sep=0.2cm]
+    \lstick{$|x\rangle_i$} 
+      & \qw
+      & \gateO{*} \vqw{1}
+      & \gate{R_{0,1}(\theta_0)} \vqw{1} 
+      & \gate{R_{1,2}(\theta_1)} \vqw{1} 
+      & \ldots \ldots
+      & \gate{R_{2s-1,2s}(\theta_{2s-1})} \vqw{1} 
+      & \gateO{*} \vqw{1} 
+      & \qw
+      & \qw \\
+    \lstick{$|\underline{j}\rangle$} 
+      & \gate{{\rm X}_{\chi}}
+      & \gate{{\rm SUM}_{\chi}^\dagger} 
+      & \gateO{{\scriptscriptstyle l+1}} 
+      & \gateO{{\scriptscriptstyle l+1}} 
+      & \ldots \ldots
+      & \gateO{{\scriptscriptstyle l+1}} 
+      & \gate{{\rm SUM}_{\chi}}
+      & \gate{{\rm X}_{\chi}^{\dagger}}
+      & \qw
+  \end{quantikz}

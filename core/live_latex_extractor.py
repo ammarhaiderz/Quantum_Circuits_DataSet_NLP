@@ -5,7 +5,6 @@ from pathlib import Path
 import json
 import argparse
 import sys
-from core.latex_extractor import render_saved_blocks_with_pdflatex_module
 import shutil
 from typing import Optional
 import hashlib
@@ -15,9 +14,118 @@ except Exception:
     fitz = None
 import re
 import time
+from tqdm import tqdm
+import tempfile
+from utils.latex_utils_emb import render_saved_blocks
 
 # Global set to track processed block content hashes (prevents duplicates)
 _PROCESSED_BLOCKS = set()
+
+def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/blocks', out_dir: str = 'circuit_images/rendered_pdflatex'):
+	"""Render saved raw block files using the `pdflatex` Python wrapper (PDFLaTeX).
+
+	Falls back to the subprocess renderer if the module is not available.
+	"""
+	try:
+		from pdflatex import PDFLaTeX
+	except Exception:
+		print('pdflatex Python module not available; falling back to subprocess renderer')
+		return render_saved_blocks(blocks_root, out_dir)
+
+	blocks_root = Path(blocks_root)
+	out_dir = Path(out_dir)
+	out_dir.mkdir(parents=True, exist_ok=True)
+
+	tex_files = list(blocks_root.rglob('raw_blocks/*.tex'))
+	if not tex_files:
+		print(f'No raw block .tex files found under {blocks_root}')
+		return
+
+	# default wrapper uses qcircuit; per-file selection below will use quantikz if needed
+	wrapper = (
+		'\\documentclass[border=30pt]{standalone}\n'
+		'\\usepackage{amsmath}\n'
+		'\\usepackage{amssymb}\n'
+		'\\usepackage{braket}\n'
+		'\\usepackage{qcircuit}\n'
+		"% Fallback macro definitions for extracted snippets (non-invasive)\n"
+		"\\providecommand{\\psx}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\psr}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\pst}[1]{\\psi_{#1}}\n"
+		"\\providecommand{\\rec}{\\mathrm{Rec}}\n"
+		"\\providecommand{\\tra}{\\mathrm{Tr}}\n"
+		"\\providecommand{\\ora}{\\mathcal{O}}\n"
+		'\\begin{document}\n'
+		'{circuit_code}\n'
+		'\\end{document}\n'
+	)
+
+	for tex_path in tqdm(tex_files, desc='Rendering with pdflatex module'):
+		try:
+			block_text = tex_path.read_text(encoding='utf-8')
+		except Exception:
+			continue
+
+		# Build wrapper tex content and write a temp file; choose quantikz wrapper if block uses quantikz
+		lower = block_text.lower()
+		if ('quantikz' in lower) or ('\\begin{quantikz' in block_text):
+			content = (
+				'\\documentclass[border=30pt]{standalone}\n'
+				'\\usepackage{amsmath}\n'
+				'\\usepackage{amssymb}\n'
+				'\\usepackage{braket}\n'
+				'\\usepackage{tikz}\n'
+				'\\usepackage{quantikz}\n'
+				'\\begin{document}\n'
+				f"{block_text}\n"
+				'\\end{document}\n'
+			)
+		else:
+			content = wrapper.replace('{circuit_code}', block_text)
+		# Use temp directory to compile
+		with tempfile.TemporaryDirectory() as td:
+			td_path = Path(td)
+			tex_file = td_path / 'circuit.tex'
+			tex_file.write_text(content, encoding='utf-8')
+
+			try:
+				pdfl = PDFLaTeX.from_texfile(str(tex_file))
+				pdf_bytes, log_text, proc = pdfl.create_pdf(keep_pdf_file=True, keep_log_file=True)
+
+				# Normalize log_text to str before writing (pdflatex module may return bytes)
+				if isinstance(log_text, bytes):
+					try:
+						log_text_str = log_text.decode('utf-8', errors='replace')
+					except Exception:
+						log_text_str = str(log_text)
+				else:
+					log_text_str = str(log_text) if log_text is not None else ''
+
+				# Save log next to original block
+				log_path = tex_path.with_suffix('.pdflatex_module.log')
+				log_path.write_text(log_text_str, encoding='utf-8')
+
+				# Ensure pdf_bytes is bytes before writing
+				if proc and proc.returncode == 0 and pdf_bytes:
+					out_pdf = out_dir / (tex_path.stem + '.pdf')
+					if isinstance(pdf_bytes, str):
+						try:
+							pdf_bytes_to_write = pdf_bytes.encode('utf-8')
+						except Exception:
+							pdf_bytes_to_write = bytes(pdf_bytes)
+					else:
+						pdf_bytes_to_write = pdf_bytes
+					out_pdf.write_bytes(pdf_bytes_to_write)
+				else:
+					# fallback: copy any produced pdf from temp dir
+					produced = list(td_path.glob('*.pdf'))
+					if produced:
+						shutil.copyfile(produced[0], out_dir / (tex_path.stem + '.pdf'))
+
+			except Exception as e:
+				# save exception to log
+				log_path = tex_path.with_suffix('.pdflatex_module.err')
+				log_path.write_text(str(e), encoding='utf-8')
 
 def extract_qcircuit_blocks_from_text(text: str):
     """Extract both Qcircuit and quantikz circuit blocks from text.

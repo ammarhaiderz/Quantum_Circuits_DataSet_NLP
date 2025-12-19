@@ -1,24 +1,60 @@
 {
   "source": "2407.07758",
-  "blocks_count": 2,
+  "blocks_count": 6,
   "blocks": [
     {
       "index": 0,
-      "block_file": "2407.07758\\raw_blocks\\2407.07758_fig1p1_7b9c45d51426e517.tex",
-      "length": 200,
-      "block_id": "2407.07758_7b9c45d51426e517",
+      "block_file": "2407.07758\\raw_blocks\\2407.07758_fig1p1_bf8dd3b047440729.tex",
+      "length": 420,
+      "block_id": "2407.07758_bf8dd3b047440729",
       "figure_number": 1,
       "panel": 1,
-      "label": "fig:qubit-ccx"
+      "label": "fig:CNXglobal"
     },
     {
       "index": 1,
-      "block_file": "2407.07758\\raw_blocks\\2407.07758_fig2p2_ccdbe3fbdde2aeb3.tex",
-      "length": 844,
-      "block_id": "2407.07758_ccdbe3fbdde2aeb3",
+      "block_file": "2407.07758\\raw_blocks\\2407.07758_fig2p2_868523aad370e1b4.tex",
+      "length": 1202,
+      "block_id": "2407.07758_868523aad370e1b4",
       "figure_number": 2,
       "panel": 2,
-      "label": "fig:qubit-ccx"
+      "label": "fig:CNXglobal"
+    },
+    {
+      "index": 2,
+      "block_file": "2407.07758\\raw_blocks\\2407.07758_fig3p3_abe127fcb7dcdf08.tex",
+      "length": 343,
+      "block_id": "2407.07758_abe127fcb7dcdf08",
+      "figure_number": 3,
+      "panel": 3,
+      "label": "fig:CNXglobal"
+    },
+    {
+      "index": 3,
+      "block_file": "2407.07758\\raw_blocks\\2407.07758_fig4p4_968f8c5bd3a1a014.tex",
+      "length": 793,
+      "block_id": "2407.07758_968f8c5bd3a1a014",
+      "figure_number": 4,
+      "panel": 4,
+      "label": "fig:CNXglobal"
+    },
+    {
+      "index": 4,
+      "block_file": "2407.07758\\raw_blocks\\2407.07758_fig5p5_ef1731bc270bc584.tex",
+      "length": 285,
+      "block_id": "2407.07758_ef1731bc270bc584",
+      "figure_number": 5,
+      "panel": 5,
+      "label": "fig:CNXglobal"
+    },
+    {
+      "index": 5,
+      "block_file": "2407.07758\\raw_blocks\\2407.07758_fig6p6_ba95e45a3f143352.tex",
+      "length": 805,
+      "block_id": "2407.07758_ba95e45a3f143352",
+      "figure_number": 6,
+      "panel": 6,
+      "label": "fig:CNXglobal"
     }
   ]
 }

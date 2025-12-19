@@ -4,10 +4,10 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2509.14196\\raw_blocks\\2509.14196_fig5p1_559b23323a946c9a.tex",
+      "block_file": "2509.14196\\raw_blocks\\2509.14196_fig1p1_559b23323a946c9a.tex",
       "length": 281,
       "block_id": "2509.14196_559b23323a946c9a",
-      "figure_number": 5,
+      "figure_number": 1,
       "panel": 1,
       "label": "fig:pauli_twriling"
     }

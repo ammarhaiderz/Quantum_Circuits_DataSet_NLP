@@ -1,0 +1,15 @@
+{
+  "source": "2409.11312",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2409.11312\\raw_blocks\\2409.11312_fig1p1_caa4eafb7de422d3.tex",
+      "length": 1778,
+      "block_id": "2409.11312_caa4eafb7de422d3",
+      "figure_number": 1,
+      "panel": 1,
+      "label": "fig:encoder"
+    }
+  ]
+}

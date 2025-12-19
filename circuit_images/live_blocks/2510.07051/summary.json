@@ -1,0 +1,24 @@
+{
+  "source": "2510.07051",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2510.07051\\raw_blocks\\2510.07051_fig1p1_4fce80a822321431.tex",
+      "length": 222,
+      "block_id": "2510.07051_4fce80a822321431",
+      "figure_number": 1,
+      "panel": 1,
+      "label": "fig:deferred-measurement"
+    },
+    {
+      "index": 1,
+      "block_file": "2510.07051\\raw_blocks\\2510.07051_fig2p2_99e2d65ae6128849.tex",
+      "length": 166,
+      "block_id": "2510.07051_99e2d65ae6128849",
+      "figure_number": 2,
+      "panel": 2,
+      "label": "fig:deferred-measurement"
+    }
+  ]
+}

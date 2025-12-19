@@ -154,18 +154,70 @@ class ImageExtractor:
         """
         figures: List[Figure] = []
 
+        def _extract_caption_from_block(block_text: str) -> Optional[str]:
+            """Extract caption string from a LaTeX figure block handling
+            optional short-forms `\caption[short]{long}` and nested braces.
+            Returns the raw LaTeX caption content (not converted to plain text).
+            """
+            key = '\\caption'
+            i = block_text.find(key)
+            if i == -1:
+                return None
+
+            # advance past '\caption'
+            j = i + len(key)
+            # skip whitespace
+            while j < len(block_text) and block_text[j].isspace():
+                j += 1
+
+            # handle optional short-form [..]
+            if j < len(block_text) and block_text[j] == '[':
+                # find matching closing ]
+                k = j + 1
+                depth = 1
+                while k < len(block_text) and depth > 0:
+                    if block_text[k] == ']' and depth == 1:
+                        depth = 0
+                        k += 1
+                        break
+                    k += 1
+                j = k
+                # skip whitespace to '{'
+                while j < len(block_text) and block_text[j].isspace():
+                    j += 1
+
+            # now expect a '{'
+            if j >= len(block_text) or block_text[j] != '{':
+                # malformed caption
+                return None
+
+            # balanced-brace scan
+            start = j + 1
+            depth = 1
+            k = start
+            while k < len(block_text) and depth > 0:
+                ch = block_text[k]
+                if ch == '{':
+                    depth += 1
+                elif ch == '}':
+                    depth -= 1
+                    if depth == 0:
+                        return block_text[start:k]
+                k += 1
+            return None
+
         for block in self.FIG_RE.findall(tex):
-            cap = self.CAP_RE.search(block)
-            if not cap:
+            raw_cap = _extract_caption_from_block(block)
+            if not raw_cap:
                 # No caption; skip to reduce false positives
                 continue
 
-            # Decode caption text safely
+            # Decode caption text safely using pylatexenc when available
             try:
                 from pylatexenc.latex2text import LatexNodes2Text
-                caption_text = LatexNodes2Text().latex_to_text(cap.group(1))
+                caption_text = LatexNodes2Text().latex_to_text(raw_cap)
             except Exception:
-                caption_text = cap.group(1)
+                caption_text = raw_cap
 
             caption_text = caption_text.strip()
 
@@ -247,7 +299,7 @@ class ImageExtractor:
                     from core.live_latex_extractor import process_text
                     process_text(block, source_name=source_name, render=True, render_with_module=True, arxiv_id=paper_id, start_figure_num=figure_counter, caption_text=caption_text, figure_label=figure_label)
                     try:
-                        from core.latex_extractor import extract_qcircuit_blocks_from_text
+                        from core.live_latex_extractor import extract_qcircuit_blocks_from_text
                         n = len(extract_qcircuit_blocks_from_text(block))
                     except Exception:
                         n = 0

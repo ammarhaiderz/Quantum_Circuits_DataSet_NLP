@@ -1,0 +1,15 @@
+{
+  "source": "2401.08950",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2401.08950\\raw_blocks\\2401.08950_fig1p1_6b63ba791f121194.tex",
+      "length": 402,
+      "block_id": "2401.08950_6b63ba791f121194",
+      "figure_number": 1,
+      "panel": 1,
+      "label": "ckt:cs"
+    }
+  ]
+}

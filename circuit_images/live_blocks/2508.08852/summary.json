@@ -1,24 +1,15 @@
 {
   "source": "2508.08852",
-  "blocks_count": 2,
+  "blocks_count": 1,
   "blocks": [
     {
       "index": 0,
-      "block_file": "2508.08852\\raw_blocks\\2508.08852_fig1p1_fd5894523761c9e5.tex",
-      "length": 1262,
-      "block_id": "2508.08852_fd5894523761c9e5",
+      "block_file": "2508.08852\\raw_blocks\\2508.08852_fig1p1_f20ac9c4dd7cc33b.tex",
+      "length": 422,
+      "block_id": "2508.08852_f20ac9c4dd7cc33b",
       "figure_number": 1,
       "panel": 1,
-      "label": "Fig:rec"
-    },
-    {
-      "index": 1,
-      "block_file": "2508.08852\\raw_blocks\\2508.08852_fig2p2_acbc0aa305cdec68.tex",
-      "length": 1258,
-      "block_id": "2508.08852_acbc0aa305cdec68",
-      "figure_number": 2,
-      "panel": 2,
-      "label": "Fig:rec"
+      "label": "Fig:qAlgo"
     }
   ]
 }

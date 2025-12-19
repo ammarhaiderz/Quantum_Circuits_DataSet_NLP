@@ -4,12 +4,12 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2509.01912\\raw_blocks\\2509.01912_fig1p1_39b391794b911208.tex",
-      "length": 643,
-      "block_id": "2509.01912_39b391794b911208",
+      "block_file": "2509.01912\\raw_blocks\\2509.01912_fig1p1_296633dc4067c631.tex",
+      "length": 2768,
+      "block_id": "2509.01912_296633dc4067c631",
       "figure_number": 1,
       "panel": 1,
-      "label": "fig:example1"
+      "label": "fig:circuit"
     }
   ]
 }
