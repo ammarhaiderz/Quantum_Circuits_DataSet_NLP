@@ -4,10 +4,9 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2503.22108\\raw_blocks\\2503.22108_fig1p1_35b0334b12254ab0.tex",
+      "block_file": "2503.22108\\raw_blocks\\2503.22108_p1_35b0334b12254ab0.tex",
       "length": 240,
       "block_id": "2503.22108_35b0334b12254ab0",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:HST"
     }

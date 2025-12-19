@@ -4,19 +4,17 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2504.19827\\raw_blocks\\2504.19827_fig1p1_277af9e38f2c79fb.tex",
+      "block_file": "2504.19827\\raw_blocks\\2504.19827_p1_277af9e38f2c79fb.tex",
       "length": 258,
       "block_id": "2504.19827_277af9e38f2c79fb",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:conjunction"
     },
     {
       "index": 1,
-      "block_file": "2504.19827\\raw_blocks\\2504.19827_fig2p2_9ad534e84468ccff.tex",
+      "block_file": "2504.19827\\raw_blocks\\2504.19827_p2_9ad534e84468ccff.tex",
       "length": 326,
       "block_id": "2504.19827_9ad534e84468ccff",
-      "figure_number": 2,
       "panel": 2,
       "label": "fig:conjunction"
     }

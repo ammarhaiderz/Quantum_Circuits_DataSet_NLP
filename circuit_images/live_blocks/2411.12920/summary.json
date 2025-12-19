@@ -4,10 +4,9 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2411.12920\\raw_blocks\\2411.12920_fig1p1_1eb97ac6962438bd.tex",
+      "block_file": "2411.12920\\raw_blocks\\2411.12920_p1_1eb97ac6962438bd.tex",
       "length": 198,
       "block_id": "2411.12920_1eb97ac6962438bd",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:VQA"
     }

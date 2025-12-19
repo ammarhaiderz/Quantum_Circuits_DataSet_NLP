@@ -459,7 +459,7 @@ def _extract_gates_from_block(block: str):
             return []
 
 
-def process_text(text: str, source_name: str = 'inline', out_root: str = 'circuit_images/live_blocks', render: bool = True, render_with_module: bool = False, arxiv_id: Optional[str] = None, start_figure_num: Optional[int] = None, caption_text: Optional[str] = None, figure_number: Optional[int] = None, panel: Optional[int] = None, figure_label: Optional[str] = None):
+def process_text(text: str, source_name: str = 'inline', out_root: str = 'circuit_images/live_blocks', render: bool = True, render_with_module: bool = False, arxiv_id: Optional[str] = None, start_figure_num: Optional[int] = None, caption_text: Optional[str] = None, panel: Optional[int] = None, figure_label: Optional[str] = None):
     """Extract blocks from `text` and save them under `out_root/source_name`.
 
     Uses content-based hashing to ensure each unique circuit block is only
@@ -483,6 +483,8 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
 
     # Track which blocks are actually new in this invocation
     blocks_saved_this_run = []
+    # blocks to skip rendering because they have no captions/descriptions
+    _skip_render_blocks = set()
 
     for i, block in enumerate(blocks):
         # Create unique identifier from block content hash
@@ -495,28 +497,21 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
         
         _PROCESSED_BLOCKS.add(block_id)
         
-        # Use figure_number/panel if provided, otherwise fallback to old logic
-        if figure_number is not None:
-            fig_num = figure_number
-        elif start_figure_num is not None:
-            fig_num = start_figure_num + i
-        else:
-            fig_num = i + 1
-        
+        # Determine panel index; do not use figure numbering
         pnl = panel if panel is not None else (i + 1)
-        
-        # Save with unique filename that includes hash
-        name = f"{_safe_name(source_name)}_fig{fig_num}p{pnl}_{block_hash}.tex"
+        # (NO per-block quota check here; rendering-level quota is enforced later)
+
+        # Save with unique filename that includes hash (no figure number)
+        name = f"{_safe_name(source_name)}_p{pnl}_{block_hash}.tex"
         tex_file_path = raw_dir / name
         tex_file_path.write_text(block, encoding='utf-8')
         blocks_saved_this_run.append(tex_file_path)
         
         record['blocks'].append({
-            'index': i, 
-            'block_file': str((raw_dir / name).relative_to(out_root)), 
+            'index': i,
+            'block_file': str((raw_dir / name).relative_to(out_root)),
             'length': len(block),
             'block_id': block_id,
-            'figure_number': fig_num,
             'panel': pnl,
             'label': figure_label
         })
@@ -549,19 +544,23 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
                 rec = {
                     'arxiv_id': str(arxiv_id),
                     'page': None,
-                    'figure_number': int(fig_num),
                     'label': figure_label,
                     'gates': gates,
                     'quantum_problem': None,
                     'descriptions': descriptions,
-                    'text_positions': text_positions,
-                    'block_id': block_id,
-                    'raw_block_file': str((raw_dir / name).as_posix())
+                    'text_positions': text_positions
                 }
                 # Defer emitting to JSONL until after successful rendering
                 if 'pending_records' not in locals():
                     pending_records = []
-                pending_records.append(rec)
+                # If there are no descriptions (captions), skip creating a pending record
+                # and mark this block to be skipped for rendering so the rendered folder
+                # stays consistent with emitted records.
+                if not descriptions:
+                    _skip_render_blocks.add(tex_file_path.name)
+                else:
+                    # store pending record together with its tex filename (not persisted)
+                    pending_records.append((rec, name))
             except Exception:
                 pass
 
@@ -571,6 +570,25 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
     # Only render if we actually saved new blocks in this invocation
     if render and blocks_saved_this_run:
         try:
+            # If the canonical circuits JSON already has >=250 items, skip
+            # further circuit rendering/emission to let the main image
+            # extraction continue independently.
+            try:
+                from core.circuit_store import JSON_PATH
+                import json as _json
+                if JSON_PATH.exists():
+                    try:
+                        with open(JSON_PATH, 'r', encoding='utf-8') as _jf:
+                            _data = _json.load(_jf)
+                            if isinstance(_data, dict) and len(_data) >= 250:
+                                # skip rendering/emitting records
+                                return record
+                    except Exception:
+                        # if JSON can't be read, fall back to rendering
+                        pass
+            except Exception:
+                # circuit_store not available; continue as before
+                pass
             # Create a temporary directory with only the new blocks to render
             import tempfile
             with tempfile.TemporaryDirectory() as tmpdir:
@@ -580,6 +598,9 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
                 
                 # Copy only the new blocks to temp directory
                 for tex_file in blocks_saved_this_run:
+                    # skip blocks that were marked as having no captions
+                    if tex_file.name in _skip_render_blocks:
+                        continue
                     shutil.copy2(tex_file, tmp_raw / tex_file.name)
                 
                 # Render only the temp directory (contains only new blocks)
@@ -621,54 +642,113 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
             common_png_dir = common_dir / 'png'
             common_png_dir.mkdir(parents=True, exist_ok=True)
 
-            # Process only the newly rendered PDFs
-            # Emit JSONL records only for blocks that successfully rendered
+            # Generate per-paper and common PNGs for the new PDFs first,
+            # building a mapping from pdf stem -> common PNG filename.
+            # Enforce rendering quota: compute how many images we are allowed to
+            # create (remaining = MAX_IMAGES - current_count). Only process up to
+            # that many PDFs from `new_pdfs` and emit records only for actually
+            # produced PNGs.
+            stem_to_common_png = {}
             try:
-                produced_stems = {p.stem for p in new_pdfs}
+                from config.settings import MAX_IMAGES
+                from core.circuit_store import JSON_PATH
+                import json as _json
+                current = 0
+                if JSON_PATH.exists():
+                    try:
+                        with open(JSON_PATH, 'r', encoding='utf-8') as _jf:
+                            _d = _json.load(_jf)
+                            if isinstance(_d, dict):
+                                current = len(_d)
+                    except Exception:
+                        current = 0
+                remaining = MAX_IMAGES - current
+                if remaining <= 0:
+                    # no capacity to render more images
+                    new_pdfs_to_process = []
+                else:
+                    new_pdfs_to_process = new_pdfs[:remaining]
             except Exception:
-                produced_stems = set()
+                # fallback: process all
+                new_pdfs_to_process = new_pdfs
 
+            try:
+                for f in new_pdfs_to_process:
+                    if not (f.is_file() and f.suffix.lower() == '.pdf'):
+                        continue
+                    try:
+                        ts = int(time.time() * 1000)
+                        dest_pdf_name = f"{safe_src}__{f.stem}__{ts}.pdf"
+                        shutil.copyfile(f, common_dir / dest_pdf_name)
+
+                        # Convert per-paper PDF to PNG into per-paper png folder with unique name
+                        try:
+                            per_png_name = f"{f.stem}__{ts}.png"
+                            per_png_path = rendered_png_dir / per_png_name
+                            _pdf_to_png(f, per_png_path)
+                        except Exception:
+                            pass
+
+                        # Convert copied common PDF to PNG into common png folder with matching unique name
+                        try:
+                            common_pdf = common_dir / dest_pdf_name
+                            common_png_name = Path(dest_pdf_name).with_suffix('.png').name
+                            common_png_path = common_png_dir / common_png_name
+                            _pdf_to_png(common_pdf, common_png_path)
+                            stem_to_common_png[f.stem] = common_png_name
+                        except Exception:
+                            pass
+                    except Exception:
+                        # Non-fatal; continue copying other files
+                        pass
+            except Exception:
+                stem_to_common_png = {}
+
+            # Emit JSONL records only for blocks that successfully rendered
             if 'pending_records' in locals() and pending_records:
                 try:
                     from core.circuit_store import emit_record
-                    for rec in pending_records:
+                    for rec, bn in pending_records:
                         try:
-                            rb_name = Path(rec.get('raw_block_file', '')).name
-                            stem = Path(rb_name).stem
-                            if stem in produced_stems:
+                            stem = Path(bn).stem
+                            png_name = stem_to_common_png.get(stem)
+                            if png_name:
+                                # Attach the produced common PNG filename so the store
+                                # can reliably map this JSONL record to the image.
+                                try:
+                                    rec['image_filename'] = png_name
+                                except Exception:
+                                    pass
+                                # Remove legacy auxiliary fields but keep `image_filename`
+                                for _f in ('raw_block_file', 'block_id', 'block_name'):
+                                    try:
+                                        rec.pop(_f, None)
+                                    except Exception:
+                                        pass
                                 emit_record(rec)
                         except Exception:
                             continue
                 except Exception:
                     pass
-            for f in new_pdfs:
-                if f.is_file() and f.suffix.lower() == '.pdf':
-                        try:
-                            ts = int(time.time() * 1000)
-                            # unique dest pdf name with timestamp
-                            dest_pdf_name = f"{safe_src}__{f.stem}__{ts}.pdf"
-                            shutil.copyfile(f, common_dir / dest_pdf_name)
 
-                            # Convert per-paper PDF to PNG into per-paper png folder with unique name
-                            try:
-                                per_png_name = f"{f.stem}__{ts}.png"
-                                per_png_path = rendered_png_dir / per_png_name
-                                _pdf_to_png(f, per_png_path)
-                            except Exception:
-                                pass
-
-                            # Convert copied common PDF to PNG into common png folder with matching unique name
-                            try:
-                                common_pdf = common_dir / dest_pdf_name
-                                common_png_name = Path(dest_pdf_name).with_suffix('.png').name
-                                common_png_path = common_png_dir / common_png_name
-                                _pdf_to_png(common_pdf, common_png_path)
-                            except Exception:
-                                pass
-
-                        except Exception:
-                            # Non-fatal; continue copying other files
-                            pass
+            # # After emitting records, if we've reached the configured MAX_IMAGES,
+            # # remove any stray PNGs in the common PNG folder that are not keys
+            # # in the canonical `data/circuits.json` to avoid extra images.
+            # try:
+            #     from config.settings import MAX_IMAGES
+            #     from tools.cleanup_extra_pngs import cleanup_extra_pngs
+            #     from core.circuit_store import JSON_PATH
+            #     if JSON_PATH.exists():
+            #         import json as _json
+            #         with open(JSON_PATH, 'r', encoding='utf-8') as _jf:
+            #             _data = _json.load(_jf)
+            #         if isinstance(_data, dict) and len(_data) >= MAX_IMAGES:
+            #             try:
+            #                 cleanup_extra_pngs(str(JSON_PATH), str(common_png_dir), max_images=MAX_IMAGES)
+            #             except Exception:
+            #                 pass
+            # except Exception:
+            #     pass
 
         except ImportError:
             pass

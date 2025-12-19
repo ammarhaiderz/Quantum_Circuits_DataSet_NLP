@@ -35,6 +35,40 @@ except Exception:
 def emit_record(record: dict):
     """Append a circuit record (dict) to JSONL storage."""
     try:
+        # Skip records with no meaningful descriptions (captions)
+        try:
+            descs = record.get('descriptions') if isinstance(record, dict) else None
+            if not descs or all((not d or not str(d).strip()) for d in descs):
+                # nothing useful to index/emit
+                return
+        except Exception:
+            # if access fails, fall through and attempt to write
+            pass
+        # Normalize descriptions (preserve domain tokens like TOF/CX and numeric groups)
+        if isinstance(record, dict) and record.get('descriptions'):
+            try:
+                record['descriptions'] = [normalize_caption_text(d) if isinstance(d, str) else d for d in record.get('descriptions', [])]
+            except Exception:
+                # best-effort: leave descriptions as-is on failure
+                pass
+
+        # Best-effort: compute page at emit time to avoid race where update_pages_in_jsonl
+        # was called before this record existed. Use caption -> PDF matcher if possible.
+        try:
+            if isinstance(record, dict) and record.get('page') is None:
+                aid = record.get('arxiv_id')
+                if aid and record.get('descriptions'):
+                    try:
+                        pg = find_caption_page_in_pdf(aid, record['descriptions'][0])
+                        if pg:
+                            record['page'] = pg
+                    except Exception:
+                        # non-fatal: leave page as-is
+                        pass
+        except Exception:
+            pass
+        # (figure numbers removed) No further figure-number extraction performed
+
         with open(JSONL_PATH, 'a', encoding='utf-8') as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
         # After appending to JSONL, regenerate a proper JSON array file.
@@ -66,36 +100,54 @@ def _regenerate_json():
             try:
                 rec = json.loads(line)
 
-                # derive stem from raw_block_file
-                rb = rec.get('raw_block_file', '')
-                if not rb:
-                    continue
-                try:
-                    tex_name = Path(rb).name
-                    stem = Path(tex_name).stem
-                except Exception:
-                    continue
-
-                # Only include records that have a matching PNG in the common rendered_pdflatex/png folder
-                if common_png_dir.exists():
-                    matches = list(common_png_dir.glob(f"*{stem}*.png"))
+                # If the record already contains an `image_filename` assigned at emit time,
+                # prefer that (newer flow assigns this before emitting). Otherwise fall back
+                # to deriving a stem from legacy fields (`block_name` or `raw_block_file`).
+                img_name = rec.get('image_filename')
+                if img_name:
+                    # verify the PNG actually exists in the common folder
+                    if common_png_dir.exists() and (common_png_dir / img_name).exists():
+                        # do not store auxiliary fields inside the value dict
+                        clean = dict(rec)
+                        for _f in ('raw_block_file', 'block_id', 'block_name', 'image_filename'):
+                            clean.pop(_f, None)
+                        records_dict[img_name] = clean
+                    else:
+                        # missing file; skip
+                        continue
                 else:
-                    matches = []
+                    # legacy fallback
+                    rb = rec.get('raw_block_file', '') or rec.get('block_name', '')
+                    if not rb:
+                        continue
+                    try:
+                        tex_name = Path(rb).name
+                        stem = Path(tex_name).stem
+                    except Exception:
+                        continue
 
-                if not matches:
-                    # skip records without a final PNG in the canonical folder
-                    continue
+                    # Only include records that have a matching PNG in the common rendered_pdflatex/png folder
+                    if common_png_dir.exists():
+                        matches = list(common_png_dir.glob(f"*{stem}*.png"))
+                    else:
+                        matches = []
 
-                # choose most recently modified match
-                try:
-                    chosen = max(matches, key=lambda p: p.stat().st_mtime)
-                    img_name = chosen.name
-                except Exception:
-                    img_name = matches[0].name
+                    if not matches:
+                        # skip records without a final PNG in the canonical folder
+                        continue
 
-                rec['image_filename'] = img_name
-                # Use the PNG filename as the main key in the JSON output
-                records_dict[img_name] = rec
+                    # choose most recently modified match
+                    try:
+                        chosen = max(matches, key=lambda p: p.stat().st_mtime)
+                        img_name2 = chosen.name
+                    except Exception:
+                        img_name2 = matches[0].name
+
+                    # do not inject `image_filename` into the stored value; keep it only as the key
+                    clean2 = dict(rec)
+                    for _f in ('raw_block_file', 'block_id', 'block_name', 'image_filename'):
+                        clean2.pop(_f, None)
+                    records_dict[img_name2] = clean2
             except Exception:
                 # skip malformed lines
                 continue
@@ -128,12 +180,64 @@ def _clean_caption_for_search(caption: str) -> str:
     
     # Remove common LaTeX artifacts that won't appear in PDF
     cleaned = caption
-    cleaned = re.sub(r"<ref>|<cit\.?>", "", cleaned)  # Remove reference markers
-    cleaned = re.sub(r"\\[a-zA-Z]+\{[^}]*\}", "", cleaned)  # Remove LaTeX commands like \cite{...}
-    cleaned = re.sub(r"[{}_\\]", "", cleaned)  # Remove LaTeX special chars
-    cleaned = re.sub(r"\s+", " ", cleaned.strip())  # Normalize whitespace
+    # remove explicit reference placeholders and simple <cit> tokens
+    cleaned = re.sub(r"<ref>|<cit\.?>", "", cleaned)
+    # remove common LaTeX ref/cite commands like \ref{..}, \cref{..}, \cite{..}
+    cleaned = re.sub(r"\\(?:ref|cref|Cref|cite|autoref)\{[^}]*\}", "", cleaned)
+    # remove occurrences like 'Figure <ref>' or 'Figure \ref{...}' which refer to other figures
+    cleaned = re.sub(r"(?:Figure|Fig\.?)(?:\s*<ref>|\s*\\ref\{[^}]*\})", "", cleaned, flags=re.IGNORECASE)
+    # remove generic standalone 'Figure' words
+    cleaned = re.sub(r"\b(?:Figure|Fig\.)\b", "", cleaned, flags=re.IGNORECASE)
+    # remove other LaTeX commands
+    cleaned = re.sub(r"\\[a-zA-Z]+\{[^}]*\}", "", cleaned)
+    # remove remaining special chars
+    cleaned = re.sub(r"[{}_\\]", "", cleaned)
+    cleaned = re.sub(r"\s+", " ", cleaned.strip())
     
     return cleaned
+
+
+def normalize_caption_text(s: str) -> str:
+    """Normalize caption/description text while preserving domain tokens.
+
+    - Unwrap common LaTeX subscript forms like _{1,2} or _1,2_
+    - Replace adjacent underscore-groups with spaces
+    - Insert spaces between alpha and numeric runs (TOF1 -> TOF 1)
+    - Collapse extra whitespace
+    """
+    if not s:
+        return s
+    try:
+        # Work on a copy
+        t = s
+        # common LaTeX escaping
+        t = t.replace('\\_', '_')
+        # unwrap \text{...}
+        t = re.sub(r"\\text\{([^}]*)\}", r"\1", t)
+        # _{1,2,3} -> 1,2,3
+        t = re.sub(r"_\{([^}]*)\}", r"\1", t)
+        # _1,2,3_ -> 1,2,3
+        t = re.sub(r"_([0-9,]+)_", r"\1", t)
+        # join adjacent numeric groups separated by underscores (or multiple underscores)
+        t = re.sub(r"([0-9,])_+([0-9,])", r"\1 \2", t)
+        # if numeric groups ended up adjacent after removals (e.g. "1,2,41,3,4"), insert space
+        t = re.sub(r"([0-9,])(?=[0-9])", r"\1 ", t)
+        # Insert space between letters and digits: TOF1 -> TOF 1
+        t = re.sub(r"([A-Za-z])(?=\d)", r"\1 ", t)
+        # Insert space between digits and letters: 1TOF -> 1 TOF
+        t = re.sub(r"(?<=\d)(?=[A-Za-z])", ' ', t)
+        # replace remaining underscores with space
+        t = t.replace('_', ' ')
+        # collapse whitespace
+        # remove spaces after commas when both sides are digits: '1, 2' -> '1,2'
+        t = re.sub(r'(?<=\d),\s+(?=\d)', ',', t)
+        t = re.sub(r"\s+", ' ', t).strip()
+        return t
+    except Exception:
+        return s
+
+
+
 
 def _tokenize_for_comparison(text: str, is_latex: bool = False, min_len: int = 3):
     """Normalize and tokenize text for caption comparison.
@@ -265,16 +369,21 @@ def _compute_tfidf_similarity(query_tokens: Counter, doc_tokens_list: list[Count
     return scores
 
 
-def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.02) -> int | None:
-    """Find page number (1-based) in the cached PDF matching the caption.
-
-    TF-IDF based approach:
-    - Preprocess LaTeX caption into normalized tokens (no minimum length)
-    - For each PDF page build candidate caption windows (anchor windows if anchors
-      present, otherwise whole page)
-    - Compute TF-IDF cosine similarity between the caption and each window
-    - Return the page of the best-scoring window if score >= threshold
+def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.08) -> int | None:
     """
+    Find the page number (1-based) in the PDF where the figure caption appears.
+
+    Strategy:
+    - Normalize LaTeX caption once
+    - Tokenize caption
+    - For each page:
+        - Look for caption anchors at start of line (Fig./Figure N)
+        - If anchors exist: extract short windows after anchors
+        - Else: fall back to fixed-size text windows
+    - Rank all windows using TF-IDF similarity
+    - Return page of best match if above threshold
+    """
+
     if fitz is None:
         return None
 
@@ -287,88 +396,90 @@ def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.0
     except Exception:
         return None
 
-    clean_caption = _clean_caption_for_search(caption)
-    if not clean_caption:
-        try:
-            doc.close()
-        except:
-            pass
-        return None
-
-    # tokenize caption (allow single-char tokens)
+    # Normalize and tokenize LaTeX caption
+    clean_caption = _normalize_text(_clean_caption_for_search(caption))
     qtokens = _tokenize_for_comparison(clean_caption, is_latex=True, min_len=1)
     if not qtokens:
-        try:
-            doc.close()
-        except:
-            pass
+        doc.close()
         return None
 
-    # Build candidate windows per page
-    anchor_re = re.compile(r"(?:Fig\.?|Figure)\s*\d+\b", re.IGNORECASE)
-    stop_re = re.compile(r"\b(?:Fig\.?|Figure|Table)\s*\d+\b", re.IGNORECASE)
+    # Caption anchors: require start-of-sentence to be a valid anchor.
+    # Matches either at the start of text or after a sentence-ending punctuation
+    anchor_re = re.compile(r"(?:^|[\.\!?]\s+)(?:Fig\.?|Figure)\s*\d+\b", re.IGNORECASE)
+    stop_re = re.compile(r"(?:^|[\.\!?]\s+)(?:Fig\.?|Figure|Table)\s*\d+\b", re.IGNORECASE)
 
-    page_candidates = []  # list of (page_num, window_text)
-    try:
-        for page_num in range(doc.page_count):
+    page_candidates: list[tuple[int, str]] = []
+
+    for page_num in range(doc.page_count):
+        try:
+            page = doc.load_page(page_num)
+            page_raw = page.get_text("text")
+        except Exception:
+            continue
+
+        # Work line-by-line to avoid mixing paragraph text when newlines were
+        # collapsed. This prevents mid-sentence "Fig. 1" references from being
+        # treated as caption anchors.
+        lines = page_raw.splitlines()
+        found_anchor = False
+        for li, line_raw in enumerate(lines):
             try:
-                page = doc.load_page(page_num)
-                page_text = page.get_text("text")
+                line_norm = _normalize_text(line_raw)
             except Exception:
-                continue
+                line_norm = line_raw.lower()
 
-            text_norm = _normalize_text(page_text)
+            for m in anchor_re.finditer(line_norm):
+                found_anchor = True
+                # Prefer text after the anchor on the same line; otherwise take
+                # the next non-empty line as the caption candidate.
+                after = line_norm[m.end():].strip()
+                candidate = ''
+                if after:
+                    candidate = after
+                else:
+                    # look ahead up to 3 following lines for a likely caption line
+                    for k in range(li + 1, min(len(lines), li + 4)):
+                        nxt = _normalize_text(lines[k])
+                        if nxt.strip():
+                            candidate = nxt.strip()
+                            break
 
-            # find anchors; if none, use whole page as single candidate
-            anchors = list(anchor_re.finditer(text_norm))
-            if not anchors:
-                page_candidates.append((page_num, text_norm))
-                continue
-
-            for m in anchors:
-                start = m.end()
-                window = text_norm[start:start + 200]
-                # stop at next anchor/table reference
-                s = stop_re.search(window)
+                # stop at next anchor/table reference within the candidate
+                s = stop_re.search(candidate)
                 if s:
-                    window = window[:s.start()]
-                page_candidates.append((page_num, window))
+                    candidate = candidate[:s.start()]
+                candidate = re.sub(r"^[\s:\-\–]+", "", candidate)
+                page_candidates.append((page_num, candidate))
 
-        # prepare token counters for each candidate
-        docs = []
-        pages = []
-        for pnum, win in page_candidates:
-            tokens = _tokenize_for_comparison(win, is_latex=False, min_len=1)
+        if not found_anchor:
+            # Fallback: use normalized whole page broken into windows
+            page_text_norm = _normalize_text(page_raw)
+            for i in range(0, len(page_text_norm), 300):
+                page_candidates.append((page_num, page_text_norm[i:i + 300]))
+
+    docs = []
+    pages = []
+
+    for pnum, text in page_candidates:
+        tokens = _tokenize_for_comparison(text, is_latex=False, min_len=2)
+        if tokens:
             docs.append(Counter(tokens))
             pages.append(pnum)
 
-        qcounter = Counter(_tokenize_for_comparison(clean_caption, is_latex=True, min_len=1))
-        if not docs:
-            try:
-                doc.close()
-            except:
-                pass
-            return None
-
-        scores = _compute_tfidf_similarity(qcounter, docs)
-        # find best score
-        best_idx = max(range(len(scores)), key=lambda i: scores[i])
-        best_score = scores[best_idx]
-        best_page = pages[best_idx]
-
-        try:
-            doc.close()
-        except:
-            pass
-
-        if best_score >= threshold:
-            return best_page + 1
+    if not docs:
+        doc.close()
         return None
-    finally:
-        try:
-            doc.close()
-        except Exception:
-            pass
+
+    qcounter = Counter(qtokens)
+    scores = _compute_tfidf_similarity(qcounter, docs)
+
+    best_idx = max(range(len(scores)), key=lambda i: scores[i])
+    best_page = pages[best_idx]
+
+    doc.close()
+
+    # Return the page with the highest TF-IDF score regardless of threshold.
+    return best_page + 1
 
 
 

@@ -4,10 +4,9 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2507.13308\\raw_blocks\\2507.13308_fig1p1_a100b5f44cab1319.tex",
+      "block_file": "2507.13308\\raw_blocks\\2507.13308_p1_a100b5f44cab1319.tex",
       "length": 881,
       "block_id": "2507.13308_a100b5f44cab1319",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:simple-const-SU(d)"
     }

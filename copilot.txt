@@ -1,0 +1,680 @@
+Opening PDF: arxiv_pdf_cache\2510.04993.pdf
+
+Pages: 26
+
+
+--- PAGE 1 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN THE THIRD LEVEL
+OF THE CLIFFORD HIERARCHY
+ZHIYANG HE, LUKE ROBITAILLE, AND XINYU TAN
+Abstract. The Clifford hierarchy is a fundamental structure in quantum computation whose
+mathematical properties are not fully understood. In this work, we characterize permutation gates—
+unitaries which permute the 2n basis states—in the third level of the hierarchy. We prove that any
+permutation gate in the third level must be a product of Toffoli gates in what we define as staircase
+form, up to left and right multiplications by Clifford permutations. We then present necessary and
+sufficient conditions for a staircase form permutation gate to be in the third level of the Clifford
+hierarchy. As a corollary, we construct a family of non-semi-Clifford permutation gat       
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 2 ---
+
+2
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+1. Introduction
+The Clifford hierarchy is a ubiquitous structure in quantum computation which classifies unitary
+operations based on their conjugate actions on the Pauli group. Precisely, the first level C1 of
+the hierarchy CH is the Pauli group P, and its subsequent levels are defined recursively: Ck is
+the set of all unitaries U such that UPU† ∈Ck−1 for all Pauli operators P. Within CH, gates 
+in the third level are of unique importance to the study of fault-tolerant quantum computation
+(FTQC) [Sho95, Sho96, Got97], as established by several foundational works. The Gottesman-  
+Knill theorem [Got98] states that any circuits made of Pauli and Clifford gates, which are the first
+two levels of CH, can be efficiently simulated by a classical compute
+
+Lines with Figure/Fig:
+   65: that the gates are applied. For example, the gate in Figure 1 is in staircase form.  
+
+============================================================
+
+
+--- PAGE 3 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+3
+a1
+a1
+a2
+a2
+a3
+a3 + a1a2
+a4
+a4
+a5
+a5 + a1a4
+a6
+a6 + a2a4
+a7
+a7 + a1a6 + a2a5 + a3a4 + a1a2a4
+Figure 1. A permutation gate in staircase form, consisting of 6 Toffoli gates.
+Our first main result, which was presented in an earlier version of this paper [HRT24], states
+that every permutation in Csym
+3
+can be written in staircase form.
+Result 1 (Theorem 3.2). If π ∈C3 is a permutation gate, then there exist Clifford permutations
+ϕ1, ϕ2 and a product µ of Toffoli gates in staircase form such that µ ∈C3 and π = ϕ1µϕ2.    
+We remark that there are permutations in staircase form which are not in C3.
+To derive a
+full characterization, we consider bilinear products defined over vectors of Fn
+2, which we denote
+by juxtaposition.
+For a commutative and associat
+
+Lines with Figure/Fig:
+   17: Figure 1. A permutation gate in staircase form, consisting of 6 Toffoli gates.
+   48: We note that the permutation in Figure 1 is precisely U3. This construction brings new under-
+
+============================================================
+
+
+--- PAGE 4 ---
+
+4
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+expense of a large number of ancilla qubits. This extra ancilla cost is, in fact, optimal: using the
+characterization with descending multiplications, we show the following lower bound.        
+Result 4 (Theorem 5.9). Any permutation gate in C3 with an output bit represented by a poly-
+nomial of degree at least k must be supported on at least 2k −1 qubits.
+1.2. Future directions. Combining these four results, our characterization discovers and delin-
+eates a novel design space within Csym
+3
+.
+By constructing descending multiplications, which are
+easier to reason with than Toffoli circuits, we can derive permutation gates in C3 which encode
+different classical computations. These computations can then be implemented in FTQC via gate
+teleportation, where
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 5 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+5
+In Section A, we show that 7 is the smallest number of qubits for which there exists a non-semi-
+Clifford permutation in C3. In Section B, we classify semi-Clifford permutations and where they
+appear in the Clifford hierarchy.
+Remark 1.1. This work supersedes an earlier version [HRT24] by the same authors. The prior  
+work established only Result 1, which gives a necessary but not sufficient condition for a gate to be
+in Csym
+3
+. By contrast, the present paper provides substantially stronger results. In particular, we 
+strengthen the condition to be both necessary and sufficient (Result 2), and as an application, we
+construct an infinite family of Csym
+3
+gates whose inverses are not in particular levels of the Clifford
+hierarchy (Result 3).
+2. Pre
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 6 ---
+
+6
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+Definition 2.3 (Semi-Clifford and generalized semi-Clifford gates). A gate is semi-Clifford if it
+can be written as ϕ1dϕ2 for some Clifford gates ϕ1, ϕ2 and a diagonal gate d. A gate is generalized
+semi-Clifford if it can be written as ϕ1πdϕ2 for some Clifford gates ϕ1, ϕ2, a permutation gate π,
+and a diagonal gate d.
+Observe that the inverse of a semi-Clifford gate is semi-Clifford. The inverse of a generalized
+semi-Clifford gate is generalized semi-Clifford, as we can write (ϕ1πdϕ2)−1 = ϕ−1
+2 π−1(πd−1π−1)ϕ−1
+1 ,
+and πd−1π−1 is diagonal. If we multiply a semi-Clifford (resp. generalized semi-Clifford) element
+on the left or right by a Clifford gate, the resulting operator is still semi-Clifford (resp. generalized
+semi-Clifford).
+For a maximal
+
+Lines with Figure/Fig:
+   41: gate. See Figure 2 for a circuit diagram.
+   49: Figure 2. Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with
+
+============================================================
+
+
+--- PAGE 7 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+7
+It can be verified with a computer program that G ∈C3. If G were semi-Clifford, then we would
+have G−1 ∈C3 by Proposition 2.5. However, a computer calculation shows that G−1 /∈C3 (in    
+particular, G−1X7G /∈C2). Thus, G is not semi-Clifford.
+□
+This 7-qubit operator is the smallest known example of a non-semi-Clifford operator in C3.  
+[ZCC08] showed that for n ≤3, all elements of C3 are semi-Clifford. Recently, [AC25] showed that
+for n = 4, all elements of C3 are semi-Clifford. For n = 5 or 6, it is an open problem whether there
+is a C3 operator that is non-semi-Clifford. We make partial progress on this problem in Section A
+by showing that all permutation gates in C3 on at most six qubits are semi-Clifford.        
+While the semi-Clifford characterization
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 8 ---
+
+8
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+We denote by e1, . . . , en the standard basis of Fn
+2.
+Proposition 2.15 (Clifford permutations). For any n × n invertible matrix M over F2 and any 
+vector w, the permutation gate sending |v⟩7→|Mv + w⟩is Clifford.
+Conversely, any Clifford
+permutation is of this form for some M and w.
+Proof. For the first claim, it is clear that |v⟩7→|Mv + w⟩is a permutation, which we denote π. To
+show that π is Clifford, it suffices to show that πXiπ−1, πZiπ−1 ∈Pn. For πXiπ−1, it sends  
+|v⟩7→|M−1(v −w)⟩7→|M−1(v −w) + ei⟩7→|M(M−1(v −w) + ei) + w⟩= |v + Mei⟩.
+Therefore πXiπ−1 is equivalent to a product of X gates. For πZiπ−1, it sends
+|v⟩7→|M−1(v −w)⟩7→(−1)e⊤
+i M−1(v−w)|M−1(v −w)⟩7→(−1)e⊤
+i M−1(v−w)|v⟩.
+We can rewrite this as |v⟩7→(−1)−e⊤
+i M−1w(−1)((M−1)⊤ei)⊤v|v⟩,
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 9 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+9
+3. Staircase form representations of C3 permutations
+We begin by presenting the most important definition of our work.
+Definition 3.1 (Staircase form Toffoli circuits). A product of pairwise distinct Toffoli gates is said
+to be in staircase form if each gate TOFi,j,k in the product has i < j < k and the target qubits are
+in nondecreasing order in the order that the gates are applied. See Figure 3 for an example.
+a1
+a1
+a2
+a2
+a3
+a3 + a1a2
+a4
+a4 + a1a3
+Figure 3. This circuit for TOF1,2,4TOF1,3,4TOF1,2,3 is in staircase form but not
+mismatch-free, as qubit 3 is used as a control for TOF1,3,4 and a target for TOF1,2,3.      
+Note that a staircase form Toffoli circuit is unique up to ordering of gates with the same target.
+We say that a permutation is in s
+
+Lines with Figure/Fig:
+    7: in nondecreasing order in the order that the gates are applied. See Figure 3 for an example.
+   16: Figure 3. This circuit for TOF1,2,4TOF1,3,4TOF1,2,3 is in staircase form but not     
+
+============================================================
+
+
+--- PAGE 10 ---
+
+10
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+Proof. First we show that the intersections of kernels of Ai, namely ∩i ker(Ai), is non-empty.
+Assume for the sake of contradiction it is empty, and let v be a non-zero vector which maximizes
+the number of indices i for which Aiv = 0. Take j with Ajv ̸= 0, we see that Ai(Ajv) = AjAivv = 0
+for any i with Aiv = 0, and Aj(Ajv) = A2
+jv = 0. Therefore, Ajv is in more kernels ker(Ai) than
+v is, contradicting our assumption on v. Hence, there must exist non-zero v such that for all i,
+Aiv = 0.
+We now induct on n. Consider the (n−1)-dimensional vector space V/{v}. Since v ∈∩i ker(Ai), 
+all linear transformations Ai are well-defined on V/{v} and satisfy AiAj = AjAi and A2      
+i = 0. So
+there exists a basis v1+{v}, . . . , vn−1+{v} of V/{v} in which all the A
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 11 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+11
+Lemma 3.3 (Reducing C3 permutations). For any permutation gate π ∈C3, there exist Clifford  
+permutations ϕ1, ϕ2 such that the following is true. Let τ = ϕ1πϕ2. Then τ |0n⟩= |0n⟩and for
+each i, we have τ |ei⟩= |ei⟩and τXiτ −1 is given by |v⟩7→|v + Aiv + ei⟩for some strictly lower
+triangular matrix Ai over F2.
+Proof. By multiplying π by suitable X’s on the left, we assume without loss of generality that
+π|0n⟩= |0n⟩.
+Since π ∈C3 is a permutation, each πXjπ−1 is a Clifford permutation. Then by Proposition 2.15
+we can write πXjπ−1 as |v⟩7→|v + Ajv + bj⟩for some matrix Aj and vector bj over F2. Since   
+X2
+j = I and XiXj = XjXi, we have A2
+j = 0 and AiAj = AjAi. By Lemma 3.4, these conditions
+imply that there is some basis in which the Aj are simultaneo
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 12 ---
+
+12
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+We are now ready to prove Theorem 3.2, restated below for convenience.
+Theorem 3.2. Suppose π ∈C3 is a permutation gate. Then there exist Clifford permutations ϕ1, ϕ2
+and a staircase form permutation µ ∈C3 such that π = ϕ1µϕ2.
+Proof. By Lemma 3.3, we can assume without loss of generality that π |0n⟩= |0n⟩and for each 
+i ∈[n], π |ei⟩= |ei⟩and πXiπ−1 is given by |v⟩7→|v + Aiv + ei⟩for some strictly lower triangular
+matrix Ai over F2.
+We now show that for any v, if π|v⟩= |w⟩, then α(v) = α(w). Suppose for the sake of contra- 
+diction that this is false. We know it is true for v = 0n or en, so α(v) < n in any counterexample.
+Take the largest k for which there exists a counterexample with α(v) = k. We know π|ek⟩= |ek⟩,
+so v ̸= ek. Let u ̸= 0n be such
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 13 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+13
+d = ϕ6d0ϕ−1
+6 , ϕ2 = ϕ6ϕ4. Then ϕ1, ϕ2 ∈C2, π is a staircase form permutation in C3, and d is
+diagonal, and
+ϕ1πdϕ2 = ϕ3ϕ5µϕ6d0ϕ−1
+6 ϕ6ϕ4 = ϕ3ϕ5µϕ6d0ϕ4 = ϕ3π0d0ϕ4 = ψ.
+□
+4. Descending multiplications
+As we proved that every permutation in C3 can be written in staircase form, in this section 
+we show sufficient conditions for a staircase form permutation to be in C3. Previously we have
+been working with Fn
+2 as a vector space without any multiplicative structure. Our next definition
+captures bilinear products defined over Fn
+2 which encode staircase form Toffoli circuits in C3.
+Definition 4.1 (Descending multiplications). A map Fn
+2 × Fn
+2 →Fn
+2, denoted by juxtaposition, is
+called a descending multiplication if
+• it is linear in each coordinate
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 14 ---
+
+14
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+4.1. Helper lemmas.
+Lemma 4.7. Let π ∈C3 be a permutation. Then π is in staircase form if and only if the following
+conditions hold:
+• π|0⟩= |0⟩,
+• π|ei⟩= |ei⟩for all i ∈[n], and
+• for any vector v with at least two 1s, the indices of the first two 1s in v and π(v) are the
+same.
+Proof. We use the equivalent characterization of staircase form permutations in Lemma 3.7.  
+For the “if” direction, consider the polynomial representation (b1, . . . , bn) of π−1. We know from
+Lemma 2.13 that bi has degree at most 2 for all i. The condition π−1(0) = 0 yields that the constant
+term of bi is 0 for all i. Moreover, for all i ∈[n], the condition π−1(ei) = ei yields that the linear
+term of bi is ai. Thus we can write bk = ak + qk where qk is a sum of monomia
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 15 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+15
+We can similarly show that π(a)+π(c)+π(a)π(c) = π(w) and π(b)+π(c)+π(b)π(c) = π(v +w).      
+Further, since π(c)π(c) = 0, we have
+π(v) + π(w) + π(v)π(w) = π(a) + π(b) + π(a)π(b) + π(a) + π(c) + π(a)π(c)
++ (π(a) + π(b) + π(a)π(b))(π(a) + π(c) + π(a)π(c))
+= π(b) + π(a)π(b) + π(c) + π(a)π(c)
++ (π(a)π(b) + π(a)π(c) + π(b)π(c))
+= π(b) + π(c) + π(b)π(c)
+= π(v + w).
+□
+4.2. Proofs of Propositions 4.3 to 4.6. We now restate and prove the four key propositions  
+individually.
+Proposition 4.3. For any descending multiplication, the resulting π from Equation (4.1) is indeed
+a staircase form permutation in C3.
+Proof. We first note that Equation (4.1) implies the three conditions in Lemma 4.7. In particular,
+the fact that eiej is a descending multiplication implies
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 16 ---
+
+16
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+where the last equality follows from Equation (4.3) and the induction hypothesis. Observe that
+π(vij) = π((ei + ej + vij) + (ei + ej))
+= (ei + ej)(ei + ej + eiej) + (ei + ej) + (ei + ej + eiej)
+= eiej.
+(4.6)
+We can show that π(x) = ei+P
+j∈T eiej via a simple induction on |T|, as well as using Equation (4.3)
+and the facts that e2
+i = 0, π(ei) = ei, and π(vij) = eiej repeatedly. Now continuing Equation (4.5):
+π
+
+X
+j∈S
+ej +
+X
+j,k∈S;j<k
+vjk
+
+= w + (ei + eiw) + w(ei + eiw) = w + ei =
+X
+j∈S
+ej.
+This completes the inductive step, so Equation (4.4) holds.
+□
+Proposition 4.4. For any staircase form permutation π in C3, the resulting operation from Equa-
+tion (4.2) is indeed a descending multiplication.
+Proof. The distributive property holds by defin
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 17 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+17
+5. A family of non-semi-Clifford Permutations
+Utilizing our characterization of C3 permutations as descending multiplications, we construct
+an infinite family of permutation gates {Uk}k≥3 in Definition 5.1 and prove in Theorem 5.4 that
+every Uk is non-semi-Clifford in C3. This family of gates disproves both of Anderson’s conjectures
+(restated in Conjecture 2.18 and Conjecture 2.19 for convenience). We study the smallest case
+of k = 3 in Section 5.3, and show that this 7-qubit permutation U3 is in fact conjugate to the
+Gottesman–Mochon example by a Clifford operator.
+Definition 5.1 (A family of permutation gates in C3 from descending multiplications). For each
+integer k ≥3, let n = 2k −1. We label a basis of Fn
+2 as eS for nonempty subsets S ⊆[
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 18 ---
+
+18
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+Lemma 5.7. For each integer k ≥3, let us denote the polynomial representations (Definition 2.12)
+of Uk and U−1
+k
+respectively as (πS)S⊆[k],S̸=∅and (π′
+S)S⊆[k],S̸=∅. Then
+(5.1)
+πS(a) =
+|S|
+X
+m=1
+X
+Fm
+i=1 Ti=S,
+Ti̸=∅
+aT1aT2 . . . aTm,
+where the sum is over unordered non-empty subsets T1, . . . , Tm, in other words, all partitions of S,
+and
+π′
+S(a) = aS +
+X
+Ti̸=∅,T1⊔T2=S
+aT1aT2,
+where the sum is over unordered pairs T1, T2.
+Proof. The polynomial form of π−1 follows directly from Proposition 5.2 and Lemma 3.7. For the
+polynomial form of π, observe that, for any T1, . . . , Tm, we have eT1 . . . eTm is eT1⊔···⊔Tm if the Ti
+are pairwise disjoint, and 0 if not, so the desired follows from Proposition 5.6.
+□
+Proof of Theorem 5.4. We know Uk ∈C3 by def
+
+Lines with Figure/Fig:
+   39: 7-qubit permutation gate with 6 Toffoli gates in staircase form (see circuit in Figure 4):
+   55: Figure 4. The non-semi-Clifford permutation gate U3 ∈C3.
+   56: Recall the Gottesman–Mochon 7-qubit gate (see Figure 2 for the circuit)
+
+============================================================
+
+
+--- PAGE 19 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+19
+5.4. Lower bound on the number of qubits required for a C3 permutation. From Theo-
+rem 5.4, we know that Uk is a C3 permutation on 2k −1 qubits that contains a degree-k monomial
+in its polynomial representation. Our next result shows that any such permutation in C3 must be
+supported on at least 2k −1 qubits.
+Theorem 5.9 (Lower bound on the number of qubits required for a C3 permutation). If π is a C3
+permutation such that there is a degree-k monomial somewhere in the polynomial representation of
+π, then n ≥2k −1; this bound is sharp for all k ≥3.
+We prove Theorem 5.9 by taking advantage of the one-to-one correspondence between descending
+multiplications (Proposition 5.10) and C3 permutations in staircase form (Proposition 5.11).
+Proposition 5.
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 20 ---
+
+20
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+Proof. Conjecture 2.19 is false by Theorem 5.4.
+For Conjecture 2.18, suppose it holds.
+Then
+by Lemma 5.12, every permutation in C3 is a mismatch-free product of Toffoli gates, up to Clifford
+permutations on the left and right.
+This implies that every permutation in C3 is semi-Clifford
+by Lemma B.1. This is a contradiction, as we know U3 is a non-semi-Clifford permutation in C3
+for n = 7.
+□
+Acknowledgments
+The work was conducted as a part of the 2024 Summer Program for Undergraduate Research      
+(SPUR) and 2024-2025 Undergraduate Research Opportunities Program (UROP) at MIT. We
+thank Jonathan Bloom, Isaac Chuang, David Jerison, and Peter Shor for their mentorship. X. Tan
+would like to thank Robert Calderbank for introducing the problem of character
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 21 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+21
+[GN07]
+David Gross and Maarten Nest. The lu-lc conjecture, diagonal local operations and quadratic forms over
+gf (2). arXiv preprint arXiv:0707.4000, 2007.
+[Got97]
+D. Gottesman. Stabilizer Codes and Quantum Error Correction. arXiv:quant-ph/9705052, 1997.  
+[Got98]
+Daniel Gottesman. The heisenberg representation of quantum computers, 1998.
+[HLC21]
+Jingzhen Hu, Qingzhong Liang, and Robert Calderbank. Climbing the diagonal clifford hierarchy, 2021.
+[HRT24]
+Zhiyang He, Luke Robitaille, and Xinyu Tan. Permutation gates in the third level of the clifford hierarchy.
+arXiv preprint arXiv:2410.11818, 2024.
+[HVWZ25] Zhiyang He, Vinod Vaikuntanathan, Adam Wills, and Rachel Yun Zhang. Quantum Codes with Address-
+able and Transversal Non-Clifford Gates. arXi
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 22 ---
+
+22
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+Lemma A.3. Suppose U is an n-qubit non-semi-Clifford gate. Then U ⊗I2m is also not semi-    
+Clifford on n + m qubits for any positive integer m.
+Proof. We show the contrapositive. Suppose U′ = U⊗I2m is semi-Clifford. Consider the subgroup G
+of Pn+m consisting of all P such that U′P(U′)−1 ∈Pn+m. We know by Lemma 2.4 that G contains 
+a maximal abelian subgroup A of Pn+m. Let B = ⟨Zn+1, . . . , Zn+m⟩⊆G. Using Lemma A.2, we   
+get a maximal abelian subgroup A′ of Pn+m such that B ⊆A′ ⊆⟨A, B⟩⊆G. Thus, there exists a   
+subgroup A1 of Pn with A′ = ⟨A1, B⟩. We can see that A1 must have at least 2n elements up to
+phase, so it must be a maximal abelian subgroup of Pn. So UA1U−1 ⊆Pn, which means that U is 
+semi-Clifford.
+□
+It follows from Proposition 5.8 and Lemma
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 23 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+23
+To show that q1, . . . , qn is a basis of Fn
+2, suppose S ⊆{1, . . . , n} is such that P
+i∈S qi = 0, we will
+show S = ∅. Let A = S ∩{1, . . . , k} and B = S ∩{k + 1, . . . , n}, so that A ⊔B = S. Then 
+X
+i∈A
+qi =
+X
+i∈B
+qi = π
+ X
+i∈B
+pi
+!
+∈Q,
+because P
+i∈B pi ∈P. Let a = P
+i∈A pi. By repeatedly applying Equation (4.3), we have
+π(a) =
+X
+T⊆A,T̸=∅
+Y
+i∈T
+qi =
+X
+i∈A
+qi +
+X
+T⊆A,|T|≥2
+Y
+i∈T
+qi.
+We know P
+i∈A qi ∈Q, and Q
+i∈T qi ∈Q for any T ⊆A. Therefore π(a) is in Q, and we can take
+C ⊆{k + 1, . . . , n} so that π(a) = P
+i∈C qi. But we also have π(P
+i∈C pi) = P
+i∈C qi, therefore
+X
+i∈A
+pi = a =
+X
+i∈C
+pi.
+However, A∩C = ∅and the pi form a basis, therefore we must have that A = C = ∅. This implies
+0 = a =
+X
+i∈B
+qi = π(
+X
+i∈B
+pi),
+which means P
+i∈B pi = 0
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 24 ---
+
+24
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+Proof. We already know from Section 5.3 that there exists a non-semi-Clifford permutation in C3
+on 7 qubits. Let us show this is minimal. Suppose π is a non-semi-Clifford permutation in C3 on n
+qubits. Write π = ϕ1µϕ2 as in Theorem 3.2. If µ were semi-Clifford, then π would be semi-Clifford;
+thus µ is non-semi-Clifford. Then Proposition A.4 implies that, in the descending multiplication
+corresponding to µ, there exist i, j, k with eiejek ̸= 0. These must be pairwise distinct (aas e2
+m = 0
+for all m); then, applying Proposition 5.10 with S = {i, j, k} implies that n ≥23−1 = 7, as desired.
+The proof is complete.
+□
+Remark A.7. Theorem A.6 can alternatively be shown by computer search, as shown as Theorem  
+5.4 in the previous version of this paper [
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 25 ---
+
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+25
+For m + 1 ≤j ≤n, πZjπ−1 is a diagonal gate in the Pauli group, i.e. ϵjZwj for some vector wj
+and ϵj = ±1. Since πZjπ−1 commutes with πXiπ−1 = Xi for i ∈[m], we must have wj is zero on  
+the first m components for all m + 1 ≤j ≤n. Let χ be the product of Xj over all j with ϵj = −1.
+By replacing π with πχ, we can assume without loss of generality that ϵj = 1 for all j, while
+preserving the property that π commutes with X1, . . . , Xm, and without changing wm+1, . . . , wn.
+Since Zj are independent, the vectors wj are also linearly independent. Since the first m com-
+ponents of each wj are zeros, e1, . . . , em, wm+1, . . . , wn forms a linear basis. Hence, there exists
+an invertible matrix M with Mei = ei for i ∈[m] and Mej = wj for m + 1 ≤j ≤n. C
+
+Lines with Figure/Fig:
+
+============================================================
+
+
+--- PAGE 26 ---
+
+26
+CHARACTERIZATION OF PERMUTATION GATES IN C3
+Theorem B.5. For any positive integer k, a permutation gate π is a semi-Clifford gate in Ck+1
+if and only if there exist Clifford permutations ϕ1, ϕ2 and a mismatch-free product µ of C∗X gates
+such that π = ϕ1µϕ2 and, in µ, each gate has at most k controls.
+Proof. For the “if” direction, π being semi-Clifford follows from Lemma B.1, and π ∈Ck+1 follows
+directly from Theorem 2.17 (along with part 2 of Fact 2.2).
+For the “only if” direction, we apply Theorem B.2 to get a representation ϕ1µϕ2 where ϕ1 and
+ϕ2 are Clifford permutations and µ is a mismatch-free product of C∗X gates. As any two gates
+in such a product commutes, and every such gate is its own inverse, we can assume without loss
+of generality that no gate is repeated. By part 2 of Fact
+
+Lines with Figure/Fig:
+
+============================================================
+
+PS D:\repositories\Github-NLP\Quantum_Dataset_NLP> 
+
+{"arxiv_id": "2510.04993", "page": null, "figure_number": 1, "label": "fig:seven_perm_ext", "gates": ["TOFFOLI"], "quantum_problem": null, "descriptions": ["A permutation gate in staircase form, consisting of 6 Toffoli gates."], "text_positions": [[0, 0]], "block_id": "2510.04993_b4cac79b824cfc2a", "raw_block_file": "circuit_images/live_blocks/2510.04993/raw_blocks/2510.04993_fig1p1_b4cac79b824cfc2a.tex"}
+{"arxiv_id": "2510.04993", "page": null, "figure_number": 2, "label": "fig:circ_gottesman_Mochon", "gates": ["SWAP"], "quantum_problem": null, "descriptions": ["Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with time flowing from left to right)."], "text_positions": [[0, 0]], "block_id": "2510.04993_d0b4ae7becd6c16b", "raw_block_file": "circuit_images/live_blocks/2510.04993/raw_blocks/2510.04993_fig2p1_d0b4ae7becd6c16b.tex"}
+{"arxiv_id": "2510.04993", "page": null, "figure_number": 3, "label": "fig:eg_staircase", "gates": ["TOFFOLI"], "quantum_problem": null, "descriptions": ["This circuit for  _1,2,4_1,3,4_1,2,3 is in staircase form but not mismatch-free, as qubit 3 is used as a control for _1,3,4 and a target for _1,2,3."], "text_positions": [[0, 0]], "block_id": "2510.04993_01e57b5ee7d6ffef", "raw_block_file": "circuit_images/live_blocks/2510.04993/raw_blocks/2510.04993_fig3p1_01e57b5ee7d6ffef.tex"}
+

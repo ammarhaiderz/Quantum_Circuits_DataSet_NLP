@@ -1,0 +1,22 @@
+{
+  "source": "2406.04004",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2406.04004\\raw_blocks\\2406.04004_p1_7186167d2018f84f.tex",
+      "length": 235,
+      "block_id": "2406.04004_7186167d2018f84f",
+      "panel": 1,
+      "label": "Before Mutation"
+    },
+    {
+      "index": 1,
+      "block_file": "2406.04004\\raw_blocks\\2406.04004_p2_d7234f711e0f74c8.tex",
+      "length": 273,
+      "block_id": "2406.04004_d7234f711e0f74c8",
+      "panel": 2,
+      "label": "Before Mutation"
+    }
+  ]
+}

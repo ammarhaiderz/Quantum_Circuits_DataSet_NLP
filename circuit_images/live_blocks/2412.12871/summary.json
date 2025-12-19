@@ -4,19 +4,17 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2412.12871\\raw_blocks\\2412.12871_fig1p1_2e208404bf46e34b.tex",
+      "block_file": "2412.12871\\raw_blocks\\2412.12871_p1_2e208404bf46e34b.tex",
       "length": 751,
       "block_id": "2412.12871_2e208404bf46e34b",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:circuit-QCST-encoding-cv"
     },
     {
       "index": 1,
-      "block_file": "2412.12871\\raw_blocks\\2412.12871_fig2p2_dab9055790c620db.tex",
+      "block_file": "2412.12871\\raw_blocks\\2412.12871_p2_dab9055790c620db.tex",
       "length": 847,
       "block_id": "2412.12871_dab9055790c620db",
-      "figure_number": 2,
       "panel": 2,
       "label": "fig:circuit-QCST-encoding-cv"
     }

@@ -4,10 +4,9 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2403.02968\\raw_blocks\\2403.02968_fig1p1_9423947b19bb8098.tex",
+      "block_file": "2403.02968\\raw_blocks\\2403.02968_p1_9423947b19bb8098.tex",
       "length": 468,
       "block_id": "2403.02968_9423947b19bb8098",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:coherent"
     }

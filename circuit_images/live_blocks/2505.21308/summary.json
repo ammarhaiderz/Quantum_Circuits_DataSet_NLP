@@ -4,28 +4,25 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2505.21308\\raw_blocks\\2505.21308_fig1p1_55f78c142921ca51.tex",
+      "block_file": "2505.21308\\raw_blocks\\2505.21308_p1_55f78c142921ca51.tex",
       "length": 137,
       "block_id": "2505.21308_55f78c142921ca51",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:sketch_coherent_dissipative"
     },
     {
       "index": 1,
-      "block_file": "2505.21308\\raw_blocks\\2505.21308_fig2p2_12f0d6ba992c0c8a.tex",
+      "block_file": "2505.21308\\raw_blocks\\2505.21308_p2_12f0d6ba992c0c8a.tex",
       "length": 258,
       "block_id": "2505.21308_12f0d6ba992c0c8a",
-      "figure_number": 2,
       "panel": 2,
       "label": "fig:sketch_coherent_dissipative"
     },
     {
       "index": 2,
-      "block_file": "2505.21308\\raw_blocks\\2505.21308_fig3p3_f39292b15690216f.tex",
+      "block_file": "2505.21308\\raw_blocks\\2505.21308_p3_f39292b15690216f.tex",
       "length": 429,
       "block_id": "2505.21308_f39292b15690216f",
-      "figure_number": 3,
       "panel": 3,
       "label": "fig:sketch_coherent_dissipative"
     }

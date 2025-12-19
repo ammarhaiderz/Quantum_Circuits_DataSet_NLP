@@ -1,0 +1,14 @@
+{
+  "source": "2509.11307",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2509.11307\\raw_blocks\\2509.11307_p1_5fc984ed031b5a07.tex",
+      "length": 186,
+      "block_id": "2509.11307_5fc984ed031b5a07",
+      "panel": 1,
+      "label": "fig:measurement_based_feedback_control"
+    }
+  ]
+}

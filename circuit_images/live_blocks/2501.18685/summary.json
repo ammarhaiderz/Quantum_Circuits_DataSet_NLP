@@ -4,37 +4,33 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2501.18685\\raw_blocks\\2501.18685_fig1p1_9e97e5e58518f928.tex",
+      "block_file": "2501.18685\\raw_blocks\\2501.18685_p1_9e97e5e58518f928.tex",
       "length": 93,
       "block_id": "2501.18685_9e97e5e58518f928",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:prop_errors_Conj"
     },
     {
       "index": 1,
-      "block_file": "2501.18685\\raw_blocks\\2501.18685_fig2p2_88fb3144e3dca9c7.tex",
+      "block_file": "2501.18685\\raw_blocks\\2501.18685_p2_88fb3144e3dca9c7.tex",
       "length": 63,
       "block_id": "2501.18685_88fb3144e3dca9c7",
-      "figure_number": 2,
       "panel": 2,
       "label": "fig:prop_errors_Conj"
     },
     {
       "index": 2,
-      "block_file": "2501.18685\\raw_blocks\\2501.18685_fig3p3_cf74afb9ba0087fd.tex",
+      "block_file": "2501.18685\\raw_blocks\\2501.18685_p3_cf74afb9ba0087fd.tex",
       "length": 93,
       "block_id": "2501.18685_cf74afb9ba0087fd",
-      "figure_number": 3,
       "panel": 3,
       "label": "fig:prop_errors_Conj"
     },
     {
       "index": 3,
-      "block_file": "2501.18685\\raw_blocks\\2501.18685_fig4p4_7cc02d87b37d0885.tex",
+      "block_file": "2501.18685\\raw_blocks\\2501.18685_p4_7cc02d87b37d0885.tex",
       "length": 63,
       "block_id": "2501.18685_7cc02d87b37d0885",
-      "figure_number": 4,
       "panel": 4,
       "label": "fig:prop_errors_Conj"
     }

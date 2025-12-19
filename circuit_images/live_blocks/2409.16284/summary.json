@@ -4,10 +4,9 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2409.16284\\raw_blocks\\2409.16284_fig1p1_b3c6af982528b658.tex",
+      "block_file": "2409.16284\\raw_blocks\\2409.16284_p1_b3c6af982528b658.tex",
       "length": 351,
       "block_id": "2409.16284_b3c6af982528b658",
-      "figure_number": 1,
       "panel": 1,
       "label": "basicCloneFigure"
     }

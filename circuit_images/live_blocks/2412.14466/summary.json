@@ -4,19 +4,17 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2412.14466\\raw_blocks\\2412.14466_fig1p1_0538b6512060c71d.tex",
+      "block_file": "2412.14466\\raw_blocks\\2412.14466_p1_0538b6512060c71d.tex",
       "length": 276,
       "block_id": "2412.14466_0538b6512060c71d",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:standard_qc"
     },
     {
       "index": 1,
-      "block_file": "2412.14466\\raw_blocks\\2412.14466_fig2p2_e43d5c304b75cc0b.tex",
+      "block_file": "2412.14466\\raw_blocks\\2412.14466_p2_e43d5c304b75cc0b.tex",
       "length": 630,
       "block_id": "2412.14466_e43d5c304b75cc0b",
-      "figure_number": 2,
       "panel": 2,
       "label": "fig:standard_qc"
     }

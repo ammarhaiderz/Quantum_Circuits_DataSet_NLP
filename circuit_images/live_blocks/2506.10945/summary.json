@@ -4,12 +4,11 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2506.10945\\raw_blocks\\2506.10945_fig1p1_a48581ce401831df.tex",
-      "length": 399,
-      "block_id": "2506.10945_a48581ce401831df",
-      "figure_number": 1,
+      "block_file": "2506.10945\\raw_blocks\\2506.10945_p1_4789caa6b2edb5e9.tex",
+      "length": 537,
+      "block_id": "2506.10945_4789caa6b2edb5e9",
       "panel": 1,
-      "label": "fig:seq-tree"
+      "label": "fig:three-input-lor"
     }
   ]
 }

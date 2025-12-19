@@ -4,10 +4,9 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2509.13247\\raw_blocks\\2509.13247_fig1p1_d51f40897f27a89e.tex",
+      "block_file": "2509.13247\\raw_blocks\\2509.13247_p1_d51f40897f27a89e.tex",
       "length": 1689,
       "block_id": "2509.13247_d51f40897f27a89e",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:cdcx_unencoded"
     }

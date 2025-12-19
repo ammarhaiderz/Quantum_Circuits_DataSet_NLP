@@ -112,54 +112,58 @@ def main():
     processed_count = 0
     skipped_count = 0
     latex_circuit_embedded = True
+    collected_250_stop_latex_circuit_img = True
 
-    try:
-        for arxiv_id in arxiv_ids:
-            # Stop if we have enough images
-            if pipeline.stats['total_saved'] >= MAX_IMAGES:
-                logger.info(f" Reached maximum images limit ({MAX_IMAGES})")
-                break
-            
-            # Check if quantum paper
-            if not arxiv_filter.is_quantum_paper(arxiv_id):
-                skipped_count += 1
-                logger.info(f" Skipped {skipped_count} non-quantum papers so far...")
-                continue
-            
-            # Process quantum paper
-            processed_count += 1
-            extracted, figures = pipeline.process_paper(arxiv_id)
-            
-            # Update progress
-            if processed_count % 10 == 0:
-                logger.info(
-                    f" Processed {processed_count} papers, "
-                    f"saved {pipeline.stats['total_saved']}/{MAX_IMAGES} images"
-                )
+    if collected_250_stop_latex_circuit_img:
+        logger.info(" Already collected 250 images, skipping further processing.")
+        try:
+            for arxiv_id in arxiv_ids:
+                # Stop if we have enough images
+                if pipeline.stats['total_saved'] >= MAX_IMAGES:
+                    logger.info(f" Reached maximum images limit ({MAX_IMAGES})")
+                    break
+                
+                # Check if quantum paper
+                if not arxiv_filter.is_quantum_paper(arxiv_id):
+                    skipped_count += 1
+                    logger.info(f" Skipped {skipped_count} non-quantum papers so far...")
+                    continue
+                
+                # Process quantum paper
+                processed_count += 1
+                extracted, figures = pipeline.process_paper(arxiv_id)
+                
+                # Update progress
+                if processed_count % 10 == 0:
+                    logger.info(
+                        f" Processed {processed_count} papers, "
+                        f"saved {pipeline.stats['total_saved']}/{MAX_IMAGES} images"
+                    )
 
-            # check for 250 images in circuit.json once 250 reached save checkpoint information in latex_code_circuit_checkpoint.jsonl
-            
+                # check for 250 images in circuit.json once 250 reached save checkpoint information in latex_code_circuit_checkpoint.jsonl
+                
 
-            # open circuits.json using UTF-8 to avoid platform default codec issues
-            with open("./data/circuits.json", "r", encoding="utf-8") as f:
-                data = json.load(f)
+                # open circuits.json using UTF-8 to avoid platform default codec issues
+                with open("./data/circuits.json", "r", encoding="utf-8") as f:
+                    data = json.load(f)
 
-            num_keys = len(data)
-            if num_keys >= 250 and latex_circuit_embedded == True:
-                with open("./data/latex_code_circuit_checkpoint.json", "w") as checkpoint_file:
-                    for fig in figures:
-                        record = {
-                            "total_papers_processed": processed_count + skipped_count
-                        }
-                        checkpoint_file.write(json.dumps(record) + "\n")
-                latex_circuit_embedded = False
-                logger.info(" Reached 250 images, saved checkpoint to latex_code_circuit_checkpoint.jsonl")
-            
+                num_keys = len(data)
+                if num_keys >= 250 and latex_circuit_embedded == True:
+                    with open("./data/latex_code_circuit_checkpoint.json", "w") as checkpoint_file:
+                        for fig in figures:
+                            record = {
+                                "total_papers_processed": processed_count + skipped_count
+                            }
+                            checkpoint_file.write(json.dumps(record) + "\n")
+                            latex_circuit_embedded = False
+                            collected_250_stop_latex_circuit_img = False
+                    logger.info(" Reached 250 images, saved checkpoint to latex_code_circuit_checkpoint.jsonl")
+                
 
-    except KeyboardInterrupt:
-        logger.warning(
-            "\n⚠️ Keyboard interrupt detected — saving results..."
-        )
+        except KeyboardInterrupt:
+            logger.warning(
+                "\n⚠️ Keyboard interrupt detected — saving results..."
+            )
 
     # Save results (runs after normal completion OR keyboard interrupt)
     if pipeline.text_records:

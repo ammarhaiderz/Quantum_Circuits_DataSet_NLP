@@ -4,10 +4,9 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2509.15138\\raw_blocks\\2509.15138_fig1p1_b38dc05690ca27e2.tex",
+      "block_file": "2509.15138\\raw_blocks\\2509.15138_p1_b38dc05690ca27e2.tex",
       "length": 1804,
       "block_id": "2509.15138_b38dc05690ca27e2",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:circuit"
     }

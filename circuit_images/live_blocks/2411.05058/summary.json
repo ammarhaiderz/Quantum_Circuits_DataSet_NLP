@@ -4,10 +4,9 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2411.05058\\raw_blocks\\2411.05058_fig1p1_653dcfc8b8f91aae.tex",
+      "block_file": "2411.05058\\raw_blocks\\2411.05058_p1_653dcfc8b8f91aae.tex",
       "length": 467,
       "block_id": "2411.05058_653dcfc8b8f91aae",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:stm_proj_circAppendix"
     }

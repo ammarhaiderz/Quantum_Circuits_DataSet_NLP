@@ -4,37 +4,33 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2508.00055\\raw_blocks\\2508.00055_fig1p1_0df241ef8451f9c4.tex",
+      "block_file": "2508.00055\\raw_blocks\\2508.00055_p1_0df241ef8451f9c4.tex",
       "length": 432,
       "block_id": "2508.00055_0df241ef8451f9c4",
-      "figure_number": 1,
       "panel": 1,
       "label": "fig:conversion"
     },
     {
       "index": 1,
-      "block_file": "2508.00055\\raw_blocks\\2508.00055_fig2p2_f37ead034551bcc6.tex",
+      "block_file": "2508.00055\\raw_blocks\\2508.00055_p2_f37ead034551bcc6.tex",
       "length": 448,
       "block_id": "2508.00055_f37ead034551bcc6",
-      "figure_number": 2,
       "panel": 2,
       "label": "fig:conversion"
     },
     {
       "index": 2,
-      "block_file": "2508.00055\\raw_blocks\\2508.00055_fig3p3_903020c7d36391e9.tex",
+      "block_file": "2508.00055\\raw_blocks\\2508.00055_p3_903020c7d36391e9.tex",
       "length": 448,
       "block_id": "2508.00055_903020c7d36391e9",
-      "figure_number": 3,
       "panel": 3,
       "label": "fig:conversion"
     },
     {
       "index": 3,
-      "block_file": "2508.00055\\raw_blocks\\2508.00055_fig4p4_27a446c86d037a2d.tex",
+      "block_file": "2508.00055\\raw_blocks\\2508.00055_p4_27a446c86d037a2d.tex",
       "length": 458,
       "block_id": "2508.00055_27a446c86d037a2d",
-      "figure_number": 4,
       "panel": 4,
       "label": "fig:conversion"
     }
