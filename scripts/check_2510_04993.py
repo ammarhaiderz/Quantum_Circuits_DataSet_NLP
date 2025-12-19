@@ -23,10 +23,10 @@ for i, line in enumerate(p.read_text(encoding='utf-8').splitlines(), start=1):
         print('RAW_BLOCK_FILE:', rec.get('raw_block_file'))
         print('CAPTION:', caption)
         try:
-            page = find_caption_page_in_pdf('2510.04993', caption)
+            res = find_caption_page_in_pdf('2510.04993', caption)
         except Exception as e:
-            page = f'ERROR: {e}'
-        print('DETECTED_PAGE:', page)
+            res = f'ERROR: {e}'
+        print('DETECTED:', res)
         print('---')
 
 if not any_found:

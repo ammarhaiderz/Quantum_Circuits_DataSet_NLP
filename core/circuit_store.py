@@ -59,9 +59,13 @@ def emit_record(record: dict):
                 aid = record.get('arxiv_id')
                 if aid and record.get('descriptions'):
                     try:
-                        pg = find_caption_page_in_pdf(aid, record['descriptions'][0])
-                        if pg:
-                            record['page'] = pg
+                        res = find_caption_page_in_pdf(aid, record['descriptions'][0])
+                        if res:
+                            page_val, fig_val = res
+                            if page_val:
+                                record['page'] = page_val
+                            if fig_val is not None:
+                                record['figure'] = fig_val
                     except Exception:
                         # non-fatal: leave page as-is
                         pass
@@ -111,7 +115,21 @@ def _regenerate_json():
                         clean = dict(rec)
                         for _f in ('raw_block_file', 'block_id', 'block_name', 'image_filename'):
                             clean.pop(_f, None)
-                        records_dict[img_name] = clean
+                        # Ensure `figure` is the second key after `arxiv_id` when present
+                        def _order_value_dict(d: dict) -> dict:
+                            out = {}
+                            # keep arxiv_id first if present
+                            if 'arxiv_id' in d:
+                                out['arxiv_id'] = d.pop('arxiv_id')
+                            # place figure second if present
+                            if 'figure' in d:
+                                out['figure'] = d.pop('figure')
+                            # then dump remaining keys in original order
+                            for k, v in d.items():
+                                out[k] = v
+                            return out
+
+                        records_dict[img_name] = _order_value_dict(clean)
                     else:
                         # missing file; skip
                         continue
@@ -147,7 +165,18 @@ def _regenerate_json():
                     clean2 = dict(rec)
                     for _f in ('raw_block_file', 'block_id', 'block_name', 'image_filename'):
                         clean2.pop(_f, None)
-                    records_dict[img_name2] = clean2
+                    # Preserve ordering with `figure` as second field when available
+                    def _order_value_dict2(d: dict) -> dict:
+                        out = {}
+                        if 'arxiv_id' in d:
+                            out['arxiv_id'] = d.pop('arxiv_id')
+                        if 'figure' in d:
+                            out['figure'] = d.pop('figure')
+                        for k, v in d.items():
+                            out[k] = v
+                        return out
+
+                    records_dict[img_name2] = _order_value_dict2(clean2)
             except Exception:
                 # skip malformed lines
                 continue
@@ -369,7 +398,7 @@ def _compute_tfidf_similarity(query_tokens: Counter, doc_tokens_list: list[Count
     return scores
 
 
-def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.08) -> int | None:
+def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.08) -> tuple[int, int | None] | None:
     """
     Find the page number (1-based) in the PDF where the figure caption appears.
 
@@ -404,9 +433,9 @@ def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.0
         return None
 
     # Caption anchors: require start-of-sentence to be a valid anchor.
-    # Matches either at the start of text or after a sentence-ending punctuation
-    anchor_re = re.compile(r"(?:^|[\.\!?]\s+)(?:Fig\.?|Figure)\s*\d+\b", re.IGNORECASE)
-    stop_re = re.compile(r"(?:^|[\.\!?]\s+)(?:Fig\.?|Figure|Table)\s*\d+\b", re.IGNORECASE)
+    # Capture the figure number so we can return it alongside the page.
+    anchor_re = re.compile(r"(?:^|[\.!?]\s+)(?:Fig\.?|Figure)\s*(\d+)\b", re.IGNORECASE)
+    stop_re = re.compile(r"(?:^|[\.!?]\s+)(?:Fig\.?|Figure|Table)\s*\d+\b", re.IGNORECASE)
 
     page_candidates: list[tuple[int, str]] = []
 
@@ -449,22 +478,29 @@ def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.0
                 if s:
                     candidate = candidate[:s.start()]
                 candidate = re.sub(r"^[\s:\-\–]+", "", candidate)
-                page_candidates.append((page_num, candidate))
+                # store candidate along with the captured figure number (int)
+                try:
+                    fignum = int(m.group(1))
+                except Exception:
+                    fignum = None
+                page_candidates.append((page_num, candidate, fignum))
 
         if not found_anchor:
             # Fallback: use normalized whole page broken into windows
             page_text_norm = _normalize_text(page_raw)
             for i in range(0, len(page_text_norm), 300):
-                page_candidates.append((page_num, page_text_norm[i:i + 300]))
+                page_candidates.append((page_num, page_text_norm[i:i + 300], None))
 
     docs = []
     pages = []
 
-    for pnum, text in page_candidates:
+    fig_nums = []
+    for pnum, text, fnum in page_candidates:
         tokens = _tokenize_for_comparison(text, is_latex=False, min_len=2)
         if tokens:
             docs.append(Counter(tokens))
             pages.append(pnum)
+            fig_nums.append(fnum)
 
     if not docs:
         doc.close()
@@ -475,11 +511,12 @@ def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.0
 
     best_idx = max(range(len(scores)), key=lambda i: scores[i])
     best_page = pages[best_idx]
+    best_fig = fig_nums[best_idx] if fig_nums else None
 
     doc.close()
 
-    # Return the page with the highest TF-IDF score regardless of threshold.
-    return best_page + 1
+    # Return (page, figure_number) where figure_number may be None.
+    return (best_page + 1, best_fig)
 
 
 
@@ -508,10 +545,18 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                         continue
 
                     caption = rec.get('descriptions')[0] if rec.get('descriptions') else ''
-                    page = find_caption_page_in_pdf(rec.get('arxiv_id', ''), caption)
-                    if page:
-                        rec['page'] = page
-                        updated += 1
+                    try:
+                        res = find_caption_page_in_pdf(rec.get('arxiv_id', ''), caption)
+                        if res:
+                            page_val, fig_val = res
+                            if page_val:
+                                rec['page'] = page_val
+                                updated += 1
+                            if fig_val is not None:
+                                rec['figure'] = fig_val
+                    except Exception:
+                        # leave as-is on failure
+                        pass
 
                 wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
 

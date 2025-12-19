@@ -1,9 +1,0 @@
-\begin{quantikz}
-    \lstick{$\ket{0}$}&\gate{R_y(\theta_1)}&\ctrl{1}\gategroup[wires=7,steps=3,style={dashed,rounded corners,fill=blue!20, inner xsep=2pt},background]{{ repeat $p$-times}}&\qw&\gate{R_y(\theta_{n+1})}&\meter{}&\\
-    \lstick{$\ket{0}$}&\gate{R_y(\theta_2)}&\gate{Z}&\ctrl{1}&\gate{R_y(\theta_{n+2})}&\meter{}&\\
-    \lstick{$\ket{0}$}&\gate{R_y(\theta_3)}&\ctrl{1}&\gate{Z}&\gate{R_y(\theta_{n+3})}&\meter{}&\\
-    \lstick{$\ket{0}$}&\gate{R_y(\theta_4)}&\gate{Z}&\qw&\gate{R_y(\theta_{n+4})}&\meter{}&\\
-    &\vdots&&&\vdots&&\\
-    \lstick{$\ket{0}$}&\gate{R_y(\theta_{n-1})}&\ctrl{1}&\gate{Z}\vqw{-1}&\gate{R_y(\theta_{2n-1})}&\meter{}&\\
-    \lstick{$\ket{0}$}&\gate{R_y(\theta_{n})}&\gate{Z}&\qw&\gate{R_y(\theta_{2n})}&\meter{}&
-\end{quantikz}

@@ -1,8 +1,0 @@
-\Qcircuit @C=0.32em @R=.4em  {    
-                   &\multigate{1}{ZZ}&\gate{Z} &\qw      &\multigate{1}{XX}&\ctrl{+1}&\multigate{1}{\tilde{\Lambda}}&\gate{X} &\qw      &\gate{Z} &\qw      &\qw      &      \\
-                   &\ghost{ZZ}       &\qw      &\gate{X} &\ghost{XX}       &\targ    &\ghost{\tilde{\Lambda}}       &\qw      &\gate{X} &\qw      &\gate{Z} &\qw      &      \\
-\lstick{|+\rangle} &\qw              &\qw      &\qw      &\ctrl{-1}        &\qw      &\qw                           &\ctrl{-2}&\qw      &\qw      &\qw      & \measuretab{M_X} &\:\:\:\:\:\:\:\:\:\: m_X^{(1)} \\
-\lstick{|+\rangle} &\qw              &\qw      &\ctrl{-2}&\qw              &\qw      &\qw                           &\qw      &\ctrl{-2}&\qw      &\qw      & \measuretab{M_X} &\:\:\:\:\:\:\:\:\:\: m_X^{(2)}\\
-\lstick{|+\rangle} &\qw              &\ctrl{-4}&\qw      &\qw              &\qw      &\qw                           &\qw      &\qw      &\ctrl{-4}&\qw      & \measuretab{M_X} &\:\:\:\:\:\:\:\:\:\: m_X^{(3)}\\
-\lstick{|+\rangle} &\ctrl{-4}        &\qw      &\qw      &\qw              &\qw      &\qw                           &\qw      &\qw      &\qw      &\ctrl{-4}& \measuretab{M_X} &\:\:\:\:\:\:\:\:\:\: m_X^{(4)} \gategroup{1}{6}{2}{7}{.3em}{--}\\
-}
