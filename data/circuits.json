@@ -1,37 +1,5 @@
 {
-  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766239525062.png": {
-    "arxiv_id": "2509.13247",
-    "figure_number": 15,
-    "page": 14,
-    "gates": [
-      "H",
-      "TOFFOLI",
-      "MCX_3",
-      "CNOT",
-      "MEASURE"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "Arbitrary-length logical constant-depth CNOT ladder. A ⊕ on a measured data bit is flipped if the sum (modulo 2) of the measured ancilla bits above it with an ⊕ is 1. The qubits with/without a Hadamard a ied at the start are ancilla/data qubits, respectively.",
-      "As discussed in , an additional tool we have in our",
-      ". Arbitrary-length logical constant-depth CNOT lad- der. A ⊕on a measured data bit is flipped if the sum (modulo 2) of the measured ancilla bits above it with an ⊕is 1. The qubits with/without a Hadam"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        190,
-        453
-      ],
-      [
-        181,
-        188
-      ]
-    ]
-  },
-  "2509.13247__2509.13247_p1_221364ed016a64f3__1766239526986.png": {
+  "2509.13247__2509.13247_p1_221364ed016a64f3__1766241016802.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 7,
     "page": 8,
@@ -62,7 +30,7 @@
       ]
     ]
   },
-  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766239528663.png": {
+  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766241018568.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 4,
     "page": 6,
@@ -99,7 +67,39 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766239547702.png": {
+  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766241020729.png": {
+    "arxiv_id": "2509.13247",
+    "figure_number": 15,
+    "page": 14,
+    "gates": [
+      "H",
+      "TOFFOLI",
+      "MCX_3",
+      "CNOT",
+      "MEASURE"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "Arbitrary-length logical constant-depth CNOT ladder. A ⊕ on a measured data bit is flipped if the sum (modulo 2) of the measured ancilla bits above it with an ⊕ is 1. The qubits with/without a Hadamard a ied at the start are ancilla/data qubits, respectively.",
+      "As discussed in , an additional tool we have in our",
+      ". Arbitrary-length logical constant-depth CNOT lad- der. A ⊕on a measured data bit is flipped if the sum (modulo 2) of the measured ancilla bits above it with an ⊕is 1. The qubits with/without a Hadam"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        190,
+        453
+      ],
+      [
+        181,
+        188
+      ]
+    ]
+  },
+  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766241039087.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -131,7 +131,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766239547751.png": {
+  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766241039139.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -164,7 +164,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766239547825.png": {
+  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766241039212.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -197,7 +197,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766239547897.png": {
+  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766241039292.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -230,7 +230,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p5_48127125a9bc080b__1766239547963.png": {
+  "2509.04761__2509.04761_p5_48127125a9bc080b__1766241039353.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -262,7 +262,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_b6756454e84f6705__1766239556321.png": {
+  "2407.04826__2407.04826_p1_b6756454e84f6705__1766241046976.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -289,7 +289,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766239556374.png": {
+  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766241047019.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -316,7 +316,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766239556420.png": {
+  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766241047068.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -343,7 +343,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766239560861.png": {
+  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766241051348.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
@@ -371,7 +371,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766239560891.png": {
+  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766241051376.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
@@ -399,7 +399,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766239560930.png": {
+  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766241051420.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
@@ -427,7 +427,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766239560971.png": {
+  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766241051468.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
@@ -455,7 +455,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_bc58770175544b8c__1766239569648.png": {
+  "2407.04826__2407.04826_p1_bc58770175544b8c__1766241059903.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -483,7 +483,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766239569674.png": {
+  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766241059928.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -511,7 +511,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766239569720.png": {
+  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766241059971.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -539,7 +539,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766239569765.png": {
+  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766241060014.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -567,7 +567,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766239569816.png": {
+  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766241060058.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -595,7 +595,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766239569865.png": {
+  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766241060103.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -623,7 +623,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p7_b698de4b847b9673__1766239569906.png": {
+  "2407.04826__2407.04826_p7_b698de4b847b9673__1766241060145.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -651,7 +651,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766239569952.png": {
+  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766241060194.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -676,6 +676,142 @@
       [
         210,
         218
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p1_349982884b4d4708__1766241065783.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 4,
+    "page": 5,
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        728
+      ],
+      [
+        517,
+        523
+      ],
+      [
+        642,
+        650
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p2_787f76d104d6fb82__1766241065837.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 4,
+    "page": 5,
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        728
+      ],
+      [
+        517,
+        523
+      ],
+      [
+        642,
+        650
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p3_df01852945231c65__1766241065880.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 4,
+    "page": 5,
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        728
+      ],
+      [
+        517,
+        523
+      ],
+      [
+        642,
+        650
+      ]
+    ]
+  },
+  "2407.04826__2407.04826_p4_01768c686acefd8b__1766241065928.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 4,
+    "page": 5,
+    "gates": [
+      "CTRL-V",
+      "CNOT"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        728
+      ],
+      [
+        517,
+        523
+      ],
+      [
+        642,
+        650
       ]
     ]
   }

@@ -12,11 +12,8 @@ import time
 
 from models.figure_data import Figure, ExtractedImage
 from core.preprocessor import TextPreprocessor
-from config.settings import SUPPORTED_EXT, REQUEST_DELAY, OUTPUT_DIR, CACHE_DIR, PDF_CACHE_DIR, ENABLE_PDF_EXTRACTION
+from config.settings import SUPPORTED_EXT, REQUEST_DELAY, OUTPUT_DIR, CACHE_DIR, PDF_CACHE_DIR
 from config.queries import FILENAME_NEGATIVE_TOKENS
-
-
-from core.live_latex_extractor import process_text
 
 
 
@@ -37,11 +34,24 @@ class ImageExtractor:
     QCIRCUIT_RE = re.compile(r"\\Qcircuit[\s\S]*?\\end{array}", re.DOTALL)
     
     def __init__(self, preprocessor: TextPreprocessor):
+        """Initialize the extractor with preprocessing utilities.
+
+        Parameters
+        ----------
+        preprocessor : TextPreprocessor
+            Text preprocessor used for filename and caption handling.
+        """
         self.preprocessor = preprocessor
         self.saved_images: Set[str] = set()
     
     def clear_output_dir(self, extensions: Optional[List[str]] = None):
-        """Clear previous images from output directory."""
+        """Clear previous images from output directory.
+
+        Parameters
+        ----------
+        extensions : list of str, optional
+            File extensions to remove. Defaults to SUPPORTED_EXT when None.
+        """
         if extensions is None:
             extensions = SUPPORTED_EXT
         
@@ -51,12 +61,34 @@ class ImageExtractor:
                 os.remove(fpath)
     
     def read_arxiv_ids(self, filename: str) -> List[str]:
-        """Read arXiv IDs from file."""
+        """Read arXiv identifiers from a file.
+
+        Parameters
+        ----------
+        filename : str
+            Path to a file containing one arXiv identifier per line.
+
+        Returns
+        -------
+        list of str
+            List of normalized arXiv identifiers without the ``arXiv:`` prefix.
+        """
         with open(filename, "r") as f:
             return [l.strip().replace("arXiv:", "") for l in f if l.strip()]
     
     def download_source(self, arxiv_id: str) -> Optional[io.BytesIO]:
-        """Download or load cached arXiv source."""
+        """Download or load cached arXiv source tarball.
+
+        Parameters
+        ----------
+        arxiv_id : str
+            Identifier of the arXiv paper (e.g., ``2301.01234``).
+
+        Returns
+        -------
+        BytesIO or None
+            In-memory tarball bytes when available; otherwise ``None``.
+        """
         cache_path = os.path.join(CACHE_DIR, f"{arxiv_id}.tar.gz")
         
         # Use cached version if available
@@ -82,7 +114,18 @@ class ImageExtractor:
         return None
     
     def download_pdf_paper(self, arxiv_id: str) -> Optional[bytes]:
-        """Download or load cached PDF paper file."""
+        """Download or load cached PDF paper file.
+
+        Parameters
+        ----------
+        arxiv_id : str
+            Identifier of the arXiv paper (e.g., ``2301.01234``).
+
+        Returns
+        -------
+        bytes or None
+            PDF bytes when available; otherwise ``None``.
+        """
         cache_path = os.path.join(PDF_CACHE_DIR, f"{arxiv_id}.pdf")
         
         # Use cached version if available
@@ -114,14 +157,40 @@ class ImageExtractor:
         return None
     
     def get_pdf_cache_path(self, paper_id: str, filename: str) -> str:
-        """Get cache path for extracted image file (future-proof extra storage)."""
+        """Build cache path for an extracted image file.
+
+        Parameters
+        ----------
+        paper_id : str
+            Identifier of the arXiv paper associated with the image.
+        filename : str
+            Original filename of the image within the source archive.
+
+        Returns
+        -------
+        str
+            Absolute path where the cached image should be stored.
+        """
         safe_pid = paper_id.replace("/", "_").replace(".", "_")
         cache_subdir = os.path.join(PDF_CACHE_DIR, safe_pid)
         os.makedirs(cache_subdir, exist_ok=True)
         return os.path.join(cache_subdir, filename)
     
     def load_cached_pdf(self, paper_id: str, filename: str) -> Optional[bytes]:
-        """Load extracted image from cache if available."""
+        """Load an extracted image from cache if present.
+
+        Parameters
+        ----------
+        paper_id : str
+            Identifier of the arXiv paper.
+        filename : str
+            Cached filename to load.
+
+        Returns
+        -------
+        bytes or None
+            Cached file contents when found; otherwise ``None``.
+        """
         cache_path = self.get_pdf_cache_path(paper_id, filename)
         if os.path.exists(cache_path):
             try:
@@ -132,7 +201,22 @@ class ImageExtractor:
         return None
     
     def save_pdf_to_cache(self, paper_id: str, filename: str, data: bytes) -> bool:
-        """Save extracted image to cache for future runs."""
+        """Save extracted image bytes to cache.
+
+        Parameters
+        ----------
+        paper_id : str
+            Identifier of the arXiv paper.
+        filename : str
+            Target filename within the cache.
+        data : bytes
+            Image bytes to persist.
+
+        Returns
+        -------
+        bool
+            ``True`` when the file is written successfully; otherwise ``False``.
+        """
         cache_path = self.get_pdf_cache_path(paper_id, filename)
         try:
             with open(cache_path, "wb") as f:
@@ -143,71 +227,104 @@ class ImageExtractor:
             return False
     
     def filename_is_negative(self, img_path: str) -> bool:
-        """Check if filename contains negative tokens."""
+        """Check whether a filename contains negative tokens.
+
+        Parameters
+        ----------
+        img_path : str
+            Path or name of the image file.
+
+        Returns
+        -------
+        bool
+            ``True`` when any token matches ``FILENAME_NEGATIVE_TOKENS``; otherwise ``False``.
+        """
         fname = os.path.basename(img_path)
         tokens = self.preprocessor.preprocess_filename(fname)
         return any(t in FILENAME_NEGATIVE_TOKENS for t in tokens)
+
+    def _extract_caption_from_block(self, block_text: str) -> Optional[str]:
+        """Extract a caption from a LaTeX figure block.
+
+        Parameters
+        ----------
+        block_text : str
+            LaTeX snippet corresponding to a single figure environment.
+
+        Returns
+        -------
+        str or None
+            Raw caption contents when found; otherwise ``None``.
+        """
+        key = '\\caption'
+        i = block_text.find(key)
+        if i == -1:
+            return None
+
+        # advance past '\caption'
+        j = i + len(key)
+        # skip whitespace
+        while j < len(block_text) and block_text[j].isspace():
+            j += 1
+
+        # handle optional short-form [..]
+        if j < len(block_text) and block_text[j] == '[':
+            # find matching closing ]
+            k = j + 1
+            depth = 1
+            while k < len(block_text) and depth > 0:
+                if block_text[k] == ']' and depth == 1:
+                    depth = 0
+                    k += 1
+                    break
+                k += 1
+            j = k
+            # skip whitespace to '{'
+            while j < len(block_text) and block_text[j].isspace():
+                j += 1
+
+        # now expect a '{'
+        if j >= len(block_text) or block_text[j] != '{':
+            # malformed caption
+            return None
+
+        # balanced-brace scan
+        start = j + 1
+        depth = 1
+        k = start
+        while k < len(block_text) and depth > 0:
+            ch = block_text[k]
+            if ch == '{':
+                depth += 1
+            elif ch == '}':
+                depth -= 1
+                if depth == 0:
+                    return block_text[start:k]
+            k += 1
+        return None
     
     def extract_figures_from_tex(self, tex: str, paper_id: Optional[str] = None, figure_counter: Optional[int] = 1) -> (List[Figure], int):
         r"""Extract figures from LaTeX text.
         Handles multiple \includegraphics within a single figure block and subfigures.
+
+        Parameters
+        ----------
+        tex : str
+            Raw LaTeX source text to scan for figure environments.
+        paper_id : str, optional
+            Identifier of the paper, propagated to live extractor for labeling.
+        figure_counter : int, optional
+            Starting counter used by the live extractor for numbering blocks.
+
+        Returns
+        -------
+        tuple[list[Figure], int]
+            Parsed figures and the updated figure counter.
         """
         figures: List[Figure] = []
 
-        def _extract_caption_from_block(block_text: str) -> Optional[str]:
-            """Extract caption string from a LaTeX figure block handling
-            optional short-forms `\caption[short]{long}` and nested braces.
-            Returns the raw LaTeX caption content (not converted to plain text).
-            """
-            key = '\\caption'
-            i = block_text.find(key)
-            if i == -1:
-                return None
-
-            # advance past '\caption'
-            j = i + len(key)
-            # skip whitespace
-            while j < len(block_text) and block_text[j].isspace():
-                j += 1
-
-            # handle optional short-form [..]
-            if j < len(block_text) and block_text[j] == '[':
-                # find matching closing ]
-                k = j + 1
-                depth = 1
-                while k < len(block_text) and depth > 0:
-                    if block_text[k] == ']' and depth == 1:
-                        depth = 0
-                        k += 1
-                        break
-                    k += 1
-                j = k
-                # skip whitespace to '{'
-                while j < len(block_text) and block_text[j].isspace():
-                    j += 1
-
-            # now expect a '{'
-            if j >= len(block_text) or block_text[j] != '{':
-                # malformed caption
-                return None
-
-            # balanced-brace scan
-            start = j + 1
-            depth = 1
-            k = start
-            while k < len(block_text) and depth > 0:
-                ch = block_text[k]
-                if ch == '{':
-                    depth += 1
-                elif ch == '}':
-                    depth -= 1
-                    if depth == 0:
-                        return block_text[start:k]
-                k += 1
-            return None
-
         for block in self.FIG_RE.findall(tex):
-            raw_cap = _extract_caption_from_block(block)
+            raw_cap = self._extract_caption_from_block(block)
             if not raw_cap:
                 # No caption; skip to reduce false positives
                 continue
@@ -221,17 +338,19 @@ class ImageExtractor:
 
             caption_text = caption_text.strip()
 
+            subfig_blocks = self.SUBFIG_RE.findall(block)
+
             # Collect all image paths within the figure block
             img_paths = self.IMG_RE.findall(block) or []
 
             # If subfigures exist, also search within subfigure blocks explicitly
-            for sub in self.SUBFIG_RE.findall(block):
+            for sub in subfig_blocks:
                 img_paths.extend(self.IMG_RE.findall(sub))
 
             # Attempt to extract subcaptions if present
             subcaptions = []
             # Collect explicit \subcaption{...}
-            for sub in self.SUBFIG_RE.findall(block):
+            for sub in subfig_blocks:
                 subs = self.SUBCAP_RE.findall(sub)
                 subcaptions.extend([s.strip() for s in subs if s.strip()])
 
@@ -313,7 +432,22 @@ class ImageExtractor:
 
     def extract_images(self, tar: tarfile.TarFile, figures: List[Figure], 
                       paper_id: str) -> List[ExtractedImage]:
-        """Extract images from tar file for selected figures."""
+        """Extract images from a tar archive for selected figures.
+
+        Parameters
+        ----------
+        tar : tarfile.TarFile
+            Open tarball containing the arXiv source files.
+        figures : list of Figure
+            Figures that were selected for extraction.
+        paper_id : str
+            Identifier of the arXiv paper.
+
+        Returns
+        -------
+        list of ExtractedImage
+            List of extracted image records with file paths and metadata.
+        """
         members = {m.name: m for m in tar.getmembers()}
         extracted = []
         safe_pid = paper_id.replace("/", "_").replace(".", "_")
