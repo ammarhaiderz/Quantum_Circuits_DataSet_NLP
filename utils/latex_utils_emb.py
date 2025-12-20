@@ -6,15 +6,23 @@ import shutil
 import tempfile
 from pathlib import Path
 from tqdm import tqdm
-import sys
 
 
 def render_saved_blocks(blocks_root: str = 'circuit_images/blocks', out_pdf_dir: str = 'circuit_images/rendered'):
-	"""Render all saved raw block files to PDF using system `pdflatex`.
+	"""Render saved raw block files to PDF using system ``pdflatex``.
 
-	Looks for `*/raw_blocks/*.tex` under `blocks_root`, wraps each block into a
-	standalone LaTeX document, runs `pdflatex` twice, saves `.log` files and
-	copies resulting PDFs to `out_pdf_dir`.
+	Looks for ``*/raw_blocks/*.tex`` under ``blocks_root``, wraps each block into a
+	standalone LaTeX document, runs ``pdflatex`` twice, saves ``.log`` files, and
+	copies resulting PDFs to ``out_pdf_dir``.
+
+	Parameters
+	----------
+	blocks_root : str, optional
+		Root directory containing ``raw_blocks`` subfolders (default
+		``'circuit_images/blocks'``).
+	out_pdf_dir : str, optional
+		Destination directory for rendered PDFs (default
+		``'circuit_images/rendered'``).
 	"""
 	blocks_root = Path(blocks_root)
 	out_pdf_dir = Path(out_pdf_dir)
@@ -122,9 +130,18 @@ def render_saved_blocks(blocks_root: str = 'circuit_images/blocks', out_pdf_dir:
 
 	print('Rendering complete. PDFs in', out_pdf_dir)
 def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/blocks', out_dir: str = 'circuit_images/rendered_pdflatex'):
-	"""Render saved raw block files using the `pdflatex` Python wrapper (PDFLaTeX).
+	"""Render saved raw block files using the ``pdflatex`` Python wrapper.
 
-	Falls back to the subprocess renderer if the module is not available.
+	Falls back to the subprocess renderer when the module is unavailable.
+
+	Parameters
+	----------
+	blocks_root : str, optional
+		Root directory containing ``raw_blocks`` subfolders (default
+		``'circuit_images/blocks'``).
+	out_dir : str, optional
+		Destination directory for rendered PDFs (default
+		``'circuit_images/rendered_pdflatex'``).
 	"""
 	try:
 		from pdflatex import PDFLaTeX
@@ -231,13 +248,23 @@ def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/
 
 
 def extract_qcircuit_blocks_from_text(text: str):
-	r"""Extract complete `\Qcircuit{...}` blocks from `text`.
+	r"""Extract complete ``\Qcircuit{...}`` blocks from text.
 
 	Strategy:
-	- Find occurrences of optional `\label{...}` followed by `\Qcircuit`.
-	- Locate the first `{` after the match and perform a balanced-brace scan
+	- Find occurrences of optional ``\label{...}`` followed by ``\Qcircuit``.
+	- Locate the first ``{`` after the match and perform a balanced-brace scan
 	  to extract the full block.
 	- Return a list of blocks (strings).
+
+	Parameters
+	----------
+	text : str
+		LaTeX source to scan.
+
+	Returns
+	-------
+	list[str]
+		Unique Qcircuit blocks found in the text.
 	"""
 
 	blocks = []
@@ -306,10 +333,21 @@ def extract_qcircuit_blocks_from_text(text: str):
 
 
 def safe_name(name: str) -> str:
+	"""Return a filesystem-safe version of a name."""
 	return name.replace('/', '__').replace('..', '__')
 
 
 def process_all_tars(tar_folder: str = 'arxiv_cache', out_root: str = 'circuit_images/blocks'):
+	"""Process all tar archives and extract/render Qcircuit blocks.
+
+	Parameters
+	----------
+	tar_folder : str, optional
+		Directory containing ``.tar`` or ``.tar.gz`` archives (default ``'arxiv_cache'``).
+	out_root : str, optional
+		Root output directory for extracted blocks and summaries (default
+		``'circuit_images/blocks'``).
+	"""
 	tar_dir = Path(tar_folder)
 	out_root = Path(out_root)
 	out_root.mkdir(parents=True, exist_ok=True)
