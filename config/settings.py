@@ -32,7 +32,7 @@ COMBINED_THRESHOLD = 0.55  # Combined score threshold for selection (raised to r
 USE_CUSTOM_TFIDF_FEATURES = True
 
 USE_NEGATIVE_PENALTY = True
-NEGATIVE_PENALTY_ALPHA = 80.0  # Percentage reduction per negative token (e.g., 5% per token, capped at 90%)
+NEGATIVE_PENALTY_ALPHA = 70.0  # Percentage reduction per negative token (e.g., 5% per token, capped at 90%)
 
 # ================ TEXT PROCESSING ================
 USE_STEMMING = True

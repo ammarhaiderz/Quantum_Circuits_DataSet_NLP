@@ -115,7 +115,13 @@ def emit_record(record: dict):
         # Normalize descriptions (preserve domain tokens like TOF/CX and numeric groups)
         if isinstance(record, dict) and record.get('descriptions'):
             try:
-                record['descriptions'] = [normalize_caption_text(d) if isinstance(d, str) else d for d in record.get('descriptions', [])]
+                cleaned_descs = []
+                for d in record.get('descriptions', []):
+                    cd = normalize_caption_text(d) if isinstance(d, str) else d
+                    if isinstance(cd, str) and not cd.strip():
+                        continue
+                    cleaned_descs.append(cd)
+                record['descriptions'] = cleaned_descs
             except Exception:
                 # best-effort: leave descriptions as-is on failure
                 pass
@@ -407,6 +413,11 @@ def normalize_caption_text(s: str) -> str:
     try:
         # Work on a copy
         t = s
+        # drop placeholder tags like <cit.> or <ref>
+        t = re.sub(r"<\s*(?:cit|ref)\.?\s*>", " ", t, flags=re.IGNORECASE)
+        # strip common table/spacing artifacts (e.g., "-3pt ccccc" column specs)
+        t = re.sub(r"-?\d+\s*pt", " ", t, flags=re.IGNORECASE)
+        t = re.sub(r"[|]*[clrp](?:[|]*[clrp]){2,}", " ", t, flags=re.IGNORECASE)
         # common LaTeX escaping
         t = t.replace('\\_', '_')
         # unwrap \text{...}
@@ -429,6 +440,10 @@ def normalize_caption_text(s: str) -> str:
         # remove spaces after commas when both sides are digits: '1, 2' -> '1,2'
         t = re.sub(r'(?<=\d),\s+(?=\d)', ',', t)
         t = re.sub(r"\s+", ' ', t).strip()
+
+        # If nothing alphabetic remains, drop the fragment
+        if not re.search(r"[A-Za-z]", t):
+            return ""
         return t
     except Exception:
         return s
@@ -455,10 +470,23 @@ def _sanitize_description_snippet(text: str, *, strip_latex: bool = True, max_le
             # drop braces/underscores commonly left behind
             t = re.sub(r"[{}_^~]", " ", t)
 
+        # drop common LaTeX/table artifacts that leak into snippets
+        t = re.sub(r"<ref>|<cit>\.?>?", " ", t, flags=re.IGNORECASE)
+        t = re.sub(r"\\\\", " ", t)  # TeX row separators
+        t = re.sub(r"[&]{2,}", " ", t)  # table column artifacts
+        t = re.sub(r"\b[clrp]{3,}\b", " ", t, flags=re.IGNORECASE)  # column spec like cccc
+        t = re.sub(r"(?:\s*&\s*){3,}", " ", t)  # bare ampersand rows
+        t = re.sub(r"@C=\d+\.\d+em|@R=\d+\.\d+em|@!R", " ", t)
+        t = re.sub(r"\[!ht\]", " ", t)
+
         # remove control chars
         t = re.sub(r"[\u0000-\u001f]", " ", t)
         # collapse whitespace
         t = re.sub(r"\s+", " ", t).strip()
+
+        # Drop snippets that have no alphabetic characters after cleaning
+        if not re.search(r"[A-Za-z]", t):
+            return ""
 
         if max_len and len(t) > max_len:
             t = t[:max_len].rsplit(" ", 1)[0]

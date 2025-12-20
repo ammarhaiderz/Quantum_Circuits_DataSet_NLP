@@ -1,5 +1,5 @@
 {
-  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766200553328.png": {
+  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766204744115.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 4,
     "page": 6,
@@ -11,8 +11,8 @@
     ],
     "quantum_problem": "Constant-depth circuit construction",
     "descriptions": [
-      "Logical circuit for a 5 CNOT, constant-depth CNOT-ladder on a 4×2 grid of qubits. The brackets surround qubits on the same row. The dashed lines separate the circuit into three parts: the first creates a Bell pair between the ancilla row and the second data row, the second consists of the CNOTs from the first two sections of the original circuit (Figure <ref>) being executed in parallel, and the third consists of the final CNOT from the original circuit, measurement, and classical correction.",
-      "Logical Architecture Uniting Motion and In-Place Entanglement: Shor’s Algorithm, Constant-Depth CNOT Ladder, and Many-Hypercube Code Logical qubits are considered an essential component for achieving utility-scale quantum computation. Multiple recent demonstrations of logical qubits on neutral atoms have relied on coherent qubit motion into entangling zones. However, this architecture requires motion prior to every entangling gate, incurring significant cost in wall clock runtime and motion-related error accumulation. We propose and experimentally realize an alternative architecture which"
+      "Logical circuit for a 5 CNOT, constant-depth CNOT-ladder on a 4×2 grid of qubits. The brackets surround qubits on the same row. The dashed lines separate the circuit into three parts: the first creates a Bell pair between the ancilla row and the second data row, the second consists of the CNOTs from the first two sections of the original circuit (Figure ) being executed in parallel, and the third consists of the final CNOT from the original circuit, measurement, and classical correction.",
+      "This can be achieved by introducing a row of two ancilla qubits between the first two rows of data qubits. This ancilla row is then pair-wise entangled with"
     ],
     "text_positions": [
       [
@@ -21,7 +21,7 @@
       ]
     ]
   },
-  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766200555642.png": {
+  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766204746790.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 15,
     "page": 14,
@@ -34,8 +34,8 @@
     ],
     "quantum_problem": "Constant-depth circuit construction",
     "descriptions": [
-      "Arbitrary-length logical constant-depth CNOT ladder. A ⊕ on a measured data bit is flipped if the sum (modulo 2) of the measured ancilla bits above it with an ⊕ is 1. The qubits with/without a Hadamard applied at the start are ancilla/data qubits, respectively.",
-      "Arbitrary-length logical constant-depth CNOT ladder. A on a measured data bit is flipped if the sum (modulo 2) of the measured ancilla bits above it with an is 1. The qubits with/without a Hadamard applied at the start are ancilla/data qubits, respectively. As discussed in , an additional tool we have in our"
+      "Arbitrary-length logical constant-depth CNOT ladder. A ⊕ on a measured data bit is flipped if the sum (modulo 2) of the measured ancilla bits above it with an ⊕ is 1. The qubits with/without a Hadamard a ied at the start are ancilla/data qubits, respectively.",
+      "As discussed in , an additional tool we have in our"
     ],
     "text_positions": [
       [
@@ -44,7 +44,7 @@
       ]
     ]
   },
-  "2509.13247__2509.13247_p1_221364ed016a64f3__1766200557483.png": {
+  "2509.13247__2509.13247_p1_221364ed016a64f3__1766204749334.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 7,
     "page": 8,
@@ -56,8 +56,8 @@
     ],
     "quantum_problem": "Constant-depth circuit construction",
     "descriptions": [
-      "L=2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩ L state of the [[4,2,2]] code (Equation <ref>).",
-      "L=2 [[4,2,2]] [[4,2,2]] X Z [[16,4,4]] L=2 [[4,2,2]] [[16,4,4]] L=2 d=4 X state of the [[4, 2, 2]] code (Equation ). We collected experimental results for unencoded and encoded ([[16, 4, 4]]) state preparation of the following bitstrings -- ``1110\", ``0000\", ``0111\", and ``1111\". The measurements of these circuits are post-processed via loss detection and decoding (for the encoded circuits). Stabilizer values are reconstructed from data qubit measurements at the end of the circuit. As a result, only stabilizers are used for decoding. Across all bitstrings, the encoded circuits have a lower"
+      "L=2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩ L state of the [[4,2,2]] code (Equation ).",
+      "Any measurement for which not all patches are within the codespace is discarded. Once these checks are completed, the remaining measurements are decoded via Equation . Paul"
     ],
     "text_positions": [
       [
@@ -66,7 +66,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766200582069.png": {
+  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766204773389.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -75,8 +75,7 @@
     ],
     "quantum_problem": "Gate decomposition",
     "descriptions": [
-      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      "example, when the state of two control qubits is a superposition of , , and , we can remove the control operation from the rightmost qubit, replacing the or gate with a gate. When the control operation is removed from the first gate of the pair produced in the decomposition (see Figure (a)), the second gate of the pair can be also replaced according to the optimization result of the first gate. The higher the noise threshold becomes, the stronger the reduction of the control operations, hence the less equivalent the optimized circuit to the original one. The reduction of noisy control"
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
     ],
     "text_positions": [
       [
@@ -85,7 +84,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766200582137.png": {
+  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766204773470.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -95,8 +94,7 @@
     ],
     "quantum_problem": "Gate decomposition",
     "descriptions": [
-      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      "example, when the state of two control qubits is a superposition of , , and , we can remove the control operation from the rightmost qubit, replacing the or gate with a gate. When the control operation is removed from the first gate of the pair produced in the decomposition (see Figure (a)), the second gate of the pair can be also replaced according to the optimization result of the first gate. The higher the noise threshold becomes, the stronger the reduction of the control operations, hence the less equivalent the optimized circuit to the original one. The reduction of noisy control"
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
     ],
     "text_positions": [
       [
@@ -105,7 +103,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766200582238.png": {
+  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766204773570.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -115,8 +113,7 @@
     ],
     "quantum_problem": "Gate decomposition",
     "descriptions": [
-      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      "example, when the state of two control qubits is a superposition of , , and , we can remove the control operation from the rightmost qubit, replacing the or gate with a gate. When the control operation is removed from the first gate of the pair produced in the decomposition (see Figure (a)), the second gate of the pair can be also replaced according to the optimization result of the first gate. The higher the noise threshold becomes, the stronger the reduction of the control operations, hence the less equivalent the optimized circuit to the original one. The reduction of noisy control"
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
     ],
     "text_positions": [
       [
@@ -125,7 +122,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766200582342.png": {
+  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766204773684.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -135,8 +132,7 @@
     ],
     "quantum_problem": "Gate decomposition",
     "descriptions": [
-      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      "example, when the state of two control qubits is a superposition of , , and , we can remove the control operation from the rightmost qubit, replacing the or gate with a gate. When the control operation is removed from the first gate of the pair produced in the decomposition (see Figure (a)), the second gate of the pair can be also replaced according to the optimization result of the first gate. The higher the noise threshold becomes, the stronger the reduction of the control operations, hence the less equivalent the optimized circuit to the original one. The reduction of noisy control"
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
     ],
     "text_positions": [
       [
@@ -145,7 +141,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p5_48127125a9bc080b__1766200582455.png": {
+  "2509.04761__2509.04761_p5_48127125a9bc080b__1766204773773.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -154,8 +150,7 @@
     ],
     "quantum_problem": "Gate decomposition",
     "descriptions": [
-      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into RCCX gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      "example, when the state of two control qubits is a superposition of , , and , we can remove the control operation from the rightmost qubit, replacing the or gate with a gate. When the control operation is removed from the first gate of the pair produced in the decomposition (see Figure (a)), the second gate of the pair can be also replaced according to the optimization result of the first gate. The higher the noise threshold becomes, the stronger the reduction of the control operations, hence the less equivalent the optimized circuit to the original one. The reduction of noisy control"
+      "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant."
     ],
     "text_positions": [
       [
@@ -164,7 +159,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_b6756454e84f6705__1766200590212.png": {
+  "2407.04826__2407.04826_p1_b6756454e84f6705__1766204783042.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -173,8 +168,7 @@
     ],
     "quantum_problem": "MCT gate library",
     "descriptions": [
-      "MCT gates with positive condition (closed circle) and negative condition (open circle)",
-      "MCT PPRM MCT NCV d term MCT (QOF) CNOT Controlled-V Controlled-V MCT LNN MCT n PPRM PPRM n MCT NCV MCT n PPRM a i x k 0,1 a i i i k k MCT NCV Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C C 1 0 MCT NOT CNOT(t) NCV CNOT(t) CNOT(C; t) C =1 Controlled-V Controlled-V Clifford +T T T S S NOT H H CNOT MCT MCT NCV NCV Clifford +T Clifford +T$ library . [!ht] ccc @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & & @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & & @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & [!ht] cccc @C=0.7em @R=0.5em @!R & & & & \\\\ & & &"
+      "MCT gates with positive condition (closed ci e) and negative condition (open ci e)"
     ],
     "text_positions": [
       [
@@ -183,7 +177,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766200590276.png": {
+  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766204783116.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -192,8 +186,7 @@
     ],
     "quantum_problem": "MCT gate library",
     "descriptions": [
-      "MCT gates with positive condition (closed circle) and negative condition (open circle)",
-      "MCT PPRM MCT NCV d term MCT (QOF) CNOT Controlled-V Controlled-V MCT LNN MCT n PPRM PPRM n MCT NCV MCT n PPRM a i x k 0,1 a i i i k k MCT NCV Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C C 1 0 MCT NOT CNOT(t) NCV CNOT(t) CNOT(C; t) C =1 Controlled-V Controlled-V Clifford +T T T S S NOT H H CNOT MCT MCT NCV NCV Clifford +T Clifford +T$ library . [!ht] ccc @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & & @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & & @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & [!ht] cccc @C=0.7em @R=0.5em @!R & & & & \\\\ & & &"
+      "MCT gates with positive condition (closed ci e) and negative condition (open ci e)"
     ],
     "text_positions": [
       [
@@ -202,7 +195,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766200590340.png": {
+  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766204783191.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -211,8 +204,7 @@
     ],
     "quantum_problem": "MCT gate library",
     "descriptions": [
-      "MCT gates with positive condition (closed circle) and negative condition (open circle)",
-      "MCT PPRM MCT NCV d term MCT (QOF) CNOT Controlled-V Controlled-V MCT LNN MCT n PPRM PPRM n MCT NCV MCT n PPRM a i x k 0,1 a i i i k k MCT NCV Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C C 1 0 MCT NOT CNOT(t) NCV CNOT(t) CNOT(C; t) C =1 Controlled-V Controlled-V Clifford +T T T S S NOT H H CNOT MCT MCT NCV NCV Clifford +T Clifford +T$ library . [!ht] ccc @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & & @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & & @C=0.7em @R=0.5em @!R & & & & \\\\ & & & & \\\\ & & & & \\\\ & & & & [!ht] cccc @C=0.7em @R=0.5em @!R & & & & \\\\ & & &"
+      "MCT gates with positive condition (closed ci e) and negative condition (open ci e)"
     ],
     "text_positions": [
       [
@@ -221,7 +213,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766200594904.png": {
+  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766204789151.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
@@ -231,7 +223,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "NCV quantum gate library",
-      "NCV d term MCT (QOF) CNOT Controlled-V Controlled-V MCT LNN MCT n PPRM PPRM n MCT NCV MCT n PPRM a i x k 0,1 a i i i k k MCT NCV Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -240,7 +232,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766200594944.png": {
+  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766204789196.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
@@ -250,7 +242,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "NCV quantum gate library",
-      "NCV d term MCT (QOF) CNOT Controlled-V Controlled-V MCT LNN MCT n PPRM PPRM n MCT NCV MCT n PPRM a i x k 0,1 a i i i k k MCT NCV Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -259,7 +251,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766200594996.png": {
+  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766204789269.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
@@ -269,7 +261,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "NCV quantum gate library",
-      "NCV d term MCT (QOF) CNOT Controlled-V Controlled-V MCT LNN MCT n PPRM PPRM n MCT NCV MCT n PPRM a i x k 0,1 a i i i k k MCT NCV Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -278,7 +270,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766200595057.png": {
+  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766204789328.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
@@ -288,7 +280,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "NCV quantum gate library",
-      "NCV d term MCT (QOF) CNOT Controlled-V Controlled-V MCT LNN MCT n PPRM PPRM n MCT NCV MCT n PPRM a i x k 0,1 a i i i k k MCT NCV Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -297,7 +289,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_bc58770175544b8c__1766200603768.png": {
+  "2407.04826__2407.04826_p1_bc58770175544b8c__1766204800219.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -307,7 +299,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
-      "Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -316,7 +308,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766200603809.png": {
+  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766204800269.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -326,7 +318,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
-      "Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -335,7 +327,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766200603887.png": {
+  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766204800342.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -345,7 +337,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
-      "Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -354,7 +346,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766200603952.png": {
+  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766204800412.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -364,7 +356,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
-      "Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -373,7 +365,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766200604003.png": {
+  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766204800473.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -383,7 +375,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
-      "Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -392,7 +384,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766200604069.png": {
+  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766204800546.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -402,7 +394,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
-      "Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -411,7 +403,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p7_b698de4b847b9673__1766200604131.png": {
+  "2407.04826__2407.04826_p7_b698de4b847b9673__1766204800617.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -421,7 +413,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
-      "Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -430,7 +422,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766200604182.png": {
+  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766204800690.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
@@ -440,7 +432,7 @@
     "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
-      "Clifford +T MCT CNOT CNOT(C; t) CNOT C t t C$. The number of control"
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control"
     ],
     "text_positions": [
       [
@@ -449,7 +441,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_349982884b4d4708__1766200610146.png": {
+  "2407.04826__2407.04826_p1_349982884b4d4708__1766204807902.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 4,
     "page": 5,
@@ -460,7 +452,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
-      "decomposition methods to decompose circuit into its elementary gates followed by applying a set of simplification rules to simplify and optimize the synthesized quantum circuit. The proposed algorithms achieve a reduction in the quantum cost of synthesized quantum circuits when compared with relevant work in the literature. The proposed algorithms synthesize quantum circuits that can applied on IBM quantum computer. Boolean Function, Algebraic Form, Quantum Circuits, Quantum Cost, Decomposition, Reorder Algorithm The analysis and design of Boolean functions are important in engineering and"
+      "-3pt 1"
     ],
     "text_positions": [
       [
@@ -469,7 +461,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_787f76d104d6fb82__1766200610217.png": {
+  "2407.04826__2407.04826_p2_787f76d104d6fb82__1766204807994.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 4,
     "page": 5,
@@ -480,7 +472,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
-      "decomposition methods to decompose circuit into its elementary gates followed by applying a set of simplification rules to simplify and optimize the synthesized quantum circuit. The proposed algorithms achieve a reduction in the quantum cost of synthesized quantum circuits when compared with relevant work in the literature. The proposed algorithms synthesize quantum circuits that can applied on IBM quantum computer. Boolean Function, Algebraic Form, Quantum Circuits, Quantum Cost, Decomposition, Reorder Algorithm The analysis and design of Boolean functions are important in engineering and"
+      "-3pt 1"
     ],
     "text_positions": [
       [
@@ -489,7 +481,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_df01852945231c65__1766200610298.png": {
+  "2407.04826__2407.04826_p3_df01852945231c65__1766204808080.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 4,
     "page": 5,
@@ -500,7 +492,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
-      "decomposition methods to decompose circuit into its elementary gates followed by applying a set of simplification rules to simplify and optimize the synthesized quantum circuit. The proposed algorithms achieve a reduction in the quantum cost of synthesized quantum circuits when compared with relevant work in the literature. The proposed algorithms synthesize quantum circuits that can applied on IBM quantum computer. Boolean Function, Algebraic Form, Quantum Circuits, Quantum Cost, Decomposition, Reorder Algorithm The analysis and design of Boolean functions are important in engineering and"
+      "-3pt 1"
     ],
     "text_positions": [
       [
@@ -509,7 +501,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_01768c686acefd8b__1766200610376.png": {
+  "2407.04826__2407.04826_p4_01768c686acefd8b__1766204808163.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 4,
     "page": 5,
@@ -520,7 +512,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
-      "decomposition methods to decompose circuit into its elementary gates followed by applying a set of simplification rules to simplify and optimize the synthesized quantum circuit. The proposed algorithms achieve a reduction in the quantum cost of synthesized quantum circuits when compared with relevant work in the literature. The proposed algorithms synthesize quantum circuits that can applied on IBM quantum computer. Boolean Function, Algebraic Form, Quantum Circuits, Quantum Cost, Decomposition, Reorder Algorithm The analysis and design of Boolean functions are important in engineering and"
+      "-3pt 1"
     ],
     "text_positions": [
       [
@@ -529,7 +521,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_15df5acee9859e41__1766200615765.png": {
+  "2407.04826__2407.04826_p1_15df5acee9859e41__1766204815120.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 5,
     "page": 5,
@@ -540,7 +532,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
-      "decomposition methods to decompose circuit into its elementary gates followed by applying a set of simplification rules to simplify and optimize the synthesized quantum circuit. The proposed algorithms achieve a reduction in the quantum cost of synthesized quantum circuits when compared with relevant work in the literature. The proposed algorithms synthesize quantum circuits that can applied on IBM quantum computer. Boolean Function, Algebraic Form, Quantum Circuits, Quantum Cost, Decomposition, Reorder Algorithm The analysis and design of Boolean functions are important in engineering and"
+      ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1"
     ],
     "text_positions": [
       [
@@ -549,7 +541,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_d2670275e7081542__1766200615829.png": {
+  "2407.04826__2407.04826_p2_d2670275e7081542__1766204815216.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 5,
     "page": 5,
@@ -560,7 +552,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
-      "decomposition methods to decompose circuit into its elementary gates followed by applying a set of simplification rules to simplify and optimize the synthesized quantum circuit. The proposed algorithms achieve a reduction in the quantum cost of synthesized quantum circuits when compared with relevant work in the literature. The proposed algorithms synthesize quantum circuits that can applied on IBM quantum computer. Boolean Function, Algebraic Form, Quantum Circuits, Quantum Cost, Decomposition, Reorder Algorithm The analysis and design of Boolean functions are important in engineering and"
+      ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1"
     ],
     "text_positions": [
       [
@@ -569,7 +561,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_96b201becd63fe56__1766200615892.png": {
+  "2407.04826__2407.04826_p3_96b201becd63fe56__1766204815302.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 5,
     "page": 5,
@@ -580,7 +572,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
-      "decomposition methods to decompose circuit into its elementary gates followed by applying a set of simplification rules to simplify and optimize the synthesized quantum circuit. The proposed algorithms achieve a reduction in the quantum cost of synthesized quantum circuits when compared with relevant work in the literature. The proposed algorithms synthesize quantum circuits that can applied on IBM quantum computer. Boolean Function, Algebraic Form, Quantum Circuits, Quantum Cost, Decomposition, Reorder Algorithm The analysis and design of Boolean functions are important in engineering and"
+      ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1"
     ],
     "text_positions": [
       [
@@ -589,7 +581,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_eb8e7aa6d5bf6ecb__1766200615967.png": {
+  "2407.04826__2407.04826_p4_eb8e7aa6d5bf6ecb__1766204815386.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 5,
     "page": 5,
@@ -600,7 +592,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
-      "decomposition methods to decompose circuit into its elementary gates followed by applying a set of simplification rules to simplify and optimize the synthesized quantum circuit. The proposed algorithms achieve a reduction in the quantum cost of synthesized quantum circuits when compared with relevant work in the literature. The proposed algorithms synthesize quantum circuits that can applied on IBM quantum computer. Boolean Function, Algebraic Form, Quantum Circuits, Quantum Cost, Decomposition, Reorder Algorithm The analysis and design of Boolean functions are important in engineering and"
+      ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1"
     ],
     "text_positions": [
       [
@@ -609,7 +601,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_45afa3233b7781a5__1766200620089.png": {
+  "2407.04826__2407.04826_p1_45afa3233b7781a5__1766204820464.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 6,
     "page": 6,
@@ -619,8 +611,8 @@
     ],
     "quantum_problem": "Clifford+T gate library",
     "descriptions": [
-      "Common-Target Rule (CTR) <cit.>",
-      "Common-Target Rule (CTR) Synthesizing a reversible Boolean circuit with minimal quantum cost depe"
+      "Common-Target Rule (CTR)",
+      "Synthesizing a reversible Boolean circuit with minimal quantum cost depe"
     ],
     "text_positions": [
       [
@@ -629,7 +621,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_5e972e7d667e3cdd__1766200620141.png": {
+  "2407.04826__2407.04826_p2_5e972e7d667e3cdd__1766204820540.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 6,
     "page": 6,
@@ -639,8 +631,8 @@
     ],
     "quantum_problem": "Clifford+T gate library",
     "descriptions": [
-      "Common-Target Rule (CTR) <cit.>",
-      "Common-Target Rule (CTR) Synthesizing a reversible Boolean circuit with minimal quantum cost depe"
+      "Common-Target Rule (CTR)",
+      "Synthesizing a reversible Boolean circuit with minimal quantum cost depe"
     ],
     "text_positions": [
       [
@@ -649,7 +641,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e4107cba88e0580d__1766200620205.png": {
+  "2407.04826__2407.04826_p3_e4107cba88e0580d__1766204820616.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 6,
     "page": 6,
@@ -658,8 +650,8 @@
     ],
     "quantum_problem": "Clifford+T gate library",
     "descriptions": [
-      "Common-Target Rule (CTR) <cit.>",
-      "Common-Target Rule (CTR) Synthesizing a reversible Boolean circuit with minimal quantum cost depe"
+      "Common-Target Rule (CTR)",
+      "Synthesizing a reversible Boolean circuit with minimal quantum cost depe"
     ],
     "text_positions": [
       [
@@ -668,7 +660,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_e20a2224fd36eece__1766200622051.png": {
+  "2407.04826__2407.04826_p1_e20a2224fd36eece__1766204822741.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 7,
     "page": 7,
@@ -679,17 +671,17 @@
     ],
     "quantum_problem": "MCT gate library",
     "descriptions": [
-      "The synthesized quantum circuit using the direct method <cit.> of the Boolean function in Eq.(<ref>)",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "The synthesized quantum circuit using the direct method of the Boolean function in Eq.( )",
+      "0 CNOT(C; t)$ gate with control qubits of positive conditions for each product term of the Boolean fu"
     ],
     "text_positions": [
       [
         43,
-        1280
+        1287
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_8925e40534e8b75c__1766200625924.png": {
+  "2407.04826__2407.04826_p1_8925e40534e8b75c__1766204827588.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -700,8 +692,8 @@
     ],
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
-      "Reversible circuit of f 1 where (a) represents f 1 in Eq.(<ref>), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
-      "reversible and quantum circuits to minimize quantum cost. One of these methods constructs the reversible circuits with extra ancillary bits that will increase the hardware cost . A rule-based optimization algorithm uses multiple control Toffoli gates with both negative and positive controls which merges Toffoli gates with common target and introduces rules for optimizing reversible circuits and sub-circuits that have a common target. Another method uses a Quantum Operator Form to minimize the quantum cost that allows the usage of different quantum gates , and . In , the Multi Controls Target"
+      "Reversible circuit of f 1 where (a) represents f 1 in Eq.( ), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
+      "41 vs using the proposed algorithm. In Table ta"
     ],
     "text_positions": [
       [
@@ -710,7 +702,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_435f93dd67d152ee__1766200625999.png": {
+  "2407.04826__2407.04826_p2_435f93dd67d152ee__1766204827671.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -721,8 +713,8 @@
     ],
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
-      "Reversible circuit of f 1 where (a) represents f 1 in Eq.(<ref>), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
-      "reversible and quantum circuits to minimize quantum cost. One of these methods constructs the reversible circuits with extra ancillary bits that will increase the hardware cost . A rule-based optimization algorithm uses multiple control Toffoli gates with both negative and positive controls which merges Toffoli gates with common target and introduces rules for optimizing reversible circuits and sub-circuits that have a common target. Another method uses a Quantum Operator Form to minimize the quantum cost that allows the usage of different quantum gates , and . In , the Multi Controls Target"
+      "Reversible circuit of f 1 where (a) represents f 1 in Eq.( ), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
+      "41 vs using the proposed algorithm. In Table ta"
     ],
     "text_positions": [
       [
@@ -731,7 +723,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_36deffd1a100709b__1766200626075.png": {
+  "2407.04826__2407.04826_p3_36deffd1a100709b__1766204827767.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -742,8 +734,8 @@
     ],
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
-      "Reversible circuit of f 1 where (a) represents f 1 in Eq.(<ref>), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
-      "reversible and quantum circuits to minimize quantum cost. One of these methods constructs the reversible circuits with extra ancillary bits that will increase the hardware cost . A rule-based optimization algorithm uses multiple control Toffoli gates with both negative and positive controls which merges Toffoli gates with common target and introduces rules for optimizing reversible circuits and sub-circuits that have a common target. Another method uses a Quantum Operator Form to minimize the quantum cost that allows the usage of different quantum gates , and . In , the Multi Controls Target"
+      "Reversible circuit of f 1 where (a) represents f 1 in Eq.( ), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
+      "41 vs using the proposed algorithm. In Table ta"
     ],
     "text_positions": [
       [
@@ -752,7 +744,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_7ad6a73f493bcad6__1766200630341.png": {
+  "2407.04826__2407.04826_p1_7ad6a73f493bcad6__1766204833146.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -763,8 +755,8 @@
     ],
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
-      "Reversible circuit of f 2 where (a) represents f 2 in Eq.(<ref>), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
-      "reversible and quantum circuits to minimize quantum cost. One of these methods constructs the reversible circuits with extra ancillary bits that will increase the hardware cost . A rule-based optimization algorithm uses multiple control Toffoli gates with both negative and positive controls which merges Toffoli gates with common target and introduces rules for optimizing reversible circuits and sub-circuits that have a common target. Another method uses a Quantum Operator Form to minimize the quantum cost that allows the usage of different quantum gates , and . In , the Multi Controls Target"
+      "Reversible circuit of f 2 where (a) represents f 2 in Eq.( ), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
+      "01em"
     ],
     "text_positions": [
       [
@@ -773,7 +765,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_3230d0ee612c9123__1766200630407.png": {
+  "2407.04826__2407.04826_p2_3230d0ee612c9123__1766204833236.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -784,8 +776,8 @@
     ],
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
-      "Reversible circuit of f 2 where (a) represents f 2 in Eq.(<ref>), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
-      "reversible and quantum circuits to minimize quantum cost. One of these methods constructs the reversible circuits with extra ancillary bits that will increase the hardware cost . A rule-based optimization algorithm uses multiple control Toffoli gates with both negative and positive controls which merges Toffoli gates with common target and introduces rules for optimizing reversible circuits and sub-circuits that have a common target. Another method uses a Quantum Operator Form to minimize the quantum cost that allows the usage of different quantum gates , and . In , the Multi Controls Target"
+      "Reversible circuit of f 2 where (a) represents f 2 in Eq.( ), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
+      "01em"
     ],
     "text_positions": [
       [
@@ -794,7 +786,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_32ca383f5d4d2532__1766200630479.png": {
+  "2407.04826__2407.04826_p3_32ca383f5d4d2532__1766204833322.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -805,8 +797,8 @@
     ],
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
-      "Reversible circuit of f 2 where (a) represents f 2 in Eq.(<ref>), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
-      "reversible and quantum circuits to minimize quantum cost. One of these methods constructs the reversible circuits with extra ancillary bits that will increase the hardware cost . A rule-based optimization algorithm uses multiple control Toffoli gates with both negative and positive controls which merges Toffoli gates with common target and introduces rules for optimizing reversible circuits and sub-circuits that have a common target. Another method uses a Quantum Operator Form to minimize the quantum cost that allows the usage of different quantum gates , and . In , the Multi Controls Target"
+      "Reversible circuit of f 2 where (a) represents f 2 in Eq.( ), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
+      "01em"
     ],
     "text_positions": [
       [
@@ -815,17 +807,17 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_6df15b86d4a17bc6__1766200640543.png": {
+  "2407.04826__2407.04826_p1_6df15b86d4a17bc6__1766204846251.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
     "gates": [
       "CNOT"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -834,17 +826,17 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_7e986fca9394d5eb__1766200640596.png": {
+  "2407.04826__2407.04826_p2_7e986fca9394d5eb__1766204846330.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -853,17 +845,17 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_b90c5becb1ad1666__1766200640652.png": {
+  "2407.04826__2407.04826_p3_b90c5becb1ad1666__1766204846420.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -872,17 +864,17 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_9a894e204d75442c__1766200640711.png": {
+  "2407.04826__2407.04826_p4_9a894e204d75442c__1766204846477.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -891,7 +883,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p5_2a3e51967b1311ca__1766200640753.png": {
+  "2407.04826__2407.04826_p5_2a3e51967b1311ca__1766204846528.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
@@ -899,10 +891,10 @@
       "CTRL-V",
       "CNOT"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -911,7 +903,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p6_33fe17306d39bc31__1766200640816.png": {
+  "2407.04826__2407.04826_p6_33fe17306d39bc31__1766204846589.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
@@ -919,10 +911,10 @@
       "CNOT",
       "CTRL-V"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -931,17 +923,17 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p7_25a6774e014fd879__1766200640886.png": {
+  "2407.04826__2407.04826_p7_25a6774e014fd879__1766204846658.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -950,7 +942,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p8_ca3203ad15956ac1__1766200640946.png": {
+  "2407.04826__2407.04826_p8_ca3203ad15956ac1__1766204846733.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
@@ -958,10 +950,10 @@
       "CTRL-V",
       "CNOT"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -970,7 +962,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p9_302fdbf76d14257c__1766200641004.png": {
+  "2407.04826__2407.04826_p9_302fdbf76d14257c__1766204846799.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
@@ -978,10 +970,10 @@
       "CNOT",
       "CTRL-V"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
       "Merge Rules",
-      "Merge Rules If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir"
     ],
     "text_positions": [
       [
@@ -990,17 +982,17 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_39652ed36e5f17f8__1766200645908.png": {
+  "2407.04826__2407.04826_p1_39652ed36e5f17f8__1766204852683.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 11,
     "page": 15,
     "gates": [
       "CNOT"
     ],
-    "quantum_problem": "Gate cancellation and simplification",
+    "quantum_problem": "Deutsch–Jozsa algorithm",
     "descriptions": [
       "Delete Rule",
-      "delete rules fig . For any two gates and \\\\ where and are the two controls and targets of and $g"
+      "s fig . For any two gates and where and are the two controls and targets of and $g"
     ],
     "text_positions": [
       [
@@ -1009,17 +1001,17 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_72b7a783533cad4d__1766200645947.png": {
+  "2407.04826__2407.04826_p2_72b7a783533cad4d__1766204852740.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 11,
     "page": 15,
     "gates": [
       "CTRL-V"
     ],
-    "quantum_problem": "Gate cancellation and simplification",
+    "quantum_problem": "Deutsch–Jozsa algorithm",
     "descriptions": [
       "Delete Rule",
-      "delete rules fig . For any two gates and \\\\ where and are the two controls and targets of and $g"
+      "s fig . For any two gates and where and are the two controls and targets of and $g"
     ],
     "text_positions": [
       [
@@ -1028,17 +1020,17 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_579550cbc1cca90c__1766200645999.png": {
+  "2407.04826__2407.04826_p3_579550cbc1cca90c__1766204852805.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 11,
     "page": 15,
     "gates": [
       "CTRL-V"
     ],
-    "quantum_problem": "Gate cancellation and simplification",
+    "quantum_problem": "Deutsch–Jozsa algorithm",
     "descriptions": [
       "Delete Rule",
-      "delete rules fig . For any two gates and \\\\ where and are the two controls and targets of and $g"
+      "s fig . For any two gates and where and are the two controls and targets of and $g"
     ],
     "text_positions": [
       [
@@ -1047,7 +1039,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_f9244f2a4287feec__1766200647767.png": {
+  "2407.04826__2407.04826_p1_f9244f2a4287feec__1766204854983.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 14,
     "page": 21,
@@ -1058,8 +1050,8 @@
     ],
     "quantum_problem": "Constant-depth circuit construction",
     "descriptions": [
-      "the 4 gt 4 2 0 quantum circuit after applying the reorder method <cit.>",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "the 4 gt 4 2 0 quantum circuit after a ying the reorder method",
+      "According to , the reorder method factorizes the reversible Boolean function using the factorization algorithm and then applies two stages on the reversible Boo"
     ],
     "text_positions": [
       [
@@ -1068,7 +1060,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_86b97eb26408d475__1766200650332.png": {
+  "2407.04826__2407.04826_p1_86b97eb26408d475__1766204858514.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 15,
     "page": 22,
@@ -1077,10 +1069,10 @@
       "MCX_3",
       "TOFFOLI"
     ],
-    "quantum_problem": "MCT gate library",
+    "quantum_problem": "NCV gate library",
     "descriptions": [
-      "The 4 gt 4 2 0 quantum circuit in Eq. <ref> after adding extra line.",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "The 4 gt 4 2 0 quantum circuit in Eq. after adding extra line.",
+      "Now, we analyze the way that the proposed algorithm decreases the quantum cost of the quantum circuit as shown in Fig. . $D"
     ],
     "text_positions": [
       [
@@ -1089,7 +1081,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_0774582c98a4990d__1766200650417.png": {
+  "2407.04826__2407.04826_p2_0774582c98a4990d__1766204858633.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 15,
     "page": 22,
@@ -1098,10 +1090,10 @@
       "MCX_3",
       "TOFFOLI"
     ],
-    "quantum_problem": "MCT gate library",
+    "quantum_problem": "NCV gate library",
     "descriptions": [
-      "The 4 gt 4 2 0 quantum circuit in Eq. <ref> after adding extra line.",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "The 4 gt 4 2 0 quantum circuit in Eq. after adding extra line.",
+      "Now, we analyze the way that the proposed algorithm decreases the quantum cost of the quantum circuit as shown in Fig. . $D"
     ],
     "text_positions": [
       [
@@ -1110,7 +1102,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_3275e6f2c1a18b87__1766200660459.png": {
+  "2407.04826__2407.04826_p1_3275e6f2c1a18b87__1766204864040.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 17,
     "page": 23,
@@ -1122,7 +1114,7 @@
     "quantum_problem": "Clifford+T gate library",
     "descriptions": [
       "The 4 gt 4 2 0 circuit.",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "The first method is the direct method that constructs a reversible circuit for any Boolean function. The factorization algorithm is the second method to construct a reversible circ"
     ],
     "text_positions": [
       [
@@ -1131,7 +1123,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_50bf9c553809ea9b__1766200660575.png": {
+  "2407.04826__2407.04826_p2_50bf9c553809ea9b__1766204864117.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 17,
     "page": 23,
@@ -1143,7 +1135,7 @@
     "quantum_problem": "Clifford+T gate library",
     "descriptions": [
       "The 4 gt 4 2 0 circuit.",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "The first method is the direct method that constructs a reversible circuit for any Boolean function. The factorization algorithm is the second method to construct a reversible circ"
     ],
     "text_positions": [
       [
@@ -1152,7 +1144,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_c9af940ae2fd428e__1766200660690.png": {
+  "2407.04826__2407.04826_p3_c9af940ae2fd428e__1766204864215.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 17,
     "page": 23,
@@ -1164,7 +1156,7 @@
     "quantum_problem": "Clifford+T gate library",
     "descriptions": [
       "The 4 gt 4 2 0 circuit.",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "The first method is the direct method that constructs a reversible circuit for any Boolean function. The factorization algorithm is the second method to construct a reversible circ"
     ],
     "text_positions": [
       [
@@ -1173,7 +1165,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_c1d8a642b676454c__1766200670042.png": {
+  "2407.04826__2407.04826_p1_c1d8a642b676454c__1766204868635.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 17,
     "page": 23,
@@ -1184,7 +1176,7 @@
     "quantum_problem": "NCV gate library",
     "descriptions": [
       "The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6.",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "27 & 103.06 vs using the proposed algorithm."
     ],
     "text_positions": [
       [
@@ -1193,7 +1185,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_5a8777560b57b164__1766200670266.png": {
+  "2407.04826__2407.04826_p2_5a8777560b57b164__1766204868767.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 17,
     "page": 23,
@@ -1204,7 +1196,7 @@
     "quantum_problem": "NCV gate library",
     "descriptions": [
       "The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6.",
-      "theorem definition Definition Example Simplification Rule [1] #1 [1][htb] Strategy [#1] do while 10pt plus 2pt minus 2pt The construction of quantum computers is based on the synthesis of low-cost quantum circuits. The quantum circuit of any Boolean function expressed in a Positive Polarity Reed-Muller expansion can be synthesized using Multiple-Control Toffoli ( ) gates. This paper proposes two algorithms to construct a quantum circuit for any Boolean function expressed in a Positive Polarity Reed-Muller expansion. The Boolean function can be expressed with various algebraic forms, so there"
+      "27 & 103.06 vs using the proposed algorithm."
     ],
     "text_positions": [
       [
@@ -1213,7 +1205,7 @@
       ]
     ]
   },
-  "2410.00155__2410.00155_p1_268c753b871212f4__1766200678964.png": {
+  "2410.00155__2410.00155_p1_268c753b871212f4__1766204873752.png": {
     "arxiv_id": "2410.00155",
     "figure_number": 4,
     "page": 9,
@@ -1224,7 +1216,7 @@
     "quantum_problem": "Non-unitary operation implementation",
     "descriptions": [
       "Quantum circuit to implement any arbitrary non-unitary operation.",
-      "Quantum circuit to implement any arbitrary non-unitary operation. For our code, we use the circuit in Fig. to implement or depending on the outcome of the projection measurements"
+      "For our code, we use the circuit in Fig. to implement or depending on the outcome of the projection measurements"
     ],
     "text_positions": [
       [
@@ -1233,7 +1225,7 @@
       ]
     ]
   },
-  "2510.04993__2510.04993_p1_b4cac79b824cfc2a__1766200681286.png": {
+  "2510.04993__2510.04993_p1_b4cac79b824cfc2a__1766204876564.png": {
     "arxiv_id": "2510.04993",
     "figure_number": 1,
     "page": 3,
@@ -1243,7 +1235,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "A permutation gate in staircase form, consisting of 6 Toffoli gates.",
-      "ass[11pt] amsart @mit.edu The Clifford hierarchy is a fundamental structure in quantum computation whose mathematical properties are not fully understood. In this work, we characterize permutation gates---unitaries which permute the basis states---in the third level of the hierarchy. We prove that any permutation gate in the third level must be a product of Toffoli gates in what we define as , up to left and right multiplications by Clifford permutations. We then present necessary and sufficient conditions for a staircase form permutation gate to be in the third level of the Clifford"
+      "Our first main result, which was presented in an earlier version of this paper , states that every permutation in ca"
     ],
     "text_positions": [
       [
@@ -1252,7 +1244,7 @@
       ]
     ]
   },
-  "2510.04993__2510.04993_p1_d0b4ae7becd6c16b__1766200683537.png": {
+  "2510.04993__2510.04993_p1_d0b4ae7becd6c16b__1766204879429.png": {
     "arxiv_id": "2510.04993",
     "figure_number": 2,
     "page": 6,
@@ -1262,7 +1254,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with time flowing from left to right).",
-      "circuits made of Pauli and Clifford gates, which are the first two levels of , can be efficiently simulated by a classical computer. In contrast, adding any non-Clifford gate to the Clifford group forms a universal gate set. Among the non-Clifford unitaries, gates in can be implemented fault-tolerantly by gate teleportation , where higher-level gates are performed using resource states and lower-level gates. From this perspective, the non-Clifford gates that are in are the ``easiest-to-implement'' non-Clifford gates. Consequently, gates have been at the center of study for FTQC, with decades"
+      "It can be verified with a computer program that . If were semi-Clifford, then we would have by lem:respe"
     ],
     "text_positions": [
       [
@@ -1271,7 +1263,7 @@
       ]
     ]
   },
-  "2510.04993__2510.04993_p1_01e57b5ee7d6ffef__1766200685464.png": {
+  "2510.04993__2510.04993_p1_01e57b5ee7d6ffef__1766204881774.png": {
     "arxiv_id": "2510.04993",
     "figure_number": null,
     "page": 25,
@@ -1281,7 +1273,7 @@
     "quantum_problem": "MCT gate library",
     "descriptions": [
       "This circuit for 1,2,4 1,3,4 1,2,3 is in staircase form but not mismatch-free, as qubit 3 is used as a control for 1,3,4 and a target for 1,2,3.",
-      "this work, we characterize permutation gates---unitaries which permute the basis states---in the third level of the hierarchy. We prove that any permutation gate in the third level must be a product of Toffoli gates in what we define as , up to left and right multiplications by Clifford permutations. We then present necessary and sufficient conditions for a staircase form permutation gate to be in the third level of the Clifford hierarchy. As a corollary, we construct a family of non-semi-Clifford permutation gates in staircase form such that each is in the third level but its inverse is in"
+      ". Note that a staircase form Toffoli circuit is unique up to ordering of gates with the same target. We say that a permutation is in staircas"
     ],
     "text_positions": [
       [
@@ -1290,7 +1282,7 @@
       ]
     ]
   },
-  "2405.14951__2405.14951_p1_91ae5b15b77ba16d__1766200688542.png": {
+  "2405.14951__2405.14951_p1_91ae5b15b77ba16d__1766204885642.png": {
     "arxiv_id": "2405.14951",
     "figure_number": 4,
     "page": 22,
@@ -1303,12 +1295,313 @@
     "quantum_problem": "Hamiltonian simulation",
     "descriptions": [
       "Quantum circuit used in our simulations of rendezvous games on the 3-vertex cycle graph K 3. From top to bottom, the first qubit represents the quantum subs-system held by Alice and the second qubit that held by Bob.",
-      "Quantum-assisted Rendezvous on Graphs: Explicit Algorithms and Quantum Computer Simulations K 3 2K 4 N N N C N N=3,4, K 3 C 3 K 4 2K 4 K 4 C 3 K 3 C 5 K 4 Y 3 C n n>3 W,E,S W=0 E=0 S=1 d d d S=1 S=1 S=0 N S=0 S=1 C N N=3,4, , . K 3 C 3 C N \\ \\ 2,3\\ ,\\ 1,3\\ ,\\ 1,2\\ \\ a=1,2,3 b=1,2,3 n,m=0,1 S=1 2 2 a b P( |a,b) = 1 0 P w P( |a,b;n,m) a b n m S=1 n,m=0,1 4 4 | i 2 4 4 (n,m)=(0,0) (1,1) (a,b)=(3,2) (2,3) (2,1) (1,2) y i i=1,2,3 a b 2 2 a b P a,b n,m P(n,m|a,b) a=b a b n m (a,b)=(1,2), (1,3), (2,1) (3,1) P a,b n,m a,b n,m P a,b n,m P w + 2( )+ 2( + )+ 2( ) ( 2- 1 )/2 ( 3- 2 )/2. = = /3 1, 2, 3"
+      "will not be shown here. Cyclic 3 classical E=0 to E=1"
     ],
     "text_positions": [
       [
         36,
         251
+      ]
+    ]
+  },
+  "2405.14951__2405.14951_p1_6aa324e8cfad8bff__1766204887498.png": {
+    "arxiv_id": "2405.14951",
+    "figure_number": 4,
+    "page": 22,
+    "gates": [
+      "TEXTINITSTATE",
+      "HATMATHCALR",
+      "MEASURE"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "Quantum circuit used in our simulations of rendezvous games on cubic graphs. From top to bottom, the first two qubits represent the part of the share quantum system held by Alice and the third and fourth qubits represent the subs-system held by Bob.",
+      "In order to facilitate comparison with the results in Ref. we played the game on the graph formed by the ve"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.01912__2509.01912_p1_39b391794b911208__1766204900788.png": {
+    "arxiv_id": "2509.01912",
+    "figure_number": 5,
+    "page": 6,
+    "gates": [
+      "CNOT",
+      "X",
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Quantum oracle construction",
+    "descriptions": [
+      "An example of a quantum circuit for the oracle of a 4-bit Boolean function."
+    ],
+    "text_positions": [
+      [
+        4499,
+        4574
+      ]
+    ]
+  },
+  "2509.01912__2509.01912_p1_296633dc4067c631__1766204903225.png": {
+    "arxiv_id": "2509.01912",
+    "figure_number": 4,
+    "page": 4,
+    "gates": [
+      "MCX_3",
+      "X"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "An example of algorithm:1.",
+      "quantum computing are still at a small scale for quantum query algorithms. This naturally raises the question: can we combine the strengths of both ESOP and XAG to develop a more efficient approach"
+    ],
+    "text_positions": [
+      [
+        220,
+        233
+      ]
+    ]
+  },
+  "2509.01912__2509.01912_p1_331fb3ece9f2cc13__1766204904936.png": {
+    "arxiv_id": "2509.01912",
+    "figure_number": 3,
+    "page": 2,
+    "gates": [
+      "UF"
+    ],
+    "quantum_problem": "Quantum oracle construction",
+    "descriptions": [
+      "Circuit demonstration of a Quantum Oracle where the input is |x⟩ and the output result is stored on |y⟩, along with k auxiliary qubits initialized to |0⟩.",
+      ". Due to the current limitations in the physical implementation of quantum devices, most quantum computers achieve universality through the construction"
+    ],
+    "text_positions": [
+      [
+        205,
+        5406
+      ]
+    ]
+  },
+  "2404.06059__2404.06059_p1_7705162a32204381__1766204909657.png": {
+    "arxiv_id": "2404.06059",
+    "figure_number": 2,
+    "page": 3,
+    "gates": [
+      "CNOT",
+      "MCX_4",
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "The quantum circuit implementing the F 8 gate.",
+      "Note that the quantum fan-out gate is composed solely of CNOT gates, resulting in a -depth of . There is a quantum"
+    ],
+    "text_positions": [
+      [
+        15,
+        2506
+      ]
+    ]
+  },
+  "2404.06059__2404.06059_p1_31afe0d7d855b945__1766204911499.png": {
+    "arxiv_id": "2404.06059",
+    "figure_number": 2,
+    "page": 3,
+    "gates": [
+      "X",
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "The quantum circuit implementing the ReLU function with input x∈{0,1}^5 includes input qubits |x i⟩ and output qubits |0⟩ j.",
+      ", . Even when restricting the connectivity topology between qubits to a 2D grid, the implementation of ReLU function remains constant in -depth. For other activation functions, such as Sigmoid,"
+    ],
+    "text_positions": [
+      [
+        15,
+        3067
+      ]
+    ]
+  },
+  "2404.06059__2404.06059_p1_db1ede68fee28060__1766204913329.png": {
+    "arxiv_id": "2404.06059",
+    "figure_number": 8,
+    "page": 10,
+    "gates": [
+      "SWAP"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "The quantum circuit of SWAP operator for x∈{0,1}^3.",
+      "each multi-controlled gate, the outputs are prepared in qubits. Consequently, the number of multi-controlled gates can be reduced to . After applying these gates, swap ga"
+    ],
+    "text_positions": [
+      [
+        10,
+        1161
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_e0956826a8d1e552__1766204919030.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 1,
+    "page": 12,
+    "gates": [
+      "CTRL-X",
+      "ADD"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "A quantum circuit implementing the block-encoding of 1, denoted by U 1.",
+      "\\] Thus, we can construct a quantum circuit to perform \\[ O |0 1 a |j k &= ( k+1-j |0 1 a + 2"
+    ],
+    "text_positions": [
+      [
+        20,
+        160
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_c9c30f41a735d3b3__1766204920858.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "X",
+      "HOTIMESMATHFRAKK"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 2, denoted by U 2.",
+      "1 . Noting that can be implemented by an addition module on the register , and applying , the matrix can be implemented using the"
+    ],
+    "text_positions": [
+      [
+        20,
+        1142
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_545549325443f8f9__1766204923671.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "CTRL-X",
+      "Z",
+      "ADD"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 4, denoted by U 4.",
+      "40 5.53 6.69 7.89 9.11 10.35 11.61 12.88 14.16 15.45 16.74 k \\| h\\| 2$ suc"
+    ],
+    "text_positions": [
+      [
+        20,
+        1764
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_25437688f3127f6c__1766204925556.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "RY"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 5, denoted by U 5.",
+      "53 6.69 7.89 9.11 10.35 11.61 12.88 14.16 15.45 16.74 k \\| h\\| 2$ such that th"
+    ],
+    "text_positions": [
+      [
+        20,
+        1138
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_16322b34f3d26d1b__1766204927344.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "RY",
+      "H",
+      "UM5",
+      "UM4"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of ℬ, denoted by U ℬ.",
+      "2 3 | j| < 1 j$ explicitly. In fact, \\[ j = j (2k-j+1) ,"
+    ],
+    "text_positions": [
+      [
+        20,
+        1138
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_1dc2cb034ca4f7ae__1766204929175.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "UMATHCALW",
+      "UMATHCALB"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 1, denoted by U 1.",
+      "2em 1 a & & 1 & & m & & \\] A quantum circuit"
+    ],
+    "text_positions": [
+      [
+        20,
+        1761
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_585d39f42af4bdf6__1766204931058.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "X",
+      "WIDETILDEHMATHFRAKK"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 6, denoted by U 6.",
+      "69 7.89 9.11 10.35 11.61 12.88 14.16 15.45 16.74 k \\| h\\| 2$ such that the conditi"
+    ],
+    "text_positions": [
+      [
+        20,
+        1761
+      ]
+    ]
+  },
+  "2504.06948__2504.06948_p1_6b9163ff82ea93f6__1766204932795.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "CTRL-X"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 7, denoted by U 7.",
+      "89 9.11 10.35 11.61 12.88 14.16 15.45 16.74 k \\| h\\| 2$ such that the condition"
+    ],
+    "text_positions": [
+      [
+        20,
+        1138
       ]
     ]
   }

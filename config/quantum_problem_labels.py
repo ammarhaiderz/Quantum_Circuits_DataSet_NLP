@@ -64,6 +64,33 @@ QUANTUM_PROBLEM_LABELS = {
         "Construction or illustration of elementary quantum gates",
 
     # ─────────────────────────────────────────────
+    # VII. Canonical Quantum Algorithms
+    # ─────────────────────────────────────────────
+    "Shor's algorithm":
+        "Integer factorization using quantum period finding",
+
+    "Grover search":
+        "Quantum search via amplitude amplification",
+
+    "Deutsch–Jozsa algorithm":
+        "Quantum algorithm for function classification",
+
+    "Bernstein–Vazirani algorithm":
+        "Quantum algorithm for hidden string extraction",
+
+    "Simon's algorithm":
+        "Quantum algorithm for hidden subgroup problems",
+
+    "Quantum Fourier Transform":
+        "Quantum Fourier Transform circuit",
+
+    "Quantum phase estimation":
+        "Quantum phase estimation algorithm",
+
+    "Amplitude amplification":
+        "Amplitude amplification procedure",
+
+    # ─────────────────────────────────────────────
     # IV. State Preparation
     # ─────────────────────────────────────────────
     "Quantum state preparation":
@@ -87,23 +114,6 @@ QUANTUM_PROBLEM_LABELS = {
     "Non-unitary operation implementation":
         "Quantum circuit implementing non-unitary operations using measurement",
 
-    # ─────────────────────────────────────────────
-    # VI. Quantum Algorithms (Canonical)
-    # ─────────────────────────────────────────────
-    "Shor's algorithm":
-        "Shor's algorithm for integer factorization using quantum period finding",
-
-    "Grover search":
-        "Grover's quantum search algorithm using amplitude amplification",
-
-    "Quantum Fourier Transform":
-        "Quantum Fourier Transform circuit for phase estimation or period finding",
-
-    "Quantum phase estimation":
-        "Quantum phase estimation algorithm using controlled unitary operations",
-
-    "Amplitude amplification":
-        "Quantum circuit implementing amplitude amplification",
 
     # ─────────────────────────────────────────────
     # VII. Error Correction & Fault Tolerance
@@ -152,4 +162,129 @@ QUANTUM_PROBLEM_LABELS = {
     # ─────────────────────────────────────────────
     "Unspecified quantum circuit":
         "Quantum circuit without a clearly identifiable algorithmic task",
+
+        # ─────────────────────────────────────────────
+    # XII. Variational & Hybrid Quantum Algorithms
+    # ─────────────────────────────────────────────
+    "Variational quantum algorithm":
+        "Quantum circuit used within a variational hybrid quantum-classical loop",
+
+    "Variational Quantum Eigensolver":
+        "VQE circuit for estimating ground-state energies",
+
+    "Quantum Approximate Optimization Algorithm":
+        "QAOA circuit for solving combinatorial optimization problems",
+
+    "Parameterized quantum circuit":
+        "Parameterized circuit optimized via classical feedback",
+
+    # ─────────────────────────────────────────────
+    # XIV. Quantum Arithmetic & Oracles
+    # ─────────────────────────────────────────────
+    "Quantum arithmetic circuit":
+        "Quantum circuit implementing arithmetic operations",
+
+    "Quantum adder":
+        "Quantum circuit for binary addition",
+
+    "Quantum multiplier":
+        "Quantum circuit for multiplication",
+
+    "Quantum oracle construction":
+        "Quantum oracle circuit encoding a classical function",
+
+
+
+}
+
+# to replace the abbreviations to full text for bert input
+
+GATE_ABBREVIATIONS = {
+    # Single-qubit
+    "H": "Hadamard gate",
+    "X": "Pauli X gate",
+    "Y": "Pauli Y gate",
+    "Z": "Pauli Z gate",
+    "S": "Phase gate",
+    "S†": "Phase dagger gate",
+    "T": "T gate",
+    "T†": "T dagger gate",
+    "I": "Identity gate",
+
+    # Rotations
+    "RX": "Rotation X gate",
+    "RY": "Rotation Y gate",
+    "RZ": "Rotation Z gate",
+    "Rϕ": "Phase rotation gate",
+    "U": "Single qubit unitary gate",
+    "U3": "Universal single qubit gate",
+
+    # Two-qubit / multi-qubit
+    "CX": "Controlled NOT gate",
+    "CNOT": "Controlled NOT gate",
+    "CZ": "Controlled Z gate",
+    "CY": "Controlled Y gate",
+    "CH": "Controlled Hadamard gate",
+    "CRZ": "Controlled rotation Z gate",
+    "CRX": "Controlled rotation X gate",
+    "CRY": "Controlled rotation Y gate",
+    "SWAP": "Swap gate",
+    "CSWAP": "Controlled swap gate",
+    "FREDKIN": "Controlled swap gate",
+
+    # Multi-control
+    "CCX": "Toffoli gate",
+    "TOFFOLI": "Toffoli gate",
+    "MCX": "Multi controlled X gate",
+    "MCT": "Multi controlled Toffoli gate",
+
+    # Measurement
+    "M": "Measurement operation",
+    "MEASURE": "Measurement operation",
+    "RESET": "Qubit reset operation"
+}
+
+
+CIRCUIT_ABBREVIATIONS = {
+    "QC": "Quantum circuit",
+    "QEC": "Quantum error correction",
+    "QFT": "Quantum Fourier transform",
+    "QPE": "Quantum phase estimation",
+    "VQC": "Variational quantum circuit",
+    "PQC": "Parameterized quantum circuit",
+    "IQP": "Instantaneous quantum polynomial-time circuit",
+    "MBQC": "Measurement based quantum computation",
+    "LNN": "Linear nearest neighbor architecture"
+}
+
+ALGORITHM_ABBREVIATIONS = {
+    "VQE": "Variational quantum eigensolver",
+    "QAOA": "Quantum approximate optimization algorithm",
+    "HHL": "Harrow Hassidim Lloyd algorithm",
+    "GROVER": "Grover search algorithm",
+    "DJ": "Deutsch Jozsa algorithm",
+    "BV": "Bernstein Vazirani algorithm",
+    "SIMON": "Simon algorithm",
+    "QSVT": "Quantum singular value transformation",
+    "QML": "Quantum machine learning",
+    "QSVM": "Quantum support vector machine",
+    "QGAN": "Quantum generative adversarial network"
+}
+
+NOISE_ABBREVIATIONS = {
+    "NISQ": "Noisy intermediate scale quantum",
+    "T1": "Energy relaxation time",
+    "T2": "Dephasing time",
+    "SPAM": "State preparation and measurement",
+    "QPU": "Quantum processing unit",
+    "IBM-Q": "IBM quantum hardware",
+    "NV": "Nitrogen vacancy center"
+}
+
+
+GATESET_ABBREVIATIONS = {
+    "NCV": "NOT CNOT V gate library",
+    "MCT": "Multi controlled Toffoli gate library",
+    "CL+T": "Clifford plus T gate library",
+    "CLIFFORD": "Clifford gate set"
 }

@@ -289,7 +289,8 @@ def _extract_gates_from_block(block: str):
             s = re.sub(r'_+', '', s)
 
             s = re.sub(r'^TEXT', '', s)
-            
+            if s.startswith('TEXT') and len(s) <= 6:
+                s = s.replace('TEXT', '')
             s = s.upper()
             if re.fullmatch(r'\d+', s):
                 return ''

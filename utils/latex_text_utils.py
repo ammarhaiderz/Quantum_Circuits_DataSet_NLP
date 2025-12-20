@@ -50,14 +50,15 @@ def load_latex_source(arxiv_id: str, cache_dir: str | Path) -> Optional[str]:
 
 
 def extract_context_snippet(raw_text: str, span: tuple[int, int], margin: int = 200, strip_latex: bool = True) -> str:
-    """Return span text plus up to +margin chars after it.
+    """Return up to `margin` chars immediately after the caption span (skip the span itself).
 
     If `strip_latex` is True, drops comments and simple LaTeX commands/environments
-    (non-nested) to make the snippet more readable.
+    (non-nested) to make the snippet more readable. No backward context is included.
     """
     try:
         start, end = span
-        start_ctx = max(0, start)
+        # begin right after the caption span; do not include backward context
+        start_ctx = min(len(raw_text), end)
         end_ctx = min(len(raw_text), end + margin)
         snippet = raw_text[start_ctx:end_ctx]
 
