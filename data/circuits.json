@@ -1,11 +1,33 @@
 {
-  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766197679444.png": {
+  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766200553328.png": {
     "arxiv_id": "2509.13247",
-    "figure": 15,
+    "figure_number": 4,
+    "page": 6,
+    "gates": [
+      "H",
+      "CNOT",
+      "TOFFOLI",
+      "MEASURE"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "Logical circuit for a 5 CNOT, constant-depth CNOT-ladder on a 4×2 grid of qubits. The brackets surround qubits on the same row. The dashed lines separate the circuit into three parts: the first creates a Bell pair between the ancilla row and the second data row, the second consists of the CNOTs from the first two sections of the original circuit (Figure <ref>) being executed in parallel, and the third consists of the final CNOT from the original circuit, measurement, and classical correction.",
+      "Logical Architecture Uniting Motion and In-Place Entanglement: Shor’s Algorithm, Constant-Depth CNOT Ladder, and Many-Hypercube Code Logical qubits are considered an essential component for achieving utility-scale quantum computation. Multiple recent demonstrations of logical qubits on neutral atoms have relied on coherent qubit motion into entangling zones. However, this architecture requires motion prior to every entangling gate, incurring significant cost in wall clock runtime and motion-related error accumulation. We propose and experimentally realize an alternative architecture which"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766200555642.png": {
+    "arxiv_id": "2509.13247",
+    "figure_number": 15,
     "page": 14,
     "gates": [
       "H",
-      "MCX_2",
+      "TOFFOLI",
       "MCX_3",
       "CNOT",
       "MEASURE"
@@ -22,36 +44,14 @@
       ]
     ]
   },
-  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766197681332.png": {
+  "2509.13247__2509.13247_p1_221364ed016a64f3__1766200557483.png": {
     "arxiv_id": "2509.13247",
-    "figure": 4,
-    "page": 6,
-    "gates": [
-      "H",
-      "CNOT",
-      "MCX_2",
-      "MEASURE"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "Logical circuit for a 5 CNOT, constant-depth CNOT-ladder on a 4×2 grid of qubits. The brackets surround qubits on the same row. The dashed lines separate the circuit into three parts: the first creates a Bell pair between the ancilla row and the second data row, the second consists of the CNOTs from the first two sections of the original circuit (Figure <ref>) being executed in parallel, and the third consists of the final CNOT from the original circuit, measurement, and classical correction.",
-      "Logical Architecture Uniting Motion and In-Place Entanglement: Shor’s Algorithm, Constant-Depth CNOT Ladder, and Many-Hypercube Code Logical qubits are considered an essential component for achieving utility-scale quantum computation. Multiple recent demonstrations of logical qubits on neutral atoms have relied on coherent qubit motion into entangling zones. However, this architecture requires motion prior to every entangling gate, incurring significant cost in wall clock runtime and motion-related error accumulation. We propose and experimentally realize an alternative architecture which"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2509.13247__2509.13247_p1_221364ed016a64f3__1766197683416.png": {
-    "arxiv_id": "2509.13247",
-    "figure": 7,
+    "figure_number": 7,
     "page": 8,
     "gates": [
       "TEXTH",
       "CNOT",
-      "MCX_2",
+      "TOFFOLI",
       "MEASURE"
     ],
     "quantum_problem": "Constant-depth circuit construction",
@@ -66,12 +66,12 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766197702503.png": {
+  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766200582069.png": {
     "arxiv_id": "2509.04761",
-    "figure": 1,
+    "figure_number": 1,
     "page": 2,
     "gates": [
-      "CTRL-U"
+      "MCTRL3-U"
     ],
     "quantum_problem": "Gate decomposition",
     "descriptions": [
@@ -85,9 +85,9 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766197702571.png": {
+  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766200582137.png": {
     "arxiv_id": "2509.04761",
-    "figure": 1,
+    "figure_number": 1,
     "page": 2,
     "gates": [
       "TOFFOLI",
@@ -105,9 +105,9 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766197702676.png": {
+  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766200582238.png": {
     "arxiv_id": "2509.04761",
-    "figure": 1,
+    "figure_number": 1,
     "page": 2,
     "gates": [
       "CNOT",
@@ -125,9 +125,9 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766197702791.png": {
+  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766200582342.png": {
     "arxiv_id": "2509.04761",
-    "figure": 1,
+    "figure_number": 1,
     "page": 2,
     "gates": [
       "CNOT",
@@ -145,9 +145,9 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p5_48127125a9bc080b__1766197702873.png": {
+  "2509.04761__2509.04761_p5_48127125a9bc080b__1766200582455.png": {
     "arxiv_id": "2509.04761",
-    "figure": 1,
+    "figure_number": 1,
     "page": 2,
     "gates": [
       "CTRL-U"
@@ -164,9 +164,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_b6756454e84f6705__1766197710473.png": {
+  "2407.04826__2407.04826_p1_b6756454e84f6705__1766200590212.png": {
     "arxiv_id": "2407.04826",
-    "figure": 1,
+    "figure_number": 1,
     "page": 5,
     "gates": [
       "CNOT"
@@ -183,9 +183,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766197710534.png": {
+  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766200590276.png": {
     "arxiv_id": "2407.04826",
-    "figure": 1,
+    "figure_number": 1,
     "page": 5,
     "gates": [
       "TOFFOLI"
@@ -202,9 +202,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766197710593.png": {
+  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766200590340.png": {
     "arxiv_id": "2407.04826",
-    "figure": 1,
+    "figure_number": 1,
     "page": 5,
     "gates": [
       "TOFFOLI"
@@ -221,9 +221,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766197715183.png": {
+  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766200594904.png": {
     "arxiv_id": "2407.04826",
-    "figure": 2,
+    "figure_number": 2,
     "page": 5,
     "gates": [
       "X"
@@ -240,9 +240,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766197715218.png": {
+  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766200594944.png": {
     "arxiv_id": "2407.04826",
-    "figure": 2,
+    "figure_number": 2,
     "page": 5,
     "gates": [
       "CNOT"
@@ -259,9 +259,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766197715270.png": {
+  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766200594996.png": {
     "arxiv_id": "2407.04826",
-    "figure": 2,
+    "figure_number": 2,
     "page": 5,
     "gates": [
       "CTRL-V"
@@ -278,9 +278,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766197715328.png": {
+  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766200595057.png": {
     "arxiv_id": "2407.04826",
-    "figure": 2,
+    "figure_number": 2,
     "page": 5,
     "gates": [
       "CTRL-VDG"
@@ -297,9 +297,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_bc58770175544b8c__1766197724448.png": {
+  "2407.04826__2407.04826_p1_bc58770175544b8c__1766200603768.png": {
     "arxiv_id": "2407.04826",
-    "figure": 3,
+    "figure_number": 3,
     "page": 5,
     "gates": [
       "X"
@@ -316,9 +316,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766197724484.png": {
+  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766200603809.png": {
     "arxiv_id": "2407.04826",
-    "figure": 3,
+    "figure_number": 3,
     "page": 5,
     "gates": [
       "T"
@@ -335,9 +335,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766197724551.png": {
+  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766200603887.png": {
     "arxiv_id": "2407.04826",
-    "figure": 3,
+    "figure_number": 3,
     "page": 5,
     "gates": [
       "T"
@@ -354,9 +354,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766197724640.png": {
+  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766200603952.png": {
     "arxiv_id": "2407.04826",
-    "figure": 3,
+    "figure_number": 3,
     "page": 5,
     "gates": [
       "H"
@@ -373,9 +373,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766197724729.png": {
+  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766200604003.png": {
     "arxiv_id": "2407.04826",
-    "figure": 3,
+    "figure_number": 3,
     "page": 5,
     "gates": [
       "H"
@@ -392,9 +392,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766197724813.png": {
+  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766200604069.png": {
     "arxiv_id": "2407.04826",
-    "figure": 3,
+    "figure_number": 3,
     "page": 5,
     "gates": [
       "S"
@@ -411,9 +411,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p7_b698de4b847b9673__1766197724883.png": {
+  "2407.04826__2407.04826_p7_b698de4b847b9673__1766200604131.png": {
     "arxiv_id": "2407.04826",
-    "figure": 3,
+    "figure_number": 3,
     "page": 5,
     "gates": [
       "S"
@@ -430,9 +430,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766197724943.png": {
+  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766200604182.png": {
     "arxiv_id": "2407.04826",
-    "figure": 3,
+    "figure_number": 3,
     "page": 5,
     "gates": [
       "CNOT"
@@ -449,9 +449,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_349982884b4d4708__1766197741511.png": {
+  "2407.04826__2407.04826_p1_349982884b4d4708__1766200610146.png": {
     "arxiv_id": "2407.04826",
-    "figure": 4,
+    "figure_number": 4,
     "page": 5,
     "gates": [
       "CTRL-V",
@@ -469,9 +469,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_787f76d104d6fb82__1766197741605.png": {
+  "2407.04826__2407.04826_p2_787f76d104d6fb82__1766200610217.png": {
     "arxiv_id": "2407.04826",
-    "figure": 4,
+    "figure_number": 4,
     "page": 5,
     "gates": [
       "CTRL-V",
@@ -489,9 +489,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_df01852945231c65__1766197741687.png": {
+  "2407.04826__2407.04826_p3_df01852945231c65__1766200610298.png": {
     "arxiv_id": "2407.04826",
-    "figure": 4,
+    "figure_number": 4,
     "page": 5,
     "gates": [
       "CTRL-V",
@@ -509,9 +509,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_01768c686acefd8b__1766197741763.png": {
+  "2407.04826__2407.04826_p4_01768c686acefd8b__1766200610376.png": {
     "arxiv_id": "2407.04826",
-    "figure": 4,
+    "figure_number": 4,
     "page": 5,
     "gates": [
       "CTRL-V",
@@ -529,9 +529,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_15df5acee9859e41__1766197756430.png": {
+  "2407.04826__2407.04826_p1_15df5acee9859e41__1766200615765.png": {
     "arxiv_id": "2407.04826",
-    "figure": 5,
+    "figure_number": 5,
     "page": 5,
     "gates": [
       "V",
@@ -549,9 +549,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_d2670275e7081542__1766197756530.png": {
+  "2407.04826__2407.04826_p2_d2670275e7081542__1766200615829.png": {
     "arxiv_id": "2407.04826",
-    "figure": 5,
+    "figure_number": 5,
     "page": 5,
     "gates": [
       "V",
@@ -569,9 +569,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_96b201becd63fe56__1766197756617.png": {
+  "2407.04826__2407.04826_p3_96b201becd63fe56__1766200615892.png": {
     "arxiv_id": "2407.04826",
-    "figure": 5,
+    "figure_number": 5,
     "page": 5,
     "gates": [
       "V",
@@ -589,9 +589,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_eb8e7aa6d5bf6ecb__1766197756704.png": {
+  "2407.04826__2407.04826_p4_eb8e7aa6d5bf6ecb__1766200615967.png": {
     "arxiv_id": "2407.04826",
-    "figure": 5,
+    "figure_number": 5,
     "page": 5,
     "gates": [
       "V",
@@ -609,9 +609,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_45afa3233b7781a5__1766197767668.png": {
+  "2407.04826__2407.04826_p1_45afa3233b7781a5__1766200620089.png": {
     "arxiv_id": "2407.04826",
-    "figure": 6,
+    "figure_number": 6,
     "page": 6,
     "gates": [
       "MCX_4",
@@ -629,9 +629,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_5e972e7d667e3cdd__1766197767756.png": {
+  "2407.04826__2407.04826_p2_5e972e7d667e3cdd__1766200620141.png": {
     "arxiv_id": "2407.04826",
-    "figure": 6,
+    "figure_number": 6,
     "page": 6,
     "gates": [
       "MCX_3",
@@ -649,9 +649,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e4107cba88e0580d__1766197767836.png": {
+  "2407.04826__2407.04826_p3_e4107cba88e0580d__1766200620205.png": {
     "arxiv_id": "2407.04826",
-    "figure": 6,
+    "figure_number": 6,
     "page": 6,
     "gates": [
       "MCX_3"
@@ -668,9 +668,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_e20a2224fd36eece__1766197772621.png": {
+  "2407.04826__2407.04826_p1_e20a2224fd36eece__1766200622051.png": {
     "arxiv_id": "2407.04826",
-    "figure": 7,
+    "figure_number": 7,
     "page": 7,
     "gates": [
       "MCX_4",
@@ -689,9 +689,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_8925e40534e8b75c__1766197783169.png": {
+  "2407.04826__2407.04826_p1_8925e40534e8b75c__1766200625924.png": {
     "arxiv_id": "2407.04826",
-    "figure": 8,
+    "figure_number": 8,
     "page": 12,
     "gates": [
       "MCX_4",
@@ -710,9 +710,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_435f93dd67d152ee__1766197783267.png": {
+  "2407.04826__2407.04826_p2_435f93dd67d152ee__1766200625999.png": {
     "arxiv_id": "2407.04826",
-    "figure": 8,
+    "figure_number": 8,
     "page": 12,
     "gates": [
       "TOFFOLI",
@@ -731,9 +731,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_36deffd1a100709b__1766197783387.png": {
+  "2407.04826__2407.04826_p3_36deffd1a100709b__1766200626075.png": {
     "arxiv_id": "2407.04826",
-    "figure": 8,
+    "figure_number": 8,
     "page": 12,
     "gates": [
       "TOFFOLI",
@@ -752,9 +752,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_7ad6a73f493bcad6__1766197796845.png": {
+  "2407.04826__2407.04826_p1_7ad6a73f493bcad6__1766200630341.png": {
     "arxiv_id": "2407.04826",
-    "figure": 8,
+    "figure_number": 8,
     "page": 12,
     "gates": [
       "CNOT",
@@ -773,9 +773,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_3230d0ee612c9123__1766197796943.png": {
+  "2407.04826__2407.04826_p2_3230d0ee612c9123__1766200630407.png": {
     "arxiv_id": "2407.04826",
-    "figure": 8,
+    "figure_number": 8,
     "page": 12,
     "gates": [
       "CNOT",
@@ -794,9 +794,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_32ca383f5d4d2532__1766197797047.png": {
+  "2407.04826__2407.04826_p3_32ca383f5d4d2532__1766200630479.png": {
     "arxiv_id": "2407.04826",
-    "figure": 8,
+    "figure_number": 8,
     "page": 12,
     "gates": [
       "CNOT",
@@ -815,9 +815,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_6df15b86d4a17bc6__1766198764623.png": {
+  "2407.04826__2407.04826_p1_6df15b86d4a17bc6__1766200640543.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CNOT"
@@ -834,9 +834,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_7e986fca9394d5eb__1766198764689.png": {
+  "2407.04826__2407.04826_p2_7e986fca9394d5eb__1766200640596.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V"
@@ -853,9 +853,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_b90c5becb1ad1666__1766198764731.png": {
+  "2407.04826__2407.04826_p3_b90c5becb1ad1666__1766200640652.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V"
@@ -872,9 +872,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_9a894e204d75442c__1766198764808.png": {
+  "2407.04826__2407.04826_p4_9a894e204d75442c__1766200640711.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V"
@@ -891,9 +891,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p5_2a3e51967b1311ca__1766198764882.png": {
+  "2407.04826__2407.04826_p5_2a3e51967b1311ca__1766200640753.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V",
@@ -911,9 +911,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p6_33fe17306d39bc31__1766198764960.png": {
+  "2407.04826__2407.04826_p6_33fe17306d39bc31__1766200640816.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CNOT",
@@ -931,9 +931,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p7_25a6774e014fd879__1766198765025.png": {
+  "2407.04826__2407.04826_p7_25a6774e014fd879__1766200640886.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V"
@@ -950,9 +950,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p8_ca3203ad15956ac1__1766198765080.png": {
+  "2407.04826__2407.04826_p8_ca3203ad15956ac1__1766200640946.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CTRL-V",
@@ -970,9 +970,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p9_302fdbf76d14257c__1766198765136.png": {
+  "2407.04826__2407.04826_p9_302fdbf76d14257c__1766200641004.png": {
     "arxiv_id": "2407.04826",
-    "figure": 10,
+    "figure_number": 10,
     "page": 15,
     "gates": [
       "CNOT",
@@ -990,9 +990,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_39652ed36e5f17f8__1766198770295.png": {
+  "2407.04826__2407.04826_p1_39652ed36e5f17f8__1766200645908.png": {
     "arxiv_id": "2407.04826",
-    "figure": 11,
+    "figure_number": 11,
     "page": 15,
     "gates": [
       "CNOT"
@@ -1009,9 +1009,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_72b7a783533cad4d__1766198770354.png": {
+  "2407.04826__2407.04826_p2_72b7a783533cad4d__1766200645947.png": {
     "arxiv_id": "2407.04826",
-    "figure": 11,
+    "figure_number": 11,
     "page": 15,
     "gates": [
       "CTRL-V"
@@ -1028,9 +1028,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_579550cbc1cca90c__1766198770410.png": {
+  "2407.04826__2407.04826_p3_579550cbc1cca90c__1766200645999.png": {
     "arxiv_id": "2407.04826",
-    "figure": 11,
+    "figure_number": 11,
     "page": 15,
     "gates": [
       "CTRL-V"
@@ -1047,9 +1047,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_f9244f2a4287feec__1766198772229.png": {
+  "2407.04826__2407.04826_p1_f9244f2a4287feec__1766200647767.png": {
     "arxiv_id": "2407.04826",
-    "figure": 14,
+    "figure_number": 14,
     "page": 21,
     "gates": [
       "CNOT",
@@ -1068,9 +1068,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_86b97eb26408d475__1766198775019.png": {
+  "2407.04826__2407.04826_p1_86b97eb26408d475__1766200650332.png": {
     "arxiv_id": "2407.04826",
-    "figure": 15,
+    "figure_number": 15,
     "page": 22,
     "gates": [
       "CNOT",
@@ -1089,9 +1089,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_0774582c98a4990d__1766198775116.png": {
+  "2407.04826__2407.04826_p2_0774582c98a4990d__1766200650417.png": {
     "arxiv_id": "2407.04826",
-    "figure": 15,
+    "figure_number": 15,
     "page": 22,
     "gates": [
       "CNOT",
@@ -1110,9 +1110,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_3275e6f2c1a18b87__1766198779665.png": {
+  "2407.04826__2407.04826_p1_3275e6f2c1a18b87__1766200660459.png": {
     "arxiv_id": "2407.04826",
-    "figure": 17,
+    "figure_number": 17,
     "page": 23,
     "gates": [
       "CNOT",
@@ -1131,9 +1131,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_50bf9c553809ea9b__1766198779725.png": {
+  "2407.04826__2407.04826_p2_50bf9c553809ea9b__1766200660575.png": {
     "arxiv_id": "2407.04826",
-    "figure": 17,
+    "figure_number": 17,
     "page": 23,
     "gates": [
       "CNOT",
@@ -1152,9 +1152,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_c9af940ae2fd428e__1766198779808.png": {
+  "2407.04826__2407.04826_p3_c9af940ae2fd428e__1766200660690.png": {
     "arxiv_id": "2407.04826",
-    "figure": 17,
+    "figure_number": 17,
     "page": 23,
     "gates": [
       "CNOT",
@@ -1173,9 +1173,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_c1d8a642b676454c__1766198783342.png": {
+  "2407.04826__2407.04826_p1_c1d8a642b676454c__1766200670042.png": {
     "arxiv_id": "2407.04826",
-    "figure": 17,
+    "figure_number": 17,
     "page": 23,
     "gates": [
       "CNOT",
@@ -1193,9 +1193,9 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_5a8777560b57b164__1766198783466.png": {
+  "2407.04826__2407.04826_p2_5a8777560b57b164__1766200670266.png": {
     "arxiv_id": "2407.04826",
-    "figure": 17,
+    "figure_number": 17,
     "page": 23,
     "gates": [
       "CNOT",
@@ -1210,6 +1210,105 @@
       [
         240,
         304
+      ]
+    ]
+  },
+  "2410.00155__2410.00155_p1_268c753b871212f4__1766200678964.png": {
+    "arxiv_id": "2410.00155",
+    "figure_number": 4,
+    "page": 9,
+    "gates": [
+      "U",
+      "MEASURE"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "Quantum circuit to implement any arbitrary non-unitary operation.",
+      "Quantum circuit to implement any arbitrary non-unitary operation. For our code, we use the circuit in Fig. to implement or depending on the outcome of the projection measurements"
+    ],
+    "text_positions": [
+      [
+        26,
+        91
+      ]
+    ]
+  },
+  "2510.04993__2510.04993_p1_b4cac79b824cfc2a__1766200681286.png": {
+    "arxiv_id": "2510.04993",
+    "figure_number": 1,
+    "page": 3,
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "A permutation gate in staircase form, consisting of 6 Toffoli gates.",
+      "ass[11pt] amsart @mit.edu The Clifford hierarchy is a fundamental structure in quantum computation whose mathematical properties are not fully understood. In this work, we characterize permutation gates---unitaries which permute the basis states---in the third level of the hierarchy. We prove that any permutation gate in the third level must be a product of Toffoli gates in what we define as , up to left and right multiplications by Clifford permutations. We then present necessary and sufficient conditions for a staircase form permutation gate to be in the third level of the Clifford"
+    ],
+    "text_positions": [
+      [
+        149,
+        217
+      ]
+    ]
+  },
+  "2510.04993__2510.04993_p1_d0b4ae7becd6c16b__1766200683537.png": {
+    "arxiv_id": "2510.04993",
+    "figure_number": 2,
+    "page": 6,
+    "gates": [
+      "SWAP"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with time flowing from left to right).",
+      "circuits made of Pauli and Clifford gates, which are the first two levels of , can be efficiently simulated by a classical computer. In contrast, adding any non-Clifford gate to the Clifford group forms a universal gate set. Among the non-Clifford unitaries, gates in can be implemented fault-tolerantly by gate teleportation , where higher-level gates are performed using resource states and lower-level gates. From this perspective, the non-Clifford gates that are in are the ``easiest-to-implement'' non-Clifford gates. Consequently, gates have been at the center of study for FTQC, with decades"
+    ],
+    "text_positions": [
+      [
+        2408,
+        2507
+      ]
+    ]
+  },
+  "2510.04993__2510.04993_p1_01e57b5ee7d6ffef__1766200685464.png": {
+    "arxiv_id": "2510.04993",
+    "figure_number": null,
+    "page": 25,
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": "MCT gate library",
+    "descriptions": [
+      "This circuit for 1,2,4 1,3,4 1,2,3 is in staircase form but not mismatch-free, as qubit 3 is used as a control for 1,3,4 and a target for 1,2,3.",
+      "this work, we characterize permutation gates---unitaries which permute the basis states---in the third level of the hierarchy. We prove that any permutation gate in the third level must be a product of Toffoli gates in what we define as , up to left and right multiplications by Clifford permutations. We then present necessary and sufficient conditions for a staircase form permutation gate to be in the third level of the Clifford hierarchy. As a corollary, we construct a family of non-semi-Clifford permutation gates in staircase form such that each is in the third level but its inverse is in"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2405.14951__2405.14951_p1_91ae5b15b77ba16d__1766200688542.png": {
+    "arxiv_id": "2405.14951",
+    "figure_number": 4,
+    "page": 22,
+    "gates": [
+      "H",
+      "CNOT",
+      "RY",
+      "MEASURE"
+    ],
+    "quantum_problem": "Hamiltonian simulation",
+    "descriptions": [
+      "Quantum circuit used in our simulations of rendezvous games on the 3-vertex cycle graph K 3. From top to bottom, the first qubit represents the quantum subs-system held by Alice and the second qubit that held by Bob.",
+      "Quantum-assisted Rendezvous on Graphs: Explicit Algorithms and Quantum Computer Simulations K 3 2K 4 N N N C N N=3,4, K 3 C 3 K 4 2K 4 K 4 C 3 K 3 C 5 K 4 Y 3 C n n>3 W,E,S W=0 E=0 S=1 d d d S=1 S=1 S=0 N S=0 S=1 C N N=3,4, , . K 3 C 3 C N \\ \\ 2,3\\ ,\\ 1,3\\ ,\\ 1,2\\ \\ a=1,2,3 b=1,2,3 n,m=0,1 S=1 2 2 a b P( |a,b) = 1 0 P w P( |a,b;n,m) a b n m S=1 n,m=0,1 4 4 | i 2 4 4 (n,m)=(0,0) (1,1) (a,b)=(3,2) (2,3) (2,1) (1,2) y i i=1,2,3 a b 2 2 a b P a,b n,m P(n,m|a,b) a=b a b n m (a,b)=(1,2), (1,3), (2,1) (3,1) P a,b n,m a,b n,m P a,b n,m P w + 2( )+ 2( + )+ 2( ) ( 2- 1 )/2 ( 3- 2 )/2. = = /3 1, 2, 3"
+    ],
+    "text_positions": [
+      [
+        36,
+        251
       ]
     ]
   }

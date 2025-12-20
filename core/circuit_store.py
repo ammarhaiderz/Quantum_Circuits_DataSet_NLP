@@ -102,6 +102,16 @@ def emit_record(record: dict):
         except Exception:
             pass
 
+        # Normalize legacy `figure` key to `figure_number`
+        try:
+            if isinstance(record, dict):
+                if 'figure_number' not in record and 'figure' in record:
+                    record['figure_number'] = record.pop('figure')
+                if 'figure_number' not in record:
+                    record['figure_number'] = None
+        except Exception:
+            pass
+
         # Normalize descriptions (preserve domain tokens like TOF/CX and numeric groups)
         if isinstance(record, dict) and record.get('descriptions'):
             try:
@@ -181,8 +191,8 @@ def emit_record(record: dict):
 
                             # Mention spans: only from PDF text when available
                             try:
-                                if page_text_pdf and record.get('figure') is not None:
-                                    mention_spans = _find_figure_mentions_pdf(page_text_pdf, record.get('figure'))
+                                if page_text_pdf and record.get('figure_number') is not None:
+                                    mention_spans = _find_figure_mentions_pdf(page_text_pdf, record.get('figure_number'))
                                 else:
                                     mention_spans = []
 
@@ -203,7 +213,7 @@ def emit_record(record: dict):
                             except Exception:
                                 pass
                             if fig_val is not None:
-                                record['figure'] = fig_val
+                                record['figure_number'] = fig_val
                     except Exception:
                         # non-fatal: leave page as-is
                         pass
@@ -212,9 +222,11 @@ def emit_record(record: dict):
         # (figure numbers removed) No further figure-number extraction performed
 
         with open(JSONL_PATH, 'a', encoding='utf-8') as f:
-            # Ensure `figure` key exists in JSONL records (use None when unknown)
-            if 'figure' not in record:
-                record['figure'] = None
+            # Ensure `figure_number` key exists in JSONL records (use None when unknown)
+            if 'figure_number' not in record:
+                record['figure_number'] = None
+            # Drop legacy key if it still exists
+            record.pop('figure', None)
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
         # After appending to JSONL, regenerate a proper JSON array file.
         try:
@@ -245,6 +257,12 @@ def _regenerate_json():
             try:
                 rec = json.loads(line)
 
+                # Backward compatibility: migrate legacy `figure` key
+                if 'figure_number' not in rec and 'figure' in rec:
+                    rec['figure_number'] = rec.pop('figure')
+                else:
+                    rec.pop('figure', None)
+
                 # If the record already contains an `image_filename` assigned at emit time,
                 # prefer that (newer flow assigns this before emitting). Otherwise fall back
                 # to deriving a stem from legacy fields (`block_name` or `raw_block_file`).
@@ -256,17 +274,19 @@ def _regenerate_json():
                         clean = dict(rec)
                         for _f in ('raw_block_file', 'block_id', 'block_name', 'image_filename'):
                             clean.pop(_f, None)
-                        # Ensure `figure` is the second key after `arxiv_id` when present
+                        # Ensure `figure_number` is the second key after `arxiv_id` when present
                         def _order_value_dict(d: dict) -> dict:
                             out = {}
                             # keep arxiv_id first if present
                             if 'arxiv_id' in d:
                                 out['arxiv_id'] = d.pop('arxiv_id')
-                            # place figure second; if missing set to None
-                            if 'figure' in d:
-                                out['figure'] = d.pop('figure')
+                            # place figure_number second; if missing set to None
+                            if 'figure_number' in d:
+                                out['figure_number'] = d.pop('figure_number')
+                            elif 'figure' in d:
+                                out['figure_number'] = d.pop('figure')
                             else:
-                                out['figure'] = None
+                                out['figure_number'] = None
                             # then dump remaining keys in original order
                             for k, v in d.items():
                                 out[k] = v
@@ -308,16 +328,18 @@ def _regenerate_json():
                     clean2 = dict(rec)
                     for _f in ('raw_block_file', 'block_id', 'block_name', 'image_filename'):
                         clean2.pop(_f, None)
-                    # Preserve ordering with `figure` as second field when available
+                    # Preserve ordering with `figure_number` as second field when available
                     def _order_value_dict2(d: dict) -> dict:
                         out = {}
                         if 'arxiv_id' in d:
                             out['arxiv_id'] = d.pop('arxiv_id')
-                        # ensure figure key exists (null when absent)
-                        if 'figure' in d:
-                            out['figure'] = d.pop('figure')
+                        # ensure figure_number key exists (null when absent)
+                        if 'figure_number' in d:
+                            out['figure_number'] = d.pop('figure_number')
+                        elif 'figure' in d:
+                            out['figure_number'] = d.pop('figure')
                         else:
-                            out['figure'] = None
+                            out['figure_number'] = None
                         for k, v in d.items():
                             out[k] = v
                         return out
@@ -814,6 +836,12 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                     wf.write(line)
                     continue
 
+                # Backward compatibility: migrate legacy `figure` key
+                if 'figure_number' not in rec and 'figure' in rec:
+                    rec['figure_number'] = rec.pop('figure')
+                else:
+                    rec.pop('figure', None)
+
                 if rec.get('page') is None and rec.get('descriptions'):
                     if arxiv_id and rec.get('arxiv_id') != arxiv_id:
                         wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -879,8 +907,8 @@ def update_pages_in_jsonl(arxiv_id: str = None):
 
                                 try:
                                     mention_spans = []
-                                    if page_text_pdf and rec.get('figure') is not None:
-                                        mention_spans = _find_figure_mentions_pdf(page_text_pdf, rec.get('figure'))
+                                    if page_text_pdf and rec.get('figure_number') is not None:
+                                        mention_spans = _find_figure_mentions_pdf(page_text_pdf, rec.get('figure_number'))
 
                                     if mention_spans:
                                         if not rec.get('text_positions'):
@@ -911,14 +939,15 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                         except Exception:
                             pass
                             if fig_val is not None:
-                                rec['figure'] = fig_val
+                                rec['figure_number'] = fig_val
                     except Exception:
                         # leave as-is on failure
                         pass
 
-                # Ensure `figure` key is always present in JSONL (null when unknown)
-                if 'figure' not in rec:
-                    rec['figure'] = None
+                # Ensure `figure_number` key is always present in JSONL (null when unknown)
+                if 'figure_number' not in rec:
+                    rec['figure_number'] = None
+                rec.pop('figure', None)
                 wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
         # replace original
