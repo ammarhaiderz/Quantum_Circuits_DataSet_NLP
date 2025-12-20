@@ -1,0 +1,7 @@
+\begin{quantikz}
+\lstick[1]{noisy EPR} &\gate[2]{CRO}\gategroup[2,steps=1,style={dashed,rounded corners,fill=blue!20, inner xsep=2pt},background,label style={label position=above,anchor=north,yshift=0.25cm}]{PR}  &\slice{discard some \\EPRs}&& \gate[2]{CRO}\gategroup[2,steps=1,style={dashed,rounded
+corners, inner xsep=2pt}]{IR}   & & \gate[2]{CRO}\gategroup[2,steps=1,style={dashed,rounded
+corners, inner xsep=2pt}]{PA}  &\meter{} &\setwiretype{c} \\
+\lstick[1]{ancilla}  &&\setwiretype{n} &&  \setwiretype{q} & \setwiretype{n} & \setwiretype{q} & \setwiretype{n}  &\\
+\setwiretype{n} &&&{\text{ancilla}}\wire[u][1]{q}&\setwiretype{n} &{\text{ancilla}} \wire[u][1]{q} &\setwiretype{n}&&
+\end{quantikz}

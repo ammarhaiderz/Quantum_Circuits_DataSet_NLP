@@ -1,0 +1,6 @@
+\Qcircuit @C=.7em @R=1em {
+            \lstick{q_1: \ket{0}} & \gate{R_y(\frac{\pi}{2})} & \qw \ar@{--}[]+<.5em,1em>;[d]+<.5em,-3em>  & \qw & \ctrl{2} & \targ            & \qw \\
+            \lstick{q_2: \ket{0}} & \gate{R_y(\frac{\pi}{2})} & \qw                                        & \qw & \qw      & \ctrl{-1}        & \qw \\
+            \lstick{q_3: \ket{0}} & \qw                       & \qw                                        & \qw & \targ    & \qw              & \qw \\
+            &&&& \mbox{\footnotesize $\frac{1}{\sqrt{4}}(\ket{000} + \ket{001} + \ket{010} + \ket{011}$} \\
+        }

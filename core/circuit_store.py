@@ -19,7 +19,12 @@ try:
 except Exception:
     fitz = None
 
-from config.settings import CACHE_DIR, PDF_CACHE_DIR, USE_STOPWORDS, NORMALIZE_HYPHENS
+from config.settings import (
+    IMAGE_PIPELINE_CACHE_DIR,
+    IMAGE_PIPELINE_PDF_CACHE_DIR,
+    USE_STOPWORDS,
+    NORMALIZE_HYPHENS,
+)
 try:
     from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 except Exception:
@@ -400,7 +405,7 @@ def _load_pdf_page_text(arxiv_id: str, page_number: int) -> Optional[str]:
 
     if fitz is None or not page_number:
         return None
-    pdf_path = Path(PDF_CACHE_DIR) / f"{arxiv_id}.pdf"
+    pdf_path = Path(IMAGE_PIPELINE_PDF_CACHE_DIR) / f"{arxiv_id}.pdf"
     if not pdf_path.exists():
         return None
     try:
@@ -454,7 +459,7 @@ def _enrich_record_from_sources(record: dict) -> None:
 
     # LaTeX context snippet (best-effort)
     try:
-        latex_text = load_latex_source(arxiv_id, CACHE_DIR)
+        latex_text = load_latex_source(arxiv_id, IMAGE_PIPELINE_CACHE_DIR)
     except Exception:
         latex_text = None
 
@@ -923,7 +928,7 @@ def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.0
     if fitz is None:
         return None
 
-    pdf_path = Path(PDF_CACHE_DIR) / f"{arxiv_id}.pdf"
+    pdf_path = Path(IMAGE_PIPELINE_PDF_CACHE_DIR) / f"{arxiv_id}.pdf"
     if not pdf_path.exists():
         return None
 

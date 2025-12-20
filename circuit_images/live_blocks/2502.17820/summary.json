@@ -1,0 +1,38 @@
+{
+  "source": "2502.17820",
+  "blocks_count": 4,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2502.17820\\raw_blocks\\2502.17820_p1_6fa2d3543b4af459.tex",
+      "length": 686,
+      "block_id": "2502.17820_6fa2d3543b4af459",
+      "panel": 1,
+      "label": "fig:compile_H"
+    },
+    {
+      "index": 1,
+      "block_file": "2502.17820\\raw_blocks\\2502.17820_p2_0b2e8ef1c9bbafc8.tex",
+      "length": 797,
+      "block_id": "2502.17820_0b2e8ef1c9bbafc8",
+      "panel": 2,
+      "label": "fig:compile_H"
+    },
+    {
+      "index": 2,
+      "block_file": "2502.17820\\raw_blocks\\2502.17820_p3_a8f7b7cd9b4dc71e.tex",
+      "length": 844,
+      "block_id": "2502.17820_a8f7b7cd9b4dc71e",
+      "panel": 3,
+      "label": "fig:compile_H"
+    },
+    {
+      "index": 3,
+      "block_file": "2502.17820\\raw_blocks\\2502.17820_p4_473596310126481c.tex",
+      "length": 613,
+      "block_id": "2502.17820_473596310126481c",
+      "panel": 4,
+      "label": "fig:compile_H"
+    }
+  ]
+}

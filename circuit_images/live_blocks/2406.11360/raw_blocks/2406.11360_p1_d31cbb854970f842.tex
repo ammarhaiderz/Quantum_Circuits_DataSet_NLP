@@ -1,0 +1,23 @@
+\begin{quantikz}[column sep=0.2cm, row sep=0.2cm]
+            q_{1}=\ket{0} & \gate{H} &\qw & \qw & \qw  & \qw& \qw & \qw & \qw  & \qw& \qw & \qw & \qw  & \qw& \qw & \qw & \qw   & \ctrl{1}& \qw   & \ctrl{1}&  \qw & \qw  & \qw& \qw & \qw & \qw  & \qw& \qw & \qw & \qw  & \qw& \qw& \qw  & \qw &\gate{H} &\meter{} & \qw \\
+            
+           q_{2}=\ket{0} & \gate{H}& \qw &\qw  & \qw &\qw  & \qw &\qw  & \qw &\qw  & \qw &\qw  & \ctrl{1}&\qw & \targ{}  & \ctrl{1}   & \gate{R_z(2\theta_4)} & \targ{} &\gate{R_z(2\theta_4')} & \targ{}
+           &\gate{R_z(\theta_3)} 
+           &\targ{} 
+           &\gate{R_z(\theta_3')}
+           &\ctrl{1}
+           &\targ{} 
+           &\qw&\qw & \qw& \qw & \qw &\qw&\qw& \qw  & \qw&\gate{H}&\meter{} & \qw \\
+           q_{3}=\ket{0} & \gate{H}&\qw & \qw  & \qw &\qw  & \qw  & \ctrl{1}&\qw & \targ{}  & \ctrl{1}   & \gate{R_z(\theta_3)} & \targ{} &\gate{R_z(\theta_3')} & \ctrl{-1} &\targ{} & \qw    & \qw    & \qw& \qw& \qw 
+           & \ctrl{-1}  & \qw &\targ{}
+           & \ctrl{-1}  & \gate{R_z(\theta_2)} &\targ{}
+           &\gate{R_z(\theta_2')} 
+           & \ctrl{1}   &\targ{}
+            &\qw  & \qw& \qw  & \qw
+           &\gate{H} &\meter{} & \qw \\
+           q_{4}=\ket{0}  &\gate{S}&\gate{R_z(\theta_1)}&  \targ{} &\gate{R_z(\theta_1')} & \targ{} &\gate{R_z(\theta_2)} &\targ{} &\gate{R_z(\theta_2')} &\ctrl{-1}   & \targ{} &  \qw  & \qw &\qw  & \qw & \qw  & \qw &\qw  & \qw & 
+           \qw  & \qw &\qw  & \qw & \qw  & \qw &\qw   &
+           \ctrl{-1}   & 
+           \qw &\targ{} &\ctrl{-1}   &\gate{R_z(\theta_1)} & \targ{} &\gate{R_z(\theta_1')} &\targ{} &\gate{S^{\dagger}}&\meter{} & \qw \\
+           q_{5}=\ket{0} &\gate{H} &\qw &\ctrl{-1} &\qw &\ctrl{-1}  &  \qw  & \qw &\qw  & \qw & \qw  & \qw &\qw  & \qw &\qw  & \qw    & \qw& \qw & \qw & \qw &\qw  & \qw &\qw  & \qw & \qw  & \qw &\qw  & \qw &\qw  & \qw & \qw &\ctrl{-1} &\qw &\ctrl{-1}  &\gate{H} &\meter{} & \qw \\
+\end{quantikz}

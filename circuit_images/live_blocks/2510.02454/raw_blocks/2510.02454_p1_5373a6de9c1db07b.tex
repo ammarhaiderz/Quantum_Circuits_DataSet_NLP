@@ -1,0 +1,6 @@
+\Qcircuit @C=1em @R=1em {
+                                \lstick{\ket{0}} & \gate{X} & \ctrl{1} & \qw & \push{\ldots} &&\qw & \ctrl{1} & \qw&\qw& \\
+                                \lstick{\ket{0}} & \gate{\sqrt{X}}      & \control \qw & \qw& \push{\ldots} &&\qw & \control \qw & \qw&\gate{\sqrt{X}} &\meter\\
+                                &&&&&\hspace{-2em}\protect\underbrace{\hspace{7.5em}}_{\substack{\text{\small Odd number $(N_{\rm CZ}) $ of \vphantom{y}}\\ \text{\small composite CZ gates}}}\\
+                                &
+                            }

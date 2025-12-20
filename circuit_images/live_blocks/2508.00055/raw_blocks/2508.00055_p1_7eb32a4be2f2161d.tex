@@ -1,0 +1,42 @@
+\Qcircuit @R=1em @C=1em {
+%
+\lstick{\ket{0}_{\reg{R}}}
+    & \qw
+    & \multigate{2}{A^{(1)}}
+    & \gate{U^{\tmpop_1}}
+    & \multigate{2}{A^{(2)}}
+    & \gate{U^{\tmpop_2}}
+    & \qw
+    & {\cdots}
+    &
+    & \multigate{2}{A^{(n)}}
+    & \gate{U^{\tmpop_n}}
+    & \multigate{2}{A^{(n+1)}}
+    & \qw  \\
+\lstick{\ket{0}_{\reg{C}}}
+    & \qw
+    & \ghost{A^{(1)}}
+    & \ctrl{-1}
+    & \ghost{A^{(2)}}
+    & \ctrl{-1}
+    & \qw
+    & {\cdots}
+    &
+    & \ghost{A^{(n)}}
+    & \ctrl{-1}
+    & \ghost{A^{(n+1)}}
+    & \qw  \\
+\lstick{\ket{0}_{\reg{S}}}
+    & \qw
+    & \ghost{A^{(1)}}
+    & \qw
+    & \ghost{A^{(2)}}
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \ghost{A^{(n)}}
+    & \qw
+    & \ghost{A^{(n+1)}}
+    & \qw  
+}

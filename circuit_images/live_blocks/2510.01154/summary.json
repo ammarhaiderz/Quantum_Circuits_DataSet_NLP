@@ -1,0 +1,14 @@
+{
+  "source": "2510.01154",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2510.01154\\raw_blocks\\2510.01154_p1_ba5c494e134df7c7.tex",
+      "length": 604,
+      "block_id": "2510.01154_ba5c494e134df7c7",
+      "panel": 1,
+      "label": "fig:circuit_rand_hermitian"
+    }
+  ]
+}

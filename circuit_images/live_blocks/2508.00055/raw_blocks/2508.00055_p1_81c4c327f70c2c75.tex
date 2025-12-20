@@ -1,0 +1,11 @@
+\Qcircuit @R=1em @C=1em {
+%
+\lstick{\ket{0}_{\reg{R}}}
+    & \multigate{1}{A}
+    & \gate{\phi U}
+    & \qw  \\
+\lstick{\ket{0}_{\reg{C}}}
+    & \ghost{A}
+    & \ctrl{-1}
+    & \qw
+}

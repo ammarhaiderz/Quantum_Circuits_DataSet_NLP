@@ -1,0 +1,5 @@
+\begin{quantikz}[row sep={0.8cm,between origins}, slice style=blue]
+        \lstick{$\rho_\Anc$} & \gate{H} & \ctrl{1} & \slice{$t_1$} & \slice{$t_2$} & \slice{$t_3$} & \rstick[2]{$\rho_{\Sys \Anc}^{(3)}$} \\
+        \lstick{$\rho_\Sys$} & & \targ{}&\gate[2]{U} & \gate[2]{U} & \gate[2]{U}  &\\
+        \lstick{$\rho_\Env$} & & & & & &
+    \end{quantikz}

@@ -1,0 +1,9 @@
+\begin{quantikz}
+                \lstick{$\ket{n_{h,1}}$} &\ctrl{4}&\qw &\\
+                \lstick{$\ket{n_{t,1}}$} &\control{} &\qw &\\
+                \lstick{$\ket{n_{h,2}}$} &\control{}&\qw&\\
+                \lstick{$\ket{n_{t,2}}$} &\control{}&\qw &\\
+                \lstick{$\ket{0}$} & \gate[3]{U_B} &\qw\rstick{$\ket{n_h}$} \\
+                \lstick{$\ket{0}$} & &\qw\rstick{$\ket{n_t}$}\\
+                \lstick{$\ket{0}$} & &\qw\rstick{$\ket{\dup(l)_{\frac{h+t}{2}-n_{t,1}}}$}\\
+            \end{quantikz}

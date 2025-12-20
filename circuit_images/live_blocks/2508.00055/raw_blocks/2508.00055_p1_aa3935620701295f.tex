@@ -1,0 +1,30 @@
+\Qcircuit @R=1em @C=1em {
+    \lstick{\ket{0}_{\reg{K}}}
+    & \qw
+    & \gate{\Add(+1)}
+    & \qw
+    & \qw
+    & \qw
+    & \qw \\
+    \lstick{\ket{0}_{\reg{H}}}
+    & \qw
+    & \qw
+    & \qswap
+    & \gate{U}
+    & \qswap
+    & \qw \\
+    \lstick{\ket{0}_{\reg{R}}}
+    & \multigate{1}{A}
+    & \qw
+    & \qswap \qwx
+    & \qw
+    & \qswap \qwx
+    & \qw \\
+    \lstick{\ket{0}_{\reg{C}}}
+    & \ghost{A}
+    & \ctrl{-3}
+    & \ctrl{-1}
+    & \qw
+    & \ctrl{-1}
+    & \qw \gategroup{1}{3}{4}{6}{.7em}{--}
+}

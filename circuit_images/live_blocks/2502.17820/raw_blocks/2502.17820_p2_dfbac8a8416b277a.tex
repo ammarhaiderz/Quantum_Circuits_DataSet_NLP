@@ -1,0 +1,5 @@
+\Qcircuit @C=0.9em @R=0.1em {
+                \lstick{\ket{\phi}} & \multigate{2}{\mathcal{E}_{\rm amp}} & \qw &&& \ctrl{2} & \targ & \qw & \qw \\
+                &\nghost{\mathcal{E}_{\rm amp}}&&=&&&&&&&&\\
+                \lstick{\ket{0}} & \ghost{\mathcal{E}_{\rm amp}} & \qw &&& \gate{R_y(\theta)}& \ctrl{-2} & \meter & \qw
+            }

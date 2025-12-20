@@ -1,0 +1,7 @@
+\begin{quantikz}[row sep={0.8cm,between origins}, wire types={q, q, q, q, q}]
+        \lstick{$\ket{0}_{\rm ancilla}$} & \gate{H} & \ctrl{1} & \ctrl{2} & \ctrl{2} & & \ctrl{3} & \ctrl{1} & & & & &  \\
+        \lstick{$\ket{0}$} & & \gate[1]{\hat{U}_{1}(\lambda_{1})}\gategroup[1, steps = 1, style={draw=none, fill=none, inner xsep = 0pt}, background, label style={label position = above, anchor = north, yshift = -2.35cm, xshift = -0.0cm}]{\boldsymbol{\vdots}} & & & & & \targ{} & \ctrl{1} & \ctrl{2} & & \ctrl{3} &\\
+        \lstick{$\ket{0}$} & & & \gate[2]{\hat{U}_{2}(\lambda_{2})}\gategroup[1, steps = 1, style={draw=none, fill=none, inner xsep = 0pt}, background, label style={label position = above, anchor = north, yshift = -0.78cm, xshift = -1.8cm}]{\boldsymbol{\vdots}} & \gate[3]{\hat{U}_{3}(\lambda_{3})}\gategroup[1, steps = 1, style={draw=none, fill=none, inner xsep = 0pt}, background, label style={rotate = 45, label position = above, anchor = north, yshift = -1.25cm, xshift = 0.0cm}]{\boldsymbol{\vdots}} & & & & \targ{} & \control{} & & \control{} & \\
+        \lstick{$\ket{0}$} & & & & & & \gate[2]{\hat{U}_{m}(\lambda_{m})} & & & \targ{}\gategroup[1, steps = 1, style={draw=none, fill=none, inner xsep = 0pt}, background, label style={rotate = 45, label position = above, anchor = north, yshift = -0.9cm, xshift = -0.3cm}]{\boldsymbol{\vdots}} & & \control{} & \\
+        \lstick{$\ket{0}$} & & & & & & & & & & & \targ{} &
+        \end{quantikz}

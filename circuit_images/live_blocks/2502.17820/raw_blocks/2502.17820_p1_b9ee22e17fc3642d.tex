@@ -1,0 +1,5 @@
+\Qcircuit @C=1em @R=0.1em {
+                \lstick{\ket{\phi}} & \multigate{2}{\mathcal{E}_{\rm exc}} & \qw &&&\gate{X} & \ctrl{2} &\gate{X}& \targ & \qw & \qw \\
+                &\nghost{\mathcal{E}_{\rm exc}}&&=&&&&&&&\\
+                \lstick{\ket{0}} & \ghost{\mathcal{E}_{\rm exc}} & \qw &&& \qw & \gate{R_y(\theta)} &\qw & \ctrl{-2} & \meter & \qw
+            }
