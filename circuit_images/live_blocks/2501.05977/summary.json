@@ -1,0 +1,22 @@
+{
+  "source": "2501.05977",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2501.05977\\raw_blocks\\2501.05977_p1_fb2e50eed5f8b0e8.tex",
+      "length": 191,
+      "block_id": "2501.05977_fb2e50eed5f8b0e8",
+      "panel": 1,
+      "label": "fig:GQSP_real_circuit"
+    },
+    {
+      "index": 1,
+      "block_file": "2501.05977\\raw_blocks\\2501.05977_p2_3d1d8f88f7f9f91e.tex",
+      "length": 698,
+      "block_id": "2501.05977_3d1d8f88f7f9f91e",
+      "panel": 2,
+      "label": "fig:GQSP_real_circuit"
+    }
+  ]
+}

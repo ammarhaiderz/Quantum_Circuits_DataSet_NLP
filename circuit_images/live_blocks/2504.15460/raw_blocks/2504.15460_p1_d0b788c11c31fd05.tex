@@ -1,0 +1,6 @@
+\begin{quantikz}[row sep=0.1cm]
+        \lstick{$\ket{x}_\mathrm{c}$} & & & \phase{x_{ij}} \wire[d][2]{q} \gategroup[4, steps=1, style={dashed,rounded corners, fill=blue!20},background]{$\forall(i, j)\in\mathbf{E}$} & & \\[-0.1cm]
+        \lstick{$\ket{0}_\mathrm{\ell}$} & \gate{V} & \octrl{1} & \uctrl{} \wire[d][1]{q} & \gate{V^\dagger} &\\[-0.22cm]
+        \lstick{$\ket{0}_\mathrm{f,\ell'}$} & & \gate[2]{\mathds{1}} & \gate[2, disable auto height]{\left[\frac{1}{2}\mathbf{U}_{ij}\right]_\mathrm{block}} & & \\[-0.2cm]
+        \lstick{$\ket{0}_\mathrm{d}$} & & & & &
+    \end{quantikz}

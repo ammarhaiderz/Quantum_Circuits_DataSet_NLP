@@ -1,160 +1,396 @@
 #!/usr/bin/env python3
-"""Extract live LaTeX Qcircuit blocks from text files and optionally render them.
-"""
-from pathlib import Path
-import json
+"""Extract live LaTeX Qcircuit blocks from text files and optionally render them."""
+
 import argparse
-import sys
-import shutil
-from typing import Optional
 import hashlib
+import json
+import re
+import shutil
+import sys
+import tempfile
+import time
+from pathlib import Path
+from typing import Optional
+
 try:
     import fitz  # PyMuPDF
 except Exception:
     fitz = None
-import re
-import time
+
 from tqdm import tqdm
-import tempfile
 from utils.latex_utils_emb import render_saved_blocks
 
 # Global set to track processed block content hashes (prevents duplicates)
 _PROCESSED_BLOCKS = set()
 
+
+def _line_is_commented(txt: str, idx: int) -> bool:
+    """Return True if position ``idx`` is on a commented line.
+
+    A line is considered commented when an unescaped ``%`` appears between the
+    line start and the provided index.
+
+    Parameters
+    ----------
+    txt : str
+        Full text being scanned.
+    idx : int
+        Character index into ``txt`` to test.
+
+    Returns
+    -------
+    bool
+        ``True`` when the position lies on a commented line; otherwise ``False``.
+    """
+    ls = txt.rfind('\n', 0, idx)
+    start = ls + 1 if ls != -1 else 0
+    segment = txt[start:idx]
+    i = 0
+    while True:
+        p = segment.find('%', i)
+        if p == -1:
+            return False
+        back = 0
+        j = p - 1
+        while j >= 0 and segment[j] == '\\':
+            back += 1
+            j -= 1
+        if back % 2 == 0:
+            return True
+        i = p + 1
+
+
+def _canonicalize_label(label: str) -> str:
+    """
+    Canonicalize a LaTeX gate label into a validated, semantically precise token.
+
+    - Preserves gate identity (H, V, S, T, RX, RZ, etc.)
+    - Preserves dagger/inverse information using `_DG`
+    - Normalizes parameterized rotations
+    - Rejects layout/style/wire junk
+    - Enforces a strict whitelist internally
+
+    Returns
+    -------
+    str
+        Canonical gate token (e.g. H, H_DG, V, V_DG, RX, RZ, CNOT),
+        or '' if the label is not a valid gate.
+    """
+
+    if not label:
+        return ''
+
+    # -------------------------------------------------
+    # Gate whitelist (single source of truth)
+    # -------------------------------------------------
+    VALID_GATES = {
+        # single-qubit
+        'H', 'H_DG',
+        'X', 'Y', 'Z',
+        'S', 'S_DG',
+        'T', 'T_DG',
+        'V', 'V_DG',
+
+        # rotations
+        'RX', 'RY', 'RZ',
+
+        # two-qubit
+        'CNOT', 'CZ', 'SWAP',
+
+        # multi-qubit
+        'TOFFOLI',
+
+        # non-unitary
+        'MEASURE', 'RESET',
+    }
+
+    VALID_PREFIXES = (
+        'MCX_',        # MCX_3
+        'CTRL-',       # CTRL-H, CTRL-V_DG
+        'MCTRL',       # MCTRL2-H
+    )
+
+    s = label.strip()
+
+    # -------------------------------------------------
+    # Strip math delimiters
+    # -------------------------------------------------
+    s = re.sub(r'^\\\(|\\\)$', '', s)
+    s = re.sub(r'^\\\[|\\\]$', '', s)
+    s = s.strip('$ ')
+
+    # -------------------------------------------------
+    # Drop outer braces
+    # -------------------------------------------------
+    if s.startswith('{') and s.endswith('}'):
+        s = s[1:-1].strip()
+
+    # -------------------------------------------------
+    # Unwrap formatting macros
+    # -------------------------------------------------
+    s = re.sub(
+        r'\\(text|mathrm|operatorname|textrm|mathbf|mathcal)\s*\{([^}]*)\}',
+        r'\2',
+        s,
+        flags=re.IGNORECASE
+    )
+
+    # -------------------------------------------------
+    # Detect and preserve dagger / inverse
+    # -------------------------------------------------
+    has_dagger = bool(re.search(r'(\\dagger|†|\+)', s))
+
+    # -------------------------------------------------
+    # Normalize rotation gates BEFORE symbol stripping
+    # -------------------------------------------------
+    if re.search(r'R\s*[_\{]?\s*X\s*[\}]?\s*\(', s, re.IGNORECASE):
+        return 'RX'
+    if re.search(r'R\s*[_\{]?\s*Y\s*[\}]?\s*\(', s, re.IGNORECASE):
+        return 'RY'
+    if re.search(r'R\s*[_\{]?\s*Z\s*[\}]?\s*\(', s, re.IGNORECASE):
+        return 'RZ'
+
+    # -------------------------------------------------
+    # Remove LaTeX commands
+    # -------------------------------------------------
+    s = re.sub(r'\\[A-Za-z]+', '', s)
+
+    # -------------------------------------------------
+    # Remove everything except letters/numbers/underscore
+    # -------------------------------------------------
+    s = re.sub(r'[^A-Za-z0-9_]', '', s)
+    s = re.sub(r'_+', '', s)
+
+    if not s:
+        return ''
+
+    s = s.upper()
+
+    # -------------------------------------------------
+    # Reject numbers / layout junk
+    # -------------------------------------------------
+    if re.fullmatch(r'\d+', s):
+        return ''
+    if re.fullmatch(r'\d+(EM|CM|MM|PT)', s):
+        return ''
+
+    # -------------------------------------------------
+    # Canonical equivalences
+    # -------------------------------------------------
+    if s in ('CX', 'CNOT'):
+        s = 'CNOT'
+    elif s in ('CCX', 'TOFFOLI'):
+        s = 'TOFFOLI'
+    elif s in ('CSWAP', 'FREDKIN'):
+        s = 'SWAP'
+
+    # -------------------------------------------------
+    # Apply dagger suffix if applicable
+    # -------------------------------------------------
+    if has_dagger:
+        s = f'{s}_DG'
+
+    # -------------------------------------------------
+    # Final whitelist enforcement
+    # -------------------------------------------------
+    if s in VALID_GATES:
+        return s
+
+    for p in VALID_PREFIXES:
+        if s.startswith(p):
+            return s
+
+    return ''
+
+
+
+def _detect_cell(cell: str):
+    """Detect gate/control tokens present in a single circuit cell.
+
+    Parameters
+    ----------
+    cell : str
+        Raw cell text from a Qcircuit/quantikz grid.
+
+    Returns
+    -------
+    list of tuple
+        Sequence of ``(token, label)`` pairs where ``token`` is one of
+        ``G`` (gate with label), ``U`` (unknown gate/label), ``C`` (control),
+        ``O`` (open control), ``X`` (target), ``S`` (swap), ``M`` (measure),
+        or ``R`` (reset).
+    """
+
+    cell = cell.strip()
+    if not cell:
+        return []
+
+    tokens = []
+    lower = cell.lower()
+
+    # Control-style markers
+    if re.search(r'\\(ctrl|control)\b', cell):
+        tokens.append(('C', ''))
+    if re.search(r'\\(octrl|ctrlo|ocontrol|controlopen)\b', lower):
+        tokens.append(('O', ''))
+    if re.search(r'\\(targ|target)\b', cell):
+        tokens.append(('X', ''))
+    if re.search(r'\\swap\b', cell):
+        tokens.append(('S', ''))
+    if re.search(r'\\(meter|measure)\b', lower):
+        tokens.append(('M', ''))
+    if re.search(r'\\reset\b', lower) or 'reset' in lower:
+        tokens.append(('R', ''))
+
+    # Extract gate labels
+    gate_patterns = [
+        r'\\(?:gate|multigate|gategroup)(?:\[[^\]]*\])?\{([^{}]*)\}',
+        r'\\phase\{([^{}]*)\}',
+    ]
+    for pat in gate_patterns:
+        for match in re.finditer(pat, cell):
+            label = match.group(1).strip()
+            if label:
+                tokens.append(('G', label))
+            else:
+                tokens.append(('U', ''))
+
+
+    return tokens
+
+
 def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/blocks', out_dir: str = 'circuit_images/rendered_pdflatex'):
-	"""Render saved raw block files using the `pdflatex` Python wrapper (PDFLaTeX).
+    """
+    Render saved raw block files using the `pdflatex` Python wrapper.
 
-	Falls back to the subprocess renderer if the module is not available.
-	"""
-	try:
-		from pdflatex import PDFLaTeX
-	except Exception:
-		print('pdflatex Python module not available; falling back to subprocess renderer')
-		return render_saved_blocks(blocks_root, out_dir)
+    Falls back to the subprocess renderer if the module is not available.
 
-	blocks_root = Path(blocks_root)
-	out_dir = Path(out_dir)
-	out_dir.mkdir(parents=True, exist_ok=True)
+    Parameters
+    ----------
+    blocks_root : str, optional
+        Root directory containing saved LaTeX block files (default ``'circuit_images/blocks'``).
+    out_dir : str, optional
+        Directory where rendered PDFs will be written (default ``'circuit_images/rendered_pdflatex'``).
 
-	tex_files = list(blocks_root.rglob('raw_blocks/*.tex'))
-	if not tex_files:
-		print(f'No raw block .tex files found under {blocks_root}')
-		return
+    Returns
+    -------
+    None
+    """
+    try:
+        from pdflatex import PDFLaTeX
+    except Exception:
+        print('pdflatex Python module not available; falling back to subprocess renderer')
+        return render_saved_blocks(blocks_root, out_dir)
 
-	# default wrapper uses qcircuit; per-file selection below will use quantikz if needed
-	wrapper = (
-		'\\documentclass[border=30pt]{standalone}\n'
-		'\\usepackage{amsmath}\n'
-		'\\usepackage{amssymb}\n'
-		'\\usepackage{braket}\n'
-		'\\usepackage{qcircuit}\n'
-		"% Fallback macro definitions for extracted snippets (non-invasive)\n"
-		"\\providecommand{\\psx}[1]{\\psi_{#1}}\n"
-		"\\providecommand{\\psr}[1]{\\psi_{#1}}\n"
-		"\\providecommand{\\pst}[1]{\\psi_{#1}}\n"
-		"\\providecommand{\\rec}{\\mathrm{Rec}}\n"
-		"\\providecommand{\\tra}{\\mathrm{Tr}}\n"
-		"\\providecommand{\\ora}{\\mathcal{O}}\n"
-		'\\begin{document}\n'
-		'{circuit_code}\n'
-		'\\end{document}\n'
-	)
+    blocks_root = Path(blocks_root)
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-	for tex_path in tqdm(tex_files, desc='Rendering with pdflatex module'):
-		try:
-			block_text = tex_path.read_text(encoding='utf-8')
-		except Exception:
-			continue
+    tex_files = list(blocks_root.rglob('raw_blocks/*.tex'))
+    if not tex_files:
+        print(f'No raw block .tex files found under {blocks_root}')
+        return
 
-		# Build wrapper tex content and write a temp file; choose quantikz wrapper if block uses quantikz
-		lower = block_text.lower()
-		if ('quantikz' in lower) or ('\\begin{quantikz' in block_text):
-			content = (
-				'\\documentclass[border=30pt]{standalone}\n'
-				'\\usepackage{amsmath}\n'
-				'\\usepackage{amssymb}\n'
-				'\\usepackage{braket}\n'
-				'\\usepackage{tikz}\n'
-				'\\usepackage{quantikz}\n'
-				'\\begin{document}\n'
-				f"{block_text}\n"
-				'\\end{document}\n'
-			)
-		else:
-			content = wrapper.replace('{circuit_code}', block_text)
-		# Use temp directory to compile
-		with tempfile.TemporaryDirectory() as td:
-			td_path = Path(td)
-			tex_file = td_path / 'circuit.tex'
-			tex_file.write_text(content, encoding='utf-8')
+    # default wrapper uses qcircuit; per-file selection below will use quantikz if needed
+    wrapper = (
+        '\\documentclass[border=30pt]{standalone}\n'
+        '\\usepackage{amsmath}\n'
+        '\\usepackage{amssymb}\n'
+        '\\usepackage{braket}\n'
+        '\\usepackage{qcircuit}\n'
+        "% Fallback macro definitions for extracted snippets (non-invasive)\n"
+        "\\providecommand{\\psx}[1]{\\psi_{#1}}\n"
+        "\\providecommand{\\psr}[1]{\\psi_{#1}}\n"
+        "\\providecommand{\\pst}[1]{\\psi_{#1}}\n"
+        "\\providecommand{\\rec}{\\mathrm{Rec}}\n"
+        "\\providecommand{\\tra}{\\mathrm{Tr}}\n"
+        "\\providecommand{\\ora}{\\mathcal{O}}\n"
+        '\\begin{document}\n'
+        '{circuit_code}\n'
+        '\\end{document}\n'
+    )
 
-			try:
-				pdfl = PDFLaTeX.from_texfile(str(tex_file))
-				pdf_bytes, log_text, proc = pdfl.create_pdf(keep_pdf_file=True, keep_log_file=True)
+    for tex_path in tqdm(tex_files, desc='Rendering with pdflatex module'):
+        try:
+            block_text = tex_path.read_text(encoding='utf-8')
+        except Exception:
+            continue
 
-				# Normalize log_text to str before writing (pdflatex module may return bytes)
-				if isinstance(log_text, bytes):
-					try:
-						log_text_str = log_text.decode('utf-8', errors='replace')
-					except Exception:
-						log_text_str = str(log_text)
-				else:
-					log_text_str = str(log_text) if log_text is not None else ''
+        # Build wrapper tex content and write a temp file; choose quantikz wrapper if block uses quantikz
+        lower = block_text.lower()
+        if ('quantikz' in lower) or ('\\begin{quantikz' in block_text):
+            content = (
+                '\\documentclass[border=30pt]{standalone}\n'
+                '\\usepackage{amsmath}\n'
+                '\\usepackage{amssymb}\n'
+                '\\usepackage{braket}\n'
+                '\\usepackage{tikz}\n'
+                '\\usepackage{quantikz}\n'
+                '\\begin{document}\n'
+                f"{block_text}\n"
+                '\\end{document}\n'
+            )
+        else:
+            content = wrapper.replace('{circuit_code}', block_text)
+        # Use temp directory to compile
+        with tempfile.TemporaryDirectory() as td:
+            td_path = Path(td)
+            tex_file = td_path / 'circuit.tex'
+            tex_file.write_text(content, encoding='utf-8')
 
-				# Save log next to original block
-				log_path = tex_path.with_suffix('.pdflatex_module.log')
-				log_path.write_text(log_text_str, encoding='utf-8')
+            try:
+                pdfl = PDFLaTeX.from_texfile(str(tex_file))
+                pdf_bytes, log_text, proc = pdfl.create_pdf(keep_pdf_file=True, keep_log_file=True)
 
-				# Ensure pdf_bytes is bytes before writing
-				if proc and proc.returncode == 0 and pdf_bytes:
-					out_pdf = out_dir / (tex_path.stem + '.pdf')
-					if isinstance(pdf_bytes, str):
-						try:
-							pdf_bytes_to_write = pdf_bytes.encode('utf-8')
-						except Exception:
-							pdf_bytes_to_write = bytes(pdf_bytes)
-					else:
-						pdf_bytes_to_write = pdf_bytes
-					out_pdf.write_bytes(pdf_bytes_to_write)
-				else:
-					# fallback: copy any produced pdf from temp dir
-					produced = list(td_path.glob('*.pdf'))
-					if produced:
-						shutil.copyfile(produced[0], out_dir / (tex_path.stem + '.pdf'))
+                # Normalize log_text to str before writing (pdflatex module may return bytes)
+                if isinstance(log_text, bytes):
+                    try:
+                        log_text_str = log_text.decode('utf-8', errors='replace')
+                    except Exception:
+                        log_text_str = str(log_text)
+                else:
+                    log_text_str = str(log_text) if log_text is not None else ''
 
-			except Exception as e:
-				# save exception to log
-				log_path = tex_path.with_suffix('.pdflatex_module.err')
-				log_path.write_text(str(e), encoding='utf-8')
+                # Save log next to original block
+                log_path = tex_path.with_suffix('.pdflatex_module.log')
+                log_path.write_text(log_text_str, encoding='utf-8')
+
+                # Ensure pdf_bytes is bytes before writing
+                if proc and proc.returncode == 0 and pdf_bytes:
+                    out_pdf = out_dir / (tex_path.stem + '.pdf')
+                    if isinstance(pdf_bytes, str):
+                        try:
+                            pdf_bytes_to_write = pdf_bytes.encode('utf-8')
+                        except Exception:
+                            pdf_bytes_to_write = bytes(pdf_bytes)
+                    else:
+                        pdf_bytes_to_write = pdf_bytes
+                    out_pdf.write_bytes(pdf_bytes_to_write)
+                else:
+                    # fallback: copy any produced pdf from temp dir
+                    produced = list(td_path.glob('*.pdf'))
+                    if produced:
+                        shutil.copyfile(produced[0], out_dir / (tex_path.stem + '.pdf'))
+
+            except Exception as e:
+                # save exception to log
+                log_path = tex_path.with_suffix('.pdflatex_module.err')
+                log_path.write_text(str(e), encoding='utf-8')
 
 def extract_qcircuit_blocks_from_text(text: str):
-    """Extract both Qcircuit and quantikz circuit blocks from text.
+    """Extract Qcircuit and quantikz circuit blocks from text.
 
-    Returns a list of unique blocks as strings.
+    Parameters
+    ----------
+    text : str
+        LaTeX source text to scan for Qcircuit/quantikz blocks.
+
+    Returns
+    -------
+    list of str
+        Unique circuit blocks extracted from the text.
     """
     blocks = []
-    def _line_is_commented(txt: str, idx: int) -> bool:
-        """Return True if the position `idx` lies on a line that is commented out
-        (i.e. there is an unescaped `%` between the start of the line and idx).
-        """
-        # find start of the line
-        ls = txt.rfind('\n', 0, idx)
-        start = ls + 1 if ls != -1 else 0
-        segment = txt[start:idx]
-        i = 0
-        while True:
-            p = segment.find('%', i)
-            if p == -1:
-                return False
-            # count backslashes before % to see if escaped
-            back = 0
-            j = p - 1
-            while j >= 0 and segment[j] == '\\':
-                back += 1
-                j -= 1
-            if back % 2 == 0:
-                return True
-            i = p + 1
     
     # Extract Qcircuit blocks
     qcircuit_pattern = re.compile(r'(?:\\label\{[^}]*\}\s*)?\\Qcircuit\b', re.IGNORECASE)
@@ -204,6 +440,19 @@ def extract_qcircuit_blocks_from_text(text: str):
 
 
 def _safe_name(name: str) -> str:
+    """Return a sanitized name safe for filesystem usage.
+
+    Parameters
+    ----------
+    name : str
+        Original name to sanitize.
+
+    Returns
+    -------
+    str
+        Sanitized name with path separators removed.
+    """
+
     return name.replace('/', '__').replace('..', '__')
 
 
@@ -211,10 +460,19 @@ def _extract_gates_from_block(block: str):
     r"""Extract a list of gate names from a LaTeX circuit block.
 
     This uses several heuristics:
-    - Find `\gate{...}` contents and normalize tokens.
-    - Detect `\ctrl`, `\targ`, `\swap`, `\meter` etc.
+    - Find ``\gate{...}`` contents and normalize tokens.
+    - Detect ``\ctrl``, ``\targ``, ``\swap``, ``\meter`` etc.
     - Fallback: find textual gate names (H, X, Y, Z, CNOT, CX, Toffoli, SWAP, Rz, Rx).
-    Returns a unique list of uppercase gate tokens.
+
+    Parameters
+    ----------
+    block : str
+        LaTeX circuit block text (Qcircuit or quantikz).
+
+    Returns
+    -------
+    list of str
+        Unique uppercase gate tokens inferred from the block.
     """
     found = []
     try:
@@ -257,104 +515,12 @@ def _extract_gates_from_block(block: str):
             while len(row) < maxcols:
                 row.append('')
 
-        # ---------- helpers ----------
-
-        def canonicalize_label(lbl: str) -> str:
-            if not lbl:
-                return ''
-
-            s = lbl.strip()
-
-            # unwrap wrappers
-            s = re.sub(r'\\text\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
-            s = re.sub(r'\\mathrm\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
-            s = re.sub(r'\\mathbf\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
-            s = re.sub(r'\\mathcal\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
-            s = re.sub(r'\\hat\{([^}]*)\}', r'\1', s, flags=re.IGNORECASE)
-
-            # rotations (must be BEFORE stripping punctuation)
-            if re.search(r'R\s*[_\{]?\s*x\s*[\}]?\s*\(', s, re.IGNORECASE):
-                return 'RX'
-            if re.search(r'R\s*[_\{]?\s*y\s*[\}]?\s*\(', s, re.IGNORECASE):
-                return 'RY'
-            if re.search(r'R\s*[_\{]?\s*z\s*[\}]?\s*\(', s, re.IGNORECASE):
-                return 'RZ'
-
-            # dagger
-            s = re.sub(r'(?:\^?\s*\\dagger|\\dagger)', 'DG', s)
-
-            # strip latex + symbols
-            s = re.sub(r'\\+', '', s)
-            s = re.sub(r'[^A-Za-z0-9_]', '', s)
-            s = re.sub(r'_+', '', s)
-
-            s = re.sub(r'^TEXT', '', s)
-            if s.startswith('TEXT') and len(s) <= 6:
-                s = s.replace('TEXT', '')
-            s = s.upper()
-            if re.fullmatch(r'\d+', s):
-                return ''
-            return s
-
-        def detect_cell(cell_text):
-            tokens = []
-            t = cell_text
-
-            # qcircuit multigate
-            m = re.search(r'\\multigate\{\d+\}\{([^}]*)\}', t)
-            if m:
-                tokens.append(('U', m.group(1).strip()))
-
-            if re.search(r'\\ghost\{[^}]+\}', t):
-                tokens.append(('GHOST', None))
-
-            # quantikz multi-wire gate
-            m = re.search(r'\\gate\s*\[([^\]]*)\]\s*\{([^}]*)\}', t)
-            if m:
-                params = m.group(1)
-                label = m.group(2).strip()
-                wm = re.search(r'wires\s*=\s*(\d+)', params)
-                if wm and int(wm.group(1)) >= 2:
-                    tokens.append(('U', label))
-                    return tokens
-                else:
-                    tokens.append(('G', label))
-                    return tokens
-
-            # single gate
-            m = re.search(r'\\gate\{([^}]*)\}', t)
-            if m:
-                tokens.append(('G', m.group(1).strip()))
-
-            # controls
-            if re.search(r'\\o?ctrl\{-?\d+\}', t) or re.search(r'\\control\b', t) or re.search(r'\\cctrl\{-?\d+\}', t):
-                if re.search(r'\\octrl', t):
-                    tokens.append(('O', None))
-                else:
-                    tokens.append(('C', None))
-
-            # targets
-            if re.search(r'\\otarg\b|\\targ\b', t):
-                tokens.append(('X', None))
-
-            # swap
-            if re.search(r'\\swap\b|\\qswap\b', t):
-                tokens.append(('S', None))
-
-            # measure/reset
-            if re.search(r'\\meter\b|\\measure\b', t):
-                tokens.append(('M', None))
-            if re.search(r'\\reset\b', t):
-                tokens.append(('R', None))
-
-            return tokens
-
         # ---------- collect columns ----------
 
         cols = [[] for _ in range(maxcols)]
         for ri, row in enumerate(grid):
             for ci, cell in enumerate(row):
-                for tk, lbl in detect_cell(cell):
+                for tk, lbl in _detect_cell(cell):
                     cols[ci].append((tk, lbl, ri))
 
         inferred = []
@@ -364,12 +530,21 @@ def _extract_gates_from_block(block: str):
                 continue
 
             u_labels = [lbl for tk, lbl, _ in col if tk == 'U' and lbl]
-            if u_labels:
-                gl = canonicalize_label(u_labels[0])
-                inferred.append(gl if gl else 'U')
-                continue
-            elif any(tk == 'U' for tk, _, _ in col):
-                inferred.append('U')
+            other_gate_labels = [lbl for tk, lbl, _ in col if tk == 'G' and lbl]
+
+            # Prefer explicit gates over generic U
+            if other_gate_labels:
+                gl = _canonicalize_label(other_gate_labels[0])
+                if gl:
+                    inferred.append(gl)
+                    continue
+
+            # Only allow U if it comes from an explicit gate-like construct
+            if u_labels and any(tk in ('G',) for tk, _, _ in col):
+                gl = _canonicalize_label(u_labels[0])
+                if gl:
+                    inferred.append(gl)
+                # else: drop silently
                 continue
 
             control_count = sum(1 for tk, _, _ in col if tk in ('C', 'O'))
@@ -396,7 +571,7 @@ def _extract_gates_from_block(block: str):
                 continue
 
             if control_count > 0 and gates_in_col:
-                gl = canonicalize_label(gates_in_col[0])
+                gl = _canonicalize_label(gates_in_col[0])
                 if gl:
                     inferred.append(f'CTRL-{gl}' if control_count == 1 else f'MCTRL{control_count}-{gl}')
                 else:
@@ -404,7 +579,7 @@ def _extract_gates_from_block(block: str):
                 continue
 
             for g in gates_in_col:
-                gl = canonicalize_label(g)
+                gl = _canonicalize_label(g)
                 if gl:
                     inferred.append('H' if gl in ('HADAMARD', 'HAT') else gl)
 
@@ -439,12 +614,37 @@ def _extract_gates_from_block(block: str):
 
 
 def process_text(text: str, source_name: str = 'inline', out_root: str = 'circuit_images/live_blocks', render: bool = True, render_with_module: bool = False, arxiv_id: Optional[str] = None, start_figure_num: Optional[int] = None, caption_text: Optional[str] = None, panel: Optional[int] = None, figure_label: Optional[str] = None):
-    """Extract blocks from `text` and save them under `out_root/source_name`.
+    """Extract LaTeX circuit blocks and optionally render them.
 
-    Uses content-based hashing to ensure each unique circuit block is only
-    processed and rendered once, even if it appears in multiple figures.
+    Uses content hashes to avoid duplicate processing across invocations.
 
-    Returns a dict with summary information.
+    Parameters
+    ----------
+    text : str
+        LaTeX source containing potential circuit blocks.
+    source_name : str, optional
+        Identifier for the source text; used in output paths (default ``'inline'``).
+    out_root : str, optional
+        Root directory for extracted blocks and renders (default ``'circuit_images/live_blocks'``).
+    render : bool, optional
+        Whether to render newly saved blocks (default ``True``).
+    render_with_module : bool, optional
+        Unused flag retained for compatibility (default ``False``).
+    arxiv_id : str, optional
+        Paper identifier to include in emitted circuit records.
+    start_figure_num : int, optional
+        Unused; kept for compatibility with caller signatures.
+    caption_text : str, optional
+        Caption text associated with the blocks, used for descriptions.
+    panel : int, optional
+        Panel index override; when None, panels are numbered sequentially.
+    figure_label : str, optional
+        Figure label to attach to emitted records.
+
+    Returns
+    -------
+    dict
+        Summary information about processed blocks.
     """
     global _PROCESSED_BLOCKS
     out_root = Path(out_root)
@@ -710,25 +910,6 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
                 except Exception:
                     pass
 
-            # # After emitting records, if we've reached the configured MAX_IMAGES,
-            # # remove any stray PNGs in the common PNG folder that are not keys
-            # # in the canonical `data/circuits.json` to avoid extra images.
-            # try:
-            #     from config.settings import MAX_IMAGES
-            #     from tools.cleanup_extra_pngs import cleanup_extra_pngs
-            #     from core.circuit_store import JSON_PATH
-            #     if JSON_PATH.exists():
-            #         import json as _json
-            #         with open(JSON_PATH, 'r', encoding='utf-8') as _jf:
-            #             _data = _json.load(_jf)
-            #         if isinstance(_data, dict) and len(_data) >= MAX_IMAGES:
-            #             try:
-            #                 cleanup_extra_pngs(str(JSON_PATH), str(common_png_dir), max_images=MAX_IMAGES)
-            #             except Exception:
-            #                 pass
-            # except Exception:
-            #     pass
-
         except ImportError:
             pass
 
@@ -736,6 +917,24 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
 
 
 def process_file(path: str, out_root: str = 'circuit_images/live_blocks', render: bool = True, render_with_module: bool = False):
+    """Process a file containing LaTeX circuit blocks.
+
+    Parameters
+    ----------
+    path : str
+        Path to the input file.
+    out_root : str, optional
+        Root directory for outputs (default ``'circuit_images/live_blocks'``).
+    render : bool, optional
+        Whether to render newly extracted blocks (default ``True``).
+    render_with_module : bool, optional
+        Unused flag retained for compatibility (default ``False``).
+
+    Returns
+    -------
+    dict
+        Summary information from ``process_text``.
+    """
     p = Path(path)
     if not p.exists():
         raise FileNotFoundError(path)
@@ -751,7 +950,12 @@ def process_file(path: str, out_root: str = 'circuit_images/live_blocks', render
 
 def reset_processed_blocks():
     """Reset the global set of processed blocks.
+
     Call this at the start of each pipeline run to start fresh.
+
+    Returns
+    -------
+    None
     """
     global _PROCESSED_BLOCKS
     _PROCESSED_BLOCKS.clear()
@@ -759,7 +963,22 @@ def reset_processed_blocks():
 
 def _pdf_to_png(pdf_path: Path, png_path: Path, dpi: int = 300) -> bool:
     """Convert a single-page PDF to PNG.
-    Uses PyMuPDF (fitz) if available. Returns True on success.
+
+    Uses PyMuPDF (fitz) if available.
+
+    Parameters
+    ----------
+    pdf_path : Path
+        Path to the input PDF file.
+    png_path : Path
+        Destination path for the PNG output.
+    dpi : int, optional
+        Dots per inch for rasterization (default ``300``).
+
+    Returns
+    -------
+    bool
+        ``True`` on success, ``False`` otherwise.
     """
     if fitz is None:
         return False

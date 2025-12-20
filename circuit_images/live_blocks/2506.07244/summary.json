@@ -1,0 +1,30 @@
+{
+  "source": "2506.07244",
+  "blocks_count": 3,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2506.07244\\raw_blocks\\2506.07244_p1_87179a1d7c9cf88e.tex",
+      "length": 653,
+      "block_id": "2506.07244_87179a1d7c9cf88e",
+      "panel": 1,
+      "label": "fig:corpcircs"
+    },
+    {
+      "index": 1,
+      "block_file": "2506.07244\\raw_blocks\\2506.07244_p2_4a30f287db0d7144.tex",
+      "length": 654,
+      "block_id": "2506.07244_4a30f287db0d7144",
+      "panel": 2,
+      "label": "fig:corpcircs"
+    },
+    {
+      "index": 2,
+      "block_file": "2506.07244\\raw_blocks\\2506.07244_p3_9d5c3098615739c0.tex",
+      "length": 877,
+      "block_id": "2506.07244_9d5c3098615739c0",
+      "panel": 3,
+      "label": "fig:corpcircs"
+    }
+  ]
+}

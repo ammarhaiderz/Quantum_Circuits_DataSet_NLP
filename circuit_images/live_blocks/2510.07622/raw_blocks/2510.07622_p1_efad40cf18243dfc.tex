@@ -1,0 +1,132 @@
+\Qcircuit @R=1em @C=1em {
+    \lstick{\ket{0}_{\reg{C},1}}
+    & \gate{H}
+    & \ctrl{6}
+    & \ctrl{6}
+    & \ctrl{9}
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & \qw\\
+    \lstick{\makebox[\widthof{$\ket{0}$}]{\raisebox{0.6ex}{$\vdots$}}}
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & \qw\\
+    \lstick{\ket{0}_{\reg{C},n}}
+    & \qw
+    & \qw 
+    & \qw
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \gate{H}
+    & \ctrl{4}
+    & \ctrl{4}
+    & \ctrl{7}
+    & \qw\\
+    \lstick{\ket{0}_{\reg{O},1}}
+    & \qw
+    & \qswap
+    & \qw
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & \qw \\
+    \lstick{\makebox[\widthof{$\ket{0}$}]{\raisebox{0.6ex}{$\vdots$}}}
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & \qw\\
+    \lstick{\ket{0}_{\reg{O},n}}
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qswap
+    & \qw
+    & \qw
+    & \qw\\
+    \lstick{\ket{\psi}_{\reg{P},1}}
+    & \qw
+    & \qswap
+    & \multigate{2}{\Shift}
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qswap
+    & \multigate{2}{\Shift}
+    & \qw
+    & \qw\\
+    \lstick{\makebox[\widthof{$\ket{0}$}]{\raisebox{0.6ex}{$\vdots$}}}
+    & \qw
+    & \qw
+    & \ghost{\Shift}
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qw
+    & \ghost{\Shift}
+    & \qw
+    & \qw\\
+    \lstick{\ket{\psi}_{\reg{P},n}}
+    & \qw
+    & \qw
+    & \ghost{\Shift}
+    & \qw
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qw
+    & \ghost{\Shift}
+    & \qw
+    & \qw\\
+    \lstick{\ket{0}_{\reg{K}}}
+    & \qw
+    & \qw
+    & \qw
+    & \gate{\Add(+1)}
+    & \qw
+    & {\cdots}
+    &
+    & \qw
+    & \qw
+    & \qw
+    & \gate{\Add(+1)}
+    & \qw \gategroup{1}{2}{10}{5}{.7em}{--} \gategroup{3}{9}{10}{12}{.7em}{--}
+}

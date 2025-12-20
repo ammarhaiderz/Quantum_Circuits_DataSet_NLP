@@ -1,0 +1,14 @@
+{
+  "source": "2509.06455",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2509.06455\\raw_blocks\\2509.06455_p1_cfac46428d06bb9a.tex",
+      "length": 437,
+      "block_id": "2509.06455_cfac46428d06bb9a",
+      "panel": 1,
+      "label": "fig:q_circuit:W_prep:exact_decomposed"
+    }
+  ]
+}

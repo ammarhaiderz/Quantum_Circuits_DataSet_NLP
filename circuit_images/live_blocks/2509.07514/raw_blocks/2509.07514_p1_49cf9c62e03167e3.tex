@@ -1,0 +1,15 @@
+\begin{quantikz}[every arrow/.append style={no head}]
+\NL & & & \lstick{\footnotesize $A_0$} & \QL & \ctrl{2} & & & & & \rstick[5]{$\rho_{out}$} \\
+\NL \lstick{$\rho$} & & & \lstick{\footnotesize $A_1$} & \QL & & \ctrl{1} & \gate{H} & \meter{m_1} \\
+\NL & & & \lstick{\footnotesize $A_2$} & \QL & \targ{} & \targ{} & & \meter{m_2} \\
+\NL \lstick{$\sigma$} & & & & & \\
+\NL & & & \lstick{\footnotesize $B_0$} & \QL & \ctrl{2} & & & & & \\
+\NL \lstick{$\tau$} & & & \lstick{\footnotesize $B_1$} & \QL & & \ctrl{1} & \gate{H} & \meter{m_1} \\
+\NL & & & \lstick{\footnotesize $B_2$} & \QL & \targ{} & \targ{} & & \meter{m_2} \\
+\arrow[from=2-1, to=1-4, line width=0.9pt]
+\arrow[from=2-1, to=5-4, line width=0.9pt]
+\arrow[from=4-1, to=2-4, line width=0.9pt]
+\arrow[from=4-1, to=6-4, line width=0.9pt]
+\arrow[from=6-1, to=3-4, line width=0.9pt]
+\arrow[from=6-1, to=7-4, line width=0.9pt]
+\end{quantikz}

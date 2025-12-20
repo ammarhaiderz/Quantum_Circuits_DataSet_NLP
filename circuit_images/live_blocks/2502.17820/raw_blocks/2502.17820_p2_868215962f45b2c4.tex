@@ -1,0 +1,10 @@
+\Qcircuit @C=0.48em @R=1em {
+            &\ket{\phi_{\xi_0}} &&&& \multigate{3}{e^{-\frac{i}{\hbar}H^{(\xi)}_{2,YY}\tau}} & \qw & 
+                & \quad & \gate{\mathrm{R}_z(\frac{-\pi}{2})} & \multigate{3}{e^{-\frac{i}{\hbar}H^{(\xi)}_{2,XX}\tau}} & \gate{\mathrm{R}_z(\frac{\pi}{2})} & \qw \\
+            &\ket{\phi_{\xi_1}} &&&& \ghost{e^{-\frac{i}{\hbar}H^{(\xi)}_{2,YY}\tau}} & \qw & \raisebox{-2em}{=}
+                & \quad & \qw & \ghost{e^{-\frac{i}{\hbar}H^{(\xi)}_{2,XX}\tau}} & \qw & \qw \\
+            &\ket{\psi_{\xi_1}} &&&& \oghost{e^{-\frac{i}{\hbar}H^{(\xi)}_{2,YY}\tau}} & \ow & 
+                & \quad & \ow & \oghost{e^{-\frac{i}{\hbar}H^{(\xi)}_{2,XX}\tau}} & \ow & \ow \\
+            &\ket{\phi_{(\xi\pm1)_0}} \quad &&&& \ghost{e^{-\frac{i}{\hbar}H^{(\xi)}_{2,YY}\tau}} & \qw & 
+                & \quad & \gate{\mathrm{R}_z(\frac{-\pi}{2})} & \ghost{e^{-\frac{i}{\hbar}H^{(\xi)}_{2,XX}\tau}} & \gate{\mathrm{R}_z(\frac{\pi}{2})} & \qw
+            }

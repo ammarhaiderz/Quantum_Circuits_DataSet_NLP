@@ -1,0 +1,6 @@
+\begin{quantikz}[wire types={b,b,q,b},classical gap=0.12cm]
+            \lstick{$\ket{0}$} &  & \gate[wires=4,style={fill=red!20}]{\hat{W}_0} & \gate{XZX} & \gate[wires=4,style={fill=red!20}]{\hat{W}_0} & \qw & \qw \\
+            \lstick{$\ket{0}^{\otimes n-1}$} &  & & \ocontrol{} & & \qw & \qw \\
+            \lstick{$\ket{0}$} & \gate{Z} & & \ocontrol{} & & \qw & \qw \\
+            \lstick{$\ket{0}^{\otimes n}$} & & & \octrl{-3} & & \qw & \qw \\
+        \end{quantikz}

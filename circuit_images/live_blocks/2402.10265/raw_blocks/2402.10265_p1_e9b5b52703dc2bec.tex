@@ -1,0 +1,7 @@
+\Qcircuit @C=1em @R=1em {
+\lstick{P_1} &\ctrl{1} &\qw                              & \qw       & \qw                       & \qw      & \qw                               & \qw       & \qw                      & \qw     &\ctrl{1}     &\qw&\qw &\qw\\
+\lstick{A_1} &\targ    &\qw                              & \qw       & \qw                       & \ctrl{1}       & \qw                               & \qw       & \qw            & \ctrl{1}    &\targ&\targ&\qw &\qw\\
+\lstick{A_2} &\gate{H} &\gate{e^{-i\frac{\pi}{8}\hat{Z}}}&\targ&\gate{e^{-i\frac{\pi}{8}\hat{Z}}}&\targ& \gate{e^{-i\frac{\pi}{8}\hat{Z}}}& \targ     & \gate{e^{-i\frac{\pi}{8}\hat{Z}}} & \targ&\gate{H}&\ctrl{-1}&\ctrl{1} &\qw \\
+\lstick{A_3} &\targ    &\qw                              & \ctrl{-1} & \qw                       & \qw      & \qw                               & \ctrl{-1} & \qw                     & \qw      &\targ     &\qw&\targ &\qw \\
+\lstick{P_2} &\ctrl{-1}&\qw                              & \qw       & \qw                       & \qw & \qw                               & \qw       & \qw                               & \qw &\ctrl{-1}   &\qw&\qw &\qw
+}

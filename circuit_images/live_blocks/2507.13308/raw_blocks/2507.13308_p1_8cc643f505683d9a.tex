@@ -1,0 +1,25 @@
+\begin{quantikz}[row sep=0.2cm, column sep=0.2cm]
+    \lstick{$|x\rangle_i$} 
+    & \gateO{0} \vqw{1} 
+    & \gate{\scriptstyle R_{0,1}(\theta_0)} \vqw{2} 
+    & \ldots \ldots
+    & \gate{\scriptstyle R_{d-2,d-1}(\theta_{d-2})} \vqw{1} 
+    & \gateO{0} \vqw{1} 
+    & \qw & \ldots \\
+    
+    \lstick{$|\underline{j}\rangle$} 
+    & \gateO{\scriptstyle J^{i{-}1}(\vec{a})} \vqw{1} 
+    & \qw 
+    & \ldots \ldots
+    & \qw \vqw{1}
+    & \gate{\scriptstyle X^{J^{i{-}1}(\vec{a}),\,J^{i}(\vec{a}+\widehat{0})}} \vqw{1}
+    & \qw & \ldots\\
+
+    \lstick{$|0\rangle$} 
+    & \gate{X}
+    & \control{}
+    & \ldots \ldots
+    & \control{}
+    & \control{}
+    & \qw & \ldots
+  \end{quantikz}

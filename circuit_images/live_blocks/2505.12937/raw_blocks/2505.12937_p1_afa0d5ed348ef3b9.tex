@@ -1,0 +1,5 @@
+\Qcircuit @C=1em @R=.7em{        
+            \lstick{b_1} &\multigate{1}{\hat{B}(\frac{1}{2}\theta,\phi)} & \multigate{2}{\hat{U}_{\text{ZBS}}(-\frac{1}{2}\theta,\phi)} & \qw&& && \lstick{b_1} & \multigate{2}{\hat{U}_{\text{CBS}}(\theta,\phi)} & \qw \\
+            \lstick{b_2}                                                &\ghost{\hat{B}(\frac{1}{2}\theta,\phi)} & \ghost{\hat{U}_{\text{ZBS}}(-\frac{1}{2}\theta,\phi)} & \qw & &\lstick{\equiv} && \lstick{b_2}& \ghost{\hat{U}_{\text{CBS}}(\theta,\phi)} & \qw\\
+            \lstick{q}       & \qw & \ghost{\hat{U}_{\text{ZBS}}(-\frac{1}{2}\theta,\phi)} & \qw &&  && \lstick{q} & \ghost{\hat{U}_{\text{CBS}}(\theta,\phi)} & \qw\\ 
+            }

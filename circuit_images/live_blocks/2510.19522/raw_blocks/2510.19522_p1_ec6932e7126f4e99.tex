@@ -1,0 +1,8 @@
+\begin{quantikz}[row sep={0.6cm,between origins}]
+        \lstick{$\rho_{\Anc_1}$} & \gate{H} & \ctrl{2} & & \slice{$t_1$} & \slice{$t_2$} & \rstick[4]{$\rho_{\Sys \Anc}^{(2)}$} \\
+        \lstick{$\rho_{\Anc_2}$} & \gate{H} & & \ctrl{2} & & &  \\
+        \lstick{$\rho_{\Sys_1}$} & & \targ{}&& \gate[4]{U}\vphantom{\dagger}\hphantom{\dagger} & \gate[4]{U^\dagger} &\\
+        \lstick{$\rho_{\Sys_2}$} & & & \targ{}& & &\\
+        \lstick{$\rho_{\Env_1}$} & & & & & &\\
+        \lstick{$\rho_{\Env_2}$} & & & & & &
+    \end{quantikz}

@@ -1,0 +1,22 @@
+{
+  "source": "2503.02984",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2503.02984\\raw_blocks\\2503.02984_p1_238080b3c6da5531.tex",
+      "length": 333,
+      "block_id": "2503.02984_238080b3c6da5531",
+      "panel": 1,
+      "label": "fig:window"
+    },
+    {
+      "index": 1,
+      "block_file": "2503.02984\\raw_blocks\\2503.02984_p2_9c55514397857613.tex",
+      "length": 662,
+      "block_id": "2503.02984_9c55514397857613",
+      "panel": 2,
+      "label": "fig:window"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+\Qcircuit @C=0.5em @R=1.0em {
+                    &&&&&& \text{\small $1^{st}$ Trotter layer} &&&&&&&&&&& \text{\small $2^{nd}$ Trotter layer} &&&&&&& \cdots \\
+                    \ket{\phi_{1_0}} &&&& \qw & \multigate{4}{U_\tau} 
+                        & \qw & \multigate{1}{\mathcal{E}_\tau} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \multigate{4}{U_\tau} 
+                            & \qw & \multigate{1}{\mathcal{E}_\tau} & \qw & \qw && \cdots \\
+                    \ket{\phi_{1_1}}=\ket{0} \quad \quad &&&& \qw & \ghost{U_\tau} 
+                        & \qw & \ghost{\mathcal{E}_\tau} & \qw &&&& \ket{0}_{\text{reset}} &&&& \qw & \ghost{U_\tau} 
+                             & \qw & \ghost{\mathcal{E}_\tau} & \qw & \qw && \cdots\\
+                    \vdots &&&&& \nghost{U_\tau} 
+                        && \vdots &&&&&&&&&& \nghost{U_\tau} 
+                            && \vdots &&  \\
+                    \ket{\phi_{n_0}} &&&& \qw & \ghost{U_\tau} 
+                        & \qw & \multigate{1}{\mathcal{E}_\tau} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \ghost{U_\tau} 
+                             & \qw & \multigate{1}{\mathcal{E}_\tau} & \qw & \qw && \cdots \\
+                    \ket{\phi_{n_1}}=\ket{0} \quad \quad &&&& \qw & \ghost{U_\tau} 
+                        & \qw & \ghost{\mathcal{E}_\tau} & \qw &&&& \ket{0}_{\text{reset}} &&&& \qw & \ghost{U_\tau} 
+                             & \qw & \ghost{\mathcal{E}_\tau} & \qw & \qw && \cdots
+                    \gategroup{2}{6}{5}{9}{.5em}{^\}}

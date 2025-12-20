@@ -1,0 +1,11 @@
+\Qcircuit @C=.5em @R=.9em {
+            & \lstick{|j^t_a\rangle} & \qw & \qw & \qw & \qw & \tctrlo{1} \gategroup{1}{7}{8}{13}{.5em}{--} & \qw &  & \cdots &  &  & \tctrlt{1} & \qw & \qw & \qw & \qw & \qw & \rstick{|j^t_a\rangle} \\ 
+            & \lstick{|j^b_a\rangle} & \qw & \qw & \qw & \qw & \tctrlz{1} & \qw &  & \cdots &  &  & \tctrlo{1} & \qw & \qw & \qw & \qw & \qw & \rstick{|j^b_a\rangle} \\ 
+            & \lstick{|k^b_a\rangle} & \qw & \qw & \qw & \qw & \tctrlz{1} & \qw &  & \cdots &  &  & \tctrlo{1} & \qw & \qw & \qw & \qw & \qw & \rstick{|k^b_a\rangle} \\ 
+            & \lstick{|k^t_a\rangle} & \qw & \qw & \qw & \qw & \tctrlo{4} & \qw &  & \cdots &  &  & \tctrlt{4} & \qw & \qw & \qw & \qw & \qw & \rstick{|k^t_a\rangle} \\ 
+            & \lstick{|q_r\rangle} & \gate{H_{01}} \gategroup{5}{3}{8}{5}{.5em}{--} & \ctrl{1} & \qw & \multigate{2}{\lor} & \qw & \qw &  & \cdots &  &  & \qw & \multigate{2}{\lor^\dagger} & \qw \gategroup{5}{15}{8}{17}{.5em}{--} & \ctrl{1} & \gate{H_{01}} & \qw &  \\ 
+            & \lstick{|j^b_r\rangle} & \gate{H_{01}} & \targ & \ctrl{2} & \ghost{\lor} & \qw & \qw &  & \cdots &  &  & \qw & \ghost{\lor^\dagger} & \ctrl{2} & \targ & \gate{H_{01}} & \qw &  \\ 
+            & \lstick{|p_\ell\rangle} & \gate{H_{01}} & \ctrl{1} & \qw & \ghost{\lor} & \qw & \qw &  & \cdots &  &  & \qw & \ghost{\lor^\dagger} & \qw & \ctrl{1} & \gate{H_{01}} & \qw &  \\ 
+            & \lstick{|j^t_r\rangle} & \gate{H_{12}} & \boxtarg & \boxtarg & \qw \qwx & \gate{\theta_0} & \qw &  & \cdots &  &  & \gate{\theta_7} & \qw \qwx & \boxtarg & \boxtarg & \gate{H_{12}} & \qw &  \\ 
+            & \lstick{|0\rangle} & \qw & \qw & \qw & \targ \qwx & \ctrlo{-1} & \qw &  & \cdots &  &  & \ctrlo{-1} & \targ \qwx & \qw & \qw & \qw & \qw & \rstick{|0\rangle}
+        }
