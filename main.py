@@ -23,7 +23,7 @@ from config.settings import (
 from utils.file_utils import FileUtils
 from utils.logging_utils import Logger
 from pipeline.extraction_pipeline import ExtractionPipeline
-from core import arxiv_validator
+from shared import arxiv_validator
 
 
 def print_final_stats(logger, pipeline, processed_count, skipped_count, cache):
