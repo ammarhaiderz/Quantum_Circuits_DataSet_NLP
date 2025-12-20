@@ -1,70 +1,38 @@
 {
   "source": "2407.04826",
-  "blocks_count": 8,
+  "blocks_count": 4,
   "blocks": [
     {
       "index": 0,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_bc58770175544b8c.tex",
-      "length": 70,
-      "block_id": "2407.04826_bc58770175544b8c",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_e2e5d84788ea45b1.tex",
+      "length": 107,
+      "block_id": "2407.04826_e2e5d84788ea45b1",
       "panel": 1,
-      "label": "fig:clifford library"
+      "label": "fig:NCV library"
     },
     {
       "index": 1,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_e98bb0c579c6e5a0.tex",
-      "length": 74,
-      "block_id": "2407.04826_e98bb0c579c6e5a0",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_7fe93859f7b8b842.tex",
+      "length": 111,
+      "block_id": "2407.04826_7fe93859f7b8b842",
       "panel": 2,
-      "label": "fig:clifford library"
+      "label": "fig:NCV library"
     },
     {
       "index": 2,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p3_7fa8b60907427da6.tex",
-      "length": 73,
-      "block_id": "2407.04826_7fa8b60907427da6",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p3_e6f5bad8c682f20d.tex",
+      "length": 116,
+      "block_id": "2407.04826_e6f5bad8c682f20d",
       "panel": 3,
-      "label": "fig:clifford library"
+      "label": "fig:NCV library"
     },
     {
       "index": 3,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p4_80b5876a56199bc5.tex",
-      "length": 73,
-      "block_id": "2407.04826_80b5876a56199bc5",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p4_535f90adfe0a735b.tex",
+      "length": 123,
+      "block_id": "2407.04826_535f90adfe0a735b",
       "panel": 4,
-      "label": "fig:clifford library"
-    },
-    {
-      "index": 4,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p5_a6d2eb0bc2260d9a.tex",
-      "length": 74,
-      "block_id": "2407.04826_a6d2eb0bc2260d9a",
-      "panel": 5,
-      "label": "fig:clifford library"
-    },
-    {
-      "index": 5,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p6_dae0b7fa7b7c022c.tex",
-      "length": 73,
-      "block_id": "2407.04826_dae0b7fa7b7c022c",
-      "panel": 6,
-      "label": "fig:clifford library"
-    },
-    {
-      "index": 6,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p7_b698de4b847b9673.tex",
-      "length": 74,
-      "block_id": "2407.04826_b698de4b847b9673",
-      "panel": 7,
-      "label": "fig:clifford library"
-    },
-    {
-      "index": 7,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p8_56e2044fb99a4334.tex",
-      "length": 111,
-      "block_id": "2407.04826_56e2044fb99a4334",
-      "panel": 8,
-      "label": "fig:clifford library"
+      "label": "fig:NCV library"
     }
   ]
 }

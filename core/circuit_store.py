@@ -134,7 +134,120 @@ def _normalize_legacy_fields(record: dict) -> None:
 
     if 'figure_number' not in record:
         record['figure_number'] = None
+def normalize_caption_text(s: str) -> str:
+    """Normalize caption/description text while preserving domain tokens.
 
+    Parameters
+    ----------
+    s : str
+        Raw caption or description text.
+
+    Returns
+    -------
+    str
+        Cleaned caption with LaTeX/table artifacts removed and spacing normalized.
+
+    Notes
+    -----
+    Operations include unwrapping common LaTeX subscript forms, spacing between
+    alphanumeric runs, and collapsing whitespace.
+    """
+    if not s:
+        return s
+    try:
+        # Work on a copy
+        t = s
+        # drop placeholder tags like <cit.> or <ref>
+        t = re.sub(r"<\s*(?:cit|ref)\.?\s*>", " ", t, flags=re.IGNORECASE)
+        # strip common table/spacing artifacts (e.g., "-3pt ccccc" column specs)
+        t = re.sub(r"-?\d+\s*pt", " ", t, flags=re.IGNORECASE)
+        t = re.sub(r"[|]*[clrp](?:[|]*[clrp]){2,}", " ", t, flags=re.IGNORECASE)
+        # common LaTeX escaping
+        t = t.replace('\\_', '_')
+        # unwrap \text{...}
+        t = re.sub(r"\\text\{([^}]*)\}", r"\1", t)
+        # _{1,2,3} -> 1,2,3
+        t = re.sub(r"_\{([^}]*)\}", r"\1", t)
+        # _1,2,3_ -> 1,2,3
+        t = re.sub(r"_([0-9,]+)_", r"\1", t)
+        # join adjacent numeric groups separated by underscores (or multiple underscores)
+        t = re.sub(r"([0-9,])_+([0-9,])", r"\1 \2", t)
+        # if numeric groups ended up adjacent after removals (e.g. "1,2,41,3,4"), insert space
+        t = re.sub(r"([0-9,])(?=[0-9])", r"\1 ", t)
+        # Insert space between letters and digits: TOF1 -> TOF 1
+        t = re.sub(r"([A-Za-z])(?=\d)", r"\1 ", t)
+        # Insert space between digits and letters: 1TOF -> 1 TOF
+        t = re.sub(r"(?<=\d)(?=[A-Za-z])", ' ', t)
+        # replace remaining underscores with space
+        t = t.replace('_', ' ')
+        # collapse whitespace
+        # remove spaces after commas when both sides are digits: '1, 2' -> '1,2'
+        t = re.sub(r'(?<=\d),\s+(?=\d)', ',', t)
+        t = re.sub(r"\s+", ' ', t).strip()
+
+        # If nothing alphabetic remains, drop the fragment
+        if not re.search(r"[A-Za-z]", t):
+            return ""
+        return t
+    except Exception:
+        return s
+
+
+
+def _sanitize_description_snippet(text: str, *, strip_latex: bool = True, max_len: int = 600) -> str:
+    """Clean non-caption description text for embedding/transformer use.
+
+    Parameters
+    ----------
+    text : str
+        Input snippet.
+    strip_latex : bool, optional
+        Whether to remove LaTeX commands/math markers. Default is ``True``.
+    max_len : int, optional
+        Maximum length (in characters) after cleaning. Default is 600; use 0 to disable.
+
+    Returns
+    -------
+    str
+        Sanitized snippet, or empty string if no alphabetic characters remain.
+    """
+    if not text:
+        return ""
+    try:
+        t = text
+        if strip_latex:
+            # remove LaTeX comments and commands
+            t = re.sub(r"%.*", " ", t)
+            t = re.sub(r"\\[a-zA-Z@]+\*?(?:\[[^\]]*\])?(?:\{[^}]*\})?", " ", t)
+            # strip math regions
+            t = re.sub(r"\$[^$]*\$", " ", t)
+            # drop braces/underscores commonly left behind
+            t = re.sub(r"[{}_^~]", " ", t)
+
+        # drop common LaTeX/table artifacts that leak into snippets
+        t = re.sub(r"<ref>|<cit>\.?>?", " ", t, flags=re.IGNORECASE)
+        t = re.sub(r"\\\\", " ", t)  # TeX row separators
+        t = re.sub(r"[&]{2,}", " ", t)  # table column artifacts
+        t = re.sub(r"\b[clrp]{3,}\b", " ", t, flags=re.IGNORECASE)  # column spec like cccc
+        t = re.sub(r"(?:\s*&\s*){3,}", " ", t)  # bare ampersand rows
+        t = re.sub(r"@C=\d+\.\d+em|@R=\d+\.\d+em|@!R", " ", t)
+        t = re.sub(r"\[!ht\]", " ", t)
+
+        # remove control chars
+        t = re.sub(r"[\u0000-\u001f]", " ", t)
+        # collapse whitespace
+        t = re.sub(r"\s+", " ", t).strip()
+
+        # Drop snippets that have no alphabetic characters after cleaning
+        if not re.search(r"[A-Za-z]", t):
+            return ""
+
+        if max_len and len(t) > max_len:
+            t = t[:max_len].rsplit(" ", 1)[0]
+
+        return t
+    except Exception:
+        return text
 
 def _normalize_descriptions(record: dict) -> None:
     """Normalize and filter description strings in-place.
@@ -643,120 +756,8 @@ def _clean_caption_for_search(caption: str) -> str:
     return cleaned
 
 
-def normalize_caption_text(s: str) -> str:
-    """Normalize caption/description text while preserving domain tokens.
-
-    Parameters
-    ----------
-    s : str
-        Raw caption or description text.
-
-    Returns
-    -------
-    str
-        Cleaned caption with LaTeX/table artifacts removed and spacing normalized.
-
-    Notes
-    -----
-    Operations include unwrapping common LaTeX subscript forms, spacing between
-    alphanumeric runs, and collapsing whitespace.
-    """
-    if not s:
-        return s
-    try:
-        # Work on a copy
-        t = s
-        # drop placeholder tags like <cit.> or <ref>
-        t = re.sub(r"<\s*(?:cit|ref)\.?\s*>", " ", t, flags=re.IGNORECASE)
-        # strip common table/spacing artifacts (e.g., "-3pt ccccc" column specs)
-        t = re.sub(r"-?\d+\s*pt", " ", t, flags=re.IGNORECASE)
-        t = re.sub(r"[|]*[clrp](?:[|]*[clrp]){2,}", " ", t, flags=re.IGNORECASE)
-        # common LaTeX escaping
-        t = t.replace('\\_', '_')
-        # unwrap \text{...}
-        t = re.sub(r"\\text\{([^}]*)\}", r"\1", t)
-        # _{1,2,3} -> 1,2,3
-        t = re.sub(r"_\{([^}]*)\}", r"\1", t)
-        # _1,2,3_ -> 1,2,3
-        t = re.sub(r"_([0-9,]+)_", r"\1", t)
-        # join adjacent numeric groups separated by underscores (or multiple underscores)
-        t = re.sub(r"([0-9,])_+([0-9,])", r"\1 \2", t)
-        # if numeric groups ended up adjacent after removals (e.g. "1,2,41,3,4"), insert space
-        t = re.sub(r"([0-9,])(?=[0-9])", r"\1 ", t)
-        # Insert space between letters and digits: TOF1 -> TOF 1
-        t = re.sub(r"([A-Za-z])(?=\d)", r"\1 ", t)
-        # Insert space between digits and letters: 1TOF -> 1 TOF
-        t = re.sub(r"(?<=\d)(?=[A-Za-z])", ' ', t)
-        # replace remaining underscores with space
-        t = t.replace('_', ' ')
-        # collapse whitespace
-        # remove spaces after commas when both sides are digits: '1, 2' -> '1,2'
-        t = re.sub(r'(?<=\d),\s+(?=\d)', ',', t)
-        t = re.sub(r"\s+", ' ', t).strip()
-
-        # If nothing alphabetic remains, drop the fragment
-        if not re.search(r"[A-Za-z]", t):
-            return ""
-        return t
-    except Exception:
-        return s
 
 
-
-def _sanitize_description_snippet(text: str, *, strip_latex: bool = True, max_len: int = 600) -> str:
-    """Clean non-caption description text for embedding/transformer use.
-
-    Parameters
-    ----------
-    text : str
-        Input snippet.
-    strip_latex : bool, optional
-        Whether to remove LaTeX commands/math markers. Default is ``True``.
-    max_len : int, optional
-        Maximum length (in characters) after cleaning. Default is 600; use 0 to disable.
-
-    Returns
-    -------
-    str
-        Sanitized snippet, or empty string if no alphabetic characters remain.
-    """
-    if not text:
-        return ""
-    try:
-        t = text
-        if strip_latex:
-            # remove LaTeX comments and commands
-            t = re.sub(r"%.*", " ", t)
-            t = re.sub(r"\\[a-zA-Z@]+\*?(?:\[[^\]]*\])?(?:\{[^}]*\})?", " ", t)
-            # strip math regions
-            t = re.sub(r"\$[^$]*\$", " ", t)
-            # drop braces/underscores commonly left behind
-            t = re.sub(r"[{}_^~]", " ", t)
-
-        # drop common LaTeX/table artifacts that leak into snippets
-        t = re.sub(r"<ref>|<cit>\.?>?", " ", t, flags=re.IGNORECASE)
-        t = re.sub(r"\\\\", " ", t)  # TeX row separators
-        t = re.sub(r"[&]{2,}", " ", t)  # table column artifacts
-        t = re.sub(r"\b[clrp]{3,}\b", " ", t, flags=re.IGNORECASE)  # column spec like cccc
-        t = re.sub(r"(?:\s*&\s*){3,}", " ", t)  # bare ampersand rows
-        t = re.sub(r"@C=\d+\.\d+em|@R=\d+\.\d+em|@!R", " ", t)
-        t = re.sub(r"\[!ht\]", " ", t)
-
-        # remove control chars
-        t = re.sub(r"[\u0000-\u001f]", " ", t)
-        # collapse whitespace
-        t = re.sub(r"\s+", " ", t).strip()
-
-        # Drop snippets that have no alphabetic characters after cleaning
-        if not re.search(r"[A-Za-z]", t):
-            return ""
-
-        if max_len and len(t) > max_len:
-            t = t[:max_len].rsplit(" ", 1)[0]
-
-        return t
-    except Exception:
-        return text
 
 
 

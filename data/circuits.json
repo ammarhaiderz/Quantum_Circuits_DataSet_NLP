@@ -1,6 +1,36 @@
 {
   "2509.13247__img_0001.png": {
     "arxiv_id": "2509.13247",
+    "figure_number": 7,
+    "page": 8,
+    "gates": [
+      "CNOT",
+      "TOFFOLI",
+      "MEASURE"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "L=2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩ L state of the [[4,2,2]] code (Equation ).",
+      "Any measurement for which not all patches are within the codespace is discarded. Once these checks are completed, the remaining measurements are decoded via Equation . Paul",
+      ". L = 2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩L state of the [[4,2,2]] code (Equation 1). complete the fault-tolerant state preparatio"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        1980
+      ],
+      [
+        1819,
+        1825
+      ]
+    ]
+  },
+  "2509.13247__img_0002.png": {
+    "arxiv_id": "2509.13247",
     "figure_number": 4,
     "page": 6,
     "gates": [
@@ -36,7 +66,7 @@
       ]
     ]
   },
-  "2509.13247__img_0002.png": {
+  "2509.13247__img_0003.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 15,
     "page": 14,
@@ -65,36 +95,6 @@
       [
         181,
         188
-      ]
-    ]
-  },
-  "2509.13247__img_0003.png": {
-    "arxiv_id": "2509.13247",
-    "figure_number": 7,
-    "page": 8,
-    "gates": [
-      "CNOT",
-      "TOFFOLI",
-      "MEASURE"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "L=2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩ L state of the [[4,2,2]] code (Equation ).",
-      "Any measurement for which not all patches are within the codespace is discarded. Once these checks are completed, the remaining measurements are decoded via Equation . Paul",
-      ". L = 2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩L state of the [[4,2,2]] code (Equation 1). complete the fault-tolerant state preparatio"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        5,
-        1980
-      ],
-      [
-        1819,
-        1825
       ]
     ]
   },
@@ -339,118 +339,6 @@
       [
         10,
         18
-      ]
-    ]
-  },
-  "2407.04826__img_0004.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 2,
-    "page": 5,
-    "gates": [
-      "X"
-    ],
-    "quantum_problem": "Quantum gate library illustration",
-    "descriptions": [
-      "NCV quantum gate library",
-      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        168,
-        192
-      ],
-      [
-        158,
-        166
-      ]
-    ]
-  },
-  "2407.04826__img_0005.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 2,
-    "page": 5,
-    "gates": [
-      "CNOT"
-    ],
-    "quantum_problem": "Quantum gate library illustration",
-    "descriptions": [
-      "NCV quantum gate library",
-      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        168,
-        192
-      ],
-      [
-        158,
-        166
-      ]
-    ]
-  },
-  "2407.04826__img_0006.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 2,
-    "page": 5,
-    "gates": [
-      "V"
-    ],
-    "quantum_problem": "Quantum gate library illustration",
-    "descriptions": [
-      "NCV quantum gate library",
-      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        168,
-        192
-      ],
-      [
-        158,
-        166
-      ]
-    ]
-  },
-  "2407.04826__img_0007.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 2,
-    "page": 5,
-    "gates": [
-      "V_DG"
-    ],
-    "quantum_problem": "Quantum gate library illustration",
-    "descriptions": [
-      "NCV quantum gate library",
-      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        168,
-        192
-      ],
-      [
-        158,
-        166
       ]
     ]
   }

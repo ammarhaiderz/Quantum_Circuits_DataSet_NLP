@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 from config.settings import (
     ID_FILE,
@@ -164,15 +165,20 @@ def main():
 
                 num_keys = len(data)
                 if num_keys >= 250 and latex_circuit_embedded == True:
-                    with open("./data/latex_code_circuit_checkpoint.json", "w") as checkpoint_file:
-                        for fig in figures:
-                            record = {
-                                "total_papers_processed": processed_count + skipped_count
-                            }
-                            checkpoint_file.write(json.dumps(record) + "\n")
-                            latex_circuit_embedded = False
-                            collected_250_stop_latex_circuit_img = False
-                    logger.info(" Reached 250 images, saved checkpoint to latex_code_circuit_checkpoint.jsonl")
+                    record = {
+                        "total_papers_processed": processed_count + skipped_count
+                    }
+                    checkpoint_path = "./data/latex_code_circuit_checkpoint.json"
+                    try:
+                        if os.path.exists(checkpoint_path):
+                            os.remove(checkpoint_path)
+                    except Exception:
+                        pass
+                    with open(checkpoint_path, "w", encoding="utf-8") as checkpoint_file:
+                        checkpoint_file.write(json.dumps(record) + "\n")
+                    latex_circuit_embedded = False
+                    collected_250_stop_latex_circuit_img = False
+                    logger.info(" Reached 250 images, saved checkpoint to latex_code_circuit_checkpoint.json")
                 
 
         except KeyboardInterrupt:
