@@ -4,11 +4,11 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2503.22108\\raw_blocks\\2503.22108_p1_61aa1b5da9c01288.tex",
-      "length": 671,
-      "block_id": "2503.22108_61aa1b5da9c01288",
+      "block_file": "2503.22108\\raw_blocks\\2503.22108_p1_35b0334b12254ab0.tex",
+      "length": 240,
+      "block_id": "2503.22108_35b0334b12254ab0",
       "panel": 1,
-      "label": "fig:logicalXmeas"
+      "label": "fig:HST"
     }
   ]
 }

@@ -10,7 +10,7 @@ try:
 except Exception:
     fitz = None
 
-from config.settings import PDF_CACHE_DIR, USE_STOPWORDS, NORMALIZE_HYPHENS
+from config.settings import CACHE_DIR, PDF_CACHE_DIR, USE_STOPWORDS, NORMALIZE_HYPHENS
 try:
     from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 except Exception:
@@ -21,6 +21,22 @@ try:
 except Exception:
     TfidfVectorizer = None
     cosine_similarity = None
+
+from utils.latex_text_utils import (
+    extract_context_snippet,
+    load_latex_source,
+)
+
+
+def _find_figure_mentions_pdf(raw_page_text: str, figure_number: int | None) -> list[tuple[int, int]]:
+    """Find numeric figure references in PDF text (e.g., "Fig. 3")."""
+    if figure_number is None:
+        return []
+    try:
+        pattern = re.compile(rf"\b(?:fig\.|figure)\s*{re.escape(str(figure_number))}\b", re.IGNORECASE)
+        return [(m.start(), m.end()) for m in pattern.finditer(raw_page_text)]
+    except Exception:
+        return []
 
 DATA_DIR = Path('data')
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -74,8 +90,26 @@ def emit_record(record: dict):
                             page_val, fig_val = res
                             if page_val:
                                 record['page'] = page_val
-                            # Attempt to locate caption span on the PDF page and
-                            # store page-relative text offsets in `text_positions`.
+                            # Use LaTeX only to enrich descriptions; positions strictly from PDF text.
+                            try:
+                                latex_text = load_latex_source(aid, CACHE_DIR)
+                            except Exception:
+                                latex_text = None
+
+                            if latex_text:
+                                try:
+                                    span_tex = locate_description_span_raw(latex_text, record['descriptions'][0])
+                                    if span_tex:
+                                        snippet = extract_context_snippet(latex_text, span_tex, strip_latex=True)
+                                        snippet = _sanitize_description_snippet(snippet, strip_latex=True)
+                                        if snippet and 'descriptions' in record and isinstance(record['descriptions'], list):
+                                            if snippet not in record['descriptions']:
+                                                record['descriptions'].append(snippet)
+                                except Exception:
+                                    pass
+
+                            span_positions = None
+                            page_text_pdf = None
                             try:
                                 if page_val and fitz is not None:
                                     pdf_path2 = Path(PDF_CACHE_DIR) / f"{aid}.pdf"
@@ -83,16 +117,42 @@ def emit_record(record: dict):
                                         doc2 = fitz.open(str(pdf_path2))
                                         try:
                                             pg = doc2.load_page(page_val - 1)
-                                            page_text2 = pg.get_text("text")
-                                            span2 = locate_description_span_raw(page_text2, record['descriptions'][0])
-                                            if span2:
-                                                # store as list for JSON compatibility
-                                                record['text_positions'] = [list(span2)]
+                                            page_text_pdf = pg.get_text("text")
+                                            span_pdf = locate_description_span_raw(page_text_pdf, record['descriptions'][0])
+                                            if span_pdf:
+                                                span_positions = [list(span_pdf)]
                                         finally:
                                             try:
                                                 doc2.close()
                                             except Exception:
                                                 pass
+                            except Exception:
+                                pass
+
+                            if span_positions:
+                                record['text_positions'] = span_positions
+
+                            # Mention spans: only from PDF text when available
+                            try:
+                                if page_text_pdf and record.get('figure') is not None:
+                                    mention_spans = _find_figure_mentions_pdf(page_text_pdf, record.get('figure'))
+                                else:
+                                    mention_spans = []
+
+                                if mention_spans:
+                                    if not record.get('text_positions'):
+                                        record['text_positions'] = []
+                                    for sp in mention_spans:
+                                        sp_list = [sp[0], sp[1]]
+                                        if sp_list not in record['text_positions']:
+                                            record['text_positions'].append(sp_list)
+
+                                    if 'descriptions' in record and isinstance(record['descriptions'], list):
+                                        for sp in mention_spans:
+                                            msnip = extract_context_snippet(page_text_pdf, sp, strip_latex=False) if page_text_pdf else ""
+                                            msnip = _sanitize_description_snippet(msnip, strip_latex=False)
+                                            if msnip and msnip not in record['descriptions']:
+                                                record['descriptions'].append(msnip)
                             except Exception:
                                 pass
                             if fig_val is not None:
@@ -304,6 +364,39 @@ def normalize_caption_text(s: str) -> str:
     except Exception:
         return s
 
+
+
+def _sanitize_description_snippet(text: str, *, strip_latex: bool = True, max_len: int = 600) -> str:
+    """Clean non-caption description text for embedding/transformer use.
+
+    - Optionally remove simple LaTeX commands/math markers
+    - Drop control chars and collapse whitespace
+    - Truncate overly long snippets to avoid noisy tails
+    """
+    if not text:
+        return ""
+    try:
+        t = text
+        if strip_latex:
+            # remove LaTeX comments and commands
+            t = re.sub(r"%.*", " ", t)
+            t = re.sub(r"\\[a-zA-Z@]+\*?(?:\[[^\]]*\])?(?:\{[^}]*\})?", " ", t)
+            # strip math regions
+            t = re.sub(r"\$[^$]*\$", " ", t)
+            # drop braces/underscores commonly left behind
+            t = re.sub(r"[{}_^~]", " ", t)
+
+        # remove control chars
+        t = re.sub(r"[\u0000-\u001f]", " ", t)
+        # collapse whitespace
+        t = re.sub(r"\s+", " ", t).strip()
+
+        if max_len and len(t) > max_len:
+            t = t[:max_len].rsplit(" ", 1)[0]
+
+        return t
+    except Exception:
+        return text
 
 
 
@@ -655,7 +748,6 @@ def locate_description_span_raw(
 
 
 
-
 def update_pages_in_jsonl(arxiv_id: str = None):
     """Update records in `data/circuits.jsonl` filling `page` where missing.
 
@@ -688,7 +780,29 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                             if page_val:
                                 rec['page'] = page_val
                                 updated += 1
-                                # Try to locate caption span on the PDF page and fill text_positions
+                                # Use LaTeX only for description enrichment; positions strictly from PDF text.
+                                try:
+                                    latex_text = load_latex_source(rec.get('arxiv_id', ''), CACHE_DIR)
+                                except Exception:
+                                    latex_text = None
+
+                                if latex_text:
+                                    try:
+                                        span_tex = locate_description_span_raw(latex_text, caption)
+                                        if span_tex:
+                                            try:
+                                                snippet = extract_context_snippet(latex_text, span_tex, strip_latex=True)
+                                                snippet = _sanitize_description_snippet(snippet, strip_latex=True)
+                                                if snippet and 'descriptions' in rec and isinstance(rec['descriptions'], list):
+                                                    if snippet not in rec['descriptions']:
+                                                        rec['descriptions'].append(snippet)
+                                            except Exception:
+                                                pass
+                                    except Exception:
+                                        pass
+
+                                span_positions = rec.get('text_positions') if rec.get('text_positions') else None
+                                page_text_pdf = None
                                 try:
                                     if page_val and fitz is not None:
                                         pdf_path3 = Path(PDF_CACHE_DIR) / f"{rec.get('arxiv_id', '')}.pdf"
@@ -696,17 +810,39 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                                             doc3 = fitz.open(str(pdf_path3))
                                             try:
                                                 pg3 = doc3.load_page(page_val - 1)
-                                                page_text3 = pg3.get_text("text")
-                                                span3 = locate_description_span_raw(page_text3, caption)
-                                                if span3:
-                                                    # only set if not already present or unknown
-                                                    if not rec.get('text_positions') or rec.get('text_positions') == [[0, 0]]:
-                                                        rec['text_positions'] = [list(span3)]
+                                                page_text_pdf = pg3.get_text("text")
+                                                span_pdf = locate_description_span_raw(page_text_pdf, caption)
+                                                if span_pdf:
+                                                    span_positions = [list(span_pdf)]
                                             finally:
                                                 try:
                                                     doc3.close()
                                                 except Exception:
                                                     pass
+                                except Exception:
+                                    pass
+
+                                if span_positions:
+                                    rec['text_positions'] = span_positions
+
+                                try:
+                                    mention_spans = []
+                                    if page_text_pdf and rec.get('figure') is not None:
+                                        mention_spans = _find_figure_mentions_pdf(page_text_pdf, rec.get('figure'))
+
+                                    if mention_spans:
+                                        if not rec.get('text_positions'):
+                                            rec['text_positions'] = []
+                                        for sp in mention_spans:
+                                            sp_list = [sp[0], sp[1]]
+                                            if sp_list not in rec['text_positions']:
+                                                rec['text_positions'].append(sp_list)
+                                        if 'descriptions' in rec and isinstance(rec['descriptions'], list):
+                                            for sp in mention_spans:
+                                                msnip = extract_context_snippet(page_text_pdf, sp, strip_latex=False) if page_text_pdf else ""
+                                                msnip = _sanitize_description_snippet(msnip, strip_latex=False)
+                                                if msnip and msnip not in rec['descriptions']:
+                                                    rec['descriptions'].append(msnip)
                                 except Exception:
                                     pass
                             if fig_val is not None:

@@ -1,0 +1,14 @@
+{
+  "source": "2505.08928",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2505.08928\\raw_blocks\\2505.08928_p1_e5502cf1a7e6a490.tex",
+      "length": 493,
+      "block_id": "2505.08928_e5502cf1a7e6a490",
+      "panel": 1,
+      "label": "fig:circuit"
+    }
+  ]
+}
