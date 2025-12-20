@@ -1,3 +1,19 @@
+"""
+Canonical label taxonomy and abbreviation expansions used when classifying
+and describing quantum circuit figures. The mappings cover high-level
+problem categories, common gate names, circuit shorthand, algorithm names,
+noise terminology, and gate-set abbreviations so downstream components can
+normalize extracted text into consistent descriptors.
+
+Exposed dictionaries:
+    - QUANTUM_PROBLEM_LABELS: canonical task labels -> short descriptions.
+    - GATE_ABBREVIATIONS: gate shorthand -> human-readable gate names.
+    - CIRCUIT_ABBREVIATIONS: circuit-level shorthand -> full phrases.
+    - ALGORITHM_ABBREVIATIONS: algorithm acronyms -> full algorithm names.
+    - NOISE_ABBREVIATIONS: noise and hardware acronyms -> full forms.
+    - GATESET_ABBREVIATIONS: gate-set acronyms -> descriptive names.
+"""
+
 QUANTUM_PROBLEM_LABELS = {
 
     # ─────────────────────────────────────────────

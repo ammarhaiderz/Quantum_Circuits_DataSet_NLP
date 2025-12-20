@@ -1,6 +1,10 @@
 """
-Configuration settings for the quantum circuit image extractor.
-All tunable parameters are centralized here.
+Centralized configuration for the quantum circuit image extractor.
+
+This module defines file system locations, extraction limits, scoring
+weights, and debug flags used throughout the pipeline. Importing the module
+also ensures the expected cache/output/log directories exist via
+``setup_directories``.
 """
 
 import os
