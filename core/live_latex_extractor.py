@@ -852,26 +852,42 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
                 new_pdfs_to_process = new_pdfs
 
             try:
+                # Determine next per-paper counter from existing canonical PNGs
+                counter = 1
+                try:
+                    import re as _re
+                    existing = []
+                    for _p in common_png_dir.glob(f"{safe_src}__img_*.png"):
+                        m = _re.search(r"__img_(\d+)\.png$", _p.name)
+                        if m:
+                            existing.append(int(m.group(1)))
+                    if existing:
+                        counter = max(existing) + 1
+                except Exception:
+                    counter = 1
+
                 for f in new_pdfs_to_process:
                     if not (f.is_file() and f.suffix.lower() == '.pdf'):
                         continue
                     try:
-                        ts = int(time.time() * 1000)
-                        dest_pdf_name = f"{safe_src}__{f.stem}__{ts}.pdf"
+                        base_name = f"{safe_src}__img_{counter:04d}"
+                        counter += 1
+
+                        dest_pdf_name = f"{base_name}.pdf"
                         shutil.copyfile(f, common_dir / dest_pdf_name)
 
-                        # Convert per-paper PDF to PNG into per-paper png folder with unique name
+                        # Convert per-paper PDF to PNG into per-paper png folder with sequential name
                         try:
-                            per_png_name = f"{f.stem}__{ts}.png"
+                            per_png_name = f"{base_name}.png"
                             per_png_path = rendered_png_dir / per_png_name
                             _pdf_to_png(f, per_png_path)
                         except Exception:
                             pass
 
-                        # Convert copied common PDF to PNG into common png folder with matching unique name
+                        # Convert copied common PDF to PNG into common png folder with matching name
                         try:
                             common_pdf = common_dir / dest_pdf_name
-                            common_png_name = Path(dest_pdf_name).with_suffix('.png').name
+                            common_png_name = f"{base_name}.png"
                             common_png_path = common_png_dir / common_png_name
                             _pdf_to_png(common_pdf, common_png_path)
                             stem_to_common_png[f.stem] = common_png_name
