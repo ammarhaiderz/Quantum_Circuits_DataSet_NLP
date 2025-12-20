@@ -1,9 +1,0 @@
-\begin{quantikz}[wire types={q,q,q,q,q}]
-%    &&&&&&\ket{0} &\setwiretype{q}&\gate{H}&\ctrl{1}&\ctrl{2}&\ctrl{4}&\gate{H}&\meter{}&\\
-%    \lstick[wires = 1]{$\ket{0^{N-m}}$} & {} &{}&{}&\gate[wires=3]{\hat{U}^\dagger}&&&&\gate[wires=2]{\hat{O}_\alpha}&\swap{3}&{}&{}&{}&{}&\\
-    \lstick[wires = 2]{$\ket{0^{m}}$} & \gate[wires=1]{H} &\ctrl{3}&{}&{}&\\
-    {} & \gate[wires=1]{H} &{}&\ctrl{3}&{}&\\
-    \lstick[wires = 3]{$\ket{0^{N}}$} & {} &{}&{}&\gate[wires=3]{\hat{U}^\dagger}&\meter{}&\setwiretype{n}\rstick[wires = 3]{$P(\sigma;\hat{U})$}\\
-     & {} &\targ{}&{}&{}&\meter{}&\setwiretype{n}\\
-    {} & {} &{}&\targ{}&{}&\meter{}&\setwiretype{n}
-\end{quantikz}

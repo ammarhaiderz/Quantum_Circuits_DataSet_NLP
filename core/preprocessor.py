@@ -13,19 +13,43 @@ class TextPreprocessor:
     """Handles text preprocessing for captions."""
     
     def __init__(self):
+        """Initialize the preprocessor with the configured stemmer."""
         self.stemmer = STEMMER
     
     def normalize_text(self, text: str) -> str:
-        """Normalize text by lowercasing and handling hyphens."""
+        """Normalize text by lowercasing and optionally replacing separators.
+
+        Parameters
+        ----------
+        text : str
+            Raw text to normalize.
+
+        Returns
+        -------
+        str
+            Lowercased text with ``-``, ``_``, and ``/`` replaced by spaces
+            when ``NORMALIZE_HYPHENS`` is enabled.
+        """
         text = text.lower()
         if NORMALIZE_HYPHENS:
             text = re.sub(r"[-_/]", " ", text)
         return text
     
     def clean_caption_text(self, text: str) -> str:
-        """
-        Cleans LaTeX-heavy captions without destroying circuit vocabulary.
-        Handles infixes (hyphens, underscores, slashes) intelligently.
+        """Clean LaTeX-heavy captions while preserving circuit vocabulary.
+
+        Handles math removal, figure references, compound quantum terms, and
+        selective hyphen/underscore normalization tailored for captions.
+
+        Parameters
+        ----------
+        text : str
+            Caption text potentially containing LaTeX artifacts.
+
+        Returns
+        -------
+        str
+            Cleaned lowercase caption text with preserved quantum terms.
         """
         text = text.lower()
         
@@ -76,15 +100,20 @@ class TextPreprocessor:
         return text
     
     def light_clean_for_sbert(self, text: str) -> str:
-        """
-        Light preprocessing for SBERT that preserves natural language.
-        BERT models benefit from:
-        - Punctuation (semantic markers)
-        - Capitalization (some context)
-        - Grammar (BERT understands morphology)
-        - Stopwords (context words)
-        
-        ONLY removes LaTeX noise and normalizes whitespace.
+        """Light preprocessing for SBERT that preserves natural language.
+
+        Removes LaTeX math and figure references while keeping punctuation,
+        capitalization, and stopwords intact.
+
+        Parameters
+        ----------
+        text : str
+            Raw caption text.
+
+        Returns
+        -------
+        str
+            Lightly cleaned text suitable for SBERT inputs.
         """
         # Remove LaTeX math
         text = re.sub(r"\$.*?\$", " ", text)
@@ -92,7 +121,6 @@ class TextPreprocessor:
         # Remove figure references like "Fig. 3" or "figure 2"
         text = re.sub(r"\b(fig\.?|figure)\s*\d+\b", " ", text, flags=re.IGNORECASE)
         
-        # Optionally: normalize unicode symbols to spaces
         # Keep everything else as-is for BERT to understand
         
         # Normalize whitespace
@@ -101,13 +129,35 @@ class TextPreprocessor:
         return text
     
     def stem_token(self, token: str) -> str:
-        """Stem token while protecting certain tokens."""
+        """Stem a token while respecting protected terms.
+
+        Parameters
+        ----------
+        token : str
+            Token to stem.
+
+        Returns
+        -------
+        str
+            Stemmed token unless it is protected or stemming is disabled.
+        """
         if token in PROTECTED_TOKENS:
             return token
         return self.stemmer.stem(token) if USE_STEMMING else token
     
     def tfidf_analyzer(self, text: str) -> list:
-        """Analyze text for TF-IDF vectorization."""
+        """Analyze text into tokens for TF-IDF vectorization.
+
+        Parameters
+        ----------
+        text : str
+            Raw caption text.
+
+        Returns
+        -------
+        list
+            List of normalized tokens ready for TF-IDF.
+        """
         text = self.clean_caption_text(text)
         text = self.normalize_text(text)
         tokens = re.findall(r"[a-z0-9]+", text)
@@ -121,65 +171,51 @@ class TextPreprocessor:
         return tokens
     
     def preprocess_text_to_string(self, text: str) -> str:
-        """Convert text to preprocessed string."""
+        """Convert text to a whitespace-joined preprocessed string.
+
+        Parameters
+        ----------
+        text : str
+            Raw caption text.
+
+        Returns
+        -------
+        str
+            Space-joined TF-IDF tokens.
+        """
         return " ".join(self.tfidf_analyzer(text))
     
     def count_negative_tokens(self, preprocessed_text: str) -> int:
-        """Count negative tokens in preprocessed text."""
+        """Count occurrences of negative tokens in preprocessed text.
+
+        Parameters
+        ----------
+        preprocessed_text : str
+            Whitespace-separated token string.
+
+        Returns
+        -------
+        int
+            Number of tokens present in ``NEGATIVE_TOKENS``.
+        """
         tokens = preprocessed_text.split()
         return sum(t in NEGATIVE_TOKENS for t in tokens)
     
     def preprocess_filename(self, name: str) -> list:
-        """Preprocess filename for negative checking."""
+        """Preprocess a filename into tokens for negative checking.
+
+        Parameters
+        ----------
+        name : str
+            Filename to tokenize.
+
+        Returns
+        -------
+        list
+            Normalized (and optionally stemmed) filename tokens.
+        """
         name = name.lower()
         name = re.sub(r"[^a-z0-9]+", " ", name)
         tokens = name.split()
         return [self.stemmer.stem(t) if USE_STEMMING else t for t in tokens]
     
-
-if __name__ == "__main__":
-    tp = TextPreprocessor()
-
-    test_captions = [
-        "FIG. 1. Schematic diagrams of (a) discrete-variable and (b) continuous-variable quantum teleportation.",
-        """FIG. 1. Experimental setup with the DC circuit on the
-left in purple and the reflectometry circuit on the right in
-green. The Keysight chassis handles control and readout of
-the SiGe quantum dot device. On the quantum dot (QD)
-device schematic, red gates act as barrier gates, green gates
-as plunger gates, blue gates as reservoirs and purple gates as
-confinement gates. A voltage divider is used to increase the
-resolution of the M3201A’s voltage applied to the ohmic con-
-tacts by a factor of 100""",
-        "A list of topics to categorize the field of quantum machine learning and its algorithms.",
-        r"Fig. 5: Circuit $U(\theta)$ acting on qubit$_i$ with H_1 and R_z(\phi).",
-        "A typical quantum circuit synthesis flow.",
-        "Equivalent electrical circuit representation of the resonator system.",
-    ]
-
-    print("=" * 80)
-    print(" QUICK TEXT PREPROCESSING CHECK ")
-    print("=" * 80)
-
-    for i, caption in enumerate(test_captions, 1):
-        print(f"\n--- Case {i} ---")
-        print("ORIGINAL:")
-        print(caption)
-
-        tfidf_tokens = tp.tfidf_analyzer(caption)
-        tfidf_text = tp.preprocess_text_to_string(caption)
-        neg_count = tp.count_negative_tokens(tfidf_text)
-        sbert_text = tp.light_clean_for_sbert(caption)
-
-        print("\nTF-IDF TOKENS:")
-        print(tfidf_tokens)
-
-        print("\nTF-IDF STRING:")
-        print(tfidf_text)
-
-        print(f"\nNEGATIVE TOKEN COUNT: {neg_count}")
-
-        print("\nSBERT INPUT:")
-        print(sbert_text)
-
-        print("-" * 80)
