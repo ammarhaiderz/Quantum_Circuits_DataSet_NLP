@@ -38,7 +38,13 @@ class Figure:
     extracted: bool = False
     
     def to_dict(self) -> Dict[str, Any]:
-        """Convert to dictionary for DataFrame export."""
+        """Convert to a dictionary suitable for tabular export.
+
+        Returns
+        -------
+        dict
+            Dictionary with caption, similarity, SBERT, selection, and metadata fields.
+        """
         return {
             "paper_id": self.paper_id,
             "figure_number": self.figure_number,
@@ -73,4 +79,5 @@ class ExtractedImage:
     
     @property
     def filename(self):
+        """Return the basename of the image file path."""
         return os.path.basename(self.file_path)
