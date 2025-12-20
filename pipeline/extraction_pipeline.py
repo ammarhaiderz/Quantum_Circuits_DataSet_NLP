@@ -10,7 +10,7 @@ import shutil
 from pathlib import Path
 
 from models.figure_data import Figure, ExtractedImage
-from core.preprocessor import TextPreprocessor
+from shared.preprocessor import TextPreprocessor
 from core.tfidf_filter import TfidfFilter
 from core.sbert_reranker import SbertReranker
 from core.image_extractor import ImageExtractor
@@ -157,7 +157,8 @@ class ExtractionPipeline:
         
         # Extract figures from LaTeX
         figures = []
-        figure_counter = 1
+        # Reset live-render numbering per paper
+        self.image_extractor.figure_counter = 1
 
         # Heuristic: only process .tex files that are actually included from a
         # root document. Many arXiv source tarballs contain extra/auxiliary .tex
@@ -259,12 +260,7 @@ class ExtractionPipeline:
             for name in included_iter:
                 try:
                     tex = tex_members.get(name, '')
-                    res = self.image_extractor.extract_figures_from_tex(tex, paper_id=paper_id)
-                    if isinstance(res, tuple):
-                        new_figs, figure_counter = res
-                        figures.extend(new_figs)
-                    else:
-                        figures.extend(res)
+                    figures.extend(self.image_extractor.extract_figures_from_tex(tex, paper_id=paper_id))
                 except Exception as e:
                     print(f"[WARN] Failed to parse {name}: {e}")
         except KeyboardInterrupt:

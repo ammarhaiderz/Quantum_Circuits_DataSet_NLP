@@ -4,35 +4,35 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_e2e5d84788ea45b1.tex",
-      "length": 107,
-      "block_id": "2407.04826_e2e5d84788ea45b1",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_349982884b4d4708.tex",
+      "length": 287,
+      "block_id": "2407.04826_349982884b4d4708",
       "panel": 1,
-      "label": "fig:NCV library"
+      "label": "Decomposition positive CNOT"
     },
     {
       "index": 1,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_7fe93859f7b8b842.tex",
-      "length": 111,
-      "block_id": "2407.04826_7fe93859f7b8b842",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_787f76d104d6fb82.tex",
+      "length": 277,
+      "block_id": "2407.04826_787f76d104d6fb82",
       "panel": 2,
-      "label": "fig:NCV library"
+      "label": "Decomposition positive CNOT"
     },
     {
       "index": 2,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p3_e6f5bad8c682f20d.tex",
-      "length": 116,
-      "block_id": "2407.04826_e6f5bad8c682f20d",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p3_df01852945231c65.tex",
+      "length": 277,
+      "block_id": "2407.04826_df01852945231c65",
       "panel": 3,
-      "label": "fig:NCV library"
+      "label": "Decomposition positive CNOT"
     },
     {
       "index": 3,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p4_535f90adfe0a735b.tex",
-      "length": 123,
-      "block_id": "2407.04826_535f90adfe0a735b",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p4_01768c686acefd8b.tex",
+      "length": 289,
+      "block_id": "2407.04826_01768c686acefd8b",
       "panel": 4,
-      "label": "fig:NCV library"
+      "label": "Decomposition positive CNOT"
     }
   ]
 }

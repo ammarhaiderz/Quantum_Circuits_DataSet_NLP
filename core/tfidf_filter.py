@@ -15,7 +15,7 @@ except Exception:
     pos_tag = None
 
 from models.figure_data import Figure
-from core.preprocessor import TextPreprocessor
+from shared.preprocessor import TextPreprocessor
 from config.queries import QUERY_SETS
 from config.settings import (
     USE_NEGATIVE_PENALTY,

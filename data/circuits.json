@@ -341,5 +341,341 @@
         18
       ]
     ]
+  },
+  "2407.04826__img_0004.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 2,
+    "page": 5,
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "NCV quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        168,
+        192
+      ],
+      [
+        158,
+        166
+      ]
+    ]
+  },
+  "2407.04826__img_0005.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 2,
+    "page": 5,
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "NCV quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        168,
+        192
+      ],
+      [
+        158,
+        166
+      ]
+    ]
+  },
+  "2407.04826__img_0006.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 2,
+    "page": 5,
+    "gates": [
+      "V"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "NCV quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        168,
+        192
+      ],
+      [
+        158,
+        166
+      ]
+    ]
+  },
+  "2407.04826__img_0007.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 2,
+    "page": 5,
+    "gates": [
+      "V_DG"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "NCV quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        168,
+        192
+      ],
+      [
+        158,
+        166
+      ]
+    ]
+  },
+  "2407.04826__img_0008.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0009.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "T_DG"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0010.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "T"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0011.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "H"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0012.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "H_DG"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0013.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "S"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0014.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "S_DG"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0015.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
   }
 }

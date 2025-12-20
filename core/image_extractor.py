@@ -6,12 +6,12 @@ import os
 import re
 import tarfile
 import io
-from typing import List, Set, Optional, Tuple
+from typing import List, Set, Optional
 import requests
 import time
 
 from models.figure_data import Figure, ExtractedImage
-from core.preprocessor import TextPreprocessor
+from shared.preprocessor import TextPreprocessor
 from config.settings import SUPPORTED_EXT, REQUEST_DELAY, OUTPUT_DIR, CACHE_DIR, PDF_CACHE_DIR
 from config.queries import FILENAME_NEGATIVE_TOKENS
 
@@ -43,6 +43,8 @@ class ImageExtractor:
         """
         self.preprocessor = preprocessor
         self.saved_images: Set[str] = set()
+        # Tracks live-render figure numbering across multiple tex files
+        self.figure_counter: int = 1
     
     def clear_output_dir(self, extensions: Optional[List[str]] = None):
         """Clear previous images from output directory.
@@ -303,7 +305,7 @@ class ImageExtractor:
             k += 1
         return None
     
-    def extract_figures_from_tex(self, tex: str, paper_id: Optional[str] = None, figure_counter: Optional[int] = 1) -> Tuple[List[Figure], int]:
+    def extract_figures_from_tex(self, tex: str, paper_id: Optional[str] = None, figure_counter: Optional[int] = None) -> List[Figure]:
         r"""Extract figures from LaTeX text.
         Handles multiple \includegraphics within a single figure block and subfigures.
 
@@ -314,14 +316,16 @@ class ImageExtractor:
         paper_id : str, optional
             Identifier of the paper, propagated to live extractor for labeling.
         figure_counter : int, optional
-            Starting counter used by the live extractor for numbering blocks.
+            Starting counter used by the live extractor for numbering blocks. When
+            omitted, the internal ``figure_counter`` is used and updated.
 
         Returns
         -------
-        tuple[list[Figure], int]
-            Parsed figures and the updated figure counter.
+        list[Figure]
+            Parsed figures extracted from the LaTeX source.
         """
         figures: List[Figure] = []
+        counter = figure_counter if figure_counter is not None else (self.figure_counter or 1)
 
         for block in self.FIG_RE.findall(tex):
             raw_cap = self._extract_caption_from_block(block)
@@ -388,19 +392,44 @@ class ImageExtractor:
                     seen.add(p)
                     unique_paths.append(p)
 
-            # Create a Figure per image. If we have subcaptions and counts match, align them; else use shared caption.
-            if subcaptions and len(subcaptions) == len(unique_paths):
-                for path, subcap in zip(unique_paths, subcaptions):
-                    figures.append(Figure(
-                        caption=subcap,
-                        img_path=path
-                    ))
-            else:
-                for path in unique_paths:
-                    figures.append(Figure(
-                        caption=caption_text,
-                        img_path=path
-                    ))
+            # Identify LaTeX-only circuit blocks
+            latex_blocks = []
+            latex_blocks.extend(self.TIKZ_RE.findall(block))
+            latex_blocks.extend(self.CIRCUITIKZ_RE.findall(block))
+            latex_blocks.extend(self.QUANTIKZ_RE.findall(block))
+            latex_blocks.extend(self.QCIRCUIT_RE.findall(block))
+
+            # Create a Figure per bitmap image. If we have subcaptions and counts match, align them; else use shared caption.
+            if unique_paths:
+                if subcaptions and len(subcaptions) == len(unique_paths):
+                    for path, subcap in zip(unique_paths, subcaptions):
+                        figures.append(Figure(
+                            caption=subcap,
+                            img_path=path
+                        ))
+                else:
+                    for path in unique_paths:
+                        figures.append(Figure(
+                            caption=caption_text,
+                            img_path=path
+                        ))
+
+            # Create placeholder Figures for LaTeX-rendered blocks when no bitmap paths are present.
+            if latex_blocks and not unique_paths:
+                if subcaptions and len(subcaptions) == len(latex_blocks):
+                    for lb, subcap in zip(latex_blocks, subcaptions):
+                        figures.append(Figure(
+                            caption=subcap,
+                            img_path="__LATEX_RENDER__",
+                            latex_block=lb
+                        ))
+                else:
+                    for lb in latex_blocks:
+                        figures.append(Figure(
+                            caption=caption_text,
+                            img_path="__LATEX_RENDER__",
+                            latex_block=lb
+                        ))
 
 
 
@@ -416,17 +445,18 @@ class ImageExtractor:
                     lab_m = self.LABEL_RE.search(block)
                     figure_label = lab_m.group(1).strip() if lab_m else None
                     from core.live_latex_extractor import process_text
-                    process_text(block, source_name=source_name, render=True, render_with_module=True, arxiv_id=paper_id, start_figure_num=figure_counter, caption_text=caption_text, figure_label=figure_label)
+                    process_text(block, source_name=source_name, render=True, render_with_module=True, arxiv_id=paper_id, start_figure_num=counter, caption_text=caption_text, figure_label=figure_label)
                     try:
                         from core.live_latex_extractor import extract_qcircuit_blocks_from_text
                         n = len(extract_qcircuit_blocks_from_text(block))
                     except Exception:
                         n = 0
-                    figure_counter = (figure_counter or 1) + n
+                    counter = (counter or 1) + n
                 except Exception:
                     pass
 
-        return figures, figure_counter
+        self.figure_counter = counter
+        return figures
 
 
 
