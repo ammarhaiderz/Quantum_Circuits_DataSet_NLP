@@ -9,11 +9,11 @@ import os
 import shutil
 from pathlib import Path
 
-from models.figure_data import Figure, ExtractedImage
+from shared.figure_data import Figure, ExtractedImage
 from shared.preprocessor import TextPreprocessor
-from core.tfidf_filter import TfidfFilter
-from core.sbert_reranker import SbertReranker
-from core.image_extractor import ImageExtractor
+from pipelines.image_extraction.tfidf_filter import TfidfFilter
+from pipelines.image_extraction.sbert_reranker import SbertReranker
+from pipelines.image_extraction.image_extractor import ImageExtractor
 from config.settings import (
     MAX_IMAGES, TOP_K_PER_PAPER, PRINT_TOP_CAPTIONS,
     OUTPUT_DIR, ENABLE_DEBUG_PRINTS, SBERT_MIN_SIM,
@@ -100,7 +100,7 @@ class ExtractionPipeline:
         
         # Reset the processed blocks set to start fresh
         try:
-            from core.live_latex_extractor import reset_processed_blocks
+            from pipelines.latex_render.live_latex_extractor import reset_processed_blocks
             reset_processed_blocks()
         except Exception:
             pass

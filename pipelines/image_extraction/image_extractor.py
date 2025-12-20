@@ -10,11 +10,16 @@ from typing import List, Set, Optional
 import requests
 import time
 
-from models.figure_data import Figure, ExtractedImage
+from shared.figure_data import Figure, ExtractedImage
 from shared.preprocessor import TextPreprocessor
-from config.settings import SUPPORTED_EXT, REQUEST_DELAY, OUTPUT_DIR, CACHE_DIR, PDF_CACHE_DIR
+from config.settings import (
+    SUPPORTED_EXT,
+    REQUEST_DELAY,
+    IMAGE_PIPELINE_OUTPUT_DIR,
+    IMAGE_PIPELINE_CACHE_DIR,
+    IMAGE_PIPELINE_PDF_CACHE_DIR,
+)
 from config.queries import FILENAME_NEGATIVE_TOKENS
-
 
 
 class ImageExtractor:
@@ -57,8 +62,8 @@ class ImageExtractor:
         if extensions is None:
             extensions = SUPPORTED_EXT
         
-        for fname in os.listdir(OUTPUT_DIR):
-            fpath = os.path.join(OUTPUT_DIR, fname)
+        for fname in os.listdir(IMAGE_PIPELINE_OUTPUT_DIR):
+            fpath = os.path.join(IMAGE_PIPELINE_OUTPUT_DIR, fname)
             if os.path.isfile(fpath) and any(fname.lower().endswith(ext) for ext in extensions):
                 os.remove(fpath)
     
@@ -91,7 +96,7 @@ class ImageExtractor:
         BytesIO or None
             In-memory tarball bytes when available; otherwise ``None``.
         """
-        cache_path = os.path.join(CACHE_DIR, f"{arxiv_id}.tar.gz")
+        cache_path = os.path.join(IMAGE_PIPELINE_CACHE_DIR, f"{arxiv_id}.tar.gz")
         
         # Use cached version if available
         if os.path.exists(cache_path):
@@ -128,7 +133,7 @@ class ImageExtractor:
         bytes or None
             PDF bytes when available; otherwise ``None``.
         """
-        cache_path = os.path.join(PDF_CACHE_DIR, f"{arxiv_id}.pdf")
+        cache_path = os.path.join(IMAGE_PIPELINE_PDF_CACHE_DIR, f"{arxiv_id}.pdf")
         
         # Use cached version if available
         if os.path.exists(cache_path):
@@ -174,7 +179,7 @@ class ImageExtractor:
             Absolute path where the cached image should be stored.
         """
         safe_pid = paper_id.replace("/", "_").replace(".", "_")
-        cache_subdir = os.path.join(PDF_CACHE_DIR, safe_pid)
+        cache_subdir = os.path.join(IMAGE_PIPELINE_PDF_CACHE_DIR, safe_pid)
         os.makedirs(cache_subdir, exist_ok=True)
         return os.path.join(cache_subdir, filename)
     
@@ -263,7 +268,7 @@ class ImageExtractor:
         if i == -1:
             return None
 
-        # advance past '\caption'
+        # advance past '\\caption'
         j = i + len(key)
         # skip whitespace
         while j < len(block_text) and block_text[j].isspace():
@@ -431,8 +436,6 @@ class ImageExtractor:
                             latex_block=lb
                         ))
 
-
-
             # If this figure block contains a \Qcircuit or quantikz, save the contained blocks
             # using the live extractor, passing the figure caption so records
             # include descriptions/text positions. Increment figure_counter by
@@ -444,10 +447,10 @@ class ImageExtractor:
                     # attempt to extract a \label{...} inside the figure block
                     lab_m = self.LABEL_RE.search(block)
                     figure_label = lab_m.group(1).strip() if lab_m else None
-                    from core.live_latex_extractor import process_text
+                    from pipelines.latex_render.live_latex_extractor import process_text
                     process_text(block, source_name=source_name, render=True, render_with_module=True, arxiv_id=paper_id, start_figure_num=counter, caption_text=caption_text, figure_label=figure_label)
                     try:
-                        from core.live_latex_extractor import extract_qcircuit_blocks_from_text
+                        from pipelines.latex_render.live_latex_extractor import extract_qcircuit_blocks_from_text
                         n = len(extract_qcircuit_blocks_from_text(block))
                     except Exception:
                         n = 0
@@ -503,7 +506,7 @@ class ImageExtractor:
                     try:
                         data = tar.extractfile(members[candidate]).read()
                         fname = f"{safe_pid}_{idx}_{os.path.basename(candidate)}"
-                        out_path = os.path.join(OUTPUT_DIR, fname)
+                        out_path = os.path.join(IMAGE_PIPELINE_OUTPUT_DIR, fname)
                         
                         with open(out_path, "wb") as w:
                             w.write(data)

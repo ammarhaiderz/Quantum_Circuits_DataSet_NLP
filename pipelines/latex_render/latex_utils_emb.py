@@ -7,8 +7,10 @@ import tempfile
 from pathlib import Path
 from tqdm import tqdm
 
+from config.settings import LATEX_BLOCKS_ROOT, LATEX_RENDER_DIR
 
-def render_saved_blocks(blocks_root: str = 'circuit_images/blocks', out_pdf_dir: str = 'circuit_images/rendered'):
+
+def render_saved_blocks(blocks_root: str = None, out_pdf_dir: str = None):
 	"""Render saved raw block files to PDF using system ``pdflatex``.
 
 	Looks for ``*/raw_blocks/*.tex`` under ``blocks_root``, wraps each block into a
@@ -24,8 +26,8 @@ def render_saved_blocks(blocks_root: str = 'circuit_images/blocks', out_pdf_dir:
 		Destination directory for rendered PDFs (default
 		``'circuit_images/rendered'``).
 	"""
-	blocks_root = Path(blocks_root)
-	out_pdf_dir = Path(out_pdf_dir)
+	blocks_root = Path(blocks_root or LATEX_BLOCKS_ROOT)
+	out_pdf_dir = Path(out_pdf_dir or LATEX_RENDER_DIR)
 	out_pdf_dir.mkdir(parents=True, exist_ok=True)
 
 	# Default wrapper uses qcircuit; quantikz-only wrappers are chosen per-file
@@ -129,7 +131,7 @@ def render_saved_blocks(blocks_root: str = 'circuit_images/blocks', out_pdf_dir:
 						shutil.copyfile(found[0], out_pdf_dir / (tex_path.stem + '.pdf'))
 
 	print('Rendering complete. PDFs in', out_pdf_dir)
-def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/blocks', out_dir: str = 'circuit_images/rendered_pdflatex'):
+def render_saved_blocks_with_pdflatex_module(blocks_root: str = None, out_dir: str = None):
 	"""Render saved raw block files using the ``pdflatex`` Python wrapper.
 
 	Falls back to the subprocess renderer when the module is unavailable.
@@ -149,8 +151,8 @@ def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/
 		print('pdflatex Python module not available; falling back to subprocess renderer')
 		return render_saved_blocks(blocks_root, out_dir)
 
-	blocks_root = Path(blocks_root)
-	out_dir = Path(out_dir)
+	blocks_root = Path(blocks_root or LATEX_BLOCKS_ROOT)
+	out_dir = Path(out_dir or LATEX_RENDER_DIR)
 	out_dir.mkdir(parents=True, exist_ok=True)
 
 	tex_files = list(blocks_root.rglob('raw_blocks/*.tex'))

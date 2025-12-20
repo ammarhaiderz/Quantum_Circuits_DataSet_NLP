@@ -10,9 +10,9 @@ import shutil
 # Add parent directory to path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from core.image_extractor import ImageExtractor
+from pipelines.image_extraction.image_extractor import ImageExtractor
 from shared.preprocessor import TextPreprocessor
-from models.figure_data import Figure
+from shared.figure_data import Figure
 
 
 def test_tikz_detection():

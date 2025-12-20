@@ -12,13 +12,15 @@ import time
 from pathlib import Path
 from typing import Optional
 
+from config.settings import LATEX_LIVE_BLOCKS_ROOT, LATEX_RENDER_DIR, LATEX_BLOCKS_ROOT
+
 try:
     import fitz  # PyMuPDF
 except Exception:
     fitz = None
 
 from tqdm import tqdm
-from utils.latex_utils_emb import render_saved_blocks
+from pipelines.latex_render.latex_utils_emb import render_saved_blocks
 
 # Global set to track processed block content hashes (prevents duplicates)
 _PROCESSED_BLOCKS = set()
@@ -259,7 +261,7 @@ def _detect_cell(cell: str):
     return tokens
 
 
-def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/blocks', out_dir: str = 'circuit_images/rendered_pdflatex'):
+def render_saved_blocks_with_pdflatex_module(blocks_root: str = None, out_dir: str = None):
     """
     Render saved raw block files using the `pdflatex` Python wrapper.
 
@@ -282,8 +284,8 @@ def render_saved_blocks_with_pdflatex_module(blocks_root: str = 'circuit_images/
         print('pdflatex Python module not available; falling back to subprocess renderer')
         return render_saved_blocks(blocks_root, out_dir)
 
-    blocks_root = Path(blocks_root)
-    out_dir = Path(out_dir)
+    blocks_root = Path(blocks_root or LATEX_BLOCKS_ROOT)
+    out_dir = Path(out_dir or LATEX_RENDER_DIR)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     tex_files = list(blocks_root.rglob('raw_blocks/*.tex'))
@@ -613,7 +615,7 @@ def _extract_gates_from_block(block: str):
             return []
 
 
-def process_text(text: str, source_name: str = 'inline', out_root: str = 'circuit_images/live_blocks', render: bool = True, render_with_module: bool = False, arxiv_id: Optional[str] = None, start_figure_num: Optional[int] = None, caption_text: Optional[str] = None, panel: Optional[int] = None, figure_label: Optional[str] = None):
+def process_text(text: str, source_name: str = 'inline', out_root: str = LATEX_LIVE_BLOCKS_ROOT, render: bool = True, render_with_module: bool = False, arxiv_id: Optional[str] = None, start_figure_num: Optional[int] = None, caption_text: Optional[str] = None, panel: Optional[int] = None, figure_label: Optional[str] = None):
     """Extract LaTeX circuit blocks and optionally render them.
 
     Uses content hashes to avoid duplicate processing across invocations.
@@ -647,7 +649,7 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
         Summary information about processed blocks.
     """
     global _PROCESSED_BLOCKS
-    out_root = Path(out_root)
+    out_root = Path(out_root or LATEX_LIVE_BLOCKS_ROOT)
     dest = out_root / _safe_name(source_name)
     raw_dir = dest / 'raw_blocks'
     dest.mkdir(parents=True, exist_ok=True)
@@ -809,7 +811,7 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
                     pass
 
             # Also copy rendered PDFs into a common folder with a paper-specific prefix
-            common_dir = Path('circuit_images/rendered_pdflatex')
+            common_dir = Path(LATEX_RENDER_DIR)
             common_dir.mkdir(parents=True, exist_ok=True)
 
             safe_src = _safe_name(source_name)
@@ -932,7 +934,7 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = 'circui
     return record
 
 
-def process_file(path: str, out_root: str = 'circuit_images/live_blocks', render: bool = True, render_with_module: bool = False):
+def process_file(path: str, out_root: str = LATEX_LIVE_BLOCKS_ROOT, render: bool = True, render_with_module: bool = False):
     """Process a file containing LaTeX circuit blocks.
 
     Parameters

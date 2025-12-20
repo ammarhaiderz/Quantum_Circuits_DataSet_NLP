@@ -6,7 +6,7 @@ import torch
 from sentence_transformers import SentenceTransformer, util
 from typing import List, Dict
 
-from models.figure_data import Figure
+from shared.figure_data import Figure
 from config.queries import QUERY_SETS
 from config.settings import SBERT_MIN_SIM
 

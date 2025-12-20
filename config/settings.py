@@ -11,9 +11,21 @@ import os
 
 # ================ FILE PATHS ================
 ID_FILE = "paper_list_36.txt"
-OUTPUT_DIR = "images_test_50_preproc_cached_"
-CACHE_DIR = "arxiv_cache"  # Tar.gz source cache
-PDF_CACHE_DIR = "arxiv_pdf_cache"  # Extracted PDF cache (faster reaccess)
+
+# Image pipeline paths (kept identical to previous values for compatibility)
+IMAGE_PIPELINE_OUTPUT_DIR = "images_test_50_preproc_cached_"
+IMAGE_PIPELINE_CACHE_DIR = "arxiv_cache"  # Tar.gz source cache
+IMAGE_PIPELINE_PDF_CACHE_DIR = "arxiv_pdf_cache"  # Extracted PDF cache (faster reaccess)
+
+# Latex render pipeline paths
+LATEX_LIVE_BLOCKS_ROOT = "circuit_images/live_blocks"
+LATEX_BLOCKS_ROOT = "circuit_images/blocks"
+LATEX_RENDER_DIR = "circuit_images/rendered_pdflatex"
+
+# Backwards-compatible aliases (to avoid touching call sites yet)
+OUTPUT_DIR = IMAGE_PIPELINE_OUTPUT_DIR
+CACHE_DIR = IMAGE_PIPELINE_CACHE_DIR
+PDF_CACHE_DIR = IMAGE_PIPELINE_PDF_CACHE_DIR
 
 # ================ EXTRACTION LIMITS ================
 MAX_IMAGES = 250
@@ -58,9 +70,15 @@ ENABLE_PDF_EXTRACTION = True  # Extract figures from PDF (Python-only, no extern
 # ================ AUTOMATIC SETUP ================
 def setup_directories():
     """Create necessary directories if they don't exist."""
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    os.makedirs(CACHE_DIR, exist_ok=True)
-    os.makedirs(PDF_CACHE_DIR, exist_ok=True)
+    # Image pipeline directories
+    os.makedirs(IMAGE_PIPELINE_OUTPUT_DIR, exist_ok=True)
+    os.makedirs(IMAGE_PIPELINE_CACHE_DIR, exist_ok=True)
+    os.makedirs(IMAGE_PIPELINE_PDF_CACHE_DIR, exist_ok=True)
+
+    # Latex render directories
+    os.makedirs(LATEX_LIVE_BLOCKS_ROOT, exist_ok=True)
+    os.makedirs(LATEX_BLOCKS_ROOT, exist_ok=True)
+    os.makedirs(LATEX_RENDER_DIR, exist_ok=True)
     
     # Create logs directory if logging is enabled
     if SAVE_INTERMEDIATE_RESULTS:

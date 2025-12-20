@@ -5,7 +5,7 @@ File utility functions.
 import os
 import pandas as pd
 from typing import List, Optional
-from config.settings import OUTPUT_DIR, SUPPORTED_EXT
+from config.settings import IMAGE_PIPELINE_OUTPUT_DIR, SUPPORTED_EXT
 
 
 class FileUtils:
@@ -41,8 +41,8 @@ class FileUtils:
             extensions = SUPPORTED_EXT
         
         removed_count = 0
-        for fname in os.listdir(OUTPUT_DIR):
-            fpath = os.path.join(OUTPUT_DIR, fname)
+        for fname in os.listdir(IMAGE_PIPELINE_OUTPUT_DIR):
+            fpath = os.path.join(IMAGE_PIPELINE_OUTPUT_DIR, fname)
             if os.path.isfile(fpath) and any(fname.lower().endswith(ext) for ext in extensions):
                 os.remove(fpath)
                 removed_count += 1
@@ -66,7 +66,7 @@ class FileUtils:
         str
             Path to the saved CSV file.
         """
-        df_path = os.path.join(OUTPUT_DIR, filename)
+        df_path = os.path.join(IMAGE_PIPELINE_OUTPUT_DIR, filename)
         df.to_csv(df_path, index=False)
         print(f"💾 Saved caption log to: {df_path}")
         
@@ -84,7 +84,7 @@ class FileUtils:
         df : pandas.DataFrame
             DataFrame containing at least ``similarity`` (and optionally ``sbert_sim``).
         """
-        summary_path = os.path.join(OUTPUT_DIR, "statistics_summary.csv")
+        summary_path = os.path.join(IMAGE_PIPELINE_OUTPUT_DIR, "statistics_summary.csv")
         
         summary_data = []
         
@@ -156,7 +156,7 @@ class FileUtils:
         print(f"[STATS] Saved statistics summary to: {summary_path}")
         
         # Save threshold analysis
-        threshold_path = os.path.join(OUTPUT_DIR, "threshold_analysis.csv")
+        threshold_path = os.path.join(IMAGE_PIPELINE_OUTPUT_DIR, "threshold_analysis.csv")
         threshold_df = pd.DataFrame(threshold_data)
         threshold_df.to_csv(threshold_path, index=False, float_format='%.4f')
         print(f"[STATS] Saved threshold analysis to: {threshold_path}")

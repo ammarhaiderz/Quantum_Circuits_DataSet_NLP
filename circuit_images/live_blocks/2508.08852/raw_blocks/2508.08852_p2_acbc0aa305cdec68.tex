@@ -1,0 +1,15 @@
+\begin{quantikz}[column sep = 3mm]
+      \lstick{$\ket{\varnothing}^{\otimes n}$} & \qw
+      & \qw \slice[style=black, label style={yshift=1mm}]{$\psr{0}$}
+      & \qw & \gate{\tra} \gategroup[3,steps=3,style={fill=gray!25,inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{{$\rec$}}
+      & \gate[wires=3]{\ora^{\pm}} & \gate{\tra}
+      & \qw \slice[style=black, label style={yshift=1mm}]{$\psr{1}$}
+      & \qw & \qw & \ \ldots\ \qw & \qw
+      & \gate{\tra} \gategroup[3,steps=3,style={fill=gray!25,inner xsep=2pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{{$\rec$}}
+      & \gate[wires=3]{\ora^{\pm}} & \gate{\tra}
+      & \qw \slice[style=black, label style={yshift=1mm}]{$\psr{T}$}
+      & \qw & \gate{\tra} & \qw \slice[style=black, label style={yshift=1mm}]{$\pst{T}$}
+      & \qw & \qw \\
+      \lstick{$\ket{0}$} & \qw & \gate[wires=2]{U_0} & \qw & \qw & \qw & \qw & \qw & \qw & \gate[wires=2]{U_1} & \ \ldots\ \qw & \qw & \qw & \qw & \qw & \qw & \qw & \gate[wires=2]{U_T} &  \qw & \qw & \meter{}  \\
+      \lstick{$\ket{0}$} & \qw & \qw & \qw & \qw &  \qw & \qw & \qw & \qw & \qw & \ \ldots\ \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw
+    \end{quantikz}
