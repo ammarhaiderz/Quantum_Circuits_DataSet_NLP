@@ -1,6 +1,0 @@
-\Qcircuit @C=1em @R=1em {
-    & \lstick{\ket{0}} & \qw & \qw& \gate{X} & \ctrl{1} & \qw & \gate{X} & \qw & \ctrl{1} & \gate{X} & \qw & \qw & \qw_{\times 2} & \rstick{\ket{0}} \qw \\
-    & \lstick{\ket{0}} & \multigate{2}{\encod(U)} & \qw & \ctrlo{-1} & \multigate{1}{F} & \qw & \multigate{2}{\decod(U)} & \qw & \multigate{1}{F^{\dagger}} & \ctrlo{-1} & \multigate{2}{\encod(U)} & \qw & \qw & \rstick{\ket{0}} \qw \\
-    & \lstick{\ket{0}} & \ghost{\encod(U)} & \qw & \ctrlo{-1} & \ghost{F} & \qw & \ghost{\decod(U)} & \qw & \ghost{F^{\dagger}} & \ctrlo{-1} & \ghost{\encod(U)} & \qw & \qw & \rstick{\ket{0}} \qw \\
-    & \lstick{\ket{\varphi}} & \ghost{\encod(U)} & \qw & \qw & \qw & \qw & \ghost{\decod(U)} & \qw & \qw & \qw & \ghost{\encod(U)} & \qw & \qw & \rstick{U^{-1}\ket{\varphi}} \qw \gategroup{1}{5}{4}{12}{1.1em}{--}
-}

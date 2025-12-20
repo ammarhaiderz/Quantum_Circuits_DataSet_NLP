@@ -23,10 +23,10 @@ from config.settings import (
 from utils.file_utils import FileUtils
 from utils.logging_utils import Logger
 from pipeline.extraction_pipeline import ExtractionPipeline
-from core.arxiv_validator import ArxivFilter
+from core import arxiv_validator
 
 
-def print_final_stats(logger, pipeline, processed_count, skipped_count, arxiv_filter):
+def print_final_stats(logger, pipeline, processed_count, skipped_count, cache):
     print(f"\n{'='*80}")
     print(f"📊 FINAL EXTRACTION SUMMARY")
     print(f"{'='*80}")
@@ -52,7 +52,7 @@ def print_final_stats(logger, pipeline, processed_count, skipped_count, arxiv_fi
     
     logger.info(f"\nImages saved: {pipeline.stats['total_saved']}")
 
-    final_stats = arxiv_filter.get_cache_stats()
+    final_stats = arxiv_validator.get_cache_stats(cache)
     logger.info(f"\nCache now has {final_stats['total']} entries")
     logger.info(f"Next run will be faster as {final_stats['total']} papers are cached")
 
@@ -104,9 +104,9 @@ def main():
     arxiv_ids = FileUtils.read_arxiv_ids(ID_FILE)
     logger.info(f" Loaded {len(arxiv_ids)} arXiv IDs from {ID_FILE}")
     
-    # Initialize quantum paper filter with caching
-    arxiv_filter = ArxivFilter()
-    cache_stats = arxiv_filter.get_cache_stats()
+    # Initialize quantum paper filter cache
+    arxiv_cache = arxiv_validator.load_cache()
+    cache_stats = arxiv_validator.get_cache_stats(arxiv_cache)
     logger.info(f" Cache has {cache_stats['total']} entries ({cache_stats['quantum_percentage']:.1f}% quantum)")
     
     processed_count = 0
@@ -124,7 +124,7 @@ def main():
                     break
                 
                 # Check if quantum paper
-                if not arxiv_filter.is_quantum_paper(arxiv_id):
+                if not arxiv_validator.is_quantum_paper(arxiv_id, cache=arxiv_cache):
                     skipped_count += 1
                     logger.info(f" Skipped {skipped_count} non-quantum papers so far...")
                     continue
@@ -173,7 +173,7 @@ def main():
     else:
         logger.warning("No images were extracted")
 
-    print_final_stats(logger, pipeline, processed_count, skipped_count, arxiv_filter)
+    print_final_stats(logger, pipeline, processed_count, skipped_count, arxiv_cache)
     logger.info("Extraction completed!")
 
 
