@@ -9,9 +9,9 @@ from typing import Mapping, MutableMapping, Optional
 
 import requests
 
-from config.settings import REQUEST_DELAY
+from config.settings import REQUEST_DELAY, CACHE_DIR
 
-_DEFAULT_CACHE_FILE = "arxiv_category_cache.json"
+_DEFAULT_CACHE_FILE = os.path.join(CACHE_DIR, "arxiv_category_cache.json")
 _GLOBAL_CACHE: dict[str, bool] = {}
 
 
@@ -53,6 +53,8 @@ def save_cache(cache: Mapping[str, bool], cache_file: str = _DEFAULT_CACHE_FILE)
     """
 
     try:
+        cache_dir = os.path.dirname(cache_file) or "."
+        os.makedirs(cache_dir, exist_ok=True)
         with open(cache_file, "w", encoding="utf-8") as f:
             json.dump(cache, f, indent=2)
     except Exception as exc:
