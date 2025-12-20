@@ -11,12 +11,20 @@ OUT_DIR = "clean_images_50_preproc_cached"      # Folder where PNGs will be save
 os.makedirs(OUT_DIR, exist_ok=True)
 
 
-# ----------------------------------------------------------------------
-# Remove transparency and replace with WHITE background
-# ----------------------------------------------------------------------
 def remove_transparency(im, bg_color=(255, 255, 255)):
-    """
-    Converts images with transparency into RGB images with a white background.
+    """Convert an image to RGB with a solid background.
+
+    Parameters
+    ----------
+    im : PIL.Image.Image
+        Input image (may contain transparency).
+    bg_color : tuple, optional
+        Background color to use when flattening transparency (default white).
+
+    Returns
+    -------
+    PIL.Image.Image
+        RGB image with transparency removed.
     """
     if im.mode in ('RGBA', 'LA') or (im.mode == 'P' and 'transparency' in im.info):
         alpha = im.convert("RGBA").split()[-1]
@@ -26,10 +34,16 @@ def remove_transparency(im, bg_color=(255, 255, 255)):
     return im.convert("RGB")
 
 
-# ----------------------------------------------------------------------
-# PDF -> PNG (PyMuPDF)
-# ----------------------------------------------------------------------
 def convert_pdf(path, out_dir):
+    """Convert a PDF to PNG pages using PyMuPDF.
+
+    Parameters
+    ----------
+    path : str or Path
+        Input PDF path.
+    out_dir : str or Path
+        Output directory for generated PNGs.
+    """
     doc = fitz.open(path)
     base = Path(path).stem
 
@@ -45,10 +59,16 @@ def convert_pdf(path, out_dir):
         img.save(png_path, "PNG")
 
 
-# ----------------------------------------------------------------------
-# EPS -> PNG (Ghostscript)
-# ----------------------------------------------------------------------
 def convert_eps(path, out_dir):
+    """Convert an EPS file to PNG using Ghostscript.
+
+    Parameters
+    ----------
+    path : str or Path
+        Input EPS path.
+    out_dir : str or Path
+        Output directory for generated PNG.
+    """
     base = Path(path).stem
     temp_path = os.path.join(out_dir, base + "_tmp.png")
     final_path = os.path.join(out_dir, base + ".png")
@@ -74,10 +94,16 @@ def convert_eps(path, out_dir):
     os.remove(temp_path)
 
 
-# ----------------------------------------------------------------------
-# Normal Images (JPG/JPEG/PNG) -> PNG (Pillow)
-# ----------------------------------------------------------------------
 def convert_image(path, out_dir):
+    """Convert a bitmap image to PNG, flattening transparency.
+
+    Parameters
+    ----------
+    path : str or Path
+        Input image path (JPG/JPEG/PNG).
+    out_dir : str or Path
+        Output directory for generated PNG.
+    """
     base = Path(path).stem
     out_path = os.path.join(out_dir, base + ".png")
 
