@@ -1,0 +1,10 @@
+\begin{quantikz}[wire types={n,n,n,n,n,n,n,n,n},row sep={1cm,between origins}, align equals at = 4.5, font=\huge]
+\setwiretype{q}&\gate[wires=2,, style=U1]{U_1}&\qw\setwiretype{n} &\dots\setwiretype{n}&\setwiretype{}&\qw&\qw \setwiretype{q}&\qw&\qw&\qw&\qw\setwiretype{n}&\dots &&\gate[wires=2, style=U1]{U_1^{\dagger}}\setwiretype{q}& \qw\\
+\setwiretype{q}&				&\qw \setwiretype{n}&\dots\setwiretype{n} &&\qw 					 &\qw&\qw&\qw &\qw&\qw\setwiretype{n}&\dots &&\setwiretype{q}&\qw\\
+&\vdots&&\ddots&&&&\vdots&&&& \reflectbox{$\ddots$}&&\vdots&\\[-1.5ex]
+&&&&&\\
+\setwiretype{q}	&\qw			& \setwiretype{q}&\setwiretype{n}\dots &&\gate[wires=2,style=U1]{U_1} 	 \setwiretype{q}&&\qw &&\gate[wires=2,style=U1]{ U_1^{\dagger}}& \qw\setwiretype{n}&\dots &&\qw&\qw\\
+\setwiretype{q}	&\qw			& \setwiretype{q}&\setwiretype{n}\dots &&\qw&\gate[wires=2,style=U1last]{U_1} 	 \setwiretype{q}&\qw &\gate[wires=2,style=U1lastdag]{ U_1^{\dagger}}& &\qw\setwiretype{n}&\dots &&\qw&\qw \\
+&\qw 				&\qw &\dots &&\qw&\setwiretype{q}\qw 					 	 &\gate[wires=2,style=U2]{U_2}&\qw& \qw&\setwiretype{n}\qw&\dots &&\qw&\qw \\
+&\qw				&\qw &\dots &&\qw&\qw & \qw                   				& \qw&\qw&\qw&\dots &&\qw&\qw
+\end{quantikz}

@@ -4,8 +4,7 @@ Sentence-BERT reranking for improved semantic matching.
 
 import torch
 from sentence_transformers import SentenceTransformer, util
-from typing import List, Dict, Optional
-import numpy as np
+from typing import List, Dict
 
 from models.figure_data import Figure
 from config.queries import QUERY_SETS
@@ -16,12 +15,30 @@ class SbertReranker:
     """Handles Sentence-BERT based reranking."""
     
     def __init__(self, model_name: str = 'allenai-specter'):  # Scientific paper embeddings model
+        """Initialize the reranker with a model name.
+
+        Parameters
+        ----------
+        model_name : str, optional
+            Sentence-BERT model identifier to load (default ``'allenai-specter'``).
+        """
         self.model = None
         self.model_name = model_name
         self.query_embeds: Dict[str, torch.Tensor] = {}
     
     def load_model(self) -> SentenceTransformer:
-        """Load Sentence-BERT model."""
+        """Load the Sentence-BERT model.
+
+        Returns
+        -------
+        SentenceTransformer
+            Loaded model instance.
+
+        Raises
+        ------
+        Exception
+            When the model cannot be loaded.
+        """
         print("[INFO] Loading Sentence-BERT model...")
         try:
             self.model = SentenceTransformer(self.model_name)
@@ -33,7 +50,18 @@ class SbertReranker:
             raise
     
     def prepare_query_embeddings(self) -> Dict[str, torch.Tensor]:
-        """Prepare query embeddings for all query sets (individual lines, not averaged)."""
+        """Encode all query sets into embeddings (per-line, no averaging).
+
+        Returns
+        -------
+        dict[str, torch.Tensor]
+            Mapping from query set name to a tensor of normalized embeddings.
+
+        Raises
+        ------
+        ValueError
+            If the model is not yet loaded.
+        """
         if not self.model:
             raise ValueError("Model not loaded. Call load_model() first.")
         
@@ -60,9 +88,24 @@ class SbertReranker:
         return self.query_embeds
     
     def rerank_figures(self, figures: List[Figure]) -> List[Figure]:
-        """
-        Re-rank figures using Sentence-BERT similarity.
-        Adds sbert_sim and best_sbert_query fields to figures.
+        """Re-rank figures using Sentence-BERT similarity.
+
+        Adds ``sbert_sim`` and ``best_sbert_query`` fields to each figure.
+
+        Parameters
+        ----------
+        figures : list[Figure]
+            Figures to rerank. Captions are used as query text.
+
+        Returns
+        -------
+        list[Figure]
+            The same list with SBERT scores populated when possible.
+
+        Raises
+        ------
+        ValueError
+            If the model is not loaded.
         """
         if not self.model:
             raise ValueError("Model not loaded. Call load_model() first.")
@@ -74,9 +117,6 @@ class SbertReranker:
         for f in figures:
             f.best_sbert_query = None
             f.sbert_sim = 0.0
-        
-        if not figures or not self.query_embeds:
-            return figures
         
         # Use RAW captions (not preprocessed/stemmed) for BERT - sanitize inputs
         captions = [(f.caption or "") for f in figures]
@@ -146,7 +186,20 @@ class SbertReranker:
         return figures
     
     def get_best_figures(self, figures: List[Figure], top_k: int) -> List[Figure]:
-        """Get top figures based on SBERT similarity."""
+        """Return top figures filtered and sorted by SBERT similarity.
+
+        Parameters
+        ----------
+        figures : list[Figure]
+            Figures with ``sbert_sim`` scores.
+        top_k : int
+            Maximum number of figures to return.
+
+        Returns
+        -------
+        list[Figure]
+            Top ``top_k`` figures with ``sbert_sim`` >= ``SBERT_MIN_SIM``.
+        """
         if not figures:
             return []
         
@@ -159,7 +212,13 @@ class SbertReranker:
         return filtered[:top_k]
     
     def test_implementation(self) -> bool:
-        """Test SBERT implementation."""
+        """Run a lightweight self-check of SBERT similarity flow.
+
+        Returns
+        -------
+        bool
+            ``True`` when test succeeds; ``False`` otherwise.
+        """
         print("\n[TEST] Testing SBERT implementation...")
         
         try:
