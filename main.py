@@ -1,5 +1,4 @@
 import pandas as pd
-from typing import List
 import json
 
 from config.settings import (
@@ -27,6 +26,21 @@ from core import arxiv_validator
 
 
 def print_final_stats(logger, pipeline, processed_count, skipped_count, cache):
+    """Print end-of-run extraction statistics and cache status.
+
+    Parameters
+    ----------
+    logger : Logger
+        Logger instance for info output.
+    pipeline : ExtractionPipeline
+        Pipeline containing cumulative stats.
+    processed_count : int
+        Number of quantum papers processed.
+    skipped_count : int
+        Number of non-quantum papers skipped.
+    cache : dict
+        arXiv validator cache object.
+    """
     print(f"\n{'='*80}")
     print("[STATS] FINAL EXTRACTION SUMMARY")
     print(f"{'='*80}")
@@ -58,6 +72,7 @@ def print_final_stats(logger, pipeline, processed_count, skipped_count, cache):
 
 
 def main():
+    """Run the end-to-end extraction pipeline for configured arXiv IDs."""
     # Setup
     setup_directories()
     logger = Logger()
