@@ -13,13 +13,30 @@ class FileUtils:
     
     @staticmethod
     def read_arxiv_ids(filename: str) -> List[str]:
-        """Read arXiv IDs from file."""
+        """Read arXiv IDs from a text file.
+
+        Parameters
+        ----------
+        filename : str
+            Path to the file containing arXiv IDs (one per line).
+
+        Returns
+        -------
+        list[str]
+            List of IDs with any leading ``arXiv:`` prefix removed.
+        """
         with open(filename, "r") as f:
             return [l.strip().replace("arXiv:", "") for l in f if l.strip()]
     
     @staticmethod
     def clear_output_dir(extensions: Optional[List[str]] = None):
-        """Clear previous images from output directory."""
+        """Clear previous images from the output directory.
+
+        Parameters
+        ----------
+        extensions : list[str], optional
+            File extensions to delete; defaults to ``SUPPORTED_EXT``.
+        """
         if extensions is None:
             extensions = SUPPORTED_EXT
         
@@ -35,7 +52,20 @@ class FileUtils:
     
     @staticmethod
     def save_dataframe(df: pd.DataFrame, filename: str = "caption_text_log.csv"):
-        """Save DataFrame to CSV in output directory."""
+        """Save a DataFrame to CSV in the output directory.
+
+        Parameters
+        ----------
+        df : pandas.DataFrame
+            DataFrame to persist.
+        filename : str, optional
+            Target CSV filename (default ``'caption_text_log.csv'``).
+
+        Returns
+        -------
+        str
+            Path to the saved CSV file.
+        """
         df_path = os.path.join(OUTPUT_DIR, filename)
         df.to_csv(df_path, index=False)
         print(f"💾 Saved caption log to: {df_path}")
@@ -47,7 +77,13 @@ class FileUtils:
     
     @staticmethod
     def save_statistics_summary(df: pd.DataFrame):
-        """Save statistics summary for easy tuning analysis."""
+        """Save statistics summaries and threshold analyses.
+
+        Parameters
+        ----------
+        df : pandas.DataFrame
+            DataFrame containing at least ``similarity`` (and optionally ``sbert_sim``).
+        """
         summary_path = os.path.join(OUTPUT_DIR, "statistics_summary.csv")
         
         summary_data = []
@@ -127,11 +163,32 @@ class FileUtils:
     
     @staticmethod
     def get_safe_filename(paper_id: str, idx: int, original_name: str) -> str:
-        """Generate safe filename for extracted image."""
+        """Generate a safe filename for an extracted image.
+
+        Parameters
+        ----------
+        paper_id : str
+            Paper identifier.
+        idx : int
+            Sequential index for the file.
+        original_name : str
+            Original filename to preserve basename context.
+
+        Returns
+        -------
+        str
+            Sanitized filename combining paper ID, index, and original basename.
+        """
         safe_pid = paper_id.replace("/", "_").replace(".", "_")
         return f"{safe_pid}_{idx}_{os.path.basename(original_name)}"
     
     @staticmethod
     def create_directory(path: str):
-        """Create directory if it doesn't exist."""
+        """Create a directory if it does not exist.
+
+        Parameters
+        ----------
+        path : str
+            Directory path to create.
+        """
         os.makedirs(path, exist_ok=True)

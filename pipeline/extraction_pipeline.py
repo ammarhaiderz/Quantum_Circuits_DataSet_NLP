@@ -2,7 +2,6 @@
 Main pipeline for quantum circuit image extraction.
 """
 
-import pandas as pd
 from typing import List, Tuple
 import re
 import tarfile
@@ -28,6 +27,7 @@ class ExtractionPipeline:
     """Orchestrates the entire extraction pipeline."""
     
     def __init__(self):
+        """Initialize pipeline components and statistics containers."""
         self.preprocessor = TextPreprocessor()
         self.tfidf_filter = TfidfFilter(self.preprocessor)
         self.sbert_reranker = SbertReranker()
@@ -47,7 +47,13 @@ class ExtractionPipeline:
         self.all_extracted: List[ExtractedImage] = []
     
     def initialize(self) -> bool:
-        """Initialize the pipeline components."""
+        """Initialize components, clean outputs, and load models.
+
+        Returns
+        -------
+        bool
+            ``True`` on successful initialization; ``False`` otherwise.
+        """
         print("[INIT] Initializing Quantum Circuit Image Extractor Pipeline")
 
         # Start fresh: remove contents of `circuit_images/` to avoid stale outputs
@@ -99,10 +105,6 @@ class ExtractionPipeline:
         except Exception:
             pass
         
-        # # Test SBERT
-        # if not self.sbert_reranker.test_implementation():
-        #     print("[ERROR] SBERT test failed. Exiting.")
-        #     return False
         
         # Load SBERT model
         try:
@@ -122,7 +124,18 @@ class ExtractionPipeline:
         return True
     
     def process_paper(self, paper_id: str) -> Tuple[List[ExtractedImage], List[Figure]]:
-        """Process a single paper."""
+        """Process a single paper end-to-end.
+
+        Parameters
+        ----------
+        paper_id : str
+            arXiv paper identifier.
+
+        Returns
+        -------
+        tuple[list[ExtractedImage], list[Figure]]
+            Extracted images and all parsed figures (with scores/metadata).
+        """
         self.stats['papers_checked'] += 1
         print(f"\n{'='*80}")
         print(f"[PAPER] {paper_id}")
@@ -410,16 +423,22 @@ class ExtractionPipeline:
         return extracted, figures
     
     def _create_records(self, paper_id: str, figures: List[Figure], extracted: List[ExtractedImage]):
-        """Create records for DataFrame export."""
+        """Create per-figure records for tabular export/logging.
+
+        Parameters
+        ----------
+        paper_id : str
+            arXiv paper identifier.
+        figures : list[Figure]
+            Figures considered after filtering.
+        extracted : list[ExtractedImage]
+            Successfully extracted images.
+        """
         extracted_lookup = {e.img_name: e for e in extracted}
         
         for f in figures:
             img_name = os.path.basename(f.img_path)
             e = extracted_lookup.get(img_name)
-            
-            # Calculate token overlap for debugging
-            tokens = set(f.preprocessed_text.split())
-            overlap_count = len(tokens & self.tfidf_filter.ALLOWED_VOCAB)
             
             # Calculate token overlap for debugging
             tokens = set(f.preprocessed_text.split())
