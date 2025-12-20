@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer, ENGLISH_STOP_WORDS
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy.sparse import hstack, csr_matrix
 import numpy as np
-from typing import List, Dict
+from typing import List
 
 try:
     import nltk
@@ -55,11 +55,18 @@ class TfidfFilter:
     }
 
     def __init__(self, preprocessor: TextPreprocessor):
+        """Initialize filter with a text preprocessor.
+
+        Parameters
+        ----------
+        preprocessor : TextPreprocessor
+            Preprocessor used for tokenization and normalization.
+        """
         self.preprocessor = preprocessor
         self._build_allowed_vocab()
     
     def _build_allowed_vocab(self):
-        """Build allowed vocabulary from all query sets."""
+        """Build allowed vocabulary and bigrams from all query sets."""
         all_query_text = "\n".join(QUERY_SETS.values())
         self.ALLOWED_VOCAB = set(self.preprocessor.tfidf_analyzer(all_query_text))
         # Build domain bigrams for specificity scoring (per-line to avoid boundary bigrams)
@@ -73,7 +80,20 @@ class TfidfFilter:
                     self.ALLOWED_BIGRAMS.update(bigrams)
 
     def _compute_custom_features(self, texts: List[str], idf_map) -> np.ndarray:
-        """Compute custom feature vectors for texts; returns shape (n, k)."""
+        """Compute custom feature vectors for texts.
+
+        Parameters
+        ----------
+        texts : list[str]
+            Input texts to featurize.
+        idf_map : dict
+            Mapping from token to inverse document frequency.
+
+        Returns
+        -------
+        numpy.ndarray
+            Feature array of shape ``(n_texts, n_features)``.
+        """
         feats = []
         for text in texts:
             tokens = self.preprocessor.tfidf_analyzer(text)
@@ -152,7 +172,18 @@ class TfidfFilter:
         return feats
 
     def _scale_features(self, feats: np.ndarray) -> np.ndarray:
-        """Min-max scale each column to [0,1]."""
+        """Min-max scale each column to [0, 1].
+
+        Parameters
+        ----------
+        feats : numpy.ndarray
+            Feature matrix to scale.
+
+        Returns
+        -------
+        numpy.ndarray
+            Scaled feature matrix.
+        """
         if feats.size == 0:
             return feats
 
@@ -168,7 +199,20 @@ class TfidfFilter:
         return scaled
 
     def _pos_features(self, tokens: List[str], token_count: int):
-        """Compute lightweight POS features using nltk if available."""
+        """Compute lightweight POS features using nltk if available.
+
+        Parameters
+        ----------
+        tokens : list[str]
+            Tokens to tag.
+        token_count : int
+            Total token count (used for normalization).
+
+        Returns
+        -------
+        tuple
+            ``(noun_ratio, compound_noun_count, verb_ratio)``; zeros if tagging unavailable.
+        """
         if not pos_tag or not tokens:
             return 0.0, 0.0, 0.0
 
@@ -201,7 +245,18 @@ class TfidfFilter:
         return noun_ratio, float(compound_noun_count), verb_ratio
     
     def filter_figures(self, figures: List[Figure]) -> List[Figure]:
-        """Apply TF-IDF filtering to figures."""
+        """Apply TF-IDF filtering to figures and attach scores.
+
+        Parameters
+        ----------
+        figures : list[Figure]
+            Figures whose captions will be evaluated.
+
+        Returns
+        -------
+        list[Figure]
+            Figures with similarity fields populated.
+        """
         texts = [(f.caption or "") for f in figures]
         
         vectorizer = TfidfVectorizer(
@@ -277,8 +332,6 @@ class TfidfFilter:
         return figures
     
     def get_accepted_figures(self, figures: List[Figure]) -> List[Figure]:
-        # """Get figures that pass the TF-IDF threshold."""
-        # return [f for f in figures if f.similarity >= SIMILARITY_THRESHOLD]
         """Get figures that pass the TF-IDF threshold."""
         # Filter by threshold AND minimum token overlap
         MIN_TOKEN_OVERLAP = 2  # Require at least 2 matching tokens
