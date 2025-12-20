@@ -6,7 +6,7 @@ import os
 import re
 import tarfile
 import io
-from typing import List, Set, Optional
+from typing import List, Set, Optional, Tuple
 import requests
 import time
 
@@ -303,7 +303,7 @@ class ImageExtractor:
             k += 1
         return None
     
-    def extract_figures_from_tex(self, tex: str, paper_id: Optional[str] = None, figure_counter: Optional[int] = 1) -> (List[Figure], int):
+    def extract_figures_from_tex(self, tex: str, paper_id: Optional[str] = None, figure_counter: Optional[int] = 1) -> Tuple[List[Figure], int]:
         r"""Extract figures from LaTeX text.
         Handles multiple \includegraphics within a single figure block and subfigures.
 
