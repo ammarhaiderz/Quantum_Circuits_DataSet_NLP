@@ -21,6 +21,7 @@ from config.settings import (
     USE_COMBINED_SCORE, TFIDF_WEIGHT, SBERT_WEIGHT, COMBINED_THRESHOLD,
     SIMILARITY_THRESHOLD
 )
+from core.circuit_store import set_quantum_problem_model
 
 
 class ExtractionPipeline:
@@ -107,6 +108,12 @@ class ExtractionPipeline:
         try:
             self.sbert_reranker.load_model()
             self.sbert_reranker.prepare_query_embeddings()
+            # Register the loaded SBERT model for quantum_problem classification
+            try:
+                set_quantum_problem_model(self.sbert_reranker.model)
+                print("✅ Quantum-problem classifier enabled (SBERT model registered)")
+            except Exception as e:
+                print(f"⚠️ Could not register quantum-problem classifier: {e}")
         except Exception as e:
             print(f"❌ Failed to initialize SBERT: {e}")
             return False

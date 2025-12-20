@@ -26,6 +26,10 @@ from utils.latex_text_utils import (
     extract_context_snippet,
     load_latex_source,
 )
+from core.quantum_problem_classifier import (
+    classify_quantum_problem,
+    prepare_label_embeddings,
+)
 
 
 def _find_figure_mentions_pdf(raw_page_text: str, figure_number: int | None) -> list[tuple[int, int]]:
@@ -57,6 +61,28 @@ try:
 except Exception:
     pass
 
+# Optional quantum-problem classifier cache (set via `set_quantum_problem_model`).
+_QP_MODEL = None
+_QP_LABEL_KEYS = None
+_QP_LABEL_EMBEDS = None
+
+
+def set_quantum_problem_model(model):
+    """Register a pre-loaded SBERT model for quantum problem classification.
+
+    Call once after loading the SentenceTransformer to enable automatic
+    `quantum_problem` assignment during emit/update. If not set, records
+    are left untouched.
+    """
+    global _QP_MODEL, _QP_LABEL_KEYS, _QP_LABEL_EMBEDS
+    _QP_MODEL = model
+    try:
+        _QP_LABEL_KEYS, _QP_LABEL_EMBEDS = prepare_label_embeddings(model)
+    except Exception:
+        _QP_LABEL_KEYS, _QP_LABEL_EMBEDS = None, None
+        _QP_MODEL = None
+    return _QP_MODEL is not None
+
 
 def emit_record(record: dict):
     """Append a circuit record (dict) to JSONL storage."""
@@ -70,6 +96,12 @@ def emit_record(record: dict):
         except Exception:
             # if access fails, fall through and attempt to write
             pass
+        # Drop unused/legacy fields
+        try:
+            record.pop('label', None)
+        except Exception:
+            pass
+
         # Normalize descriptions (preserve domain tokens like TOF/CX and numeric groups)
         if isinstance(record, dict) and record.get('descriptions'):
             try:
@@ -77,6 +109,21 @@ def emit_record(record: dict):
             except Exception:
                 # best-effort: leave descriptions as-is on failure
                 pass
+
+        # Assign quantum_problem if classifier is available
+        try:
+            if _QP_MODEL is not None and _QP_LABEL_KEYS is not None and _QP_LABEL_EMBEDS is not None:
+                if isinstance(record, dict) and record.get('descriptions'):
+                    label = classify_quantum_problem(
+                        _QP_MODEL,
+                        record.get('descriptions', []),
+                        _QP_LABEL_KEYS,
+                        _QP_LABEL_EMBEDS,
+                    )
+                    record['quantum_problem'] = label
+        except Exception:
+            # leave untouched on any failure
+            pass
 
         # Best-effort: compute page at emit time to avoid race where update_pages_in_jsonl
         # was called before this record existed. Use caption -> PDF matcher if possible.
@@ -772,6 +819,11 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                         wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
                         continue
 
+                    try:
+                        rec.pop('label', None)
+                    except Exception:
+                        pass
+
                     caption = rec.get('descriptions')[0] if rec.get('descriptions') else ''
                     try:
                         res = find_caption_page_in_pdf(rec.get('arxiv_id', ''), caption)
@@ -845,6 +897,19 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                                                     rec['descriptions'].append(msnip)
                                 except Exception:
                                     pass
+                        # Assign quantum_problem if classifier is available
+                        try:
+                            if _QP_MODEL is not None and _QP_LABEL_KEYS is not None and _QP_LABEL_EMBEDS is not None:
+                                if rec.get('descriptions'):
+                                    label = classify_quantum_problem(
+                                        _QP_MODEL,
+                                        rec.get('descriptions', []),
+                                        _QP_LABEL_KEYS,
+                                        _QP_LABEL_EMBEDS,
+                                    )
+                                    rec['quantum_problem'] = label
+                        except Exception:
+                            pass
                             if fig_val is not None:
                                 rec['figure'] = fig_val
                     except Exception:
