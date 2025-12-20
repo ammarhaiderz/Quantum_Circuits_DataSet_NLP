@@ -1,9 +1,18 @@
+"""Utilities for persisting extracted circuit records and related metadata.
+
+This module handles writing circuit records to disk, normalizing captions,
+inferring page numbers/positions from PDFs and LaTeX sources, and regenerating
+the consolidated ``circuits.json`` map. It exposes a function-based API and
+keeps behavior compatible with the existing pipeline while improving
+readability and reuse.
+"""
+
 import json
 from pathlib import Path
 import re
 import unicodedata
-from collections import Counter, defaultdict
-import math
+from collections import Counter
+from typing import Optional
 
 try:
     import fitz
@@ -33,7 +42,20 @@ from core.quantum_problem_classifier import (
 
 
 def _find_figure_mentions_pdf(raw_page_text: str, figure_number: int | None) -> list[tuple[int, int]]:
-    """Find numeric figure references in PDF text (e.g., "Fig. 3")."""
+    """Locate numeric figure references in PDF text.
+
+    Parameters
+    ----------
+    raw_page_text : str
+        Full text of a PDF page.
+    figure_number : int or None
+        Target figure number to search for.
+
+    Returns
+    -------
+    list[tuple[int, int]]
+        List of character spans matching patterns like ``Fig. 3`` or ``Figure 3``.
+    """
     if figure_number is None:
         return []
     try:
@@ -50,16 +72,6 @@ JSON_PATH = DATA_DIR / 'circuits.json'
 META_PATH = DATA_DIR / 'circuits_meta.json'
 LATEX_META_PATH = DATA_DIR / 'latex_checkpoint.json'
 # Ensure files exist so other modules can rely on their presence
-try:
-    if not JSONL_PATH.exists():
-        JSONL_PATH.write_text('', encoding='utf-8')
-except Exception:
-    pass
-try:
-    if not JSON_PATH.exists():
-        JSON_PATH.write_text('[]', encoding='utf-8')
-except Exception:
-    pass
 
 # Optional quantum-problem classifier cache (set via `set_quantum_problem_model`).
 _QP_MODEL = None
@@ -67,12 +79,343 @@ _QP_LABEL_KEYS = None
 _QP_LABEL_EMBEDS = None
 
 
+def _ensure_data_files() -> None:
+    """Create empty data files if missing.
+
+    Ensures ``circuits.jsonl`` and ``circuits.json`` exist so downstream
+    consumers can open them without extra guards.
+
+    Returns
+    -------
+    None
+    """
+
+    try:
+        if not JSONL_PATH.exists():
+            JSONL_PATH.write_text('', encoding='utf-8')
+    except Exception:
+        pass
+    try:
+        if not JSON_PATH.exists():
+            JSON_PATH.write_text('[]', encoding='utf-8')
+    except Exception:
+        pass
+
+
+# Ensure files exist so other modules can rely on their presence
+_ensure_data_files()
+
+
+def _normalize_legacy_fields(record: dict) -> None:
+    """Normalize legacy keys in-place (remove label, migrate figure).
+
+    Parameters
+    ----------
+    record : dict
+        Record to normalize. Mutated in place.
+
+    Returns
+    -------
+    None
+    """
+
+    try:
+        record.pop('label', None)
+    except Exception:
+        pass
+
+    try:
+        if 'figure_number' not in record and 'figure' in record:
+            record['figure_number'] = record.pop('figure')
+        else:
+            record.pop('figure', None)
+    except Exception:
+        pass
+
+    if 'figure_number' not in record:
+        record['figure_number'] = None
+
+
+def _normalize_descriptions(record: dict) -> None:
+    """Normalize and filter description strings in-place.
+
+    Applies ``normalize_caption_text`` to each string description and removes
+    empty fragments that result from cleaning table/placeholder artifacts.
+
+    Parameters
+    ----------
+    record : dict
+        Record whose ``descriptions`` will be normalized in-place.
+
+    Returns
+    -------
+    None
+    """
+
+    if not isinstance(record, dict) or not record.get('descriptions'):
+        return
+
+    cleaned: list[str] = []
+    for desc in record.get('descriptions', []):
+        if isinstance(desc, str):
+            norm = normalize_caption_text(desc)
+            if norm.strip():
+                cleaned.append(norm)
+        else:
+            cleaned.append(desc)
+    record['descriptions'] = cleaned
+
+
+def _has_meaningful_descriptions(record: dict) -> bool:
+    """Check whether the record has a non-empty description.
+
+    Parameters
+    ----------
+    record : dict
+        Record to inspect.
+
+    Returns
+    -------
+    bool
+        ``True`` if at least one description string is non-empty.
+    """
+
+    try:
+        descs = record.get('descriptions') if isinstance(record, dict) else None
+        return bool(descs and any(str(d).strip() for d in descs))
+    except Exception:
+        return False
+
+
+def _maybe_classify_record(record: dict) -> None:
+    """Attach ``quantum_problem`` using the optional classifier cache.
+
+    Parameters
+    ----------
+    record : dict
+        Record to update. Mutated in place when classification succeeds.
+
+    Returns
+    -------
+    None
+    """
+
+    if _QP_MODEL is None or _QP_LABEL_KEYS is None or _QP_LABEL_EMBEDS is None:
+        return
+    if not isinstance(record, dict) or not record.get('descriptions'):
+        return
+
+    try:
+        label = classify_quantum_problem(
+            _QP_MODEL,
+            record.get('descriptions', []),
+            _QP_LABEL_KEYS,
+            _QP_LABEL_EMBEDS,
+        )
+        record['quantum_problem'] = label
+    except Exception:
+        pass
+
+
+def _append_description(record: dict, snippet: str) -> None:
+    """Append a description snippet if it is new and non-empty.
+
+    Parameters
+    ----------
+    record : dict
+        Target record whose ``descriptions`` will be updated.
+    snippet : str
+        Text snippet to append when non-empty and not already present.
+
+    Returns
+    -------
+    None
+    """
+
+    if not snippet or not isinstance(record, dict):
+        return
+    descs = record.get('descriptions')
+    if descs is None:
+        record['descriptions'] = [snippet]
+        return
+    if snippet not in descs:
+        descs.append(snippet)
+
+
+def _append_text_positions(record: dict, spans: list[tuple[int, int]] | list[list[int]] | None) -> None:
+    """Merge text span positions, avoiding duplicates.
+
+    Parameters
+    ----------
+    record : dict
+        Target record whose ``text_positions`` will be updated.
+    spans : list[tuple[int, int]] or list[list[int]] or None
+        Character spans to merge into the record.
+
+    Returns
+    -------
+    None
+    """
+
+    if not spans:
+        return
+    existing = record.get('text_positions') if isinstance(record, dict) else None
+    if existing is None:
+        record['text_positions'] = [list(sp) for sp in spans]
+        return
+    for sp in spans:
+        sp_list = list(sp)
+        if sp_list not in existing:
+            existing.append(sp_list)
+
+
+def _load_pdf_page_text(arxiv_id: str, page_number: int) -> Optional[str]:
+    """Load raw text for a specific PDF page if available.
+
+    Parameters
+    ----------
+    arxiv_id : str
+        arXiv identifier for the PDF.
+    page_number : int
+        One-based page index.
+
+    Returns
+    -------
+    str or None
+        Page text if available; otherwise ``None``.
+    """
+
+    if fitz is None or not page_number:
+        return None
+    pdf_path = Path(PDF_CACHE_DIR) / f"{arxiv_id}.pdf"
+    if not pdf_path.exists():
+        return None
+    try:
+        doc = fitz.open(str(pdf_path))
+        try:
+            page = doc.load_page(page_number - 1)
+            return page.get_text("text")
+        finally:
+            try:
+                doc.close()
+            except Exception:
+                pass
+    except Exception:
+        return None
+
+
+def _enrich_record_from_sources(record: dict) -> None:
+    """Fill page/figure info and add nearby snippets from LaTeX/PDF sources.
+
+    Parameters
+    ----------
+    record : dict
+        Record to enrich. Mutated in place.
+
+    Returns
+    -------
+    None
+    """
+
+    if not isinstance(record, dict):
+        return
+
+    arxiv_id = record.get('arxiv_id')
+    caption = record.get('descriptions', [None])[0] if record.get('descriptions') else ''
+    if not arxiv_id or not caption:
+        return
+
+    page_val = record.get('page')
+    fig_val = None
+
+    if page_val is None:
+        try:
+            res = find_caption_page_in_pdf(arxiv_id, caption)
+        except Exception:
+            res = None
+        if res:
+            page_val, fig_val = res
+            record['page'] = page_val
+            if fig_val is not None:
+                record['figure_number'] = fig_val
+
+    # LaTeX context snippet (best-effort)
+    try:
+        latex_text = load_latex_source(arxiv_id, CACHE_DIR)
+    except Exception:
+        latex_text = None
+
+    if latex_text:
+        try:
+            span_tex = locate_description_span_raw(latex_text, caption)
+            if span_tex:
+                snippet = extract_context_snippet(latex_text, span_tex, strip_latex=True)
+                snippet = _sanitize_description_snippet(snippet, strip_latex=True)
+                _append_description(record, snippet)
+        except Exception:
+            pass
+
+    # PDF span and mention snippets
+    page_text_pdf = _load_pdf_page_text(arxiv_id, page_val) if page_val else None
+    span_positions = None
+    if page_text_pdf:
+        try:
+            span_pdf = locate_description_span_raw(page_text_pdf, caption)
+            if span_pdf:
+                span_positions = [list(span_pdf)]
+                _append_text_positions(record, span_positions)
+        except Exception:
+            pass
+
+        try:
+            if record.get('figure_number') is not None:
+                mention_spans = _find_figure_mentions_pdf(page_text_pdf, record.get('figure_number'))
+            else:
+                mention_spans = []
+            if mention_spans:
+                _append_text_positions(record, mention_spans)
+                for sp in mention_spans:
+                    msnip = extract_context_snippet(page_text_pdf, sp, strip_latex=False)
+                    msnip = _sanitize_description_snippet(msnip, strip_latex=False)
+                    _append_description(record, msnip)
+        except Exception:
+            pass
+
+
+def _write_jsonl_record(record: dict) -> None:
+    """Append a record to ``circuits.jsonl`` and regenerate ``circuits.json``.
+
+    Parameters
+    ----------
+    record : dict
+        Record to persist.
+
+    Returns
+    -------
+    None
+    """
+
+    with open(JSONL_PATH, 'a', encoding='utf-8') as f:
+        f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+    try:
+        _regenerate_json()
+    except Exception:
+        pass
+
+
 def set_quantum_problem_model(model):
     """Register a pre-loaded SBERT model for quantum problem classification.
 
-    Call once after loading the SentenceTransformer to enable automatic
-    `quantum_problem` assignment during emit/update. If not set, records
-    are left untouched.
+    Parameters
+    ----------
+    model : Any
+        SentenceTransformer-like model with ``encode`` support.
+
+    Returns
+    -------
+    bool
+        ``True`` if the model was registered successfully, else ``False``.
     """
     global _QP_MODEL, _QP_LABEL_KEYS, _QP_LABEL_EMBEDS
     _QP_MODEL = model
@@ -85,168 +428,47 @@ def set_quantum_problem_model(model):
 
 
 def emit_record(record: dict):
-    """Append a circuit record (dict) to JSONL storage."""
+    """Append a circuit record to JSONL storage.
+
+    Parameters
+    ----------
+    record : dict
+        Circuit record containing at least ``descriptions`` and ``arxiv_id``.
+
+    Returns
+    -------
+    None
+    """
+
     try:
-        # Skip records with no meaningful descriptions (captions)
-        try:
-            descs = record.get('descriptions') if isinstance(record, dict) else None
-            if not descs or all((not d or not str(d).strip()) for d in descs):
-                # nothing useful to index/emit
-                return
-        except Exception:
-            # if access fails, fall through and attempt to write
-            pass
-        # Drop unused/legacy fields
-        try:
-            record.pop('label', None)
-        except Exception:
-            pass
+        if not isinstance(record, dict):
+            return
 
-        # Normalize legacy `figure` key to `figure_number`
-        try:
-            if isinstance(record, dict):
-                if 'figure_number' not in record and 'figure' in record:
-                    record['figure_number'] = record.pop('figure')
-                if 'figure_number' not in record:
-                    record['figure_number'] = None
-        except Exception:
-            pass
+        rec = dict(record)
+        _normalize_legacy_fields(rec)
+        _normalize_descriptions(rec)
+        if not _has_meaningful_descriptions(rec):
+            return
 
-        # Normalize descriptions (preserve domain tokens like TOF/CX and numeric groups)
-        if isinstance(record, dict) and record.get('descriptions'):
-            try:
-                cleaned_descs = []
-                for d in record.get('descriptions', []):
-                    cd = normalize_caption_text(d) if isinstance(d, str) else d
-                    if isinstance(cd, str) and not cd.strip():
-                        continue
-                    cleaned_descs.append(cd)
-                record['descriptions'] = cleaned_descs
-            except Exception:
-                # best-effort: leave descriptions as-is on failure
-                pass
+        _maybe_classify_record(rec)
 
-        # Assign quantum_problem if classifier is available
-        try:
-            if _QP_MODEL is not None and _QP_LABEL_KEYS is not None and _QP_LABEL_EMBEDS is not None:
-                if isinstance(record, dict) and record.get('descriptions'):
-                    label = classify_quantum_problem(
-                        _QP_MODEL,
-                        record.get('descriptions', []),
-                        _QP_LABEL_KEYS,
-                        _QP_LABEL_EMBEDS,
-                    )
-                    record['quantum_problem'] = label
-        except Exception:
-            # leave untouched on any failure
-            pass
+        if rec.get('page') is None:
+            _enrich_record_from_sources(rec)
 
-        # Best-effort: compute page at emit time to avoid race where update_pages_in_jsonl
-        # was called before this record existed. Use caption -> PDF matcher if possible.
-        try:
-            if isinstance(record, dict) and record.get('page') is None:
-                aid = record.get('arxiv_id')
-                if aid and record.get('descriptions'):
-                    try:
-                        res = find_caption_page_in_pdf(aid, record['descriptions'][0])
-                        if res:
-                            page_val, fig_val = res
-                            if page_val:
-                                record['page'] = page_val
-                            # Use LaTeX only to enrich descriptions; positions strictly from PDF text.
-                            try:
-                                latex_text = load_latex_source(aid, CACHE_DIR)
-                            except Exception:
-                                latex_text = None
+        rec.pop('figure', None)
+        _write_jsonl_record(rec)
 
-                            if latex_text:
-                                try:
-                                    span_tex = locate_description_span_raw(latex_text, record['descriptions'][0])
-                                    if span_tex:
-                                        snippet = extract_context_snippet(latex_text, span_tex, strip_latex=True)
-                                        snippet = _sanitize_description_snippet(snippet, strip_latex=True)
-                                        if snippet and 'descriptions' in record and isinstance(record['descriptions'], list):
-                                            if snippet not in record['descriptions']:
-                                                record['descriptions'].append(snippet)
-                                except Exception:
-                                    pass
-
-                            span_positions = None
-                            page_text_pdf = None
-                            try:
-                                if page_val and fitz is not None:
-                                    pdf_path2 = Path(PDF_CACHE_DIR) / f"{aid}.pdf"
-                                    if pdf_path2.exists():
-                                        doc2 = fitz.open(str(pdf_path2))
-                                        try:
-                                            pg = doc2.load_page(page_val - 1)
-                                            page_text_pdf = pg.get_text("text")
-                                            span_pdf = locate_description_span_raw(page_text_pdf, record['descriptions'][0])
-                                            if span_pdf:
-                                                span_positions = [list(span_pdf)]
-                                        finally:
-                                            try:
-                                                doc2.close()
-                                            except Exception:
-                                                pass
-                            except Exception:
-                                pass
-
-                            if span_positions:
-                                record['text_positions'] = span_positions
-
-                            # Mention spans: only from PDF text when available
-                            try:
-                                if page_text_pdf and record.get('figure_number') is not None:
-                                    mention_spans = _find_figure_mentions_pdf(page_text_pdf, record.get('figure_number'))
-                                else:
-                                    mention_spans = []
-
-                                if mention_spans:
-                                    if not record.get('text_positions'):
-                                        record['text_positions'] = []
-                                    for sp in mention_spans:
-                                        sp_list = [sp[0], sp[1]]
-                                        if sp_list not in record['text_positions']:
-                                            record['text_positions'].append(sp_list)
-
-                                    if 'descriptions' in record and isinstance(record['descriptions'], list):
-                                        for sp in mention_spans:
-                                            msnip = extract_context_snippet(page_text_pdf, sp, strip_latex=False) if page_text_pdf else ""
-                                            msnip = _sanitize_description_snippet(msnip, strip_latex=False)
-                                            if msnip and msnip not in record['descriptions']:
-                                                record['descriptions'].append(msnip)
-                            except Exception:
-                                pass
-                            if fig_val is not None:
-                                record['figure_number'] = fig_val
-                    except Exception:
-                        # non-fatal: leave page as-is
-                        pass
-        except Exception:
-            pass
-        # (figure numbers removed) No further figure-number extraction performed
-
-        with open(JSONL_PATH, 'a', encoding='utf-8') as f:
-            # Ensure `figure_number` key exists in JSONL records (use None when unknown)
-            if 'figure_number' not in record:
-                record['figure_number'] = None
-            # Drop legacy key if it still exists
-            record.pop('figure', None)
-            f.write(json.dumps(record, ensure_ascii=False) + "\n")
-        # After appending to JSONL, regenerate a proper JSON array file.
-        try:
-            _regenerate_json()
-        except Exception:
-            # Non-fatal; JSONL still contains the record.
-            pass
-    except Exception as e:
-        # Non-fatal: print for debugging
-        print(f"⚠️ Failed to write circuit record: {e}")
+    except Exception as exc:
+        print(f"[WARN] Failed to write circuit record: {exc}")
 
 
 def _regenerate_json():
-    """Read `circuits.jsonl` and write `circuits.json` as a JSON array (atomic)."""
+    """Regenerate ``circuits.json`` from ``circuits.jsonl`` atomically.
+
+    Returns
+    -------
+    None
+    """
     if not JSONL_PATH.exists():
         # ensure empty JSON file
         JSON_PATH.write_text('[]', encoding='utf-8')
@@ -369,14 +591,35 @@ def _regenerate_json():
 
 
 def _normalize_text(s: str) -> str:
-    """Normalize text for comparison."""
+    """Normalize text for comparison.
+
+    Parameters
+    ----------
+    s : str
+        Input string.
+
+    Returns
+    -------
+    str
+        Lowercased string with collapsed whitespace.
+    """
     return re.sub(r"\s+", " ", s.strip().lower()) if s else ""
 
 
 def _clean_caption_for_search(caption: str) -> str:
     """Clean caption text for more robust PDF searching.
-    
+
     Removes LaTeX artifacts and extracts meaningful search phrases.
+
+    Parameters
+    ----------
+    caption : str
+        Caption text, possibly containing LaTeX markers.
+
+    Returns
+    -------
+    str
+        Normalized caption suitable for matching in PDF text.
     """
     if not caption:
         return ""
@@ -403,10 +646,20 @@ def _clean_caption_for_search(caption: str) -> str:
 def normalize_caption_text(s: str) -> str:
     """Normalize caption/description text while preserving domain tokens.
 
-    - Unwrap common LaTeX subscript forms like _{1,2} or _1,2_
-    - Replace adjacent underscore-groups with spaces
-    - Insert spaces between alpha and numeric runs (TOF1 -> TOF 1)
-    - Collapse extra whitespace
+    Parameters
+    ----------
+    s : str
+        Raw caption or description text.
+
+    Returns
+    -------
+    str
+        Cleaned caption with LaTeX/table artifacts removed and spacing normalized.
+
+    Notes
+    -----
+    Operations include unwrapping common LaTeX subscript forms, spacing between
+    alphanumeric runs, and collapsing whitespace.
     """
     if not s:
         return s
@@ -453,9 +706,19 @@ def normalize_caption_text(s: str) -> str:
 def _sanitize_description_snippet(text: str, *, strip_latex: bool = True, max_len: int = 600) -> str:
     """Clean non-caption description text for embedding/transformer use.
 
-    - Optionally remove simple LaTeX commands/math markers
-    - Drop control chars and collapse whitespace
-    - Truncate overly long snippets to avoid noisy tails
+    Parameters
+    ----------
+    text : str
+        Input snippet.
+    strip_latex : bool, optional
+        Whether to remove LaTeX commands/math markers. Default is ``True``.
+    max_len : int, optional
+        Maximum length (in characters) after cleaning. Default is 600; use 0 to disable.
+
+    Returns
+    -------
+    str
+        Sanitized snippet, or empty string if no alphabetic characters remain.
     """
     if not text:
         return ""
@@ -500,10 +763,19 @@ def _sanitize_description_snippet(text: str, *, strip_latex: bool = True, max_le
 def _tokenize_for_comparison(text: str, is_latex: bool = False, min_len: int = 3):
     """Normalize and tokenize text for caption comparison.
 
-    - If `is_latex` and `pylatexenc` is available, convert LaTeX to plain text.
-    - Normalize unicode (NFKC), remove soft-hyphens, strip combining marks.
-    - Lowercase and extract words with length >= `min_len`.
-    - Return a set of word tokens.
+    Parameters
+    ----------
+    text : str
+        Input text.
+    is_latex : bool, optional
+        Whether to treat the input as LaTeX and attempt conversion. Default is ``False``.
+    min_len : int, optional
+        Minimum token length to retain, unless whitelisted. Default is 3.
+
+    Returns
+    -------
+    set[str]
+        Set of normalized word tokens.
     """
     if not text:
         return set()
@@ -574,6 +846,22 @@ def _tokenize_for_comparison(text: str, is_latex: bool = False, min_len: int = 3
 
 
 def _compute_tfidf_similarity(query_tokens: Counter, doc_tokens_list: list[Counter]) -> list[float]:
+    """Compute TF-IDF cosine similarity for a query against documents.
+
+    Parameters
+    ----------
+    query_tokens : Counter
+        Token counts for the query.
+    doc_tokens_list : list[Counter]
+        Token counts for each candidate document.
+
+    Returns
+    -------
+    list[float]
+        Similarity scores aligned with ``doc_tokens_list``. Returns zeros when
+        scikit-learn is unavailable.
+    """
+
     if TfidfVectorizer is None or cosine_similarity is None:
         return [0.0] * len(doc_tokens_list)
 
@@ -608,18 +896,27 @@ def _compute_tfidf_similarity(query_tokens: Counter, doc_tokens_list: list[Count
 
 
 def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.08) -> tuple[int, int | None] | None:
-    """
-    Find the page number (1-based) in the PDF where the figure caption appears.
+    """Find the PDF page where a caption appears and optionally its figure number.
 
-    Strategy:
-    - Normalize LaTeX caption once
-    - Tokenize caption
-    - For each page:
-        - Look for caption anchors at start of line (Fig./Figure N)
-        - If anchors exist: extract short windows after anchors
-        - Else: fall back to fixed-size text windows
-    - Rank all windows using TF-IDF similarity
-    - Return page of best match if above threshold
+    Parameters
+    ----------
+    arxiv_id : str
+        arXiv identifier of the paper.
+    caption : str
+        Caption text to search for.
+    threshold : float, optional
+        Minimum similarity threshold (unused in current implementation but kept
+        for API compatibility). Default is 0.08.
+
+    Returns
+    -------
+    tuple[int, int or None] or None
+        ``(page_number, figure_number)`` when found; otherwise ``None``.
+
+    Notes
+    -----
+    Searches line-anchored "Fig./Figure N" patterns first, then falls back to
+    windowed TF-IDF matching over page text.
     """
 
     if fitz is None:
@@ -731,14 +1028,24 @@ def locate_description_span_raw(
     raw_page_text: str,
     caption: str
 ) -> tuple[int, int] | None:
-    """
-    Locate the caption span in RAW page text and return (start, end) character offsets.
+    """Locate the caption span in raw page text.
 
-    Strategy:
-    - Lightly normalize BOTH raw page text and caption in the SAME way
-    - Try full-caption substring match
-    - Fallback: match a short anchor (first few words)
-    - Map normalized offsets back to raw text offsets
+    Parameters
+    ----------
+    raw_page_text : str
+        Raw page text (PDF or LaTeX).
+    caption : str
+        Caption text to locate.
+
+    Returns
+    -------
+    tuple[int, int] or None
+        Character offsets ``(start, end)`` in the raw text, or ``None`` if not found.
+
+    Notes
+    -----
+    Attempts normalized substring match, whitespace-flexible regex, short-token
+    anchors, and a token-subsequence heuristic with order preservation.
     """
 
     if not raw_page_text or not caption:
@@ -846,10 +1153,19 @@ def locate_description_span_raw(
 
 
 def update_pages_in_jsonl(arxiv_id: str = None):
-    """Update records in `data/circuits.jsonl` filling `page` where missing.
+    """Fill missing page numbers in ``data/circuits.jsonl``.
 
-    If `arxiv_id` is provided, only update records for that paper; otherwise update all.
+    Parameters
+    ----------
+    arxiv_id : str, optional
+        If provided, only records for this paper are updated.
+
+    Returns
+    -------
+    int
+        Count of records whose page number was newly set.
     """
+
     if not JSONL_PATH.exists():
         return 0
 
@@ -864,124 +1180,26 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                     wf.write(line)
                     continue
 
-                # Backward compatibility: migrate legacy `figure` key
-                if 'figure_number' not in rec and 'figure' in rec:
-                    rec['figure_number'] = rec.pop('figure')
-                else:
-                    rec.pop('figure', None)
+                _normalize_legacy_fields(rec)
+                _normalize_descriptions(rec)
 
-                if rec.get('page') is None and rec.get('descriptions'):
-                    if arxiv_id and rec.get('arxiv_id') != arxiv_id:
-                        wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
-                        continue
+                if arxiv_id and rec.get('arxiv_id') != arxiv_id:
+                    wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                    continue
 
-                    try:
-                        rec.pop('label', None)
-                    except Exception:
-                        pass
+                missing_page = rec.get('page') is None
+                if missing_page and rec.get('descriptions'):
+                    _enrich_record_from_sources(rec)
+                    if missing_page and rec.get('page') is not None:
+                        updated += 1
 
-                    caption = rec.get('descriptions')[0] if rec.get('descriptions') else ''
-                    try:
-                        res = find_caption_page_in_pdf(rec.get('arxiv_id', ''), caption)
-                        if res:
-                            page_val, fig_val = res
-                            if page_val:
-                                rec['page'] = page_val
-                                updated += 1
-                                # Use LaTeX only for description enrichment; positions strictly from PDF text.
-                                try:
-                                    latex_text = load_latex_source(rec.get('arxiv_id', ''), CACHE_DIR)
-                                except Exception:
-                                    latex_text = None
-
-                                if latex_text:
-                                    try:
-                                        span_tex = locate_description_span_raw(latex_text, caption)
-                                        if span_tex:
-                                            try:
-                                                snippet = extract_context_snippet(latex_text, span_tex, strip_latex=True)
-                                                snippet = _sanitize_description_snippet(snippet, strip_latex=True)
-                                                if snippet and 'descriptions' in rec and isinstance(rec['descriptions'], list):
-                                                    if snippet not in rec['descriptions']:
-                                                        rec['descriptions'].append(snippet)
-                                            except Exception:
-                                                pass
-                                    except Exception:
-                                        pass
-
-                                span_positions = rec.get('text_positions') if rec.get('text_positions') else None
-                                page_text_pdf = None
-                                try:
-                                    if page_val and fitz is not None:
-                                        pdf_path3 = Path(PDF_CACHE_DIR) / f"{rec.get('arxiv_id', '')}.pdf"
-                                        if pdf_path3.exists():
-                                            doc3 = fitz.open(str(pdf_path3))
-                                            try:
-                                                pg3 = doc3.load_page(page_val - 1)
-                                                page_text_pdf = pg3.get_text("text")
-                                                span_pdf = locate_description_span_raw(page_text_pdf, caption)
-                                                if span_pdf:
-                                                    span_positions = [list(span_pdf)]
-                                            finally:
-                                                try:
-                                                    doc3.close()
-                                                except Exception:
-                                                    pass
-                                except Exception:
-                                    pass
-
-                                if span_positions:
-                                    rec['text_positions'] = span_positions
-
-                                try:
-                                    mention_spans = []
-                                    if page_text_pdf and rec.get('figure_number') is not None:
-                                        mention_spans = _find_figure_mentions_pdf(page_text_pdf, rec.get('figure_number'))
-
-                                    if mention_spans:
-                                        if not rec.get('text_positions'):
-                                            rec['text_positions'] = []
-                                        for sp in mention_spans:
-                                            sp_list = [sp[0], sp[1]]
-                                            if sp_list not in rec['text_positions']:
-                                                rec['text_positions'].append(sp_list)
-                                        if 'descriptions' in rec and isinstance(rec['descriptions'], list):
-                                            for sp in mention_spans:
-                                                msnip = extract_context_snippet(page_text_pdf, sp, strip_latex=False) if page_text_pdf else ""
-                                                msnip = _sanitize_description_snippet(msnip, strip_latex=False)
-                                                if msnip and msnip not in rec['descriptions']:
-                                                    rec['descriptions'].append(msnip)
-                                except Exception:
-                                    pass
-                        # Assign quantum_problem if classifier is available
-                        try:
-                            if _QP_MODEL is not None and _QP_LABEL_KEYS is not None and _QP_LABEL_EMBEDS is not None:
-                                if rec.get('descriptions'):
-                                    label = classify_quantum_problem(
-                                        _QP_MODEL,
-                                        rec.get('descriptions', []),
-                                        _QP_LABEL_KEYS,
-                                        _QP_LABEL_EMBEDS,
-                                    )
-                                    rec['quantum_problem'] = label
-                        except Exception:
-                            pass
-                            if fig_val is not None:
-                                rec['figure_number'] = fig_val
-                    except Exception:
-                        # leave as-is on failure
-                        pass
-
-                # Ensure `figure_number` key is always present in JSONL (null when unknown)
-                if 'figure_number' not in rec:
-                    rec['figure_number'] = None
+                _maybe_classify_record(rec)
                 rec.pop('figure', None)
                 wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
-        # replace original
         tmp.replace(JSONL_PATH)
-    except Exception as e:
-        print(f"⚠️ Failed to update pages in JSONL: {e}")
+    except Exception as exc:
+        print(f"[WARN] Failed to update pages in JSONL: {exc}")
         try:
             if tmp.exists():
                 tmp.unlink()

@@ -61,7 +61,7 @@ class ImageExtractor:
         
         # Use cached version if available
         if os.path.exists(cache_path):
-            print(f"📦 Using cached source for {arxiv_id}")
+            print(f"[INFO] Using cached source for {arxiv_id}")
             with open(cache_path, "rb") as f:
                 return io.BytesIO(f.read())
         
@@ -77,7 +77,7 @@ class ImageExtractor:
                     f.write(r.content)
                 return io.BytesIO(r.content)
         except Exception as e:
-            print(f"❌ Download failed: {e}")
+            print(f"[ERROR] Download failed: {e}")
         
         return None
     
@@ -87,12 +87,12 @@ class ImageExtractor:
         
         # Use cached version if available
         if os.path.exists(cache_path):
-            print(f"📄 Using cached PDF for {arxiv_id}")
+            print(f"[INFO] Using cached PDF for {arxiv_id}")
             try:
                 with open(cache_path, "rb") as f:
                     return f.read()
             except Exception as e:
-                print(f"⚠️ Failed to load cached PDF: {e}")
+                print(f"[WARN] Failed to load cached PDF: {e}")
                 return None
         
         # Download with delay
@@ -109,7 +109,7 @@ class ImageExtractor:
                     f.write(r.content)
                 return r.content
         except Exception as e:
-            print(f"⚠️ PDF download failed: {e}")
+            print(f"[WARN] PDF download failed: {e}")
         
         return None
     
@@ -128,7 +128,7 @@ class ImageExtractor:
                 with open(cache_path, "rb") as f:
                     return f.read()
             except Exception as e:
-                print(f"⚠️ Failed to load cached image {filename}: {e}")
+                print(f"[WARN] Failed to load cached image {filename}: {e}")
         return None
     
     def save_pdf_to_cache(self, paper_id: str, filename: str, data: bytes) -> bool:
@@ -139,7 +139,7 @@ class ImageExtractor:
                 f.write(data)
             return True
         except Exception as e:
-            print(f"⚠️ Failed to cache image {filename}: {e}")
+            print(f"[WARN] Failed to cache image {filename}: {e}")
             return False
     
     def filename_is_negative(self, img_path: str) -> bool:
@@ -360,7 +360,7 @@ class ImageExtractor:
                         f.extracted = True
                         
                     except Exception as e:
-                        print(f"⚠️ Failed to extract {candidate}: {e}")
+                        print(f"[WARN] Failed to extract {candidate}: {e}")
                     
                     break  # Stop trying extensions once found
         

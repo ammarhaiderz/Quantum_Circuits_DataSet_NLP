@@ -230,9 +230,9 @@ def main():
         
         if rendered['render_success']:
             label_info = f" (label: {rendered['label']})" if rendered['label'] else ""
-            print(f"✓ {rendered['circuit_id']}{label_info}")
+            print(f"[OK] {rendered['circuit_id']}{label_info}")
         else:
-            print(f"✗ {rendered['circuit_id']}: {rendered['error']}")
+            print(f"[FAIL] {rendered['circuit_id']}: {rendered['error']}")
     
     # Save rendering results
     with open(OUTPUT_DIR / "rendering_results.json", 'w', encoding='utf-8') as f:
@@ -249,7 +249,7 @@ def main():
     if all_rendered:
         print("\nFirst 3 rendered circuits:")
         for i, rendered in enumerate(all_rendered[:3]):
-            status = "✓" if rendered['render_success'] else "✗"
+            status = "OK" if rendered['render_success'] else "FAIL"
             label = rendered.get('label', 'No label')
             print(f"{i+1}. {status} {rendered['circuit_id']} - {label}")
             if rendered.get('caption'):

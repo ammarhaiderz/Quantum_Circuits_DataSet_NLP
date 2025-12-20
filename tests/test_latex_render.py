@@ -51,7 +51,7 @@ def test_tikz_detection():
     assert fig.latex_block is not None, "Should have LaTeX block"
     assert "tikzpicture" in fig.latex_block, "Should contain tikzpicture"
     
-    print("✅ PASSED: TikZ block detected correctly")
+    print("[PASS] TikZ block detected correctly")
 
 
 def test_circuitikz_detection():
@@ -85,7 +85,7 @@ def test_circuitikz_detection():
     assert fig.latex_block is not None, "Should have LaTeX block"
     assert "circuitikz" in fig.latex_block, "Should contain circuitikz"
     
-    print("✅ PASSED: CircuiTikZ block detected correctly")
+    print("[PASS] CircuiTikZ block detected correctly")
 
 
 def test_quantikz_detection():
@@ -120,7 +120,7 @@ def test_quantikz_detection():
     assert fig.latex_block is not None, "Should have LaTeX block"
     assert "quantikz" in fig.latex_block, "Should contain quantikz"
     
-    print("✅ PASSED: Quantikz block detected correctly")
+    print("[PASS] Quantikz block detected correctly")
 
 
 def test_multiple_tikz_blocks():
@@ -156,7 +156,7 @@ def test_multiple_tikz_blocks():
     assert "First quantum circuit" in figures[0].caption, "Caption should be split"
     assert "Second quantum circuit" in figures[1].caption, "Caption should be split"
     
-    print("✅ PASSED: Multiple blocks with subcaptions parsed correctly")
+    print("[PASS] Multiple blocks with subcaptions parsed correctly")
 
 
 def test_latex_rendering_basic():
@@ -188,23 +188,23 @@ def test_latex_rendering_basic():
             out_path = extractor._render_latex_block(latex_block, "test_paper", 0)
             
             if out_path:
-                print(f"✅ Rendered successfully: {out_path}")
+                print(f"[PASS] Rendered successfully: {out_path}")
                 print(f"File exists: {os.path.exists(out_path)}")
                 
                 if os.path.exists(out_path):
                     file_size = os.path.getsize(out_path)
                     print(f"File size: {file_size} bytes")
                     assert file_size > 0, "Output file should not be empty"
-                    print("✅ PASSED: LaTeX rendered to valid PNG")
+                    print("[PASS] LaTeX rendered to valid PNG")
                 else:
-                    print("⚠️ WARNING: File not created at expected path")
+                    print("[WARN] File not created at expected path")
             else:
-                print("⚠️ WARNING: pdflatex or conversion tools not available")
+                print("[WARN] pdflatex or conversion tools not available")
                 print("   Install: MiKTeX or TeX Live, and pdftocairo (Poppler)")
                 print("   This is expected if LaTeX toolchain is not installed")
                 
         except Exception as e:
-            print(f"⚠️ WARNING: Rendering failed: {e}")
+            print(f"[WARN] Rendering failed: {e}")
             print("   This is expected if LaTeX toolchain is not installed")
 
 
@@ -248,7 +248,7 @@ def test_mixed_figures():
     assert figures[1].img_path == "__LATEX_RENDER__", "Second should be LaTeX render"
     assert figures[1].latex_block is not None, "Second should have LaTeX block"
     
-    print("✅ PASSED: Mixed figure types handled correctly")
+    print("[PASS] Mixed figure types handled correctly")
 
 
 def run_all_tests():
@@ -274,10 +274,10 @@ def run_all_tests():
             test()
             passed += 1
         except AssertionError as e:
-            print(f"❌ FAILED: {e}")
+            print(f"[FAIL] {e}")
             failed += 1
         except Exception as e:
-            print(f"❌ ERROR: {e}")
+            print(f"[ERROR] {e}")
             failed += 1
     
     print("\n" + "="*80)

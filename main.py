@@ -28,7 +28,7 @@ from core import arxiv_validator
 
 def print_final_stats(logger, pipeline, processed_count, skipped_count, cache):
     print(f"\n{'='*80}")
-    print(f"📊 FINAL EXTRACTION SUMMARY")
+    print("[STATS] FINAL EXTRACTION SUMMARY")
     print(f"{'='*80}")
     
     print(f"\n🎯 PAPERS:")
@@ -38,7 +38,7 @@ def print_final_stats(logger, pipeline, processed_count, skipped_count, cache):
     if processed_count > 0:
         print(f"   Quantum percentage: {100*processed_count/(processed_count+skipped_count):.1f}%")
     
-    print(f"\n📸 EXTRACTION FUNNEL:")
+    print(f"\n[STATS] EXTRACTION FUNNEL:")
     print(f"   Total figures found: {pipeline.stats['total_figures_seen']}")
     if pipeline.stats['total_figures_seen'] > 0:
         papers_with_figures = pipeline.stats['papers_with_figures']
@@ -69,33 +69,33 @@ def main():
         return
     # Print configuration settings for tuning reference
     print(f"\n{'='*80}")
-    print(f"⚙️  PIPELINE CONFIGURATION")
+    print("[CONFIG] PIPELINE CONFIGURATION")
     print(f"{'='*80}")
-    print(f"📊 THRESHOLDS & LIMITS:")
+    print("[CONFIG] THRESHOLDS & LIMITS:")
     print(f"   MAX_IMAGES: {MAX_IMAGES}")
     print(f"   TOP_K_PER_PAPER: {TOP_K_PER_PAPER}")
     print(f"   SIMILARITY_THRESHOLD (TF-IDF gate): {SIMILARITY_THRESHOLD}")
 
     if USE_COMBINED_SCORE:
-        print(f"\n📊 SCORING MODE: COMBINED WEIGHTED")
+        print(f"\n[CONFIG] SCORING MODE: COMBINED WEIGHTED")
         print(f"   TF-IDF Weight: {TFIDF_WEIGHT}")
         print(f"   SBERT Weight: {SBERT_WEIGHT}")
         print(f"   Combined Threshold: {COMBINED_THRESHOLD}")
     else:
-        print(f"\n📊 SCORING MODE: CASCADE GATES")
+        print(f"\n[CONFIG] SCORING MODE: CASCADE GATES")
         print(f"   SBERT_MIN_SIM (SBERT gate): {SBERT_MIN_SIM}")
 
-    print(f"\n📊 TEXT PROCESSING:")
+    print(f"\n[CONFIG] TEXT PROCESSING:")
     print(f"   USE_STEMMING: {USE_STEMMING}")
     print(f"   USE_STOPWORDS: {USE_STOPWORDS}")
     print(f"   NORMALIZE_HYPHENS: {NORMALIZE_HYPHENS}")
 
-    print(f"\n📊 NEGATIVE PENALTY:")
+    print(f"\n[CONFIG] NEGATIVE PENALTY:")
     print(f"   USE_NEGATIVE_PENALTY: {USE_NEGATIVE_PENALTY}")
     if USE_NEGATIVE_PENALTY:
         print(f"   NEGATIVE_PENALTY_ALPHA: {NEGATIVE_PENALTY_ALPHA}")
 
-    print(f"\n📊 CUSTOM TF-IDF FEATURES:")
+    print(f"\n[CONFIG] CUSTOM TF-IDF FEATURES:")
     print(f"   USE_CUSTOM_TFIDF_FEATURES: {USE_CUSTOM_TFIDF_FEATURES}")
 
     print(f"{'='*80}\n")
@@ -162,7 +162,7 @@ def main():
 
         except KeyboardInterrupt:
             logger.warning(
-                "\n⚠️ Keyboard interrupt detected — saving results..."
+                "\n[WARN] Keyboard interrupt detected — saving results..."
             )
 
     # Save results (runs after normal completion OR keyboard interrupt)

@@ -27,7 +27,7 @@ def remove_transparency(im, bg_color=(255, 255, 255)):
 
 
 # ----------------------------------------------------------------------
-# PDF → PNG (PyMuPDF)
+# PDF -> PNG (PyMuPDF)
 # ----------------------------------------------------------------------
 def convert_pdf(path, out_dir):
     doc = fitz.open(path)
@@ -46,7 +46,7 @@ def convert_pdf(path, out_dir):
 
 
 # ----------------------------------------------------------------------
-# EPS → PNG (Ghostscript)
+# EPS -> PNG (Ghostscript)
 # ----------------------------------------------------------------------
 def convert_eps(path, out_dir):
     base = Path(path).stem
@@ -75,7 +75,7 @@ def convert_eps(path, out_dir):
 
 
 # ----------------------------------------------------------------------
-# Normal Images (JPG/JPEG/PNG) → PNG (Pillow)
+# Normal Images (JPG/JPEG/PNG) -> PNG (Pillow)
 # ----------------------------------------------------------------------
 def convert_image(path, out_dir):
     base = Path(path).stem
@@ -119,4 +119,4 @@ for file in tqdm(files, desc="Processing files"):
         print(f"Error processing {file.name}: {e}")
 
 
-print("\n✅ Conversion finished — all images are in:", OUT_DIR)
+print("\n[OK] Conversion finished — all images are in:", OUT_DIR)

@@ -48,7 +48,7 @@ class ExtractionPipeline:
     
     def initialize(self) -> bool:
         """Initialize the pipeline components."""
-        print("🚀 Initializing Quantum Circuit Image Extractor Pipeline")
+        print("[INIT] Initializing Quantum Circuit Image Extractor Pipeline")
 
         # Start fresh: remove contents of `circuit_images/` to avoid stale outputs
         ci = Path('circuit_images')
@@ -60,7 +60,7 @@ class ExtractionPipeline:
                     else:
                         p.unlink()
                 except Exception as e:
-                    print(f"⚠️ Failed to remove {p}: {e}")
+                    print(f"[WARN] Failed to remove {p}: {e}")
         else:
             ci.mkdir(parents=True, exist_ok=True)
 
@@ -101,7 +101,7 @@ class ExtractionPipeline:
         
         # # Test SBERT
         # if not self.sbert_reranker.test_implementation():
-        #     print("❌ SBERT test failed. Exiting.")
+        #     print("[ERROR] SBERT test failed. Exiting.")
         #     return False
         
         # Load SBERT model
@@ -111,21 +111,21 @@ class ExtractionPipeline:
             # Register the loaded SBERT model for quantum_problem classification
             try:
                 set_quantum_problem_model(self.sbert_reranker.model)
-                print("✅ Quantum-problem classifier enabled (SBERT model registered)")
+                print("[OK] Quantum-problem classifier enabled (SBERT model registered)")
             except Exception as e:
-                print(f"⚠️ Could not register quantum-problem classifier: {e}")
+                print(f"[WARN] Could not register quantum-problem classifier: {e}")
         except Exception as e:
-            print(f"❌ Failed to initialize SBERT: {e}")
+            print(f"[ERROR] Failed to initialize SBERT: {e}")
             return False
         
-        print("✅ Pipeline initialized successfully")
+        print("[OK] Pipeline initialized successfully")
         return True
     
     def process_paper(self, paper_id: str) -> Tuple[List[ExtractedImage], List[Figure]]:
         """Process a single paper."""
         self.stats['papers_checked'] += 1
         print(f"\n{'='*80}")
-        print(f"📄 PAPER: {paper_id}")
+        print(f"[PAPER] {paper_id}")
         print(f"{'='*80}")
         
         # Cache PDF paper as we process it
@@ -133,13 +133,13 @@ class ExtractionPipeline:
         
         src = self.image_extractor.download_source(paper_id)
         if not src:
-            print(f"❌ Failed to download source for {paper_id}")
+            print(f"[ERROR] Failed to download source for {paper_id}")
             return [], []
         
         try:
             tar = tarfile.open(fileobj=src, mode="r:gz")
         except Exception as e:
-            print(f"❌ Failed to open tar file for {paper_id}: {e}")
+            print(f"[ERROR] Failed to open tar file for {paper_id}: {e}")
             return [], []
         
         # Extract figures from LaTeX
@@ -253,7 +253,7 @@ class ExtractionPipeline:
                     else:
                         figures.extend(res)
                 except Exception as e:
-                    print(f"⚠️ Failed to parse {name}: {e}")
+                    print(f"[WARN] Failed to parse {name}: {e}")
         except KeyboardInterrupt:
             # Ensure tarfile is closed on user interrupt and re-raise to allow
             # program to terminate normally.
@@ -267,11 +267,11 @@ class ExtractionPipeline:
                 tar.close()
             except Exception:
                 pass
-            print(f"⚠️ Error iterating archive for {paper_id}: {e}")
+            print(f"[WARN] Error iterating archive for {paper_id}: {e}")
             return [], []
         
         if not figures:
-            print(f"⚠️ No figures found in LaTeX")
+            print(f"[WARN] No figures found in LaTeX")
             return [], []
 
         # Try to populate page numbers for records from this paper (best-effort)
@@ -280,7 +280,7 @@ class ExtractionPipeline:
             try:
                 updated = update_pages_in_jsonl(paper_id)
                 if updated:
-                    print(f"   ✓ Updated {updated} page numbers for {paper_id}")
+                    print(f"   [OK] Updated {updated} page numbers for {paper_id}")
             except Exception:
                 pass
         except Exception:
@@ -293,8 +293,8 @@ class ExtractionPipeline:
         
         self.stats['papers_with_figures'] += 1
         self.stats['total_figures_seen'] += len(figures)
-        print(f"\n🔍 GATE 0: FIGURE EXTRACTION")
-        print(f"   ✓ Figures extracted: {len(figures)}")
+        print(f"\n[GATE 0] FIGURE EXTRACTION")
+        print(f"   [OK] Figures extracted: {len(figures)}")
         
         # Apply TF-IDF filtering
         figures = self.tfidf_filter.filter_figures(figures)
@@ -306,10 +306,10 @@ class ExtractionPipeline:
         # Get TF-IDF accepted figures
         accepted_tfidf = self.tfidf_filter.get_accepted_figures(figures)
         
-        print(f"\n🔍 GATE 1: TF-IDF FILTER (threshold={SIMILARITY_THRESHOLD})")
-        print(f"   → Input: {len(figures)} figures")
-        print(f"   ✓ Passed: {len(accepted_tfidf)} figures")
-        print(f"   ✗ Rejected: {len(figures) - len(accepted_tfidf)} figures")
+        print(f"\n GATE 1: TF-IDF FILTER (threshold={SIMILARITY_THRESHOLD})")
+        print(f" Input: {len(figures)} figures")
+        print(f" Passed: {len(accepted_tfidf)} figures")
+        print(f" Rejected: {len(figures) - len(accepted_tfidf)} figures")
         
         if accepted_tfidf:
             self.stats['papers_with_candidates'] += 1
@@ -317,13 +317,13 @@ class ExtractionPipeline:
             tfidf_scores = [f.similarity for f in accepted_tfidf]
             raw_scores = [f.similarity_raw for f in accepted_tfidf]
             neg_counts = [f.negative_tokens for f in accepted_tfidf]
-            print(f"   📊 TF-IDF scores - Min: {min(tfidf_scores):.4f}, Max: {max(tfidf_scores):.4f}, Avg: {sum(tfidf_scores)/len(tfidf_scores):.4f}")
-            print(f"   📊 Raw scores - Min: {min(raw_scores):.4f}, Max: {max(raw_scores):.4f}")
-            print(f"   📊 Negative tokens - Min: {min(neg_counts)}, Max: {max(neg_counts)}, Avg: {sum(neg_counts)/len(neg_counts):.1f}")
+            print(f"   [STATS] TF-IDF scores - Min: {min(tfidf_scores):.4f}, Max: {max(tfidf_scores):.4f}, Avg: {sum(tfidf_scores)/len(tfidf_scores):.4f}")
+            print(f"   [STATS] Raw scores - Min: {min(raw_scores):.4f}, Max: {max(raw_scores):.4f}")
+            print(f"   [STATS] Negative tokens - Min: {min(neg_counts)}, Max: {max(neg_counts)}, Avg: {sum(neg_counts)/len(neg_counts):.1f}")
         
         # Limit pool for SBERT reranking
         accepted_tfidf = accepted_tfidf[:TOP_K_PER_PAPER * 3]
-        print(f"   → Limited to top {len(accepted_tfidf)} for SBERT reranking")
+        print(f"   -> Limited to top {len(accepted_tfidf)} for SBERT reranking")
         
         # Initialize accepted list
         accepted = []
@@ -332,11 +332,11 @@ class ExtractionPipeline:
         if accepted_tfidf:
             accepted_tfidf = self.sbert_reranker.rerank_figures(accepted_tfidf)
             
-            print(f"\n🔍 GATE 2: SBERT RERANKING")
-            print(f"   → Input: {len(accepted_tfidf)} figures")
+            print(f"\n GATE 2: SBERT RERANKING")
+            print(f" Input: {len(accepted_tfidf)} figures")
 
             sbert_scores = [f.sbert_sim for f in accepted_tfidf]
-            print(f"   📊 SBERT scores - Min: {min(sbert_scores):.4f}, Max: {max(sbert_scores):.4f}, Avg: {sum(sbert_scores)/len(sbert_scores):.4f}")
+            print(f"   [STATS] SBERT scores - Min: {min(sbert_scores):.4f}, Max: {max(sbert_scores):.4f}, Avg: {sum(sbert_scores)/len(sbert_scores):.4f}")
             
             # Compute combined scores
             if USE_COMBINED_SCORE:
@@ -357,9 +357,9 @@ class ExtractionPipeline:
                 accepted = [f for f in accepted_tfidf if f.combined_score >= COMBINED_THRESHOLD]
                 
                 combined_scores = [f.combined_score for f in accepted_tfidf]
-                print(f"\n🔍 GATE 3: COMBINED SCORE FILTER (threshold={COMBINED_THRESHOLD})")
+                print(f"\n GATE 3: COMBINED SCORE FILTER (threshold={COMBINED_THRESHOLD})")
                 print(f"   Weights: TF-IDF={TFIDF_WEIGHT}, SBERT={SBERT_WEIGHT}")
-                print(f"   📊 Combined scores - Min: {min(combined_scores):.4f}, Max: {max(combined_scores):.4f}, Avg: {sum(combined_scores)/len(combined_scores):.4f}")
+                print(f"   [STATS] Combined scores - Min: {min(combined_scores):.4f}, Max: {max(combined_scores):.4f}, Avg: {sum(combined_scores)/len(combined_scores):.4f}")
             else:
                 # Legacy cascade approach: sort by SBERT only
                 accepted_tfidf = sorted(
@@ -370,14 +370,14 @@ class ExtractionPipeline:
                 # Final selection: filter by SBERT threshold
                 accepted = [f for f in accepted_tfidf if f.sbert_sim >= SBERT_MIN_SIM]
                 
-                print(f"\n🔍 GATE 3: SBERT FILTER (threshold={SBERT_MIN_SIM})")
+                print(f"\n[GATE 3] SBERT FILTER (threshold={SBERT_MIN_SIM})")
             
             # Common pass/reject logging for both modes
-            print(f"   ✓ Passed: {len(accepted)} figures")
-            print(f"   ✗ Rejected: {len(accepted_tfidf) - len(accepted)} figures")
+            print(f" Passed: {len(accepted)} figures")
+            print(f" Rejected: {len(accepted_tfidf) - len(accepted)} figures")
 
             accepted = accepted[:TOP_K_PER_PAPER]
-            print(f"   → Limited to top {TOP_K_PER_PAPER} for final output")
+            print(f"   Limited to top {TOP_K_PER_PAPER} for final output")
         
         # Mark selected figures
         for f in accepted:
@@ -386,10 +386,10 @@ class ExtractionPipeline:
         # Extract images
         extracted = self.image_extractor.extract_images(tar, accepted, paper_id)
         
-        print(f"\n🔍 GATE 4: IMAGE EXTRACTION")
-        print(f"   → Input: {len(accepted)} figures")
-        print(f"   ✓ Successfully extracted: {len(extracted)} images")
-        print(f"   ✗ Failed: {len(accepted) - len(extracted)} images")
+        print(f"\n[GATE 4] IMAGE EXTRACTION")
+        print(f"   -> Input: {len(accepted)} figures")
+        print(f"   [OK] Successfully extracted: {len(extracted)} images")
+        print(f"   [FAIL] Failed: {len(accepted) - len(extracted)} images")
         
         if extracted:
             self.stats['papers_with_extracted'] += 1
@@ -397,7 +397,7 @@ class ExtractionPipeline:
         self.stats['total_saved'] += len(extracted)
         self.all_extracted.extend(extracted)
         
-        print(f"\n📈 CUMULATIVE STATS")
+        print(f"\n[STATS] CUMULATIVE STATS")
         print(f"   Total papers processed: {self.stats['papers_checked']}")
         print(f"   Total images saved: {self.stats['total_saved']}/{MAX_IMAGES}")
         
@@ -481,6 +481,6 @@ class ExtractionPipeline:
         
         if extracted:
             for img in extracted[:3]:  # Show first 3
-                print(f"    ✓ {img.img_name}")
+                print(f"    [OK] {img.img_name}")
             if len(extracted) > 3:
                 print(f"    ... and {len(extracted) - 3} more")

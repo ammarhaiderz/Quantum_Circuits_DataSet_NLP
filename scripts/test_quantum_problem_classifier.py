@@ -57,7 +57,7 @@ def main():
     apply_classification(records, model, label_keys, label_embeds)
     print("\napply_classification results:")
     for r in records:
-        print(f"  → {r.get('quantum_problem')}")
+        print(f"  -> {r.get('quantum_problem')}")
 
     # Optional: show top similarity for first sample
     query_text = " ".join(samples[0])

@@ -117,13 +117,13 @@ class FileUtils:
         # Save summary statistics
         summary_df = pd.DataFrame(summary_data)
         summary_df.to_csv(summary_path, index=False, float_format='%.4f')
-        print(f"📊 Saved statistics summary to: {summary_path}")
+        print(f"[STATS] Saved statistics summary to: {summary_path}")
         
         # Save threshold analysis
         threshold_path = os.path.join(OUTPUT_DIR, "threshold_analysis.csv")
         threshold_df = pd.DataFrame(threshold_data)
         threshold_df.to_csv(threshold_path, index=False, float_format='%.4f')
-        print(f"📈 Saved threshold analysis to: {threshold_path}")
+        print(f"[STATS] Saved threshold analysis to: {threshold_path}")
     
     @staticmethod
     def get_safe_filename(paper_id: str, idx: int, original_name: str) -> str:

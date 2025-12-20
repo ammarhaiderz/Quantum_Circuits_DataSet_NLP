@@ -43,7 +43,7 @@ def extract_all_images(doc, out_dir):
 
             pix = fitz.Pixmap(doc, xref)
 
-            # Convert CMYK / others → RGB
+            # Convert CMYK / others -> RGB
             if pix.n > 4:
                 pix = fitz.Pixmap(fitz.csRGB, pix)
 
@@ -58,7 +58,7 @@ def extract_all_images(doc, out_dir):
             pix.save(out_path)
             count += 1
 
-    print(f"    ✔ {count} images extracted")
+    print(f"    [OK] {count} images extracted")
 
 
 # =========================
@@ -88,7 +88,7 @@ def extract_all_drawings(doc, out_dir):
         pix.save(out_path)
         count += 1
 
-    print(f"    ✔ {count} drawing pages rendered")
+    print(f"    [OK] {count} drawing pages rendered")
 
 
 # =========================
@@ -97,7 +97,7 @@ def extract_all_drawings(doc, out_dir):
 
 def main():
     if not Path(PDF_PATH).exists():
-        print(f"❌ PDF not found: {PDF_PATH}")
+        print(f"[ERROR] PDF not found: {PDF_PATH}")
         sys.exit(1)
 
     ensure_dir(OUT_DIR)
@@ -107,8 +107,8 @@ def main():
     extract_all_images(doc, OUT_DIR)
     extract_all_drawings(doc, OUT_DIR)
 
-    print("\n✅ Done")
-    print(f"📁 Output directory: {OUT_DIR}")
+    print("\n[OK] Done")
+    print(f"[INFO] Output directory: {OUT_DIR}")
 
 
 if __name__ == "__main__":

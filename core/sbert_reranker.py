@@ -22,14 +22,14 @@ class SbertReranker:
     
     def load_model(self) -> SentenceTransformer:
         """Load Sentence-BERT model."""
-        print("📦 Loading Sentence-BERT model...")
+        print("[INFO] Loading Sentence-BERT model...")
         try:
             self.model = SentenceTransformer(self.model_name)
             test_embed = self.model.encode("test", convert_to_tensor=True)
-            print(f"✅ SBERT model loaded (embedding dim: {test_embed.shape[0]})")
+            print(f"[OK] SBERT model loaded (embedding dim: {test_embed.shape[0]})")
             return self.model
         except Exception as e:
-            print(f"❌ Failed to load SBERT model: {e}")
+            print(f"[ERROR] Failed to load SBERT model: {e}")
             raise
     
     def prepare_query_embeddings(self) -> Dict[str, torch.Tensor]:
@@ -43,16 +43,16 @@ class SbertReranker:
             lines = [line.strip() for line in query_text.strip().split('\n') if line.strip()]
             
             if not lines:
-                print(f"⚠️ Warning: Empty query set for {name}")
+                print(f"[WARN] Empty query set for {name}")
                 continue
             
             try:
                 # Encode each line separately (no averaging)
                 line_embeds = self.model.encode(lines, convert_to_tensor=True, normalize_embeddings=True)
                 self.query_embeds[name] = line_embeds  # Store all line embeddings
-                print(f"✅ Encoded query set '{name}' with {len(lines)} individual lines")
+                print(f"[OK] Encoded query set '{name}' with {len(lines)} individual lines")
             except Exception as e:
-                print(f"❌ Failed to encode query set '{name}': {e}")
+                print(f"[ERROR] Failed to encode query set '{name}': {e}")
                 combined_text = " ".join(lines)
                 single_embed = self.model.encode(combined_text, convert_to_tensor=True, normalize_embeddings=True)
                 self.query_embeds[name] = single_embed.unsqueeze(0)  # Make it a list of 1
@@ -84,12 +84,12 @@ class SbertReranker:
         # Filter out empty captions
         valid_indices = [i for i, cap in enumerate(captions) if cap.strip()]
         if not valid_indices:
-            print("⚠️ No valid captions for SBERT")
+            print("[WARN] No valid captions for SBERT")
             return figures
         
         valid_captions = [captions[i] for i in valid_indices]
         
-        print(f"🔍 SBERT processing {len(valid_captions)}/{len(captions)} non-empty captions")
+        print(f"[INFO] SBERT processing {len(valid_captions)}/{len(captions)} non-empty captions")
         print(f"   Sample caption: '{valid_captions[0][:80]}...'")
         
         try:
@@ -133,15 +133,15 @@ class SbertReranker:
                 max_score = max(f.sbert_sim for f in scored_figures)
                 print(f"   SBERT scores: max={max_score:.3f}, {len(scored_figures)} non-zero scores")
             else:
-                print(f"   ⚠️ WARNING: All SBERT scores are 0.0!")
+                print(f"   [WARN] All SBERT scores are 0.0!")
             
             # Clear GPU memory
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
                 
         except Exception as e:
-            print(f"⚠️ SBERT reranking failed: {e}")
-            print("⚠️ Continuing with TF-IDF scores only")
+            print(f"[WARN] SBERT reranking failed: {e}")
+            print("[WARN] Continuing with TF-IDF scores only")
         
         return figures
     
@@ -160,7 +160,7 @@ class SbertReranker:
     
     def test_implementation(self) -> bool:
         """Test SBERT implementation."""
-        print("\n🧪 Testing SBERT implementation...")
+        print("\n[TEST] Testing SBERT implementation...")
         
         try:
             model = SentenceTransformer(self.model_name)
@@ -183,8 +183,8 @@ class SbertReranker:
                     sim = similarities[i][j].item()
                     print(f"  Similarity to '{query}': {sim:.4f}")
             
-            print(f"\n✅ Score range: {similarities.min().item():.4f} to {similarities.max().item():.4f}")
-            print(f"🔧 SBERT_MIN_SIM = {SBERT_MIN_SIM} should work well")
+            print(f"\n[OK] Score range: {similarities.min().item():.4f} to {similarities.max().item():.4f}")
+            print(f"[INFO] SBERT_MIN_SIM = {SBERT_MIN_SIM} should work well")
             
             del query_embeds, caption_embeds, similarities
             if torch.cuda.is_available():
@@ -193,5 +193,5 @@ class SbertReranker:
             return True
             
         except Exception as e:
-            print(f"❌ SBERT test failed: {e}")
+            print(f"[ERROR] SBERT test failed: {e}")
             return False
