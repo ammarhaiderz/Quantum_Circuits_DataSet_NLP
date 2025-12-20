@@ -1,12 +1,16 @@
 # requirements_base.txt
 pandas
 numpy
+scipy
 requests
 scikit-learn
 nltk
 sentence-transformers
+Pillow
 pylatexenc
 tqdm
+ghostscript
+pdflatex
 
 torch
 torchvision
