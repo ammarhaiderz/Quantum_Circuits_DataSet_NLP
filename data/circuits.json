@@ -1,5 +1,5 @@
 {
-  "2509.13247__2509.13247_p1_221364ed016a64f3__1766248148241.png": {
+  "2509.13247__2509.13247_p1_221364ed016a64f3__1766249373283.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 7,
     "page": 8,
@@ -29,7 +29,7 @@
       ]
     ]
   },
-  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766248150200.png": {
+  "2509.13247__2509.13247_p1_d51f40897f27a89e__1766249375090.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 4,
     "page": 6,
@@ -66,7 +66,7 @@
       ]
     ]
   },
-  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766248152079.png": {
+  "2509.13247__2509.13247_p1_dc0e30eae962d4fc__1766249376997.png": {
     "arxiv_id": "2509.13247",
     "figure_number": 15,
     "page": 14,
@@ -98,7 +98,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766248174368.png": {
+  "2509.04761__2509.04761_p1_d08a1a6349ff82cb__1766249395464.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -130,7 +130,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766248174429.png": {
+  "2509.04761__2509.04761_p2_644a5d19cdb11b92__1766249395521.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -163,7 +163,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766248174530.png": {
+  "2509.04761__2509.04761_p3_9870cc02c8f5d321__1766249395605.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -196,7 +196,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766248174632.png": {
+  "2509.04761__2509.04761_p4_55dd162a9f77429e__1766249395694.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -229,7 +229,7 @@
       ]
     ]
   },
-  "2509.04761__2509.04761_p5_48127125a9bc080b__1766248174713.png": {
+  "2509.04761__2509.04761_p5_48127125a9bc080b__1766249395765.png": {
     "arxiv_id": "2509.04761",
     "figure_number": 1,
     "page": 2,
@@ -261,7 +261,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_b6756454e84f6705__1766248189227.png": {
+  "2407.04826__2407.04826_p1_b6756454e84f6705__1766249403676.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -271,7 +271,7 @@
     "quantum_problem": "MCT gate library",
     "descriptions": [
       "MCT gates with positive condition (closed ci e) and negative condition (open ci e)",
-      ": MCT gates with positive condition (closed ci e) and negative condition (open ci e) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
+      ": MCT gates with positive condition (closed circle) and negative condition (open circle) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
     ],
     "text_positions": [
       [
@@ -288,7 +288,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766248189298.png": {
+  "2407.04826__2407.04826_p2_9beb48370dfa0d8d__1766249403720.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -298,7 +298,7 @@
     "quantum_problem": "MCT gate library",
     "descriptions": [
       "MCT gates with positive condition (closed ci e) and negative condition (open ci e)",
-      ": MCT gates with positive condition (closed ci e) and negative condition (open ci e) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
+      ": MCT gates with positive condition (closed circle) and negative condition (open circle) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
     ],
     "text_positions": [
       [
@@ -315,7 +315,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766248189350.png": {
+  "2407.04826__2407.04826_p3_e83dab18fc334bce__1766249403764.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 1,
     "page": 5,
@@ -325,7 +325,7 @@
     "quantum_problem": "MCT gate library",
     "descriptions": [
       "MCT gates with positive condition (closed ci e) and negative condition (open ci e)",
-      ": MCT gates with positive condition (closed ci e) and negative condition (open ci e) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
+      ": MCT gates with positive condition (closed circle) and negative condition (open circle) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
     ],
     "text_positions": [
       [
@@ -342,14 +342,14 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766248197772.png": {
+  "2407.04826__2407.04826_p1_e2e5d84788ea45b1__1766249408211.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
     "gates": [
       "X"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "NCV quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
@@ -370,14 +370,14 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766248197807.png": {
+  "2407.04826__2407.04826_p2_7fe93859f7b8b842__1766249408240.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
     "gates": [
       "CNOT"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "NCV quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
@@ -398,14 +398,14 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766248197861.png": {
+  "2407.04826__2407.04826_p3_e6f5bad8c682f20d__1766249408286.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
     "gates": [
       "V"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "NCV quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
@@ -426,14 +426,14 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766248197914.png": {
+  "2407.04826__2407.04826_p4_535f90adfe0a735b__1766249408325.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 2,
     "page": 5,
     "gates": [
       "V_DG"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "NCV quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
@@ -454,18 +454,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_bc58770175544b8c__1766248213731.png": {
+  "2407.04826__2407.04826_p1_bc58770175544b8c__1766249416918.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
     "gates": [
       "X"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4,7]. There are many realizations of decomp"
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
     ],
     "text_positions": [
       [
@@ -482,18 +482,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766248213765.png": {
+  "2407.04826__2407.04826_p2_e98bb0c579c6e5a0__1766249416944.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
     "gates": [
       "T_DG"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4,7]. There are many realizations of decomp"
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
     ],
     "text_positions": [
       [
@@ -510,18 +510,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766248213810.png": {
+  "2407.04826__2407.04826_p3_7fa8b60907427da6__1766249416987.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
     "gates": [
       "T"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4,7]. There are many realizations of decomp"
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
     ],
     "text_positions": [
       [
@@ -538,18 +538,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766248213850.png": {
+  "2407.04826__2407.04826_p4_80b5876a56199bc5__1766249417026.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
     "gates": [
       "H"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4,7]. There are many realizations of decomp"
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
     ],
     "text_positions": [
       [
@@ -566,18 +566,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766248213892.png": {
+  "2407.04826__2407.04826_p5_a6d2eb0bc2260d9a__1766249417068.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
     "gates": [
       "H_DG"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4,7]. There are many realizations of decomp"
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
     ],
     "text_positions": [
       [
@@ -594,18 +594,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766248213940.png": {
+  "2407.04826__2407.04826_p6_dae0b7fa7b7c022c__1766249417112.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
     "gates": [
       "S"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4,7]. There are many realizations of decomp"
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
     ],
     "text_positions": [
       [
@@ -622,18 +622,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p7_b698de4b847b9673__1766248213983.png": {
+  "2407.04826__2407.04826_p7_b698de4b847b9673__1766249417153.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
     "gates": [
       "S_DG"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4,7]. There are many realizations of decomp"
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
     ],
     "text_positions": [
       [
@@ -650,18 +650,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766248214026.png": {
+  "2407.04826__2407.04826_p8_56e2044fb99a4334__1766249417189.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 3,
     "page": 5,
     "gates": [
       "CNOT"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Quantum gate library illustration",
     "descriptions": [
       "Clifford +T quantum gate library",
       "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
-      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4,7]. There are many realizations of decomp"
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
     ],
     "text_positions": [
       [
@@ -678,7 +678,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_349982884b4d4708__1766248223913.png": {
+  "2407.04826__2407.04826_p1_349982884b4d4708__1766249422737.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 4,
     "page": 5,
@@ -690,8 +690,9 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
-      "and Fig. 5 respectively. c 1 • • • c 2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c 1 • • c 2 V V + V t′ Figure 4: Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qu",
-      ": Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qubits. ¯c 1 ¯c 2 t V V + V V + V V + V + V V + ¯c 1 ¯c 2 V V + V t′ Figure 5: Decomposition of CNOT(¯c 1, ¯c 2, t) with negative condi"
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
     ],
     "text_positions": [
       [
@@ -712,7 +713,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_787f76d104d6fb82__1766248223973.png": {
+  "2407.04826__2407.04826_p2_787f76d104d6fb82__1766249422793.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 4,
     "page": 5,
@@ -724,8 +725,9 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
-      "and Fig. 5 respectively. c 1 • • • c 2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c 1 • • c 2 V V + V t′ Figure 4: Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qu",
-      ": Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qubits. ¯c 1 ¯c 2 t V V + V V + V V + V + V V + ¯c 1 ¯c 2 V V + V t′ Figure 5: Decomposition of CNOT(¯c 1, ¯c 2, t) with negative condi"
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
     ],
     "text_positions": [
       [
@@ -746,7 +748,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_df01852945231c65__1766248224036.png": {
+  "2407.04826__2407.04826_p3_df01852945231c65__1766249422847.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 4,
     "page": 5,
@@ -758,8 +760,9 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
-      "and Fig. 5 respectively. c 1 • • • c 2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c 1 • • c 2 V V + V t′ Figure 4: Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qu",
-      ": Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qubits. ¯c 1 ¯c 2 t V V + V V + V V + V + V V + ¯c 1 ¯c 2 V V + V t′ Figure 5: Decomposition of CNOT(¯c 1, ¯c 2, t) with negative condi"
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
     ],
     "text_positions": [
       [
@@ -780,7 +783,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_01768c686acefd8b__1766248224101.png": {
+  "2407.04826__2407.04826_p4_01768c686acefd8b__1766249422902.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 4,
     "page": 5,
@@ -792,8 +795,9 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
-      "and Fig. 5 respectively. c 1 • • • c 2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c 1 • • c 2 V V + V t′ Figure 4: Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qu",
-      ": Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qubits. ¯c 1 ¯c 2 t V V + V V + V V + V + V V + ¯c 1 ¯c 2 V V + V t′ Figure 5: Decomposition of CNOT(¯c 1, ¯c 2, t) with negative condi"
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
     ],
     "text_positions": [
       [
@@ -814,7 +818,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_15df5acee9859e41__1766248233277.png": {
+  "2407.04826__2407.04826_p1_15df5acee9859e41__1766249427979.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 5,
     "page": 5,
@@ -827,8 +831,8 @@
     "descriptions": [
       "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
       ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1",
-      "respectively. c 1 • • • c 2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c 1 • • c 2 V V + V t′ Figure 4: Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qubits. ¯c 1 ¯",
-      ": Decomposition of CNOT(¯c 1, ¯c 2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
+      "respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯",
+      ": Decomposition of CNOT(¯c1, ¯c2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
     ],
     "text_positions": [
       [
@@ -849,7 +853,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_d2670275e7081542__1766248233347.png": {
+  "2407.04826__2407.04826_p2_d2670275e7081542__1766249428029.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 5,
     "page": 5,
@@ -862,8 +866,8 @@
     "descriptions": [
       "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
       ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1",
-      "respectively. c 1 • • • c 2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c 1 • • c 2 V V + V t′ Figure 4: Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qubits. ¯c 1 ¯",
-      ": Decomposition of CNOT(¯c 1, ¯c 2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
+      "respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯",
+      ": Decomposition of CNOT(¯c1, ¯c2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
     ],
     "text_positions": [
       [
@@ -884,7 +888,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_96b201becd63fe56__1766248233415.png": {
+  "2407.04826__2407.04826_p3_96b201becd63fe56__1766249428080.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 5,
     "page": 5,
@@ -897,8 +901,8 @@
     "descriptions": [
       "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
       ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1",
-      "respectively. c 1 • • • c 2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c 1 • • c 2 V V + V t′ Figure 4: Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qubits. ¯c 1 ¯",
-      ": Decomposition of CNOT(¯c 1, ¯c 2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
+      "respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯",
+      ": Decomposition of CNOT(¯c1, ¯c2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
     ],
     "text_positions": [
       [
@@ -919,7 +923,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p4_eb8e7aa6d5bf6ecb__1766248233465.png": {
+  "2407.04826__2407.04826_p4_eb8e7aa6d5bf6ecb__1766249428124.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 5,
     "page": 5,
@@ -932,8 +936,8 @@
     "descriptions": [
       "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
       ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1",
-      "respectively. c 1 • • • c 2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c 1 • • c 2 V V + V t′ Figure 4: Decomposition of CNOT(c 1, c 2, t) with positive conditions on control qubits. ¯c 1 ¯",
-      ": Decomposition of CNOT(¯c 1, ¯c 2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
+      "respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯",
+      ": Decomposition of CNOT(¯c1, ¯c2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
     ],
     "text_positions": [
       [
@@ -954,7 +958,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_45afa3233b7781a5__1766248240565.png": {
+  "2407.04826__2407.04826_p1_45afa3233b7781a5__1766249432127.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 6,
     "page": 6,
@@ -962,11 +966,11 @@
       "MCX_4",
       "MCX_3"
     ],
-    "quantum_problem": "Reversible circuit synthesis",
+    "quantum_problem": "Clifford+T gate library",
     "descriptions": [
       "Common-Target Rule (CTR)",
       "Synthesizing a reversible Boolean circuit with minimal quantum cost depe",
-      "x 1 • x 2 • • x 3 • • x 4 • • 0 ≡ • • • • • • • ≡ x 1 • x 2 • x 3 • x 4 f = ¯x 1 x 2 x 3 x 4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
+      "x1 • x2 • • x3 • • x4 • • 0 ≡ • • • • • • • ≡ x1 • x2 • x3 • x4 f = ¯x1x2x3x4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
       ": Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantum cost de- pends on the form and the number of terms of the corresponding Boolean funct"
     ],
     "text_positions": [
@@ -988,7 +992,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_5e972e7d667e3cdd__1766248240626.png": {
+  "2407.04826__2407.04826_p2_5e972e7d667e3cdd__1766249432179.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 6,
     "page": 6,
@@ -996,11 +1000,11 @@
       "MCX_3",
       "MCX_4"
     ],
-    "quantum_problem": "Reversible circuit synthesis",
+    "quantum_problem": "Clifford+T gate library",
     "descriptions": [
       "Common-Target Rule (CTR)",
       "Synthesizing a reversible Boolean circuit with minimal quantum cost depe",
-      "x 1 • x 2 • • x 3 • • x 4 • • 0 ≡ • • • • • • • ≡ x 1 • x 2 • x 3 • x 4 f = ¯x 1 x 2 x 3 x 4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
+      "x1 • x2 • • x3 • • x4 • • 0 ≡ • • • • • • • ≡ x1 • x2 • x3 • x4 f = ¯x1x2x3x4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
       ": Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantum cost de- pends on the form and the number of terms of the corresponding Boolean funct"
     ],
     "text_positions": [
@@ -1022,18 +1026,18 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_e4107cba88e0580d__1766248240682.png": {
+  "2407.04826__2407.04826_p3_e4107cba88e0580d__1766249432225.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 6,
     "page": 6,
     "gates": [
       "MCX_4"
     ],
-    "quantum_problem": "Reversible circuit synthesis",
+    "quantum_problem": "Clifford+T gate library",
     "descriptions": [
       "Common-Target Rule (CTR)",
       "Synthesizing a reversible Boolean circuit with minimal quantum cost depe",
-      "x 1 • x 2 • • x 3 • • x 4 • • 0 ≡ • • • • • • • ≡ x 1 • x 2 • x 3 • x 4 f = ¯x 1 x 2 x 3 x 4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
+      "x1 • x2 • • x3 • • x4 • • 0 ≡ • • • • • • • ≡ x1 • x2 • x3 • x4 f = ¯x1x2x3x4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
       ": Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantum cost de- pends on the form and the number of terms of the corresponding Boolean funct"
     ],
     "text_positions": [
@@ -1055,7 +1059,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_e20a2224fd36eece__1766248243611.png": {
+  "2407.04826__2407.04826_p1_e20a2224fd36eece__1766249433868.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 7,
     "page": 7,
@@ -1065,12 +1069,12 @@
       "TOFFOLI",
       "X"
     ],
-    "quantum_problem": "Quantum compilation",
+    "quantum_problem": "MCT gate library",
     "descriptions": [
       "The synthesized quantum circuit using the direct method of the Boolean function in Eq.( )",
       "0 CNOT(C; t)$ gate with control qubits of positive conditions for each product term of the Boolean fu",
-      ". f(x 1, x 2, x 3, x 4) = x 1 x 2 x 3 x 4 ⊕¯x 1 x 2 x 4 ⊕¯x 2 x 3 x 4 ⊕x 3 x 4 ⊕1. (3) x 1 • x 1 x 2 • • x 2 x 3 • • • x 3 x 4 • • • • x 4 0 f Figure 7: The synthesized quantum circuit using the direct method [2 8] of the Boolean fun",
-      ": The synthesized quantum circuit using the direct method [2 8] of the Boolean function in Eq.(3) 7"
+      ". f(x1, x2, x3, x4) = x1x2x3x4 ⊕¯x1x2x4 ⊕¯x2x3x4 ⊕x3x4 ⊕1. (3) x1 • x1 x2 • • x2 x3 • • • x3 x4 • • • • x4 0 f Figure 7: The synthesized quantum circuit using the direct method [28] of the Boolean fun",
+      ": The synthesized quantum circuit using the direct method [28] of the Boolean function in Eq.(3) 7"
     ],
     "text_positions": [
       [
@@ -1091,7 +1095,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_8925e40534e8b75c__1766248250268.png": {
+  "2407.04826__2407.04826_p1_8925e40534e8b75c__1766249437508.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -1103,8 +1107,8 @@
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
       "Reversible circuit of f 1 where (a) represents f 1 in Eq.( ), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
-      "4 1 vs using the proposed algorithm. In Table ta",
-      ": Reversible circuit of f 1 where (a) represents f 1 in Eq.(6), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remo"
+      "41 vs using the proposed algorithm. In Table ta",
+      ": Reversible circuit of f1 where (a) represents f1 in Eq.(6), (b) represents f1 after decomposing the first gate without remove any gate and (c) represents f1 after decomposing the first gate and remo"
     ],
     "text_positions": [
       [
@@ -1121,7 +1125,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_435f93dd67d152ee__1766248250341.png": {
+  "2407.04826__2407.04826_p2_435f93dd67d152ee__1766249437561.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -1133,8 +1137,8 @@
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
       "Reversible circuit of f 1 where (a) represents f 1 in Eq.( ), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
-      "4 1 vs using the proposed algorithm. In Table ta",
-      ": Reversible circuit of f 1 where (a) represents f 1 in Eq.(6), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remo"
+      "41 vs using the proposed algorithm. In Table ta",
+      ": Reversible circuit of f1 where (a) represents f1 in Eq.(6), (b) represents f1 after decomposing the first gate without remove any gate and (c) represents f1 after decomposing the first gate and remo"
     ],
     "text_positions": [
       [
@@ -1151,7 +1155,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_36deffd1a100709b__1766248250418.png": {
+  "2407.04826__2407.04826_p3_36deffd1a100709b__1766249437619.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -1163,8 +1167,8 @@
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
       "Reversible circuit of f 1 where (a) represents f 1 in Eq.( ), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remove the last gate that has no effect on the result of f 1 where g is a garbage qubit with QC=4 2.",
-      "4 1 vs using the proposed algorithm. In Table ta",
-      ": Reversible circuit of f 1 where (a) represents f 1 in Eq.(6), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remo"
+      "41 vs using the proposed algorithm. In Table ta",
+      ": Reversible circuit of f1 where (a) represents f1 in Eq.(6), (b) represents f1 after decomposing the first gate without remove any gate and (c) represents f1 after decomposing the first gate and remo"
     ],
     "text_positions": [
       [
@@ -1181,7 +1185,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_7ad6a73f493bcad6__1766248258403.png": {
+  "2407.04826__2407.04826_p1_7ad6a73f493bcad6__1766249441646.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -1193,8 +1197,8 @@
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
       "Reversible circuit of f 2 where (a) represents f 2 in Eq.( ), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
-      "0 1 em",
-      ": Reversible circuit of f 1 where (a) represents f 1 in Eq.(6), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remo"
+      "01em",
+      ": Reversible circuit of f1 where (a) represents f1 in Eq.(6), (b) represents f1 after decomposing the first gate without remove any gate and (c) represents f1 after decomposing the first gate and remo"
     ],
     "text_positions": [
       [
@@ -1211,7 +1215,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p2_3230d0ee612c9123__1766248258486.png": {
+  "2407.04826__2407.04826_p2_3230d0ee612c9123__1766249441705.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -1223,8 +1227,8 @@
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
       "Reversible circuit of f 2 where (a) represents f 2 in Eq.( ), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
-      "0 1 em",
-      ": Reversible circuit of f 1 where (a) represents f 1 in Eq.(6), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remo"
+      "01em",
+      ": Reversible circuit of f1 where (a) represents f1 in Eq.(6), (b) represents f1 after decomposing the first gate without remove any gate and (c) represents f1 after decomposing the first gate and remo"
     ],
     "text_positions": [
       [
@@ -1241,7 +1245,7 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p3_32ca383f5d4d2532__1766248258570.png": {
+  "2407.04826__2407.04826_p3_32ca383f5d4d2532__1766249441762.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 8,
     "page": 12,
@@ -1253,8 +1257,8 @@
     "quantum_problem": "Garbage-output reduction",
     "descriptions": [
       "Reversible circuit of f 2 where (a) represents f 2 in Eq.( ), (b) represents f 2 after decomposing the last gate without removing any gate and (c) represents f 2 after decomposing the last gate and removing the last gate that has no effect on the result of f 2 where g is a garbage qubit with QC=3 0.",
-      "0 1 em",
-      ": Reversible circuit of f 1 where (a) represents f 1 in Eq.(6), (b) represents f 1 after decomposing the first gate without remove any gate and (c) represents f 1 after decomposing the first gate and remo"
+      "01em",
+      ": Reversible circuit of f1 where (a) represents f1 in Eq.(6), (b) represents f1 after decomposing the first gate without remove any gate and (c) represents f1 after decomposing the first gate and remo"
     ],
     "text_positions": [
       [
@@ -1271,1935 +1275,74 @@
       ]
     ]
   },
-  "2407.04826__2407.04826_p1_6df15b86d4a17bc6__1766248274978.png": {
+  "2407.04826__2407.04826_p1_6df15b86d4a17bc6__1766249451592.png": {
     "arxiv_id": "2407.04826",
     "figure_number": 10,
     "page": 15,
-    "gates": [
-      "CNOT"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p2_7e986fca9394d5eb__1766248275010.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [
-      "V"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p3_b90c5becb1ad1666__1766248275045.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [
-      "V_DG"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p4_9a894e204d75442c__1766248275086.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [
-      "V"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p5_2a3e51967b1311ca__1766248275124.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [
-      "V_DG",
-      "CNOT"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p6_33fe17306d39bc31__1766248275167.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [
-      "CNOT",
-      "V_DG"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p7_25a6774e014fd879__1766248275206.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [
-      "V_DG"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p8_ca3203ad15956ac1__1766248275244.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [
-      "V",
-      "CNOT"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p9_302fdbf76d14257c__1766248275283.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [
-      "CNOT",
-      "V"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Merge Rules",
-      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
-      ": Merge Rules Simplification Rule 5 For any two NCV gates g 1(c 1, t 1) and g 2(c 2, t 2) where c 1, c 2, t 1 and t 2 are the two controls and targets of g 1 and g 2 respec- tively, if c 1 ̸= t 2 and t 2 ̸= c 2, then"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        95,
-        106
-      ],
-      [
-        84,
-        93
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p1_39652ed36e5f17f8__1766248279792.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 11,
-    "page": 15,
-    "gates": [
-      "CNOT"
-    ],
-    "quantum_problem": "Quantum Approximate Optimization Algorithm",
-    "descriptions": [
-      "Delete Rule",
-      "s fig . For any two gates and where and are the two controls and targets of and $g",
-      ": Delete Rule 5 Experimental Results The results of the proposed optimization algorithms have been compared with the results of RevLib [2 5], the genetic algorithm GA in [2 2], the reorder method in [3]"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        361,
-        372
-      ],
-      [
-        350,
-        359
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p2_72b7a783533cad4d__1766248279829.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 11,
-    "page": 15,
-    "gates": [
-      "V",
-      "V_DG"
-    ],
-    "quantum_problem": "Quantum Approximate Optimization Algorithm",
-    "descriptions": [
-      "Delete Rule",
-      "s fig . For any two gates and where and are the two controls and targets of and $g",
-      ": Delete Rule 5 Experimental Results The results of the proposed optimization algorithms have been compared with the results of RevLib [2 5], the genetic algorithm GA in [2 2], the reorder method in [3]"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        361,
-        372
-      ],
-      [
-        350,
-        359
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p3_579550cbc1cca90c__1766248279871.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 11,
-    "page": 15,
-    "gates": [
-      "V_DG",
-      "V"
-    ],
-    "quantum_problem": "Quantum Approximate Optimization Algorithm",
-    "descriptions": [
-      "Delete Rule",
-      "s fig . For any two gates and where and are the two controls and targets of and $g",
-      ": Delete Rule 5 Experimental Results The results of the proposed optimization algorithms have been compared with the results of RevLib [2 5], the genetic algorithm GA in [2 2], the reorder method in [3]"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        361,
-        372
-      ],
-      [
-        350,
-        359
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p1_f9244f2a4287feec__1766248281581.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 14,
-    "page": 21,
-    "gates": [
-      "CNOT",
-      "MCX_4",
-      "MCX_3",
-      "TOFFOLI"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "the 4 gt 4 2 0 quantum circuit after a ying the reorder method",
-      "According to , the reorder method factorizes the reversible Boolean function using the factorization algorithm and then a ies two stages on the reversible Boo",
-      ": the 4 gt 4 2 0 quantum circuit after a ying the reorder method [3] 2. The dterm for (x 2 x 4)(x 1 ⊕x 3) term is 3 as Case 3. 3. The dterm for x 2(x 3 ⊕x 4) term is 2 as Case 4. Then find the term with the ma"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        40,
-        280
-      ],
-      [
-        208,
-        217
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p1_86b97eb26408d475__1766248284182.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 15,
-    "page": 22,
-    "gates": [
-      "CNOT",
-      "MCX_3",
-      "TOFFOLI",
-      "MCX_4"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The 4 gt 4 2 0 quantum circuit in Eq. after adding extra line.",
-      "Now, we analyze the way that the proposed algorithm decreases the quantum cost of the quantum circuit as shown in Fig. . $D",
-      ": The 4 gt 4 2 0 quantum circuit in Eq. 9 after adding extra line. the result as shown in Fig. 1 6 c. Finally, a y the decomposition rules in Table. 3 to decompose the 4 gt 4 2 0 circuit and then the simpli"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        113,
-        174
-      ],
-      [
-        102,
-        111
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p2_0774582c98a4990d__1766248284245.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 15,
-    "page": 22,
-    "gates": [
-      "CNOT",
-      "MCX_3",
-      "TOFFOLI",
-      "MCX_4"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The 4 gt 4 2 0 quantum circuit in Eq. after adding extra line.",
-      "Now, we analyze the way that the proposed algorithm decreases the quantum cost of the quantum circuit as shown in Fig. . $D",
-      ": The 4 gt 4 2 0 quantum circuit in Eq. 9 after adding extra line. the result as shown in Fig. 1 6 c. Finally, a y the decomposition rules in Table. 3 to decompose the 4 gt 4 2 0 circuit and then the simpli"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        113,
-        174
-      ],
-      [
-        102,
-        111
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p1_3275e6f2c1a18b87__1766248288305.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 17,
-    "page": 23,
-    "gates": [
-      "CNOT",
-      "MCX_3",
-      "TOFFOLI",
-      "MCX_4"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The 4 gt 4 2 0 circuit.",
-      "The first method is the direct method that constructs a reversible circuit for any Boolean function. The factorization algorithm is the second method to construct a reversible circ",
-      ": The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6. Figure 1 8: The 4 gt 4 2 0 quantum circuit with MCT gates using IBM. the reorder method [3], then a ying a special algebraic form that"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        240,
-        251
-      ],
-      [
-        229,
-        238
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p2_50bf9c553809ea9b__1766248288362.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 17,
-    "page": 23,
-    "gates": [
-      "CNOT",
-      "MCX_3",
-      "TOFFOLI"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The 4 gt 4 2 0 circuit.",
-      "The first method is the direct method that constructs a reversible circuit for any Boolean function. The factorization algorithm is the second method to construct a reversible circ",
-      ": The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6. Figure 1 8: The 4 gt 4 2 0 quantum circuit with MCT gates using IBM. the reorder method [3], then a ying a special algebraic form that"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        240,
-        251
-      ],
-      [
-        229,
-        238
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p3_c9af940ae2fd428e__1766248288425.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 17,
-    "page": 23,
-    "gates": [
-      "CNOT",
-      "MCX_3",
-      "TOFFOLI"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The 4 gt 4 2 0 circuit.",
-      "The first method is the direct method that constructs a reversible circuit for any Boolean function. The factorization algorithm is the second method to construct a reversible circ",
-      ": The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6. Figure 1 8: The 4 gt 4 2 0 quantum circuit with MCT gates using IBM. the reorder method [3], then a ying a special algebraic form that"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        240,
-        251
-      ],
-      [
-        229,
-        238
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p1_c1d8a642b676454c__1766248291775.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 17,
-    "page": 23,
-    "gates": [
-      "CNOT",
-      "V_DG",
-      "V"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6.",
-      "2 7 & 1 0 3.0 6 vs using the proposed algorithm.",
-      ": The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6. Figure 1 8: The 4 gt 4 2 0 quantum circuit with MCT gates using IBM. the reorder method [3], then a ying a special algebraic form that"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        240,
-        304
-      ],
-      [
-        229,
-        238
-      ]
-    ]
-  },
-  "2407.04826__2407.04826_p2_5a8777560b57b164__1766248291883.png": {
-    "arxiv_id": "2407.04826",
-    "figure_number": 17,
-    "page": 23,
-    "gates": [
-      "CNOT",
-      "V",
-      "V_DG"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6.",
-      "2 7 & 1 0 3.0 6 vs using the proposed algorithm.",
-      ": The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6. Figure 1 8: The 4 gt 4 2 0 quantum circuit with MCT gates using IBM. the reorder method [3], then a ying a special algebraic form that"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        240,
-        304
-      ],
-      [
-        229,
-        238
-      ]
-    ]
-  },
-  "2410.00155__2410.00155_p1_268c753b871212f4__1766248300436.png": {
-    "arxiv_id": "2410.00155",
-    "figure_number": 4,
-    "page": 9,
-    "gates": [
-      "MEASURE"
-    ],
-    "quantum_problem": "Non-unitary operation implementation",
-    "descriptions": [
-      "Quantum circuit to implement any arbitrary non-unitary operation.",
-      "For our code, we use the circuit in Fig. to implement or depending on the outcome of the projection measurements",
-      ": Quantum circuit to implement any arbitrary non-unitary operation. A ying ˜U on the state |0⟩⊗|ψL⟩= |ψL⟩ 0 , as shown in Fig. 4, we get, √ R†R − √ I −R†R √ I −R†R √ R†R ! |ψL⟩ 0 = |0⟩⊗ √ R†",
-      ", we get, √ R†R − √ I −R†R √ I −R†R √ R†R ! |ψL⟩ 0 = |0⟩⊗ √ R†R |ψL⟩+ |1⟩⊗ p I −R†R |ψL⟩ (2 0) Now, we perform the unitary U on the 3-qubit register to obtain the final state |0⟩⊗U √ R†R |ψ⟩+ |1⟩⊗",
-      "to implement R 0 or R 1 depending on the outcome of the projection measurements {P 0, P 1}. As the implementation of R 0 and R 1 is probabilistic, we can calculate the probability of success psuccess as th"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        26,
-        91
-      ],
-      [
-        18,
-        24
-      ],
-      [
-        151,
-        157
-      ],
-      [
-        804,
-        810
-      ]
-    ]
-  },
-  "2510.04993__2510.04993_p1_b4cac79b824cfc2a__1766248302789.png": {
-    "arxiv_id": "2510.04993",
-    "figure_number": 1,
-    "page": 3,
-    "gates": [
-      "TOFFOLI"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "A permutation gate in staircase form, consisting of 6 Toffoli gates.",
-      "Our first main result, which was presented in an earlier version of this paper , states that every permutation in ca",
-      ". A permutation gate in staircase form, consisting of 6 Toffoli gates. Our first main result, which was presented in an earlier version of this paper [HRT 2 4], states that every permutation in Csym 3 c",
-      "is precisely U 3. This construction brings new under- standing to the study of C 3 gates in a few ways. First of all, {Uk}k≥3 are the first examples of permutation gates in C 3 whose inverses leave C 3 ("
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        149,
-        217
-      ],
-      [
-        139,
-        147
-      ],
-      [
-        1874,
-        1882
-      ]
-    ]
-  },
-  "2510.04993__2510.04993_p1_d0b4ae7becd6c16b__1766248304997.png": {
-    "arxiv_id": "2510.04993",
-    "figure_number": 2,
-    "page": 6,
-    "gates": [
-      "SWAP"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with time flowing from left to right).",
-      "It can be verified with a computer program that . If were semi-Clifford, then we would have by lem:respe",
-      "for a circuit diagram. 1 2 3 4 5 6 7 Figure 2. Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with time flowing from left to right).",
-      ". Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with time flowing from left to right)."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        2408,
-        2507
-      ],
-      [
-        2352,
-        2360
-      ],
-      [
-        2398,
-        2406
-      ]
-    ]
-  },
-  "2510.04993__2510.04993_p1_01e57b5ee7d6ffef__1766248306796.png": {
-    "arxiv_id": "2510.04993",
-    "figure_number": null,
-    "page": 25,
-    "gates": [
-      "TOFFOLI"
-    ],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "This circuit for 1,2,4 1,3,4 1,2,3 is in staircase form but not mismatch-free, as qubit 3 is used as a control for 1,3,4 and a target for 1,2,3.",
-      ". Note that a staircase form Toffoli circuit is unique up to ordering of gates with the same target. We say that a permutation is in staircas"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2405.14951__2405.14951_p1_91ae5b15b77ba16d__1766248309773.png": {
-    "arxiv_id": "2405.14951",
-    "figure_number": 4,
-    "page": 22,
-    "gates": [
-      "H",
-      "CNOT",
-      "MEASURE"
-    ],
-    "quantum_problem": "NCV gate library",
-    "descriptions": [
-      "Quantum circuit used in our simulations of rendezvous games on the 3-vertex cycle graph K 3. From top to bottom, the first qubit represents the quantum subs-system held by Alice and the second qubit that held by Bob.",
-      "will not be shown here. Cyclic 3 classical E=0 to E=1",
-      ": Quantum circuit used in our simulations of rendezvous games on the 3-vertex cycle graph K 3. From top to bottom, the first qubit represents the quantum subs-system held by Alice and the second qubit"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        36,
-        251
-      ],
-      [
-        26,
-        34
-      ]
-    ]
-  },
-  "2405.14951__2405.14951_p1_6aa324e8cfad8bff__1766248311230.png": {
-    "arxiv_id": "2405.14951",
-    "figure_number": 4,
-    "page": 22,
-    "gates": [
-      "MEASURE"
-    ],
-    "quantum_problem": "NCV gate library",
-    "descriptions": [
-      "Quantum circuit used in our simulations of rendezvous games on cubic graphs. From top to bottom, the first two qubits represent the part of the share quantum system held by Alice and the third and fourth qubits represent the subs-system held by Bob.",
-      "In order to facilitate comparison with the results in Ref. we played the game on the graph formed by the ve",
-      ": Quantum circuit used in our simulations of rendezvous games on the 3-vertex cycle graph K 3. From top to bottom, the first qubit represents the quantum subs-system held by Alice and the second qubit"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        26,
-        34
-      ]
-    ]
-  },
-  "2509.01912__2509.01912_p1_39b391794b911208__1766248322081.png": {
-    "arxiv_id": "2509.01912",
-    "figure_number": 5,
-    "page": 6,
-    "gates": [
-      "CNOT",
-      "TOFFOLI",
-      "MCX_3"
-    ],
-    "quantum_problem": "Quantum compilation",
-    "descriptions": [
-      "An example of a quantum circuit for the oracle of a 4-bit Boolean function.",
-      "(a). This example will serve to demonstrate the step-by-step operation of the algorithm and highlight the role of spatial structure in the synthesis process. We begin by computing the spatial structur",
-      "(b). By sequentially combining these blocks, we construct the complete oracle for the Boolean function f. Notably, since the parity set covering formulation ensures that the order of the selected subs",
-      ": An example of a quantum circuit for the oracle of a 4-bit Boolean function. V. EVALUATION A. Environmental Setup We implement the synthesis program in Python, using Gurobi [2 8] for the ILP solving."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        4499,
-        4574
-      ],
-      [
-        2108,
-        2114
-      ],
-      [
-        3877,
-        3883
-      ],
-      [
-        4491,
-        4497
-      ]
-    ]
-  },
-  "2509.01912__2509.01912_p1_331fb3ece9f2cc13__1766248323416.png": {
-    "arxiv_id": "2509.01912",
-    "figure_number": 3,
-    "page": 2,
-    "gates": [
-      "X",
-      "Y"
-    ],
-    "quantum_problem": "Quantum oracle construction",
-    "descriptions": [
-      "Circuit demonstration of a Quantum Oracle where the input is |x⟩ and the output result is stored on |y⟩, along with k auxiliary qubits initialized to |0⟩.",
-      ". Due to the current limitations in the physical implementation of quantum devices, most quantum computers achieve universality through the construction",
-      ". For a Boolean function, x denotes the state of the n-qubit of the input, and y denotes the corresponding output, which includes k auxiliary bits. The input states and auxiliary bits remain unchanged",
-      ": Circuit demonstration of a Quantum Oracle where the input is |x⟩and the output result is stored on |y⟩, along with k auxiliary qubits initialized to |0⟩."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        205,
-        5406
-      ],
-      [
-        4910,
-        4916
-      ],
-      [
-        5245,
-        5251
-      ]
-    ]
-  },
-  "2509.01912__2509.01912_p1_296633dc4067c631__1766248326387.png": {
-    "arxiv_id": "2509.01912",
-    "figure_number": 4,
-    "page": 4,
-    "gates": [
-      "MCX_3",
-      "MCX_9"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "An example of algorithm:1.",
-      "quantum computing are still at a small scale for quantum query algorithms. This naturally raises the question: can we combine the strengths of both ESOP and XAG to develop a more efficient a oach",
-      ": An example of Alg. 1. Based on the aforementioned properties, we can use Alg. 1 to synthesize quantum circuits. By a ying Alg. 1, synthesizing the 2 m minterms, which form an m-dimensional parallel",
-      ". The CNOT gates and control signals on qubits q 0 to qs 1−1 are based on the first basis vector obtained. Similarly, the CNOT gates and control signals on qubits qs 1 to qs 2−1 are based on the second ba",
-      ". According to Theorem 1, we can find the following benefits of spatial structure like parallelotope in hypercube: 1) The intermediate results are stored directly on the input qubits through the actio"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        220,
-        233
-      ],
-      [
-        212,
-        218
-      ],
-      [
-        1847,
-        1853
-      ],
-      [
-        2332,
-        2338
-      ]
-    ]
-  },
-  "2404.06059__2404.06059_p1_7705162a32204381__1766248331999.png": {
-    "arxiv_id": "2404.06059",
-    "figure_number": 2,
-    "page": 3,
-    "gates": [
-      "CNOT",
-      "MCX_4",
-      "TOFFOLI"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The quantum circuit implementing the F 8 gate.",
-      "Note that the quantum fan-out gate is composed solely of CNOT gates, resulting in a -depth of . There is a quantum",
-      ". |𝑥1⟩ 𝑋 • • • • 𝑋 |𝑥2⟩ • |𝑥3⟩ • |𝑥4⟩ • |𝑥5⟩ • |0⟩1 |0⟩2 |0⟩3 |0⟩4 FIG. 2: The quantum circuit implementing the ReLU function with input x ∈{0,1}5 includes input qubits |𝑥𝑖⟩and output qubits |0⟩𝑗. To",
-      ": The quantum circuit implementing the ReLU function with input x ∈{0,1}5 includes input qubits |𝑥𝑖⟩and output qubits |0⟩𝑗. To confirm the correctness of our circuit, let us examine the following sce"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        15,
-        2506
-      ],
-      [
-        2866,
-        2872
-      ],
-      [
-        2939,
-        2945
-      ]
-    ]
-  },
-  "2404.06059__2404.06059_p1_31afe0d7d855b945__1766248334769.png": {
-    "arxiv_id": "2404.06059",
-    "figure_number": 2,
-    "page": 3,
-    "gates": [
-      "X",
-      "TOFFOLI"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "The quantum circuit implementing the ReLU function with input x∈{0,1}^5 includes input qubits |x i⟩ and output qubits |0⟩ j.",
-      ", . Even when restricting the connectivity topology between qubits to a 2 D grid, the implementation of ReLU function remains constant in -depth. For other activation functions, such as Sigmoid,",
-      ". |𝑥1⟩ 𝑋 • • • • 𝑋 |𝑥2⟩ • |𝑥3⟩ • |𝑥4⟩ • |𝑥5⟩ • |0⟩1 |0⟩2 |0⟩3 |0⟩4 FIG. 2: The quantum circuit implementing the ReLU function with input x ∈{0,1}5 includes input qubits |𝑥𝑖⟩and output qubits |0⟩𝑗. To",
-      ": The quantum circuit implementing the ReLU function with input x ∈{0,1}5 includes input qubits |𝑥𝑖⟩and output qubits |0⟩𝑗. To confirm the correctness of our circuit, let us examine the following sce"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        15,
-        3067
-      ],
-      [
-        2866,
-        2872
-      ],
-      [
-        2939,
-        2945
-      ]
-    ]
-  },
-  "2404.06059__2404.06059_p1_db1ede68fee28060__1766248337496.png": {
-    "arxiv_id": "2404.06059",
-    "figure_number": 8,
-    "page": 10,
-    "gates": [],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "The quantum circuit of SWAP operator for x∈{0,1}^3.",
-      "each multi-controlled gate, the outputs are prepared in qubits. Consequently, the number of multi-controlled gates can be reduced to . After a ying these gates, swap ga",
-      ": The quantum circuit of SWAP operator for x ∈{0,1}3. Fig. 9. Therefore, the𝑇-depth of the SWAP operator is 4𝑙. SELECTSWAP: The SELECTSWAP circuit is a hy- brid of the SELECT and SWAP circuits. Assum"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        10,
-        1161
-      ],
-      [
-        1113,
-        1119
-      ]
-    ]
-  },
-  "2504.06948__2504.06948_p1_e0956826a8d1e552__1766248346490.png": {
-    "arxiv_id": "2504.06948",
-    "figure_number": 1,
-    "page": 12,
-    "gates": [
-      "X"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "A quantum circuit implementing the block-encoding of 1, denoted by U 1.",
-      "\\] Thus, we can construct a quantum circuit to perform \\[ O |0 1 a |j k &= ( k+1-j |0 1 a + 2",
-      ". |·⟩a 1 X |·⟩k • ADD Figure 1: A quantum circuit implementing the block-encoding of M 1, denoted by UM 1. The addition module performs (j + 1) mod (k + 1), which is a unitary operation. Thus, we can",
-      ": A quantum circuit implementing the block-encoding of M 1, denoted by UM 1. The addition module performs (j + 1) mod (k + 1), which is a unitary operation. Thus, we can verify that ⟨0|a 1⟨i|kUM 1|0⟩a"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        160
-      ],
-      [
-        46,
-        54
-      ],
-      [
-        76,
-        84
-      ]
-    ]
-  },
-  "2504.06948__2504.06948_p1_c9c30f41a735d3b3__1766248349073.png": {
-    "arxiv_id": "2504.06948",
-    "figure_number": 2,
-    "page": 12,
-    "gates": [
-      "X"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "A quantum circuit that implements the block-encoding of 2, denoted by U 2.",
-      "1 . Noting that can be implemented by an addition module on the register , and a ying , the matrix can be implemented using the",
-      ". It is a (1,1)-block-encoding of M 2, with gate complexity O(log(k)). |·⟩a 1 X X |·⟩k H⊗k Figure 2: A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, no",
-      ": A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, note that |βj| < 1, and we can compute βj explicitly. In fact, βj = k −j + 1 j(2 k −j + 1), j = 1, . ."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        1142
-      ],
-      [
-        955,
-        963
-      ],
-      [
-        1055,
-        1063
-      ]
-    ]
-  },
-  "2504.06948__2504.06948_p1_545549325443f8f9__1766248353286.png": {
-    "arxiv_id": "2504.06948",
-    "figure_number": 2,
-    "page": 12,
-    "gates": [
-      "X",
-      "Z"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "A quantum circuit that implements the block-encoding of 4, denoted by U 4.",
-      "4 0 5.5 3 6.6 9 7.8 9 9.1 1 1 0.3 5 1 1.6 1 1 2.8 8 1 4.1 6 1 5.4 5 1 6.7 4 k \\| h\\| 2$ suc",
-      ". It is a (1,1)-block-encoding of M 2, with gate complexity O(log(k)). |·⟩a 1 X X |·⟩k H⊗k Figure 2: A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, no",
-      ": A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, note that |βj| < 1, and we can compute βj explicitly. In fact, βj = k −j + 1 j(2 k −j + 1), j = 1, . ."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        1764
-      ],
-      [
-        955,
-        963
-      ],
-      [
-        1055,
-        1063
-      ]
-    ]
-  },
-  "2504.06948__2504.06948_p1_25437688f3127f6c__1766248355854.png": {
-    "arxiv_id": "2504.06948",
-    "figure_number": 2,
-    "page": 12,
-    "gates": [
-      "RY"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "A quantum circuit that implements the block-encoding of 5, denoted by U 5.",
-      "5 3 6.6 9 7.8 9 9.1 1 1 0.3 5 1 1.6 1 1 2.8 8 1 4.1 6 1 5.4 5 1 6.7 4 k \\| h\\| 2$ such that th",
-      ". It is a (1,1)-block-encoding of M 2, with gate complexity O(log(k)). |·⟩a 1 X X |·⟩k H⊗k Figure 2: A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, no",
-      ": A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, note that |βj| < 1, and we can compute βj explicitly. In fact, βj = k −j + 1 j(2 k −j + 1), j = 1, . ."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        1138
-      ],
-      [
-        955,
-        963
-      ],
-      [
-        1055,
-        1063
-      ]
-    ]
-  },
-  "2504.06948__2504.06948_p1_16322b34f3d26d1b__1766248358578.png": {
-    "arxiv_id": "2504.06948",
-    "figure_number": 2,
-    "page": 12,
-    "gates": [
-      "H",
-      "CTRL"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "A quantum circuit that implements the block-encoding of ℬ, denoted by U ℬ.",
-      "2 3 | j| < 1 j$ explicitly. In fact, \\[ j = j (2 k-j+1) ,",
-      ". It is a (1,1)-block-encoding of M 2, with gate complexity O(log(k)). |·⟩a 1 X X |·⟩k H⊗k Figure 2: A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, no",
-      ": A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, note that |βj| < 1, and we can compute βj explicitly. In fact, βj = k −j + 1 j(2 k −j + 1), j = 1, . ."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        1138
-      ],
-      [
-        955,
-        963
-      ],
-      [
-        1055,
-        1063
-      ]
-    ]
-  },
-  "2504.06948__2504.06948_p1_1dc2cb034ca4f7ae__1766248361145.png": {
-    "arxiv_id": "2504.06948",
-    "figure_number": 2,
-    "page": 12,
-    "gates": [
-      "CTRL"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "A quantum circuit that implements the block-encoding of 1, denoted by U 1.",
-      "2 em 1 a & & 1 & & m & & \\] A quantum circuit",
-      ". It is a (1,1)-block-encoding of M 2, with gate complexity O(log(k)). |·⟩a 1 X X |·⟩k H⊗k Figure 2: A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, no",
-      ": A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, note that |βj| < 1, and we can compute βj explicitly. In fact, βj = k −j + 1 j(2 k −j + 1), j = 1, . ."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        1761
-      ],
-      [
-        955,
-        963
-      ],
-      [
-        1055,
-        1063
-      ]
-    ]
-  },
-  "2504.06948__2504.06948_p1_585d39f42af4bdf6__1766248363890.png": {
-    "arxiv_id": "2504.06948",
-    "figure_number": 2,
-    "page": 12,
-    "gates": [
-      "X"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "A quantum circuit that implements the block-encoding of 6, denoted by U 6.",
-      "6 9 7.8 9 9.1 1 1 0.3 5 1 1.6 1 1 2.8 8 1 4.1 6 1 5.4 5 1 6.7 4 k \\| h\\| 2$ such that the conditi",
-      ". It is a (1,1)-block-encoding of M 2, with gate complexity O(log(k)). |·⟩a 1 X X |·⟩k H⊗k Figure 2: A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, no",
-      ": A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, note that |βj| < 1, and we can compute βj explicitly. In fact, βj = k −j + 1 j(2 k −j + 1), j = 1, . ."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        1761
-      ],
-      [
-        955,
-        963
-      ],
-      [
-        1055,
-        1063
-      ]
-    ]
-  },
-  "2504.06948__2504.06948_p1_6b9163ff82ea93f6__1766248366501.png": {
-    "arxiv_id": "2504.06948",
-    "figure_number": 2,
-    "page": 12,
-    "gates": [
-      "X"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "A quantum circuit that implements the block-encoding of 7, denoted by U 7.",
-      "8 9 9.1 1 1 0.3 5 1 1.6 1 1 2.8 8 1 4.1 6 1 5.4 5 1 6.7 4 k \\| h\\| 2$ such that the condition",
-      ". It is a (1,1)-block-encoding of M 2, with gate complexity O(log(k)). |·⟩a 1 X X |·⟩k H⊗k Figure 2: A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, no",
-      ": A quantum circuit that implements the block-encoding of M 2, denoted by UM 2. • For matrix M 3, note that |βj| < 1, and we can compute βj explicitly. In fact, βj = k −j + 1 j(2 k −j + 1), j = 1, . ."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        1138
-      ],
-      [
-        955,
-        963
-      ],
-      [
-        1055,
-        1063
-      ]
-    ]
-  },
-  "2409.00792__2409.00792_p1_cbcabf2542785e65__1766248379578.png": {
-    "arxiv_id": "2409.00792",
-    "figure_number": 3,
-    "page": 3,
-    "gates": [
-      "CNOT",
-      "MEASURE"
-    ],
-    "quantum_problem": "Quantum adder",
-    "descriptions": [
-      "Binary neuron quantum circuit to calculate neuron activation between a finge int sample Φ^l, and a user sample Ψ. |γ i⟩ represents the joint system state at different positions in the circuit.",
-      "Figure shows the quantum circuit for implementing the qu",
-      ": Binary neuron quantum circuit to calculate neuron activation between a finge int sample Φl, and a user sample Ψ. |γi⟩represents the joint system state at different positions in the circuit. |Ψ⟩= 1",
-      "shows the quantum circuit for implementing the quantum binary similarity algorithm between the two vectors Φl and Ψ (i.e. ⟨Ψ|Φl⟩). The input to the circuit is a single ancilla qubit at state |0⟩and n"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        60,
-        251
-      ],
-      [
-        52,
-        58
-      ],
-      [
-        776,
-        784
-      ]
-    ]
-  },
-  "2409.00792__2409.00792_p1_978bac1f993fd485__1766248386590.png": {
-    "arxiv_id": "2409.00792",
-    "figure_number": 4,
-    "page": 4,
-    "gates": [
-      "H",
-      "Z",
-      "X",
-      "TOFFOLI",
-      "MEASURE"
-    ],
-    "quantum_problem": "Non-unitary operation implementation",
-    "descriptions": [
-      "Binary neuron quantum circuits to calculate neuron activation values between the finge int samples Φ^l i and the user sample Ψ=[1,1,1,1].",
-      ". To find the neuron activation value for the finge int samples and the user sample vectors, we construct the two quantum circuits shown in Figure",
-      ": Binary neuron quantum circuits to calculate neuron activation values between the finge int samples Φli and the user sample Ψ = [1,1,1,1]. implemented by a ying H gates on the data register qu"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        402,
-        526
-      ],
-      [
-        394,
-        400
-      ]
-    ]
-  },
-  "2409.00792__2409.00792_p2_e0b75b5dd8b45286__1766248386704.png": {
-    "arxiv_id": "2409.00792",
-    "figure_number": 4,
-    "page": 4,
-    "gates": [
-      "H",
-      "Z",
-      "X",
-      "TOFFOLI",
-      "MEASURE"
-    ],
-    "quantum_problem": "Non-unitary operation implementation",
-    "descriptions": [
-      "Binary neuron quantum circuits to calculate neuron activation values between the finge int samples Φ^l i and the user sample Ψ=[1,1,1,1].",
-      ". To find the neuron activation value for the finge int samples and the user sample vectors, we construct the two quantum circuits shown in Figure",
-      ": Binary neuron quantum circuits to calculate neuron activation values between the finge int samples Φli and the user sample Ψ = [1,1,1,1]. implemented by a ying H gates on the data register qu"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        402,
-        526
-      ],
-      [
-        394,
-        400
-      ]
-    ]
-  },
-  "2502.05362__2502.05362_p1_7b73c07754535096__1766248394554.png": {
-    "arxiv_id": "2502.05362",
-    "figure_number": 6,
-    "page": 4,
-    "gates": [
-      "RZ",
-      "RX"
-    ],
-    "quantum_problem": "Measurement and readout",
-    "descriptions": [
-      "Quantum circuit for 3 qubits experiment used to verify learned cross-talk model.",
-      "Since the number of possible choices of 3 or 4 qubits out of 8 is very large, we limited experimental verification to about",
-      "used for crosstalk verification is very similar to the Fig 1. The drive on the 3 rd qubit is again the modified Rx gate with its driving frequency shifted from fc to fa. The predicted 3-qubit crosstal",
-      ": Quantum circuit for 3 qubits experiment used to verify learned cross-talk model. Since the number of possible choices of 3 or 4 qubits out of 8 is very large, we limited experimental verifica- tion"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        2482,
-        2562
-      ],
-      [
-        1669,
-        1675
-      ],
-      [
-        2474,
-        2480
-      ]
-    ]
-  },
-  "2502.05362__2502.05362_p1_b6b20833aa9bb723__1766248396921.png": {
-    "arxiv_id": "2502.05362",
-    "figure_number": 6,
-    "page": 4,
-    "gates": [
-      "RZ",
-      "RX"
-    ],
-    "quantum_problem": "Measurement and readout",
-    "descriptions": [
-      "Quantum circuit for the 2-qubits experiment used to measure cross-talk induced on qubit a due to simultaneous drive b.",
-      "[htbp] [width=0.9 9",
-      "used for crosstalk verification is very similar to the Fig 1. The drive on the 3 rd qubit is again the modified Rx gate with its driving frequency shifted from fc to fa. The predicted 3-qubit crosstal",
-      ": Quantum circuit for 3 qubits experiment used to verify learned cross-talk model. Since the number of possible choices of 3 or 4 qubits out of 8 is very large, we limited experimental verifica- tion"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        1669,
-        1675
-      ],
-      [
-        2474,
-        2480
-      ]
-    ]
-  },
-  "2507.20599__2507.20599_p2_13fb31c44db8ddd7__1766248408657.png": {
-    "arxiv_id": "2507.20599",
-    "figure_number": 15,
-    "page": 22,
-    "gates": [
-      "H",
-      "CNOT"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "A quantum circuit for the (even) extension operator U ext,ψ. Here, U +1 denotes the quantum incrementer gate.",
-      "Here, we used a quantum fan-out gate (a series of CNOT gates) , as well as a controlled quantum incrementer gate Gidney 2 0 1 5 pre,",
-      ": A quantum circuit for an extension operator Uext, 0. Here, U+1 denotes the quantum incrementer gate. Then, the series of CNOTs invert the first n qubits if the last qubit is in |1⟩, which yields |ψ2⟩"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        36,
-        45
-      ]
-    ]
-  },
-  "2507.20599__2507.20599_p2_04027fe306322b22__1766248431653.png": {
-    "arxiv_id": "2507.20599",
-    "figure_number": 15,
-    "page": 22,
-    "gates": [
-      "H",
-      "CNOT"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "A quantum circuit for an extension operator U ext, 0. Here, U +1 denotes the quantum incrementer gate.",
-      "The quantum state with all real-valued amplitudes can be obtained with simply -basis",
-      ": A quantum circuit for an extension operator Uext, 0. Here, U+1 denotes the quantum incrementer gate. Then, the series of CNOTs invert the first n qubits if the last qubit is in |1⟩, which yields |ψ2⟩"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        47,
-        146
-      ],
-      [
-        36,
-        45
-      ]
-    ]
-  },
-  "2507.20599__2507.20599_p2_685a9b8195c26c90__1766248437733.png": {
-    "arxiv_id": "2507.20599",
-    "figure_number": 16,
-    "page": 25,
-    "gates": [
-      "H",
-      "CNOT",
-      "Z"
-    ],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "A quantum circuit for the odd extension operator Ũ ext,ψ. Here, U +1 and U gp(π/2) denote the quantum incrementer gate and a global phase gate with the phase rotation of π/2 radians, respectively.",
-      "Let : be a real-value",
-      ": A quantum circuit for the odd extension operator ˜Uext,ψ. Here, U+1 and Ugp(π/2) denote the quantum incrementer gate and a global phase gate with the phase rotation of π/2 radians, respectively. C T"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        62,
-        256
-      ],
-      [
-        51,
-        60
-      ]
-    ]
-  },
-  "2508.07026__2508.07026_p1_9cfd407ecb32cffa__1766248456841.png": {
-    "arxiv_id": "2508.07026",
-    "figure_number": 1,
-    "page": 3,
-    "gates": [
-      "RY",
-      "RZ"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Rotation gates",
-      "and enable parameterized single-qubit operations, while CNOT gates create entanglement between qubits, forming the basis for quantum advantage in representing complex lingui",
-      ": Basic quantum gates employed in our quantum transformer architecture. Entropy-Based Complexity Measures Given an input embedding x, we define linguistic com- plexity through statistical measures. Th"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        34
-      ],
-      [
-        49,
-        57
-      ]
-    ]
-  },
-  "2508.07026__2508.07026_p2_648613f79cc6c18e__1766248456900.png": {
-    "arxiv_id": "2508.07026",
-    "figure_number": 1,
-    "page": 3,
-    "gates": [
-      "CNOT"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Rotation gates",
-      "and enable parameterized single-qubit operations, while CNOT gates create entanglement between qubits, forming the basis for quantum advantage in representing complex lingui",
-      ": Basic quantum gates employed in our quantum transformer architecture. Entropy-Based Complexity Measures Given an input embedding x, we define linguistic com- plexity through statistical measures. Th"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        20,
-        34
-      ],
-      [
-        49,
-        57
-      ]
-    ]
-  },
-  "2412.13160__2412.13160_p1_d9263ae9aa8c709d__1766248475033.png": {
-    "arxiv_id": "2412.13160",
-    "figure_number": 6,
-    "page": 12,
-    "gates": [
-      "H"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "(a) Full circuit for Û BE, the diagonal block encoding of the amplitudes of |λ max⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components Ŵ 0 and Ĝ 0 are given in (b) and (c) respectively. See for the full details of this block encoding procedure.",
-      "Once we have represented operators in the block-encoded form [Eq. ], we can proceed with information processing based on the unitary operator",
-      ". (a) Full circuit for ˆUBE, the diagonal block encoding of the amplitudes of |λmax⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components ˆ W 0 and ˆG 0"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        3,
-        432
-      ],
-      [
-        123,
-        129
-      ]
-    ]
-  },
-  "2412.13160__2412.13160_p2_8028fb648ab53d7e__1766248475167.png": {
-    "arxiv_id": "2412.13160",
-    "figure_number": 6,
-    "page": 12,
-    "gates": [
-      "H",
-      "TOFFOLI"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "(a) Full circuit for Û BE, the diagonal block encoding of the amplitudes of |λ max⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components Ŵ 0 and Ĝ 0 are given in (b) and (c) respectively. See for the full details of this block encoding procedure.",
-      "Once we have represented operators in the block-encoded form [Eq. ], we can proceed with information processing based on the unitary operator",
-      ". (a) Full circuit for ˆUBE, the diagonal block encoding of the amplitudes of |λmax⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components ˆ W 0 and ˆG 0"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        3,
-        432
-      ],
-      [
-        123,
-        129
-      ]
-    ]
-  },
-  "2412.13160__2412.13160_p3_a055a24ffa2906a3__1766248475263.png": {
-    "arxiv_id": "2412.13160",
-    "figure_number": 6,
-    "page": 12,
-    "gates": [
-      "Z",
-      "CTRL"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "(a) Full circuit for Û BE, the diagonal block encoding of the amplitudes of |λ max⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components Ŵ 0 and Ĝ 0 are given in (b) and (c) respectively. See for the full details of this block encoding procedure.",
-      "Once we have represented operators in the block-encoded form [Eq. ], we can proceed with information processing based on the unitary operator",
-      ". (a) Full circuit for ˆUBE, the diagonal block encoding of the amplitudes of |λmax⟩. The block XZX represents the sequences of single qubit gates X, Z, X. The circuits for the components ˆ W 0 and ˆG 0"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        3,
-        432
-      ],
-      [
-        123,
-        129
-      ]
-    ]
-  },
-  "2509.14196__2509.14196_p1_c5ab65eea86aee81__1766248487193.png": {
-    "arxiv_id": "2509.14196",
-    "figure_number": 1,
-    "page": 4,
-    "gates": [
-      "T"
-    ],
-    "quantum_problem": "Variational quantum algorithm",
-    "descriptions": [
-      "Quantum circuit representation of the single Trotter step used in the first-order Trotterization for L=4 fermion sites (N=8 qubits).",
-      "The single Trotter step in the first-order Trotterization, as shown in Fig. , contains (1)",
-      ": Quantum circuit representation of the single Trotter step used in the first-order Trotterization for L = 4 fermion sites (N = 8 qubits). The single Trotter step in the first-order Trotterization, as",
-      ", contains ˆU (1) Trotter(δτ) = ˆUt(θt). ˆUU(θU). ˆUµ(β↑, β↓) , (1 4) where, ˆUt, ˆUU, and ˆUµ are the unitary operators associated with the hopping terms, interaction terms and chemical potential term"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        173,
-        1036
-      ],
-      [
-        892,
-        898
-      ],
-      [
-        1108,
-        1114
-      ]
-    ]
-  },
-  "2509.14196__2509.14196_p1_ac916bdc4288d766__1766248490466.png": {
-    "arxiv_id": "2509.14196",
-    "figure_number": 2,
-    "page": 6,
-    "gates": [],
-    "quantum_problem": "Variational quantum algorithm",
-    "descriptions": [
-      "Quantum circuit of the single Trotter step in the second-order Trotterization for L=4 fermion sites (N=8 qubits).",
-      "As in the case of the first-order Trotterization, the circuit depth of the quantum circuit associated with the second-order Trotterization presented",
-      ". As in the case of the first-order Trotterization, the circuit depth of the quantum circuit associated with the second- q 0 : ˆUU(θU/2) ˆUµ(β↑/2) ˆUt(θt/2) ˆUt(θt/2) ˆUµ(β↑/2) ˆUU(θU/2) q 1 : ˆUµ(β↓/2)",
-      ": Quantum circuit of the single Trotter step in the second-order Trotterization for L = 4 fermion sites (N = 8 qubits). order Trotterization presented in this work remains constant with increasing fer"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        338,
-        1137
-      ],
-      [
-        445,
-        451
-      ],
-      [
-        1012,
-        1018
-      ]
-    ]
-  },
-  "2509.14196__2509.14196_p1_d2421b8f1e8e7483__1766248494824.png": {
-    "arxiv_id": "2509.14196",
-    "figure_number": 3,
-    "page": 6,
-    "gates": [],
-    "quantum_problem": "Variational quantum algorithm",
-    "descriptions": [
-      "Quantum circuit of the second-order Trotterization with two Trotter steps r=2 for L=4 fermion sites (N=8 qubits).",
-      "The merging of such quantum circuit layers leads to an optimized second-order Trotterization, U (2) =",
-      ", two Trotter steps in the second-order Trotterization for L = 4 fermion sites are shown where the two ˆUt Layer−2(θt/2) quantum circuit layers in the straight- lined box within a single Trotter step",
-      ": Quantum circuit of the second-order Trotterization with two Trotter steps r = 2 for L = 4 fermion sites (N = 8 qubits). Trotterization, U (2) Trotter = ˆUU θU 2 . r−1 Y k=1 ˜U(θt, β↑, β↓).ˆUU(θU"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        338,
-        2910
-      ],
-      [
-        1434,
-        1440
-      ],
-      [
-        2783,
-        2789
-      ]
-    ]
-  },
-  "2509.14196__2509.14196_p1_6a5c89d11ca6903d__1766248499707.png": {
-    "arxiv_id": "2509.14196",
-    "figure_number": 4,
-    "page": 7,
-    "gates": [],
-    "quantum_problem": "Variational quantum algorithm",
-    "descriptions": [
-      "Quantum circuit of the optimized second-order Trotterization with three Trotter steps r=3.",
-      "which can be limited by the coherence time of quantum hardware. The time evolution operator can be decomposed using second-order Trotterization as, U (2) ( )= k=1 r",
-      ": Quantum circuit of the optimized second-order Trotterization with three Trotter steps r = 3. and shown in Fig. 4 for r = 3 Trotter steps. In addition, the circuit depth is an important measure of ho",
-      "for r = 3 Trotter steps. In addition, the circuit depth is an important measure of how many operations one can implement in parallel on the qubit register of a quantum computer. As contemporary quant"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        1066,
-        1151
-      ],
-      [
-        1058,
-        1064
-      ],
-      [
-        1172,
-        1178
-      ]
-    ]
-  },
-  "2509.14196__2509.14196_p1_559b23323a946c9a__1766248502805.png": {
-    "arxiv_id": "2509.14196",
-    "figure_number": 10,
-    "page": 15,
-    "gates": [],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "A circuit diagram for Pauli twirling for gate. At positions 1,2,3, and 4, Pauli gates, { I, σ^x, σ^y, σ^z } are placed.",
-      "illustrates the PT method used in this study. We a y this technique specifically to the cz gates, which function as the counterpart of CX gates in our implementation. The method searches all the co",
-      ". One non-trivial case is putting σz, σx, σz, and σx at 1,2,3, and 4, respectively. We generated ten instances of the base quantum circuit, each incorporating a randomly selected Pauli-twirling gate",
-      ". cz 1 cz 3 = 2 4 FIG. 1 0: A circuit diagram for Pauli twirling for cz gate. At positions 1,2,3, and 4, Pauli gates, {I, σx, σy, σz} are placed. 4. Zero-Noise Extrapolation Zero-Noise Extrapolation",
-      ": A circuit diagram for Pauli twirling for cz gate. At positions 1,2,3, and 4, Pauli gates, {I, σx, σy, σz} are placed. 4. Zero-Noise Extrapolation Zero-Noise Extrapolation (ZNE) is an error mitigat"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        7,
-        1691
-      ],
-      [
-        707,
-        716
-      ],
-      [
-        1223,
-        1230
-      ],
-      [
-        1538,
-        1545
-      ],
-      [
-        1563,
-        1570
-      ]
-    ]
-  },
-  "2410.22295__2410.22295_p1_5639fab39719cc7e__1766248511721.png": {
-    "arxiv_id": "2410.22295",
-    "figure_number": 5,
-    "page": 10,
-    "gates": [
-      "X",
-      "Z"
-    ],
-    "quantum_problem": "Deutsch–Jozsa algorithm",
-    "descriptions": [
-      "|B x,z⟩",
-      ": |Bx,z⟩ As we will be referring to stabilizer codes, we give a brief recap of stabilizer codes here. Following [Got 9 7; AG 0 6], a stabilizer code is defined via a stabilizer group S, an Abelian subgrou"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        0,
-        30
-      ],
-      [
-        14,
-        22
-      ]
-    ]
-  },
-  "2410.22295__2410.22295_p1_2b32f8c33c06ba0f__1766248517848.png": {
-    "arxiv_id": "2410.22295",
-    "figure_number": null,
-    "page": 3,
     "gates": [
       "CNOT"
     ],
     "quantum_problem": "Amplitude amplification",
     "descriptions": [
-      "Bilateral XOR a ied after Pauli noise, x,z denotes the a ication of the Pauli error X^xZ^z.",
-      ". 0.4 A,B $ x,z"
+      "Merge Rules",
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
+      ": Merge Rules Simplification Rule 5 For any two NCV gates g1(c1, t1) and g2(c2, t2) where c1, c2, t1 and t2 are the two controls and targets of g1 and g2 respec- tively, if c1 ̸= t2 and t2 ̸= c2, then"
     ],
     "text_positions": [
       [
         0,
         0
+      ],
+      [
+        95,
+        106
+      ],
+      [
+        84,
+        93
       ]
     ]
   },
-  "2410.22295__2410.22295_p2_3f999aa7a88cb2ca__1766248517949.png": {
-    "arxiv_id": "2410.22295",
-    "figure_number": null,
-    "page": 3,
+  "2407.04826__2407.04826_p2_7e986fca9394d5eb__1766249451639.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
     "gates": [
-      "H"
+      "V"
     ],
     "quantum_problem": "Amplitude amplification",
     "descriptions": [
-      "Bilateral XOR a ied after Pauli noise, x,z denotes the a ication of the Pauli error X^xZ^z.",
-      ". 0.4 A,B $ x,z"
+      "Merge Rules",
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
+      ": Merge Rules Simplification Rule 5 For any two NCV gates g1(c1, t1) and g2(c2, t2) where c1, c2, t1 and t2 are the two controls and targets of g1 and g2 respec- tively, if c1 ̸= t2 and t2 ̸= c2, then"
     ],
     "text_positions": [
       [
         0,
         0
-      ]
-    ]
-  },
-  "2410.22295__2410.22295_p1_17dfe687c9848a05__1766248528008.png": {
-    "arxiv_id": "2410.22295",
-    "figure_number": null,
-    "page": 13,
-    "gates": [
-      "CNOT",
-      "MEASURE"
-    ],
-    "quantum_problem": "Grover search",
-    "descriptions": [
-      "Z-Recurrence, state before measurement:|B x 1,z 1⊕ z 2⟩|B x 1⊕ x 2,z 2⟩"
-    ],
-    "text_positions": [
+      ],
       [
-        0,
-        0
-      ]
-    ]
-  },
-  "2410.22295__2410.22295_p2_3e05005c9848668f__1766248528110.png": {
-    "arxiv_id": "2410.22295",
-    "figure_number": null,
-    "page": 13,
-    "gates": [
-      "H",
-      "CNOT",
-      "MEASURE"
-    ],
-    "quantum_problem": "Grover search",
-    "descriptions": [
-      "Z-Recurrence, state before measurement:|B x 1,z 1⊕ z 2⟩|B x 1⊕ x 2,z 2⟩"
-    ],
-    "text_positions": [
+        95,
+        106
+      ],
       [
-        0,
-        0
+        84,
+        93
       ]
     ]
   },
-  "2410.22295__2410.22295_p3_67a3da8b47525f1d__1766248528206.png": {
-    "arxiv_id": "2410.22295",
-    "figure_number": null,
-    "page": 13,
-    "gates": [
-      "CNOT",
-      "H",
-      "MEASURE"
-    ],
-    "quantum_problem": "Grover search",
-    "descriptions": [
-      "Z-Recurrence, state before measurement:|B x 1,z 1⊕ z 2⟩|B x 1⊕ x 2,z 2⟩"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2410.22295__2410.22295_p1_c8b35514ba2e7def__1766248533530.png": {
-    "arxiv_id": "2410.22295",
+  "2407.04826__2407.04826_p3_b90c5becb1ad1666__1766249451695.png": {
+    "arxiv_id": "2407.04826",
     "figure_number": 10,
-    "page": 27,
+    "page": 15,
     "gates": [
-      "CNOT",
-      "MEASURE"
+      "V_DG"
     ],
-    "quantum_problem": "Clifford+T gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
-      "ZZZZ check.",
-      "If the error commutes with , then the syndrome bit corresponding to this check takes the value If ,",
-      ": ZZZZ check. where qb 1,b 2(rx, rz, tx, tz) = X x 1,z 1 p(x 1, z 1)p(x 1 ⊕rx ⊕tx, z 1 ⊕rz ⊕tz)p(x 1 ⊕rx, b 2 ⊕z 1 ⊕tz)p(b 1 ⊕x 1 ⊕tx, z 1 ⊕b), (2 8) • If the error anticommutes with ZZZZ, with b 1 = 1, then instead"
+      "Merge Rules",
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
+      ": Merge Rules Simplification Rule 5 For any two NCV gates g1(c1, t1) and g2(c2, t2) where c1, c2, t1 and t2 are the two controls and targets of g1 and g2 respec- tively, if c1 ̸= t2 and t2 ̸= c2, then"
     ],
     "text_positions": [
       [
@@ -3207,353 +1350,27 @@
         0
       ],
       [
-        39,
-        50
+        95,
+        106
       ],
       [
-        28,
-        37
+        84,
+        93
       ]
     ]
   },
-  "2410.22295__2410.22295_p1_b3ab9c868845d685__1766248537237.png": {
-    "arxiv_id": "2410.22295",
-    "figure_number": 11,
-    "page": 28,
-    "gates": [
-      "CNOT",
-      "H",
-      "MEASURE"
-    ],
-    "quantum_problem": "Clifford+T gate library",
-    "descriptions": [
-      "XXXX check following ZZZZ check.",
-      "A useful property of Bell states is the Ricochet property (or the transpose trick)",
-      ": XXXX check following ZZZZ check. Lemma 4. (Inequality of ratios of arithmetic mean to geometric mean of pairs of disparate probabilities vs pairs of similar probabilities) Let a, b, c, d be the elem"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        36,
-        68
-      ],
-      [
-        25,
-        34
-      ]
-    ]
-  },
-  "2503.09214__2503.09214_p1_9b5779342c75386c__1766248547050.png": {
-    "arxiv_id": "2503.09214",
-    "figure_number": null,
-    "page": 45,
-    "gates": [],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "The circuit representation of the exponential operators obtained from the single excitation operator pool in Eq. ( ). Here, σ i ∈{X,Y} and R i = {H, HS^†}. If σ i = X then R i=H and if σ i = Y then R i=HS^†.",
-      "eased device-noise leads to a larger deviation from the exact value. For the 1-RDM excitation operators, probabilities and amplitudes can be both added and subtracted, allowing for error cancellation."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        172,
-        1431
-      ]
-    ]
-  },
-  "2503.09214__2503.09214_p2_8690eb41d4d2ef69__1766248547123.png": {
-    "arxiv_id": "2503.09214",
-    "figure_number": null,
-    "page": 45,
-    "gates": [
-      "CNOT",
-      "RZ"
-    ],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "The circuit representation of the exponential operators obtained from the single excitation operator pool in Eq. ( ). Here, σ i ∈{X,Y} and R i = {H, HS^†}. If σ i = X then R i=H and if σ i = Y then R i=HS^†.",
-      "eased device-noise leads to a larger deviation from the exact value. For the 1-RDM excitation operators, probabilities and amplitudes can be both added and subtracted, allowing for error cancellation."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        172,
-        1431
-      ]
-    ]
-  },
-  "2503.09214__2503.09214_p1_0b518ed337438d38__1766248554797.png": {
-    "arxiv_id": "2503.09214",
-    "figure_number": null,
-    "page": 45,
-    "gates": [],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "The circuit representation of the exponential operators obtained from the double excitation operator pool in Eq. ( ). Here, σ i ∈{X,Y} and R i = {H, HS^†}. If σ i = X then R i=H and if σ i = Y then R i=HS^†.",
-      "eased device-noise leads to a larger deviation from the exact value. For the 1-RDM excitation operators, probabilities and amplitudes can be both added and subtracted, allowing for error cancellation."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        172,
-        1431
-      ]
-    ]
-  },
-  "2503.09214__2503.09214_p2_f85cd35daf365bfa__1766248554881.png": {
-    "arxiv_id": "2503.09214",
-    "figure_number": null,
-    "page": 45,
-    "gates": [
-      "CNOT",
-      "RZ"
-    ],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "The circuit representation of the exponential operators obtained from the double excitation operator pool in Eq. ( ). Here, σ i ∈{X,Y} and R i = {H, HS^†}. If σ i = X then R i=H and if σ i = Y then R i=HS^†.",
-      "eased device-noise leads to a larger deviation from the exact value. For the 1-RDM excitation operators, probabilities and amplitudes can be both added and subtracted, allowing for error cancellation."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        172,
-        1431
-      ]
-    ]
-  },
-  "2503.09214__2503.09214_p1_79a7b1936391e47f__1766248559331.png": {
-    "arxiv_id": "2503.09214",
-    "figure_number": null,
-    "page": 46,
-    "gates": [],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "The qubit-ADAPT(3,3) circuit for the hydroxyl radical (OH^∙) molecule. The circuit representation of the exponential operators are shown in Figs. and , and U HF=X 0 X 1 X 3 prepares the Hartree-Fock state. The circuit parameters are given in ( ).",
-      "The energy is 0 ( )| (0) | (0) 0 ( ) &=-7 5.4 3 3 8 7 7 2 1 E H. The circuit that was transpiled"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        38,
-        853
-      ]
-    ]
-  },
-  "2503.09214__2503.09214_p1_91c36538ac2a04f4__1766248563388.png": {
-    "arxiv_id": "2503.09214",
-    "figure_number": null,
-    "page": 48,
-    "gates": [],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "The qubit-ADAPT(3,3) circuit for the nitric oxide (NO^∙) molecule. The circuit representation of the exponential operators are shown in Figs. and , and U HF=X 0 X 1 X 3 prepares the Hartree-Fock state.",
-      "The circuit parameters are given in . The optimized circuit parameters in are given by"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        331,
-        532
-      ]
-    ]
-  },
-  "2503.09214__2503.09214_p1_e4ed181b7f154dbf__1766248567601.png": {
-    "arxiv_id": "2503.09214",
-    "figure_number": null,
-    "page": 46,
-    "gates": [],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "The qubit-ADAPT(4,4) circuit for the hydroxyl cation (OH^+) molecule. The circuit representation of the exponential operators are shown in Figs. and , and U HF=X 0 X 1 X 2 X 4 prepares the Hartree-Fock state. The circuit parameters are given in ( ).",
-      "The energy is 0 ( )| (0) | (0) 0 ( ) =-1 2 9.3 1 9 5 3 2 3 9 E H. The state was also"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2504.19827__2504.19827_p1_37d12289860535e3__1766248583975.png": {
-    "arxiv_id": "2504.19827",
-    "figure_number": null,
-    "page": 7,
-    "gates": [
-      "S"
-    ],
-    "quantum_problem": "Quantum Fourier Transform",
-    "descriptions": [
-      "Full quantum Newton-Raphson method. The Newton-Raphson steps (NRS) are described in .",
-      "The initial estimation is known, which allows us to uncompute and reuse its register. This reduces the total memory requirements by one register. The remaining r"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2504.19827__2504.19827_p1_3759320e172831bf__1766248592956.png": {
-    "arxiv_id": "2504.19827",
-    "figure_number": null,
-    "page": 13,
-    "gates": [
-      "CNOT"
-    ],
-    "quantum_problem": "NCV gate library",
-    "descriptions": [
-      "Quantum circuit for the Kronecker delta operation for two r-qubit registers |a⟩ and |b⟩. The CNOT^⊗ r represents r parallel CNOT gates while the center gate is an r-qubit controlled NOT gate with r-2 hidden ancilla qubits.",
-      "If both numbers are equal this will fully annihilate any in the target register. One a ication of NOT gates to all qubits of this register inverts all of"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2504.19827__2504.19827_p1_277af9e38f2c79fb__1766248601791.png": {
-    "arxiv_id": "2504.19827",
-    "figure_number": 16,
-    "page": 20,
-    "gates": [
-      "TOFFOLI"
-    ],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "Quantum circuit and Venn diagrams for the conjunction (, and) and the disjunction (, or) operation in (a) and (b), respectively. A and B are boolean variables being either 0 or 1 for and .",
-      "Multiple Toffoli gates can be combined for more than two conditions (cf. -qubit Toffoli gate ). Complex geometries require the combination of",
-      ". Quantum circuit for the greater than operation (>). At last, we need to restore b by a ying an r qubit ADD to the two input registers only. This routine requires n> = 2 r + 1 + nADD,a (D 5) qubits,"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        156,
-        1502
-      ],
-      [
-        608,
-        617
-      ]
-    ]
-  },
-  "2504.19827__2504.19827_p2_9ad534e84468ccff__1766248601873.png": {
-    "arxiv_id": "2504.19827",
-    "figure_number": 16,
-    "page": 20,
-    "gates": [
-      "X",
-      "TOFFOLI"
-    ],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "Quantum circuit and Venn diagrams for the conjunction (, and) and the disjunction (, or) operation in (a) and (b), respectively. A and B are boolean variables being either 0 or 1 for and .",
-      "Multiple Toffoli gates can be combined for more than two conditions (cf. -qubit Toffoli gate ). Complex geometries require the combination of",
-      ". Quantum circuit for the greater than operation (>). At last, we need to restore b by a ying an r qubit ADD to the two input registers only. This routine requires n> = 2 r + 1 + nADD,a (D 5) qubits,"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        156,
-        1502
-      ],
-      [
-        608,
-        617
-      ]
-    ]
-  },
-  "2505.12937__2505.12937_p1_dac030b3aee747a7__1766248629781.png": {
-    "arxiv_id": "2505.12937",
-    "figure_number": 6,
-    "page": 9,
-    "gates": [],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Implementation of a beamsplitter operation using the ZBS gate. When the internal qubit is prepared in a computational basis state, the ZBS gate implements a beamsplitter operation in a phononic network. In this case, the internal qubit is initialized in the ground state ↓.",
-      "\\( \\). subsub: TNP phase gate",
-      ". Implementation of a beamsplitter operation using the ZBS gate. When the internal qubit is prepared in a computational basis state, the ZBS gate implements a beamsplitter operation in a phononic netw"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        53,
-        323
-      ],
-      [
-        45,
-        51
-      ]
-    ]
-  },
-  "2505.12937__2505.12937_p1_afa0d5ed348ef3b9__1766248632016.png": {
-    "arxiv_id": "2505.12937",
+  "2407.04826__2407.04826_p4_9a894e204d75442c__1766249451745.png": {
+    "arxiv_id": "2407.04826",
     "figure_number": 10,
-    "page": 13,
-    "gates": [],
-    "quantum_problem": "MCT gate library",
-    "descriptions": [
-      "CBS gate implementation using a ZBS gate and a beamsplitter operator, based on the relation between σ̂ z and 1 1.",
-      "0 ] transfer.png Quantum circuits for coupling a dual-rail qubit to the COM mode for implementing a \\(K\\)-CNOT gate in the hybrid system. An additional internal qubit \\(q\\) is i",
-      ". CBS gate implementation using a ZBS gate and a beamsplitter operator, based on the relation between ˆσz and |1⟩⟨1|. The additional phase of i can be eliminated by a ying ˆRZ(−π/2) to the logical i"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        43,
-        871
-      ],
-      [
-        218,
-        225
-      ]
-    ]
-  },
-  "2505.12937__2505.12937_p1_55b45b9bbaee8ba2__1766248633403.png": {
-    "arxiv_id": "2505.12937",
-    "figure_number": 20,
-    "page": 25,
+    "page": 15,
     "gates": [
-      "Z"
+      "V"
     ],
-    "quantum_problem": "MCT gate library",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
-      "QND measurements for total number parity with the ZBS gate. When the modes are in the Fock states, the internal qubit encodes the total number parity of the two modes without changing their states.",
-      "The RXX gate between a logical internal qubit and a",
-      ". QND measurements for total number parity with the ZBS gate. When the modes are in the Fock states, the internal qubit encodes the total number parity of the two modes without changing their states."
+      "Merge Rules",
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
+      ": Merge Rules Simplification Rule 5 For any two NCV gates g1(c1, t1) and g2(c2, t2) where c1, c2, t1 and t2 are the two controls and targets of g1 and g2 respec- tively, if c1 ̸= t2 and t2 ̸= c2, then"
     ],
     "text_positions": [
       [
@@ -3561,521 +1378,28 @@
         0
       ],
       [
-        389,
-        586
+        95,
+        106
       ],
       [
-        380,
-        387
+        84,
+        93
       ]
     ]
   },
-  "2407.18347__2407.18347_p1_c20c2b9089a5e766__1766248641242.png": {
-    "arxiv_id": "2407.18347",
-    "figure_number": 4,
-    "page": 24,
+  "2407.04826__2407.04826_p5_2a3e51967b1311ca__1766249451793.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
     "gates": [
-      "H",
-      "CTRL"
-    ],
-    "quantum_problem": "Variational quantum algorithm",
-    "descriptions": [
-      "Quantum circuit for LCU of second derivative operator with boundary conditions on a simply or non-simply connected domain in d-dimensions using low-order stencil ℒ^(BC). The subnormalization 4 d results from λ = 4 for the 3 point stencil, which we then combine d times. Here we use the notation prep as the unitary which prepares the finite difference coefficients on the stencil register and D d as the unitary which prepares the equal superposition over d states on the dim register where S^j l refers to the modular increment-by-j operator in direction l. We use the ⊘ convention to mean controlled over every state. Appending an additional register of log(η) qubits and selecting over shift operators both in dimension and particle indices will implement the η-particle Laplacian over d-dimensions.",
-      "re are of those, each contribute in total: N the fourth kinds of terms where neither nor has support on the $ N-1",
-      ": Quantum circuit for LCU of second derivative operator with boundary conditions on a simply or non-simply connected domain in d-dimensions using low-order stencil L(BC). The subnormalization 4 d resul"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        119,
-        917
-      ],
-      [
-        109,
-        117
-      ]
-    ]
-  },
-  "2407.18347__2407.18347_p1_08ff024de317d119__1766248646038.png": {
-    "arxiv_id": "2407.18347",
-    "figure_number": null,
-    "page": 4,
-    "gates": [
-      "H",
-      "CTRL"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "Quantum circuit to implement (2(λ + β), m+l)-block encoding of a finite difference a oximation to the differential operator with arbitrary boundary conditions. dom is an oracle which marks each point |x⟩ in the [N^d] with a two-bit label |x⟩|b 0,b 1⟩, with '0 0' indicating interior points, '0 1' indicating boundary points and '1 0' indicating exterior points. Here, U L is a block encoding of the differential operator defined with periodic boundary conditions on [0,L]^d in matrix form and U B is a block encoding of the Dirichlet, Neumann, or Robin boundary condition in matrix form. U f implements the unitary transformation |b 0,b 1⟩→ (-1)^b 0⊕ b 1|b 0,b 1⟩ and U f' implements |b 0,b 1⟩→ (-1)^b 0⊕ 1 ⊕ b 1|b 0,b 1⟩, to cause the summed operators to be projected onto the a opriate boundary modes. Because dom is not restricted to marking points that correspond to a domain with orthogonal boundary faces, this procedure can be used to implement a broad family of boundary conditions.",
-      "Now, consider the controlled operation = I U L + U f U L"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2502.06463__2502.06463_p1_c46d791464dfd4f4__1766248671673.png": {
-    "arxiv_id": "2502.06463",
-    "figure_number": 1,
-    "page": 3,
-    "gates": [
-      "H",
-      "T"
-    ],
-    "quantum_problem": "Clifford+T gate library",
-    "descriptions": [
-      "A depiction of ℬ(ℋ , t, ϵ, 0), that is equivalent to e^-i ℋ t.",
-      ". A depiction of B(H, t, ϵ, 0), that is equivalent to e−iHt. Definition 2. GH ⊆ qσ | σ ∈{X, Y, Z, I}N, q ∈{±1, ±i} depends exclusively on H = P u∈J cuPu and is defined by: ∀u ∈J\\{⃗0}, ∃σ ∈GH such",
-      ") is the required subcircuit that, as shown in Lemma 1, is equivalent to e−iHt."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        2,
-        674
-      ],
-      [
-        608,
-        614
-      ],
-      [
-        2914,
-        2920
-      ]
-    ]
-  },
-  "2502.06463__2502.06463_p1_15184d0489f1a20b__1766248675110.png": {
-    "arxiv_id": "2502.06463",
-    "figure_number": 2,
-    "page": 3,
-    "gates": [
-      "H",
-      "T"
-    ],
-    "quantum_problem": "Clifford+T gate library",
-    "descriptions": [
-      "A depiction of a subcircuit, ℬ(ℋ, t, ϵ, 1), that is a oximately equal to e^i ℋ t/(L - 1), where each ℬ^(k) j is an independent – from all other ℬ^(k) j – uniformly chosen element of the relevant 𝔾 ℋ'.",
-      ". We now present the key result concerning : Theorem thm:invers",
-      "depicts B H, t, ϵ, 1). ... ... ... B(k) 1 e−iHt/M B(k) 1 B(k) 2 B(k) 2 B(k) 3 B(k) 3 B(k) N B(k) N Repeat M times, indexing the loops by k FIG. 2. A depiction of a subcircuit, B(H, t, ϵ, 1), that is",
-      ". A depiction of a subcircuit, B(H, t, ϵ, 1), that is a oxi- mately equal to eiHt/(L−1), where each B(k) j is an independent – from all other B(k) j – uniformly chosen element of the relevant G′ H."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        2,
-        2552
-      ],
-      [
-        2207,
-        2213
-      ],
-      [
-        2353,
-        2359
-      ]
-    ]
-  },
-  "2502.06463__2502.06463_p1_e4d35e1048472fe7__1766248683792.png": {
-    "arxiv_id": "2502.06463",
-    "figure_number": 4,
-    "page": 4,
-    "gates": [
-      "X",
-      "Z"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "(Ref. ) Example circuits within the same redaction class, where the redaction class corresponds to the redacted circuit in Fig. . Note that the circuit in Fig. could be any of these if the redaction were removed.",
-      "Let be a redaction class and . If a subset of the non-identity si",
-      ". (Ref.[2 6, Fig.2]) Example circuits within the same redaction class, where the redaction class corresponds to the redacted circuit in Fig. 3. Note that the circuit in Fig. 3 could be any of these if",
-      "are within the same redaction class as the redacted circuit in Fig. 3 could be any one of the circuits in Fig. 4 if its redaction were removed.",
-      "if its redaction were removed."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        2358,
-        2874
-      ],
-      [
-        2641,
-        2647
-      ],
-      [
-        4064,
-        4070
-      ],
-      [
-        4177,
-        4183
-      ]
-    ]
-  },
-  "2502.06463__2502.06463_p2_4af9ca5301286338__1766248683860.png": {
-    "arxiv_id": "2502.06463",
-    "figure_number": 4,
-    "page": 4,
-    "gates": [
-      "Y",
-      "Z"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "(Ref. ) Example circuits within the same redaction class, where the redaction class corresponds to the redacted circuit in Fig. . Note that the circuit in Fig. could be any of these if the redaction were removed.",
-      "Let be a redaction class and . If a subset of the non-identity si",
-      ". (Ref.[2 6, Fig.2]) Example circuits within the same redaction class, where the redaction class corresponds to the redacted circuit in Fig. 3. Note that the circuit in Fig. 3 could be any of these if",
-      "are within the same redaction class as the redacted circuit in Fig. 3 could be any one of the circuits in Fig. 4 if its redaction were removed.",
-      "if its redaction were removed."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        2358,
-        2874
-      ],
-      [
-        2641,
-        2647
-      ],
-      [
-        4064,
-        4070
-      ],
-      [
-        4177,
-        4183
-      ]
-    ]
-  },
-  "2502.06463__2502.06463_p3_cf484b834b91e023__1766248683912.png": {
-    "arxiv_id": "2502.06463",
-    "figure_number": 4,
-    "page": 4,
-    "gates": [
-      "Z"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "(Ref. ) Example circuits within the same redaction class, where the redaction class corresponds to the redacted circuit in Fig. . Note that the circuit in Fig. could be any of these if the redaction were removed.",
-      "Let be a redaction class and . If a subset of the non-identity si",
-      ". (Ref.[2 6, Fig.2]) Example circuits within the same redaction class, where the redaction class corresponds to the redacted circuit in Fig. 3. Note that the circuit in Fig. 3 could be any of these if",
-      "are within the same redaction class as the redacted circuit in Fig. 3 could be any one of the circuits in Fig. 4 if its redaction were removed.",
-      "if its redaction were removed."
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        2358,
-        2874
-      ],
-      [
-        2641,
-        2647
-      ],
-      [
-        4064,
-        4070
-      ],
-      [
-        4177,
-        4183
-      ]
-    ]
-  },
-  "2502.06463__2502.06463_p1_2ac0d00f92c227c1__1766248687761.png": {
-    "arxiv_id": "2502.06463",
-    "figure_number": 5,
-    "page": 6,
-    "gates": [
-      "H",
-      "T"
-    ],
-    "quantum_problem": "Simon's algorithm",
-    "descriptions": [
-      "Depiction of a modified j-vanishing block, 𝒥(ℋ, t 1' + t 2', ϵ, j), where ℋ is an arbitrary spin Hamiltonian, t 1', t 2' ∈ℝ, ℬ(ℋ, t' 2, ϵ, j) is as in Fig. , and j ∈{ 0,1}.",
-      "\\ 0,1\\ $. Def. has made use of Def. in splitting a time evolution (of duration",
-      ", where t′ 1 and t′ 2 are related as in Def. 1 3. Due to Theorem 1, a modified j-vanishing block exists for any Hamiltonian and j ∈{0,1}. e−iHt′ 1 B(H, t′ 2, ϵ, j) FIG. 5. Depiction of a modified j-va",
-      ". Depiction of a modified j-vanishing block, J(H, t′ 1 +t′ 2, ϵ, j), where H is an arbitrary spin Hamiltonian, t′ 1, t′ 2 ∈R, B(H, t′ 2, ϵ, j) is as in Fig. 2, and j ∈{0,1}. 5 as in Ref. [4 2, Appendi"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        1963,
-        2128
-      ],
-      [
-        1785,
-        1791
-      ],
-      [
-        1955,
-        1961
-      ]
-    ]
-  },
-  "2502.06463__2502.06463_p1_b98ddf0ed387eef2__1766248694528.png": {
-    "arxiv_id": "2502.06463",
-    "figure_number": 6,
-    "page": 7,
-    "gates": [
-      "H",
-      "T",
-      "Z"
-    ],
-    "quantum_problem": "Hamiltonian simulation",
-    "descriptions": [
-      "A target (top) and trap (bottom) simulation corresponding to a simulation according to Hamiltonian, ℋ, for a time duration t a ied to an initial state, |ψ 0⟩= ⊗ j = 1^N ( 𝒜^' j ) |0⟩^⊗ N, before the measurements ℳ= ⊗ j = 1^N ( 𝒟^' j ) 𝒵^⊗ N are a ied. H denotes a Hadamard gate, h ∈{0,1} is a uniformly random bit, 𝒵^' denotes a ying a Pauli Z gate with probability 0.5 (each instance in the circuit is independent), and 𝒫 j is a single-qubit Pauli gate, chosen uniformly at random independently for each j.",
-      ". A target (top) and trap (bottom) simulation corresponding to a simulation according to Hamiltonian, H, for a time duration t a ied to an initial state, |ψ0⟩= ⊗N j=1 A′ j |0⟩⊗N, before the measu"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        194,
-        200
-      ]
-    ]
-  },
-  "2502.06463__2502.06463_p2_4fc8c40dbad9f402__1766248694648.png": {
-    "arxiv_id": "2502.06463",
-    "figure_number": 6,
-    "page": 7,
-    "gates": [
-      "H",
-      "Z",
-      "T"
-    ],
-    "quantum_problem": "Hamiltonian simulation",
-    "descriptions": [
-      "A target (top) and trap (bottom) simulation corresponding to a simulation according to Hamiltonian, ℋ, for a time duration t a ied to an initial state, |ψ 0⟩= ⊗ j = 1^N ( 𝒜^' j ) |0⟩^⊗ N, before the measurements ℳ= ⊗ j = 1^N ( 𝒟^' j ) 𝒵^⊗ N are a ied. H denotes a Hadamard gate, h ∈{0,1} is a uniformly random bit, 𝒵^' denotes a ying a Pauli Z gate with probability 0.5 (each instance in the circuit is independent), and 𝒫 j is a single-qubit Pauli gate, chosen uniformly at random independently for each j.",
-      ". A target (top) and trap (bottom) simulation corresponding to a simulation according to Hamiltonian, H, for a time duration t a ied to an initial state, |ψ0⟩= ⊗N j=1 A′ j |0⟩⊗N, before the measu"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        194,
-        200
-      ]
-    ]
-  },
-  "2504.01558__2504.01558_p1_a3639f75aaf364c3__1766248702042.png": {
-    "arxiv_id": "2504.01558",
-    "figure_number": 1,
-    "page": 6,
-    "gates": [],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The example: each layer consists of two-qubit unitaries a ied to disjoint qubits.",
-      "This section presents an example to show how we create a constraint-based description of the output state of a constant-",
-      ". The example: each layer consists of two-qubit unitaries a ied to disjoint qubits. This section presents an example to show how we create a constraint-based description of the output state of a con",
-      "shows an example a depth-3 quan- tum circuit. Each of the eight horizontal rows in the diagram depicts a qubit. Time progresses from left to right, with the initial value of each qubit being |0⟩, as"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        78,
-        1042
-      ],
-      [
-        951,
-        957
-      ],
-      [
-        1596,
-        1604
-      ]
-    ]
-  },
-  "2503.02984__2503.02984_p1_238080b3c6da5531__1766248723026.png": {
-    "arxiv_id": "2503.02984",
-    "figure_number": 2,
-    "page": 4,
-    "gates": [
-      "CTRL"
-    ],
-    "quantum_problem": "Permutation circuit realization",
-    "descriptions": [
-      "Following , we implement a group of s controlled-addition of a point R using a look-up table, uncontrolled point addition operation, and an uncomputation of the look-up table. The optimal window size s is calculated for every considered elliptic curve field size.",
-      ". The high-level circuit of Shor's algorithm for computing binary ECDLP is displayed in figure . It consists of two rounds of quantum phase estimati",
-      ": Following [1 5,2 1], we implement a group of s controlled-addition of a point R using a look-up table, uncontrolled point addition operation, and an uncomputation of the look-up table. The optimal wi",
-      ", thereby reducing the number of calls to point additions. The window size s that minimizes the resource requirements depends on the field size n; we discuss this further in section IV. n n n n n n n",
-      ". Notations: We use “→” to mark the target registers whose values are modified by modular addition, multiplication, and inversion. We use “Garb” and “Clean” to label zero-in-garbage-out and zero-in-ze"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        219,
-        490
-      ],
-      [
-        211,
-        217
-      ],
-      [
-        1098,
-        1106
-      ],
-      [
-        1615,
-        1623
-      ]
-    ]
-  },
-  "2510.18652__2510.18652_p1_69054d9307980ca3__1766248730903.png": {
-    "arxiv_id": "2510.18652",
-    "figure_number": 3,
-    "page": 7,
-    "gates": [
-      "H",
-      "MEASURE"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The higher-order zero-level distillation protocol. PS stands for post-selection using Steane's gadget.",
-      "[t!] \\[ @C=.5 em @R=.6 em",
-      ". The higher-order zero-level distillation protocol. PS stands for post-selection using Steane’s gadget. To reduce the cost of |T⟩L preparation, we propose higher-order zero-level distillation, a low",
-      "). Using the identity TXT † = HXY , to- gether with the transversal Clifford gates of the Golay code, the Hadamard test can be implemented as shown in Fig. 4. To mitigate error propagation from the co",
-      ", a Bell pair is employed as the ancilla for the Hadamard test. The ancillas used in Steane’s gadget are logical |0⟩states, prepared via entanglement purifica- tion in the same manner as in the analog",
-      "). The first two qubits implement the control qubit in Fig. 3, and the rest represents a logical qubit encoded in the Golay code. measured / discarded qubits reset / reloaded qubits Factory Factory",
-      ", and the rest represents a logical qubit encoded in the Golay code. measured / discarded qubits reset / reloaded qubits Factory Factory Operation FIG. 5. Zoned architecture for MB-FTQC. E. Zoned a"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        49,
-        151
-      ],
-      [
-        41,
-        47
-      ],
-      [
-        1448,
-        1454
-      ],
-      [
-        1669,
-        1675
-      ],
-      [
-        2227,
-        2233
-      ],
-      [
-        2288,
-        2294
-      ]
-    ]
-  },
-  "2510.18652__2510.18652_p1_4b91f68a6c27ccb3__1766248733680.png": {
-    "arxiv_id": "2510.18652",
-    "figure_number": 4,
-    "page": 7,
-    "gates": [
-      "T_DG",
-      "CNOT",
-      "T",
-      "H",
-      "MEASURE"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The implementation of the Hadamard test used in the distillation protocol (Fig. ). The first two qubits implement the control qubit in Fig. , and the rest represents a logical qubit encoded in the Golay code.",
-      "To organize these operations efficiently, we introduce a zoned architecture consisting of",
-      ". To mitigate error propagation from the control qubit in Fig. 3, a Bell pair is employed as the ancilla for the Hadamard test. The ancillas used in Steane’s gadget are logical |0⟩states, prepared via",
-      ". The implementation of the Hadamard test used in the distillation protocol (Fig. 3). The first two qubits implement the control qubit in Fig. 3, and the rest represents a logical qubit encoded in the"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        49,
-        2362
-      ],
-      [
-        1605,
-        1611
-      ],
-      [
-        2144,
-        2150
-      ]
-    ]
-  },
-  "2403.11514__2403.11514_p1_f08a0429029af5ec__1766248743387.png": {
-    "arxiv_id": "2403.11514",
-    "figure_number": null,
-    "page": 7,
-    "gates": [
-      "H",
-      "CNOT",
-      "RZ",
-      "RX"
-    ],
-    "quantum_problem": "Gate decomposition",
-    "descriptions": [
-      "Example of a parameterized quantum circuit: QAOA on 3 qubits. Here the phase and mixing operators as well as initial state preparation have been compiled to basic quantum gates.",
-      "Each QAOA state is specified by parameters in some domain (e.g., ), which can be optimized variationally or by other"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2407.08695__2407.08695_p1_6ec900e014bf47db__1766248748886.png": {
-    "arxiv_id": "2407.08695",
-    "figure_number": 3,
-    "page": 7,
-    "gates": [
-      "T",
+      "V_DG",
       "CNOT"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
-      "An implementation of the U f gate with weighted polynomial f( x) = 4 x 1 x 2 x 3, which corresponds to the CCZ gate.",
-      "[t] ! Overview of the",
-      ": An implementation of the Uf gate with weighted polynomial f(x) = 4 x 1 x 2 x 3, which corresponds to the CCZ gate. qα,β = a (mod 4) and cα,β,γ = a (mod 2). Equation 1 2 can then be used for each parity of"
+      "Merge Rules",
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
+      ": Merge Rules Simplification Rule 5 For any two NCV gates g1(c1, t1) and g2(c2, t2) where c1, c2, t1 and t2 are the two controls and targets of g1 and g2 respec- tively, if c1 ̸= t2 and t2 ̸= c2, then"
     ],
     "text_positions": [
       [
@@ -4083,29 +1407,28 @@
         0
       ],
       [
-        81,
-        189
+        95,
+        106
       ],
       [
-        71,
-        79
+        84,
+        93
       ]
     ]
   },
-  "2407.07758__2407.07758_p1_bf8dd3b047440729__1766248763684.png": {
-    "arxiv_id": "2407.07758",
-    "figure_number": 3,
-    "page": 3,
+  "2407.04826__2407.04826_p6_33fe17306d39bc31__1766249451833.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
     "gates": [
-      "MCX_5"
+      "CNOT",
+      "V_DG"
     ],
-    "quantum_problem": "Gate decomposition",
+    "quantum_problem": "Amplitude amplification",
     "descriptions": [
-      "Qutrit-based decomposition of gates with 2 N-3 XX gates. All R x^0 2(±π) gates are performed globally (depicted with a translucent background). (a) General decomposition scheme. In (b) and (c), U 1 and U 2 are shown, respectively. If N ≥ 4, then in U 1 and U 1^† the last and the first global gates are not implemented, correspondingly.",
-      "sure! Just leave it. I don't think even the simple quantum wire works as I want it out the box! /tikz/commutative diag",
-      ". Qubit decom- positions were measured up to N = 6, where the corre- sponding Ftt drops to 4.2(1)%. As |2⟩is not used during this type of gates, only one measurement at the end of each circuit is perf",
-      "shows that the qutrit-based gate decomposition (red squares) demonstrates a clear advantage in terms of Ftt in comparison to standard qubit variant (blue cir- cles). The number of two-particle gates",
-      "show Ftt for qutrit-based Toffoli gate, where only shots without leakage were post-selected. The improvement of the truth table fidelity can be clearly seen in comparison to both raw qutrit and qubit"
+      "Merge Rules",
+      "If two gates and or two gates are adjacent, then these gates can be removed from the quantum cir",
+      ": Merge Rules Simplification Rule 5 For any two NCV gates g1(c1, t1) and g2(c2, t2) where c1, c2, t1 and t2 are the two controls and targets of g1 and g2 respec- tively, if c1 ̸= t2 and t2 ̸= c2, then"
     ],
     "text_positions": [
       [
@@ -4113,166 +1436,12 @@
         0
       ],
       [
-        3674,
-        3680
+        95,
+        106
       ],
       [
-        4023,
-        4029
-      ],
-      [
-        5356,
-        5362
-      ]
-    ]
-  },
-  "2407.13080__2407.13080_p1_bc5967a73f77508b__1766248768873.png": {
-    "arxiv_id": "2407.13080",
-    "figure_number": 3,
-    "page": 3,
-    "gates": [
-      "Y"
-    ],
-    "quantum_problem": "Deutsch–Jozsa algorithm",
-    "descriptions": [
-      "O^s A operator for the scalar Laplacian. Filling in the nine nonzero entries.",
-      "O s A",
-      ": The block-encoding circuit for the free scalar Laplacian. operators needed above are given by add =          0 0 . . . 0 1 1 0 ... ... 0 0 1 ... ... 0 ... ... ... ... ... 0 0 . . . 1 0  ",
-      ". The following block-encodings have a similar complete structure. To compute the angles for the rotations in Os A we look at expectation values. For the diagonal, ⟨⃗n| ⟨0000| ⟨0| DsOs cOs ADs |0⟩|000"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        56,
-        330
-      ],
-      [
-        362,
-        368
-      ],
-      [
-        1382,
-        1388
-      ]
-    ]
-  },
-  "2407.13080__2407.13080_p1_beef173de9e265cd__1766248770185.png": {
-    "arxiv_id": "2407.13080",
-    "figure_number": 3,
-    "page": 3,
-    "gates": [
-      "S"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "The block-encoding circuit for the free scalar Laplacian.",
-      "We consider a normalized lattice Laplacian, &= s (- 2 + m 0 2 ) &= s pmatrix",
-      ": The block-encoding circuit for the free scalar Laplacian. operators needed above are given by add =          0 0 . . . 0 1 1 0 ... ... 0 0 1 ... ... 0 ... ... ... ... ... 0 0 . . . 1 0  ",
-      ". The following block-encodings have a similar complete structure. To compute the angles for the rotations in Os A we look at expectation values. For the diagonal, ⟨⃗n| ⟨0000| ⟨0| DsOs cOs ADs |0⟩|000"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        370,
-        427
-      ],
-      [
-        362,
-        368
-      ],
-      [
-        1382,
-        1388
-      ]
-    ]
-  },
-  "2407.13080__2407.13080_p1_90e6c2249196e6e4__1766248771583.png": {
-    "arxiv_id": "2407.13080",
-    "figure_number": 6,
-    "page": 7,
-    "gates": [
-      "H",
-      "CNOT"
-    ],
-    "quantum_problem": "Clifford+T gate library",
-    "descriptions": [
-      "The state preparation circuit, . H is the Hadamard gate.",
-      ": The state preparation circuit, A. H is the Hadamard gate. a ℓ / n / V FIG. 7: The Q matrix. the color indices expressed: W αβ ac = K2 4 X µ,ν X γ ηµ(a)ην(c)× U γα∗ µ(a −ˆµ)U γβ ν (c −ˆν)δa−ˆµ+ˆν,c"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        26,
-        83
-      ],
-      [
-        18,
-        24
-      ]
-    ]
-  },
-  "2407.13080__2407.13080_p1_beceffb8101643be__1766248773740.png": {
-    "arxiv_id": "2407.13080",
-    "figure_number": 8,
-    "page": 7,
-    "gates": [
-      "CTRL",
-      "X"
-    ],
-    "quantum_problem": "Deutsch–Jozsa algorithm",
-    "descriptions": [
-      "The 𝕌 φ matrix. X is the Pauli-x matrix.",
-      ": The Uφ matrix. X is the Pauli-x matrix. a X Z X ℓ / n / FIG. 9: The −S0 circuit. Z and X are the Pauli-z and x matrices, respectively. a Uφ A† S0 A ℓ / n / FIG. 10: The Q circuit. This can be done b"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        26,
-        1234
-      ],
-      [
-        1187,
-        1193
-      ]
-    ]
-  },
-  "2407.13080__2407.13080_p1_8d82f15e40f7ae18__1766248775089.png": {
-    "arxiv_id": "2407.13080",
-    "figure_number": 9,
-    "page": 7,
-    "gates": [
-      "X",
-      "Z"
-    ],
-    "quantum_problem": "Clifford+T gate library",
-    "descriptions": [
-      "The -S 0 circuit. Z and X are the Pauli-z and x matrices, respectively.",
-      ": The −S0 circuit. Z and X are the Pauli-z and x matrices, respectively. a Uφ A† S0 A ℓ / n / FIG. 10: The Q circuit. This can be done by recasting the trace as an expecta- tion value and using QME. A"
-    ],
-    "text_positions": [
-      [
-        0,
-        0
-      ],
-      [
-        26,
-        1329
-      ],
-      [
-        1251,
-        1257
+        84,
+        93
       ]
     ]
   }

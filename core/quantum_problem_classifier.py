@@ -13,7 +13,7 @@ Notes:
 """
 from __future__ import annotations
 
-from typing import Iterable, List, Optional, Sequence, Tuple
+from typing import Iterable, List, Sequence, Tuple
 
 import numpy as np
 from numpy.typing import ArrayLike
@@ -28,9 +28,19 @@ UNSPECIFIED = "Unspecified quantum circuit"
 def prepare_label_embeddings(
     model: SentenceTransformer,
 ) -> Tuple[List[str], np.ndarray]:
-    """Encode label descriptions once and return (keys, embeddings).
+    """Encode label descriptions once and return ``(keys, embeddings)``.
 
     Embeddings are L2-normalized for cosine similarity.
+
+    Parameters
+    ----------
+    model : SentenceTransformer
+        SBERT model used to encode label descriptions.
+
+    Returns
+    -------
+    tuple[list[str], numpy.ndarray]
+        Ordered label keys and their normalized embeddings.
     """
     label_keys = list(QUANTUM_PROBLEM_LABELS.keys())
     label_texts = list(QUANTUM_PROBLEM_LABELS.values())
@@ -47,6 +57,18 @@ def prepare_label_embeddings(
 
 
 def _concat_descriptions(descriptions: Iterable[str]) -> str:
+    """Concatenate non-empty description strings into a single query.
+
+    Parameters
+    ----------
+    descriptions : Iterable[str]
+        Candidate description strings.
+
+    Returns
+    -------
+    str
+        Space-joined text of valid descriptions (may be empty).
+    """
     return " ".join([d for d in descriptions if isinstance(d, str) and d.strip()]).strip()
 
 
@@ -57,9 +79,29 @@ def classify_quantum_problem(
     label_embeddings: ArrayLike,
     threshold: float = DEFAULT_THRESHOLD,
 ) -> str:
-    """Return best label or UNSPECIFIED based on SBERT cosine similarity.
+    """Return best label or ``UNSPECIFIED`` using SBERT cosine similarity.
 
-    This is a pure function; it does not mutate inputs.
+    Parameters
+    ----------
+    model : SentenceTransformer
+        SBERT model for encoding the query text.
+    descriptions : Sequence[str]
+        Descriptions to concatenate into the query.
+    label_keys : Sequence[str]
+        Ordered label keys aligned with ``label_embeddings``.
+    label_embeddings : ArrayLike
+        Precomputed, normalized embeddings of label texts.
+    threshold : float, optional
+        Minimum cosine similarity required to accept a label (default ``0.45``).
+
+    Returns
+    -------
+    str
+        Best matching label or ``UNSPECIFIED`` when below threshold or missing text.
+
+    Notes
+    -----
+    Pure function: does not mutate inputs.
     """
     if not descriptions:
         return UNSPECIFIED
@@ -88,9 +130,28 @@ def apply_classification(
     label_embeddings: ArrayLike,
     threshold: float = DEFAULT_THRESHOLD,
 ) -> None:
-    """In-place assignment of `quantum_problem` for each record.
+    """Assign ``quantum_problem`` in-place for each record.
 
-    Only `quantum_problem` is written. Other fields are untouched.
+    Parameters
+    ----------
+    records : Sequence[dict]
+        Mutable records that may contain ``descriptions``.
+    model : SentenceTransformer
+        SBERT model for encoding descriptions.
+    label_keys : Sequence[str]
+        Ordered label keys aligned with embeddings.
+    label_embeddings : ArrayLike
+        Precomputed, normalized embeddings of label texts.
+    threshold : float, optional
+        Minimum cosine similarity to accept a label (default ``0.45``).
+
+    Returns
+    -------
+    None
+
+    Notes
+    -----
+    Only ``quantum_problem`` is written; other fields remain unchanged.
     """
     for rec in records:
         try:

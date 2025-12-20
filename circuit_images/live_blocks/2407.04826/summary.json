@@ -1,22 +1,78 @@
 {
   "source": "2407.04826",
-  "blocks_count": 2,
+  "blocks_count": 9,
   "blocks": [
     {
       "index": 0,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_c1d8a642b676454c.tex",
-      "length": 1549,
-      "block_id": "2407.04826_c1d8a642b676454c",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_6df15b86d4a17bc6.tex",
+      "length": 111,
+      "block_id": "2407.04826_6df15b86d4a17bc6",
       "panel": 1,
-      "label": "fn_ex_decompose_ncv"
+      "label": "optimization rules fig"
     },
     {
       "index": 1,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_5a8777560b57b164.tex",
-      "length": 1525,
-      "block_id": "2407.04826_5a8777560b57b164",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_7e986fca9394d5eb.tex",
+      "length": 140,
+      "block_id": "2407.04826_7e986fca9394d5eb",
       "panel": 2,
-      "label": "fn_ex_decompose_ncv"
+      "label": "optimization rules fig"
+    },
+    {
+      "index": 2,
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p3_b90c5becb1ad1666.tex",
+      "length": 142,
+      "block_id": "2407.04826_b90c5becb1ad1666",
+      "panel": 3,
+      "label": "optimization rules fig"
+    },
+    {
+      "index": 3,
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p4_9a894e204d75442c.tex",
+      "length": 116,
+      "block_id": "2407.04826_9a894e204d75442c",
+      "panel": 4,
+      "label": "optimization rules fig"
+    },
+    {
+      "index": 4,
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p5_2a3e51967b1311ca.tex",
+      "length": 135,
+      "block_id": "2407.04826_2a3e51967b1311ca",
+      "panel": 5,
+      "label": "optimization rules fig"
+    },
+    {
+      "index": 5,
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p6_33fe17306d39bc31.tex",
+      "length": 135,
+      "block_id": "2407.04826_33fe17306d39bc31",
+      "panel": 6,
+      "label": "optimization rules fig"
+    },
+    {
+      "index": 6,
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p7_25a6774e014fd879.tex",
+      "length": 117,
+      "block_id": "2407.04826_25a6774e014fd879",
+      "panel": 7,
+      "label": "optimization rules fig"
+    },
+    {
+      "index": 7,
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p8_ca3203ad15956ac1.tex",
+      "length": 134,
+      "block_id": "2407.04826_ca3203ad15956ac1",
+      "panel": 8,
+      "label": "optimization rules fig"
+    },
+    {
+      "index": 8,
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p9_302fdbf76d14257c.tex",
+      "length": 134,
+      "block_id": "2407.04826_302fdbf76d14257c",
+      "panel": 9,
+      "label": "optimization rules fig"
     }
   ]
 }

@@ -1,9 +1,0 @@
-\begin{quantikz}[wire types={b,b,b,b},classical gap=0.07cm]
-			\lstick{$\blue{|0\rangle^{\otimes r}}$} &&\gate[2]{\mathrm{REC}}\gateoutput{$\rightarrow$}&\gate[2,swap]{}&&\gate[2,swap]{}&\gate[2]{\mathrm{REC}^\dagger}\gateoutput{$\rightarrow$}&\rstick{$\blue{|0\rangle^{\otimes r}}$}
-			\\
-			\lstick{$|a\rangle$} &\gate[3]{\mathrm{MUL}}&&&\gate[3]{\mathrm{MUL}^\dagger}&&&\rstick{$|a\rangle$}
-			\\
-			\lstick{$|b\rangle$} &&\gate[2,swap]{}&&&&&\rstick{$|ab\rangle$}
-			\\
-			\lstick{$\blue{|0\rangle^{\otimes r}}$} &\gateoutput{$\rightarrow$}&&&\gateoutput{$\rightarrow$}&&&\rstick{$\blue{|0\rangle^{\otimes r}}$}
-		\end{quantikz}
