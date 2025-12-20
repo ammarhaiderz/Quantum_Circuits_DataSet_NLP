@@ -18,10 +18,22 @@ class SafeFormatter(Formatter):
     unencodable characters are replaced.
     """
     def __init__(self, fmt=None, datefmt=None, stream_encoding=None):
+        """Initialize formatter with optional stream encoding.
+
+        Parameters
+        ----------
+        fmt : str, optional
+            Log format string.
+        datefmt : str, optional
+            Date format string.
+        stream_encoding : str, optional
+            Encoding to use when sanitizing output; defaults to stream encoding.
+        """
         super().__init__(fmt=fmt, datefmt=datefmt)
         self.stream_encoding = stream_encoding
 
     def format(self, record):
+        """Format a log record while replacing unencodable characters."""
         s = super().format(record)
         enc = self.stream_encoding or getattr(sys.stderr, 'encoding', None) or 'utf-8'
         try:
@@ -36,11 +48,18 @@ class Logger:
     """Custom logger for the pipeline."""
     
     def __init__(self, name: str = "QuantumExtractor"):
+        """Create and configure a logger instance.
+
+        Parameters
+        ----------
+        name : str, optional
+            Logger name (default ``"QuantumExtractor"``).
+        """
         self.logger = logging.getLogger(name)
         self.setup_logging()
         
     def setup_logging(self):
-        """Setup logging configuration."""
+        """Set up console (and optional file) handlers and formatters."""
         log_level = getattr(logging, LOG_LEVEL.upper(), logging.INFO)
         # avoid adding multiple handlers if setup_logging called repeatedly
         if self.logger.handlers:
@@ -75,24 +94,34 @@ class Logger:
             self.logger.addHandler(file_handler)
     
     def debug(self, msg: str):
-        """Debug log."""
+        """Emit a debug log when debug printing is enabled."""
         if ENABLE_DEBUG_PRINTS:
             self.logger.debug(msg)
     
     def info(self, msg: str):
-        """Info log."""
+        """Emit an info log."""
         self.logger.info(msg)
     
     def warning(self, msg: str):
-        """Warning log."""
+        """Emit a warning log."""
         self.logger.warning(msg)
     
     def error(self, msg: str):
-        """Error log."""
+        """Emit an error log."""
         self.logger.error(msg)
     
     def print_debug_info(self, paper_id: str, figures: List, top_n: int = 5):
-        """Print debug information for a paper."""
+        """Print top-N TF-IDF caption debug info for a paper.
+
+        Parameters
+        ----------
+        paper_id : str
+            Identifier of the paper being processed.
+        figures : list
+            Figures with TF-IDF scores and captions.
+        top_n : int, optional
+            Number of top captions to show (default ``5``).
+        """
         if not ENABLE_DEBUG_PRINTS:
             return
         
@@ -113,7 +142,15 @@ class Logger:
                 self.debug("   " + f.preprocessed_text)
     
     def print_statistics(self, stats: Dict[str, Any], df=None):
-        """Print final statistics."""
+        """Print high-level pipeline statistics and optional detailed metrics.
+
+        Parameters
+        ----------
+        stats : dict
+            Aggregated counters from the pipeline.
+        df : pandas.DataFrame, optional
+            DataFrame with figure scores for detailed breakdowns.
+        """
         self.info("\n" + "="*40 + " SUMMARY " + "="*40)
         self.info(f"Papers checked: {stats['papers_checked']}")
         self.info(f"Papers with figures: {stats['papers_with_figures']}")
@@ -128,7 +165,7 @@ class Logger:
         self.info("="*88)
     
     def _print_detailed_statistics(self, df):
-        """Print detailed TF-IDF and SBERT statistics for tuning."""
+        """Print detailed TF-IDF, SBERT, and combined score statistics."""
         from config.settings import SIMILARITY_THRESHOLD, SBERT_MIN_SIM
         
         self.info("\n" + "="*88)
