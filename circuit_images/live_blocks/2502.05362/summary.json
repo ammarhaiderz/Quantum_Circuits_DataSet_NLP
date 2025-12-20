@@ -4,11 +4,11 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2502.05362\\raw_blocks\\2502.05362_p1_7b73c07754535096.tex",
-      "length": 299,
-      "block_id": "2502.05362_7b73c07754535096",
+      "block_file": "2502.05362\\raw_blocks\\2502.05362_p1_b6b20833aa9bb723.tex",
+      "length": 212,
+      "block_id": "2502.05362_b6b20833aa9bb723",
       "panel": 1,
-      "label": "qc:exp3"
+      "label": "qc:exp2"
     }
   ]
 }

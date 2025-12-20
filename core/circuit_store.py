@@ -74,6 +74,27 @@ def emit_record(record: dict):
                             page_val, fig_val = res
                             if page_val:
                                 record['page'] = page_val
+                            # Attempt to locate caption span on the PDF page and
+                            # store page-relative text offsets in `text_positions`.
+                            try:
+                                if page_val and fitz is not None:
+                                    pdf_path2 = Path(PDF_CACHE_DIR) / f"{aid}.pdf"
+                                    if pdf_path2.exists():
+                                        doc2 = fitz.open(str(pdf_path2))
+                                        try:
+                                            pg = doc2.load_page(page_val - 1)
+                                            page_text2 = pg.get_text("text")
+                                            span2 = locate_description_span_raw(page_text2, record['descriptions'][0])
+                                            if span2:
+                                                # store as list for JSON compatibility
+                                                record['text_positions'] = [list(span2)]
+                                        finally:
+                                            try:
+                                                doc2.close()
+                                            except Exception:
+                                                pass
+                            except Exception:
+                                pass
                             if fig_val is not None:
                                 record['figure'] = fig_val
                     except Exception:
@@ -84,6 +105,9 @@ def emit_record(record: dict):
         # (figure numbers removed) No further figure-number extraction performed
 
         with open(JSONL_PATH, 'a', encoding='utf-8') as f:
+            # Ensure `figure` key exists in JSONL records (use None when unknown)
+            if 'figure' not in record:
+                record['figure'] = None
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
         # After appending to JSONL, regenerate a proper JSON array file.
         try:
@@ -131,9 +155,11 @@ def _regenerate_json():
                             # keep arxiv_id first if present
                             if 'arxiv_id' in d:
                                 out['arxiv_id'] = d.pop('arxiv_id')
-                            # place figure second if present
+                            # place figure second; if missing set to None
                             if 'figure' in d:
                                 out['figure'] = d.pop('figure')
+                            else:
+                                out['figure'] = None
                             # then dump remaining keys in original order
                             for k, v in d.items():
                                 out[k] = v
@@ -180,8 +206,11 @@ def _regenerate_json():
                         out = {}
                         if 'arxiv_id' in d:
                             out['arxiv_id'] = d.pop('arxiv_id')
+                        # ensure figure key exists (null when absent)
                         if 'figure' in d:
                             out['figure'] = d.pop('figure')
+                        else:
+                            out['figure'] = None
                         for k, v in d.items():
                             out[k] = v
                         return out
@@ -508,6 +537,123 @@ def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.0
     # Return (page, figure_number) where figure_number may be None.
     return (best_page + 1, best_fig)
 
+def locate_description_span_raw(
+    raw_page_text: str,
+    caption: str
+) -> tuple[int, int] | None:
+    """
+    Locate the caption span in RAW page text and return (start, end) character offsets.
+
+    Strategy:
+    - Lightly normalize BOTH raw page text and caption in the SAME way
+    - Try full-caption substring match
+    - Fallback: match a short anchor (first few words)
+    - Map normalized offsets back to raw text offsets
+    """
+
+    if not raw_page_text or not caption:
+        return None
+
+    def _normalize_with_mapping(s: str) -> tuple[str, list[int]]:
+        """Lightly normalize and keep index mapping to raw chars."""
+        out_chars: list[str] = []
+        mapping: list[int] = []
+        prev_space = False
+        for idx, ch in enumerate(s):
+            # drop soft hyphen
+            if ch == '\u00ad':
+                continue
+            # normalize nbsp to space
+            if ch == '\xa0':
+                ch = ' '
+            ch_low = ch.lower()
+            if ch_low.isspace():
+                if prev_space:
+                    # collapse multiple spaces
+                    continue
+                prev_space = True
+                out_chars.append(' ')
+                mapping.append(idx)
+                continue
+            prev_space = False
+            out_chars.append(ch_low)
+            mapping.append(idx)
+        norm = ''.join(out_chars).strip()
+        return norm, mapping
+
+    try:
+        cleaned_caption = _clean_caption_for_search(caption)
+    except Exception:
+        cleaned_caption = caption
+
+    raw_norm, map_norm_to_raw = _normalize_with_mapping(raw_page_text)
+    cap_norm, _ = _normalize_with_mapping(cleaned_caption)
+
+    if not cap_norm:
+        return None
+
+    # Direct substring match on normalized strings (fast path)
+    idx = raw_norm.find(cap_norm)
+    if idx != -1:
+        if idx + len(cap_norm) - 1 >= len(map_norm_to_raw):
+            return None
+        raw_start = map_norm_to_raw[idx]
+        raw_end = map_norm_to_raw[idx + len(cap_norm) - 1] + 1
+        return (raw_start, raw_end)
+
+    # Fallback 1: flexible whitespace regex on all tokens
+    try:
+        tokens = [t for t in re.split(r"\s+", cap_norm) if t]
+        if tokens:
+            pattern = r"\\s+".join([re.escape(t) for t in tokens])
+            m = re.search(pattern, raw_norm, flags=re.IGNORECASE)
+            if m:
+                start_norm = m.start()
+                end_norm = m.end()
+                if end_norm - 1 < len(map_norm_to_raw):
+                    raw_start = map_norm_to_raw[start_norm]
+                    raw_end = map_norm_to_raw[end_norm - 1] + 1
+                    return (raw_start, raw_end)
+    except Exception:
+        pass
+
+    # Fallback 2: shorter anchor (first N tokens) to catch truncated captions
+    try:
+        short_tokens = tokens[:8] if tokens else []
+        if short_tokens:
+            pattern_short = r"\\s+".join([re.escape(t) for t in short_tokens])
+            m = re.search(pattern_short, raw_norm, flags=re.IGNORECASE)
+            if m:
+                start_norm = m.start()
+                end_norm = m.end()
+                if end_norm - 1 < len(map_norm_to_raw):
+                    raw_start = map_norm_to_raw[start_norm]
+                    raw_end = map_norm_to_raw[end_norm - 1] + 1
+                    return (raw_start, raw_end)
+    except Exception:
+        pass
+
+    # Fallback 3: token subsequence (>=70% of tokens in order, gaps allowed)
+    try:
+        if tokens:
+            idxes = []
+            start = 0
+            for tok in tokens:
+                pos = raw_norm.find(tok, start)
+                if pos == -1:
+                    continue
+                idxes.append((pos, pos + len(tok)))
+                start = pos + len(tok)
+            if idxes and len(idxes) / len(tokens) >= 0.7:
+                raw_start = map_norm_to_raw[idxes[0][0]]
+                raw_end = map_norm_to_raw[idxes[-1][1] - 1] + 1
+                return (raw_start, raw_end)
+    except Exception:
+        pass
+
+    return None
+
+
 
 
 def update_pages_in_jsonl(arxiv_id: str = None):
@@ -542,12 +688,36 @@ def update_pages_in_jsonl(arxiv_id: str = None):
                             if page_val:
                                 rec['page'] = page_val
                                 updated += 1
+                                # Try to locate caption span on the PDF page and fill text_positions
+                                try:
+                                    if page_val and fitz is not None:
+                                        pdf_path3 = Path(PDF_CACHE_DIR) / f"{rec.get('arxiv_id', '')}.pdf"
+                                        if pdf_path3.exists():
+                                            doc3 = fitz.open(str(pdf_path3))
+                                            try:
+                                                pg3 = doc3.load_page(page_val - 1)
+                                                page_text3 = pg3.get_text("text")
+                                                span3 = locate_description_span_raw(page_text3, caption)
+                                                if span3:
+                                                    # only set if not already present or unknown
+                                                    if not rec.get('text_positions') or rec.get('text_positions') == [[0, 0]]:
+                                                        rec['text_positions'] = [list(span3)]
+                                            finally:
+                                                try:
+                                                    doc3.close()
+                                                except Exception:
+                                                    pass
+                                except Exception:
+                                    pass
                             if fig_val is not None:
                                 rec['figure'] = fig_val
                     except Exception:
                         # leave as-is on failure
                         pass
 
+                # Ensure `figure` key is always present in JSONL (null when unknown)
+                if 'figure' not in rec:
+                    rec['figure'] = None
                 wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
         # replace original
