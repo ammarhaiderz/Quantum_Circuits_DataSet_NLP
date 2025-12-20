@@ -8,11 +8,22 @@ _LATEX_SOURCE_CACHE: dict[str, str] = {}
 
 
 def load_latex_source(arxiv_id: str, cache_dir: str | Path) -> Optional[str]:
-    """Return concatenated LaTeX text from a cached tar.gz source for the paper.
+    """Return concatenated LaTeX text from a cached ``.tar.gz`` source.
 
-    Reads all `.tex` members under `cache_dir/{arxiv_id}.tar.gz` and joins them.
-    Keeps an in-memory cache per arXiv id to avoid repeated tar extraction.
-    Returns None on any failure or when no `.tex` files are found.
+    Reads all ``.tex`` members under ``cache_dir/{arxiv_id}.tar.gz`` and joins them.
+    Uses an in-memory cache per arXiv id to avoid repeated tar extraction.
+
+    Parameters
+    ----------
+    arxiv_id : str
+        arXiv identifier.
+    cache_dir : str or Path
+        Directory containing cached ``.tar.gz`` source archives.
+
+    Returns
+    -------
+    str or None
+        Concatenated LaTeX text, or ``None`` on failure or when no ``.tex`` found.
     """
     if not arxiv_id:
         return None
@@ -50,10 +61,23 @@ def load_latex_source(arxiv_id: str, cache_dir: str | Path) -> Optional[str]:
 
 
 def extract_context_snippet(raw_text: str, span: tuple[int, int], margin: int = 200, strip_latex: bool = True) -> str:
-    """Return up to `margin` chars immediately after the caption span (skip the span itself).
+    """Return text following a caption span, optionally stripping LaTeX.
 
-    If `strip_latex` is True, drops comments and simple LaTeX commands/environments
-    (non-nested) to make the snippet more readable. No backward context is included.
+    Parameters
+    ----------
+    raw_text : str
+        Full LaTeX source text.
+    span : tuple[int, int]
+        Caption span as ``(start, end)`` offsets; snippet begins after ``end``.
+    margin : int, optional
+        Maximum characters to include after the span (default ``200``).
+    strip_latex : bool, optional
+        When ``True``, remove comments and simple LaTeX commands for readability.
+
+    Returns
+    -------
+    str
+        Cleaned snippet of forward context; empty string on failure.
     """
     try:
         start, end = span
@@ -74,11 +98,21 @@ def extract_context_snippet(raw_text: str, span: tuple[int, int], margin: int = 
 
 
 def find_figure_mentions(raw_text: str, figure_label: Optional[str], figure_number: Optional[int] = None) -> list[tuple[int, int]]:
-    """Find LaTeX references to a figure.
+    """Find LaTeX references to a figure by label or number.
 
-    Prefers label-based references (\ref/\cref/\autoref/\pageref). If none
-    are found and a figure number is provided, falls back to numeric "Fig./Figure N".
-    Returns spans as (start, end) offsets in the raw LaTeX text.
+    Parameters
+    ----------
+    raw_text : str
+        Full LaTeX source text.
+    figure_label : str or None
+        Label to search for via ``\ref``/``\cref``/``\autoref``/``\pageref``.
+    figure_number : int, optional
+        Fallback figure number used when no label references are found.
+
+    Returns
+    -------
+    list[tuple[int, int]]
+        Spans ``(start, end)`` of references found in the raw text.
     """
     spans: list[tuple[int, int]] = []
     try:
