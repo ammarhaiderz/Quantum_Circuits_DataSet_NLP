@@ -10,6 +10,7 @@ readability and reuse.
 import json
 from pathlib import Path
 import re
+import difflib
 import unicodedata
 from collections import Counter
 from typing import Optional
@@ -201,7 +202,7 @@ def normalize_caption_text(s: str) -> str:
         return s
 
 def strip_latex_environments(text: str) -> str:
-    """
+    r"""
     Remove all LaTeX environments completely:
     \begin{...} ... \end{...}
 
@@ -242,10 +243,6 @@ def is_natural_language_paragraph(p: str) -> bool:
         for c in p
     ) / max(len(p), 1)
     if symbol_ratio > 0.05:
-        return False
-
-    # Must contain at least one verb-ish word
-    if not re.search(r"\b(is|are|was|were|has|have|can|will|depends|constructed|applies)\b", p):
         return False
 
     # Must contain alphabetic words
@@ -447,31 +444,350 @@ def _append_description(record: dict, snippet: str) -> None:
         descs.append(snippet)
 
 
-def _append_text_positions(record: dict, spans: list[tuple[int, int]] | list[list[int]] | None) -> None:
-    """Merge text span positions, avoiding duplicates.
+def _append_text_positions(record: dict, spans):
+    if not spans or not isinstance(record, dict):
+        return
 
-    Parameters
-    ----------
-    record : dict
-        Target record whose ``text_positions`` will be updated.
-    spans : list[tuple[int, int]] or list[list[int]] or None
-        Character spans to merge into the record.
+    clean_spans = []
+    for sp in spans:
+        try:
+            s, e = int(sp[0]), int(sp[1])
+            # HARD RULES
+            if s < 0 or e <= s:
+                continue
+            if e - s < 10:   # minimum meaningful span
+                continue
+            clean_spans.append([s, e])
+        except Exception:
+            continue
 
-    Returns
-    -------
-    None
+    if not clean_spans:
+        return
+
+    existing = record.get("text_positions")
+    if existing is None:
+        record["text_positions"] = clean_spans
+    else:
+        for sp in clean_spans:
+            if sp not in existing:
+                existing.append(sp)
+
+
+def _normalize_text_positions(record: dict) -> None:
+    """Normalize and filter text span positions in-place.
+
+    Removes placeholder spans like ``[0, 0]`` and malformed spans.
     """
 
-    if not spans:
+    if not isinstance(record, dict):
         return
-    existing = record.get('text_positions') if isinstance(record, dict) else None
-    if existing is None:
-        record['text_positions'] = [list(sp) for sp in spans]
+
+    spans = record.get("text_positions")
+    if not isinstance(spans, list) or not spans:
         return
+
+    # Legacy format only: list of [start, end].
+    # We KEEP [0,0] placeholders (caller may use them for unmatched sentences).
+    cleaned: list[list[int]] = []
     for sp in spans:
-        sp_list = list(sp)
-        if sp_list not in existing:
-            existing.append(sp_list)
+        try:
+            s, e = int(sp[0]), int(sp[1])
+        except Exception:
+            continue
+        if s < 0 or e < 0:
+            continue
+        # Allow placeholders [0,0]
+        if s == 0 and e == 0:
+            cand = [0, 0]
+        else:
+            if e <= s:
+                continue
+            cand = [s, e]
+        # IMPORTANT: do not de-duplicate.
+        # We want one span entry per description sentence.
+        cleaned.append(cand)
+
+    record["text_positions"] = cleaned
+
+
+def _has_meaningful_text_positions(record: dict) -> bool:
+    """Return True if record has at least one non-placeholder span."""
+
+    if not isinstance(record, dict):
+        return False
+    spans = record.get("text_positions")
+    if not isinstance(spans, list):
+        return False
+    for sp in spans:
+        try:
+            s, e = int(sp[0]), int(sp[1])
+        except Exception:
+            continue
+        if s == 0 and e == 0:
+            continue
+        if s >= 0 and e > s:
+            return True
+    return False
+
+
+def _collapse_ws(s: str) -> str:
+    return re.sub(r"\s+", " ", (s or "").strip())
+
+
+def _protect_abbreviations(s: str) -> tuple[str, dict[str, str]]:
+    """Protect common abbreviations to avoid naive sentence splitting errors."""
+    repl = {}
+    if not s:
+        return s, repl
+
+    # Minimal set tuned for paper captions
+    abbrs = [
+        "Fig.", "fig.", "Eq.", "eq.", "Eqs.", "No.", "Dr.", "Prof.",
+        "e.g.", "i.e.", "et al.", "vs.", "cf.",
+    ]
+    out = s
+    for i, a in enumerate(abbrs):
+        key = f"__ABBR{i}__"
+        if a in out:
+            out = out.replace(a, key)
+            repl[key] = a
+    return out, repl
+
+
+def _restore_abbreviations(s: str, repl: dict[str, str]) -> str:
+    out = s
+    for k, v in (repl or {}).items():
+        out = out.replace(k, v)
+    return out
+
+
+def _split_sentences_simple(text: str) -> list[str]:
+    """Simple sentence splitter (no external models).
+
+    Good enough for captions/prose snippets; avoids NLTK punkt dependency.
+    """
+    if not text:
+        return []
+
+    s = _collapse_ws(text)
+    s, repl = _protect_abbreviations(s)
+
+    # Split on end punctuation + whitespace + next token start.
+    parts = re.split(r"(?<=[.!?])\s+(?=[A-Z0-9\(\[])", s)
+    parts = [_restore_abbreviations(p.strip(), repl) for p in parts if p and p.strip()]
+
+    # Extra fallback: if we still have huge chunks with no punctuation, split on semicolons.
+    out: list[str] = []
+    for p in parts:
+        if len(p) > 300 and ";" in p:
+            out.extend([q.strip() for q in p.split(";") if q.strip()])
+        else:
+            out.append(p)
+
+    return out
+
+
+def _normalize_for_match(s: str) -> tuple[str, set[str]]:
+    """Normalize a sentence for matching against PDF text."""
+    if not s:
+        return "", set()
+
+    t = s
+    # Strip common LaTeX-ish markup that won't appear in PDF text
+    # Examples: \ket{0}, \labelO, \mathrm{...}, \alpha, { } and escaped newlines.
+    t = re.sub(r"\\[a-zA-Z]+\*?(?:\[[^\]]*\])?(?:\{[^\}]*\})?", " ", t)
+    t = t.replace("{", " ").replace("}", " ")
+    t = t.replace("\\", " ")
+    t = t.replace("\u00AD", "")  # soft hyphen
+    t = t.replace("\xa0", " ")
+    t = unicodedata.normalize("NFKC", t)
+    t = t.lower()
+    t = re.sub(r"\s+", " ", t).strip()
+
+    tokens = set(re.findall(r"[a-z0-9]+", t))
+    tokens = {tok for tok in tokens if len(tok) >= 3 and not tok.isdigit()}
+    return t, tokens
+
+
+def _extract_pdf_sentence_spans(page_text: str) -> list[dict]:
+    """Extract PDF sentences with original character spans."""
+    if not page_text:
+        return []
+
+    text = page_text
+    spans: list[dict] = []
+
+    start = 0
+    # End a sentence at .?! followed by whitespace/newline.
+    for m in re.finditer(r"[.!?]+\s+", text):
+        end = m.end()
+        seg = text[start:end].strip()
+        if seg:
+            norm, toks = _normalize_for_match(seg)
+            spans.append({
+                "text": seg,
+                "start": start,
+                "end": end,
+                "norm": norm,
+                "tokens": toks,
+            })
+        start = end
+
+    tail = text[start:].strip()
+    if tail:
+        norm, toks = _normalize_for_match(tail)
+        spans.append({
+            "text": tail,
+            "start": start,
+            "end": len(text),
+            "norm": norm,
+            "tokens": toks,
+        })
+
+    return spans
+
+
+def _align_one_sentence_to_pdf_span(
+    sentence: str,
+    pdf_sents: list[dict],
+    *,
+    min_ratio: float,
+    min_token_recall: float,
+    min_score: float,
+) -> list[int]:
+    """Return best [start,end] span for a sentence, or [0,0] if not found."""
+
+    norm_q, toks_q = _normalize_for_match(sentence)
+    if not norm_q or len(norm_q) < 10:
+        return [0, 0]
+
+    best = None
+    for ps in pdf_sents:
+        if not ps.get("norm"):
+            continue
+
+        if toks_q:
+            tok_recall = len(toks_q & ps["tokens"]) / max(len(toks_q), 1)
+        else:
+            tok_recall = 0.0
+
+        if toks_q and tok_recall < (min_token_recall * 0.5):
+            continue
+
+        ratio = difflib.SequenceMatcher(None, norm_q, ps["norm"]).ratio()
+        score = 0.7 * ratio + 0.3 * tok_recall
+
+        if best is None or score > best["score"]:
+            best = {
+                "start": ps["start"],
+                "end": ps["end"],
+                "ratio": ratio,
+                "tok_recall": tok_recall,
+                "score": score,
+            }
+
+    if (
+        best
+        and best["ratio"] >= min_ratio
+        and best["score"] >= min_score
+        and best["tok_recall"] >= min_token_recall
+    ):
+        return [int(best["start"]), int(best["end"])]
+
+    return [0, 0]
+
+
+def _align_description_items_to_pdf_spans(
+    page_text: str | None,
+    descriptions: list[str],
+    figure_block_span: list[int] | None = None,
+    *,
+    min_ratio: float = 0.55,
+    min_token_recall: float = 0.25,
+    min_score: float = 0.60,
+) -> list[list[int]]:
+    """Align each *description item* to a PDF span.
+
+    For each description string, we split into sentences and align each sentence.
+    The final span for the description item is computed as:
+    - [min(start), max(end)] across all matched sentence spans
+    - [0,0] if none of its sentences could be aligned
+
+    Output is legacy-only: list of [start, end] spans with length == len(descriptions).
+    """
+
+    if not descriptions:
+        return []
+
+    if not page_text:
+        return [[0, 0] for _ in descriptions]
+
+    pdf_sents = _extract_pdf_sentence_spans(page_text)
+    if not pdf_sents:
+        return [[0, 0] for _ in descriptions]
+
+    item_spans: list[list[int]] = []
+    for idx, desc in enumerate(descriptions):
+        # Candidate set:
+        # - For caption (idx==0), search the FULL page text to maximize match chance.
+        # - For later items (extra context), prefer figure-block window when available.
+        candidates = pdf_sents
+        if idx > 0 and (
+            isinstance(figure_block_span, list)
+            and len(figure_block_span) == 2
+            and isinstance(figure_block_span[0], int)
+            and isinstance(figure_block_span[1], int)
+            and figure_block_span[1] > figure_block_span[0]
+        ):
+            b0, b1 = figure_block_span
+            subset = [s for s in pdf_sents if not (s["end"] <= b0 or s["start"] >= b1)]
+            if subset:
+                candidates = subset
+
+        if not isinstance(desc, str) or not desc.strip():
+            item_spans.append([0, 0])
+            continue
+
+        sent_spans = []
+        for sent in _split_sentences_simple(desc):
+            sp = _align_one_sentence_to_pdf_span(
+                sent,
+                candidates,
+                min_ratio=min_ratio,
+                min_token_recall=min_token_recall,
+                min_score=min_score,
+            )
+            if sp != [0, 0]:
+                sent_spans.append(sp)
+
+        if not sent_spans:
+            # Fallback behavior:
+            # - For the first description item (usually the caption), keep [0,0] if not matched.
+            # - For subsequent items (extra context), use the broader figure block span when available.
+            if idx > 0 and (
+                isinstance(figure_block_span, list)
+                and len(figure_block_span) == 2
+                and all(isinstance(x, int) for x in figure_block_span)
+                and figure_block_span[1] > figure_block_span[0]
+            ):
+                item_spans.append([int(figure_block_span[0]), int(figure_block_span[1])])
+            else:
+                item_spans.append([0, 0])
+        else:
+            starts = [sp[0] for sp in sent_spans]
+            ends = [sp[1] for sp in sent_spans]
+            item_spans.append([int(min(starts)), int(max(ends))])
+
+    return item_spans
+
+
+def _strip_internal_fields(record: dict) -> None:
+    """Remove internal-only metadata fields before persisting."""
+    if not isinstance(record, dict):
+        return
+    record.pop('latex_text_positions', None)
+    record.pop('figure_block_span', None)
+
 
 
 def _load_pdf_page_text(arxiv_id: str, page_number: int) -> Optional[str]:
@@ -507,6 +823,79 @@ def _load_pdf_page_text(arxiv_id: str, page_number: int) -> Optional[str]:
                 pass
     except Exception:
         return None
+
+
+def locate_figure_block(
+    page_text: str,
+    figure_number: int | None = None,
+    *,
+    window: int = 350
+) -> tuple[int, int] | None:
+    """
+    Locate an approximate figure block in PDF text using figure anchors only.
+
+    This function is POSITION-ONLY:
+    - No caption matching
+    - No semantic extraction
+    - No fuzzy logic
+
+    Parameters
+    ----------
+    page_text : str
+        Raw text extracted from a PDF page (PyMuPDF).
+    figure_number : int or None
+        Figure number to anchor on (preferred).
+    window : int, optional
+        Character window size around the anchor.
+
+    Returns
+    -------
+    tuple[int, int] or None
+        (start, end) character span approximating the figure region.
+    """
+
+    if not page_text:
+        return None
+
+    text = page_text
+
+    # -----------------------------
+    # 1. Try exact figure number anchor
+    # -----------------------------
+    if figure_number is not None:
+        try:
+            num = re.escape(str(figure_number))
+            pattern = re.compile(
+                rf"\b(?:fig\.|figure)\s*(?:s\s*)?{num}\b",
+                flags=re.IGNORECASE
+            )
+            m = pattern.search(text)
+            if m:
+                center = m.start()
+                start = max(0, center - window)
+                end = min(len(text), center + window)
+                return (start, end)
+        except Exception:
+            pass
+
+    # -----------------------------
+    # 2. Fallback: any Figure / Fig anchor
+    # -----------------------------
+    try:
+        pattern = re.compile(r"\b(?:fig\.|figure)\b", re.IGNORECASE)
+        m = pattern.search(text)
+        if m:
+            center = m.start()
+            start = max(0, center - window)
+            end = min(len(text), center + window)
+            return (start, end)
+    except Exception:
+        pass
+
+    # -----------------------------
+    # 3. No anchor found
+    # -----------------------------
+    return None
 
 
 def _enrich_record_from_sources(record: dict) -> None:
@@ -567,30 +956,19 @@ def _enrich_record_from_sources(record: dict) -> None:
         except Exception:
             pass
 
-     #PDF span and mention snippets (POSITIONS ONLY — NO TEXT)
+     # PDF span and mention snippets (POSITIONS ONLY — NO TEXT)
     page_text_pdf = _load_pdf_page_text(arxiv_id, page_val) if page_val else None
     if page_text_pdf:
         try:
             # Caption span (for alignment only)
-            span_pdf = locate_description_span_raw(page_text_pdf, caption)
-            if span_pdf:
-                _append_text_positions(record, [list(span_pdf)])
-        except Exception:
-            pass
+            # Anchor to figure block, not caption string
+            fig_block = locate_figure_block(
+                page_text_pdf,
+                figure_number=record.get("figure_number")
+            )
 
-        try:
-            # Figure mention spans (for alignment only)
-            if record.get('figure_number') is not None:
-                mention_spans = _find_figure_mentions_pdf(
-                    page_text_pdf,
-                    record.get('figure_number')
-                )
-            else:
-                mention_spans = []
-
-            if mention_spans:
-                _append_text_positions(record, mention_spans)
-
+            if fig_block:
+                record["figure_block_span"] = [int(fig_block[0]), int(fig_block[1])]
         except Exception:
             pass    
 
@@ -676,9 +1054,16 @@ def emit_record(record: dict):
         # 1. Normalize legacy keys
         _normalize_legacy_fields(rec)
 
+        # 1b. Clean placeholder spans early
+        _normalize_text_positions(rec)
+
         # 2. Enrich from LaTeX / PDF (adds new descriptions)
-        if rec.get('page') is None:
+        # Also enrich when we have no meaningful text span alignment yet.
+        if rec.get('page') is None or not _has_meaningful_text_positions(rec):
             _enrich_record_from_sources(rec)
+
+        # 2b. Re-normalize spans after enrichment
+        _normalize_text_positions(rec)
 
         # 3. Normalize descriptions ONCE
         _normalize_descriptions(rec)
@@ -692,8 +1077,28 @@ def emit_record(record: dict):
         if not _has_meaningful_descriptions(rec):
             return
 
+        # 3b. Compute per-sentence PDF spans (best-effort)
+        try:
+            if rec.get("arxiv_id") and rec.get("page") and isinstance(rec.get("descriptions"), list) and rec["descriptions"]:
+                page_text_pdf = _load_pdf_page_text(str(rec.get("arxiv_id")), int(rec.get("page")))
+                spans = _align_description_items_to_pdf_spans(
+                    page_text_pdf,
+                    rec["descriptions"],
+                    rec.get("figure_block_span"),
+                )
+                if spans:
+                    rec["text_positions"] = spans
+        except Exception:
+            pass
+
+        # Normalize positions again after alignment
+        _normalize_text_positions(rec)
+
         # Optional classifier (now sees final clean text)
         _maybe_classify_record(rec)
+
+        # Do not persist internal-only metadata
+        _strip_internal_fields(rec)
 
         rec.pop('figure', None)
         _write_jsonl_record(rec)
@@ -740,9 +1145,12 @@ def _regenerate_json():
                 if img_name:
                     # verify the PNG actually exists in the common folder
                     if common_png_dir.exists() and (common_png_dir / img_name).exists():
-                        # do not store auxiliary fields inside the value dict
+                        # do not store auxiliary/internal fields inside the value dict
                         clean = dict(rec)
-                        for _f in ('raw_block_file', 'block_id', 'block_name', 'image_filename'):
+                        for _f in (
+                            'raw_block_file', 'block_id', 'block_name', 'image_filename',
+                            'latex_text_positions', 'figure_block_span'
+                        ):
                             clean.pop(_f, None)
                         # Ensure `figure_number` is the second key after `arxiv_id` when present
                         def _order_value_dict(d: dict) -> dict:
@@ -794,9 +1202,12 @@ def _regenerate_json():
                     except Exception:
                         img_name2 = matches[0].name
 
-                    # do not inject `image_filename` into the stored value; keep it only as the key
+                    # do not inject `image_filename` or internal fields into the stored value; keep it only as the key
                     clean2 = dict(rec)
-                    for _f in ('raw_block_file', 'block_id', 'block_name', 'image_filename'):
+                    for _f in (
+                        'raw_block_file', 'block_id', 'block_name', 'image_filename',
+                        'latex_text_positions', 'figure_block_span'
+                    ):
                         clean2.pop(_f, None)
                     # Preserve ordering with `figure_number` as second field when available
                     def _order_value_dict2(d: dict) -> dict:
@@ -1247,40 +1658,6 @@ def locate_description_span_raw(
     except Exception:
         pass
 
-    # Fallback 2: shorter anchor (first N tokens) to catch truncated captions
-    try:
-        short_tokens = tokens[:8] if tokens else []
-        if short_tokens:
-            pattern_short = r"\\s+".join([re.escape(t) for t in short_tokens])
-            m = re.search(pattern_short, raw_norm, flags=re.IGNORECASE)
-            if m:
-                start_norm = m.start()
-                end_norm = m.end()
-                if end_norm - 1 < len(map_norm_to_raw):
-                    raw_start = map_norm_to_raw[start_norm]
-                    raw_end = map_norm_to_raw[end_norm - 1] + 1
-                    return (raw_start, raw_end)
-    except Exception:
-        pass
-
-    # Fallback 3: token subsequence (>=70% of tokens in order, gaps allowed)
-    try:
-        if tokens:
-            idxes = []
-            start = 0
-            for tok in tokens:
-                pos = raw_norm.find(tok, start)
-                if pos == -1:
-                    continue
-                idxes.append((pos, pos + len(tok)))
-                start = pos + len(tok)
-            if idxes and len(idxes) / len(tokens) >= 0.7:
-                raw_start = map_norm_to_raw[idxes[0][0]]
-                raw_end = map_norm_to_raw[idxes[-1][1] - 1] + 1
-                return (raw_start, raw_end)
-    except Exception:
-        pass
-
     return None
 
 def _extract_paragraph_after_figure(latex: str, caption: str) -> str | None:
@@ -1289,9 +1666,15 @@ def _extract_paragraph_after_figure(latex: str, caption: str) -> str | None:
     skipping all LaTeX environments and layout junk.
     """
 
+    # Try exact match first
     idx = latex.find(caption)
+
+    # Fallback: find the figure environment itself
     if idx == -1:
-        return None
+        m = re.search(r"\\begin\{figure\}", latex)
+        if not m:
+            return None
+        idx = m.start()
 
     tail = latex[idx:]
     end_fig = tail.find(r"\end{figure}")
@@ -1308,12 +1691,13 @@ def _extract_paragraph_after_figure(latex: str, caption: str) -> str | None:
 
     for p in paragraphs:
         # Stop at structural boundaries
-        if p.startswith((
-            "\\section",
-            "\\subsection",
-            "\\begin",
-            "\\definition",
-        )):
+        if p.startswith("\\section"):
+            break
+
+        if p.startswith("\\subsection"):
+            continue  # skip header, but keep scanning
+
+        if p.startswith(("\\begin", "\\definition")):
             break
 
         cleaned = _sanitize_description_snippet(p, strip_latex=True)
@@ -1379,18 +1763,42 @@ def update_pages_in_jsonl(arxiv_id: str = None):
 
                 _normalize_legacy_fields(rec)
                 _normalize_descriptions(rec)
+                _normalize_text_positions(rec)
 
                 if arxiv_id and rec.get('arxiv_id') != arxiv_id:
                     wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
                     continue
 
                 missing_page = rec.get('page') is None
-                if missing_page and rec.get('descriptions'):
+                missing_positions = rec.get('descriptions') and not _has_meaningful_text_positions(rec)
+
+                if (missing_page or missing_positions) and rec.get('descriptions'):
                     _enrich_record_from_sources(rec)
                     if missing_page and rec.get('page') is not None:
                         updated += 1
 
+                # Re-normalize after enrichment
+                _normalize_descriptions(rec)
+                _normalize_text_positions(rec)
+
+                # Fill per-sentence PDF spans when possible
+                try:
+                    if rec.get("arxiv_id") and rec.get("page") and isinstance(rec.get("descriptions"), list) and rec["descriptions"]:
+                        page_text_pdf = _load_pdf_page_text(str(rec.get("arxiv_id")), int(rec.get("page")))
+                        spans = _align_description_items_to_pdf_spans(
+                            page_text_pdf,
+                            rec["descriptions"],
+                            rec.get("figure_block_span"),
+                        )
+                        if spans:
+                            rec["text_positions"] = spans
+                except Exception:
+                    pass
+
+                _normalize_text_positions(rec)
+
                 _maybe_classify_record(rec)
+                _strip_internal_fields(rec)
                 rec.pop('figure', None)
                 wf.write(json.dumps(rec, ensure_ascii=False) + "\n")
 

@@ -706,21 +706,19 @@ def process_text(text: str, source_name: str = 'inline', out_root: str = LATEX_L
                     gates = _extract_gates_from_block(block)
                 except Exception:
                     gates = []
-                # prepare descriptions and text positions using provided caption_text when available
+                # Prepare descriptions using provided caption_text when available.
+                # IMPORTANT: `text_positions` are PDF character offsets; do not write LaTeX-block offsets here.
                 descriptions = []
                 text_positions = []
                 if caption_text:
                     descriptions.append(caption_text)
-                    # locate caption inside the block if possible
+                    # locate caption inside the block (LaTeX) for optional diagnostics
                     try:
                         start = block.find(caption_text)
                         if start >= 0:
-                            text_positions.append((int(start), int(start + len(caption_text))))
-                        else:
-                            # store (0,0) as fallback
-                            text_positions.append((0, 0))
+                            pass
                     except Exception:
-                        text_positions.append((0, 0))
+                        pass
 
                 rec = {
                     'arxiv_id': str(arxiv_id),
