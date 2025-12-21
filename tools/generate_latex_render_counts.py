@@ -11,6 +11,8 @@ Papers beyond the checkpoint index in latex_code_circuit_checkpoint.json are lef
 
 from pathlib import Path
 import json
+import tarfile
+import io
 
 import pandas as pd
 
@@ -21,6 +23,7 @@ OUTPUT = PROJECT_ROOT / "paper_list_counts_36.csv"
 CIRCUITS = PROJECT_ROOT / "data" / "circuits.jsonl"
 CATEGORY_CACHE = PROJECT_ROOT / "data" / "arxiv_category_cache.json"
 CHECKPOINT = PROJECT_ROOT / "data" / "latex_code_circuit_checkpoint.json"
+ARXIV_CACHE = PROJECT_ROOT / "arxiv_cache"
 
 
 def normalize(arxiv_id: str) -> str:
@@ -77,6 +80,39 @@ def count_circuits() -> dict[str, int]:
 	return counts
 
 
+def validate_tar_files(df: pd.DataFrame) -> None:
+	"""Mark papers with corrupted tar files by blanking their count column."""
+	corrupted = []
+	for idx, row in df.iterrows():
+		arxiv_id = row["arxiv_id"]
+		count_val = row["latex_render_image_count"]
+		
+		# Skip if already blank (non-quantum or beyond checkpoint)
+		if count_val == "" or pd.isna(count_val):
+			continue
+		
+		# Try to open tar file (stored directly in arxiv_cache/)
+		norm_id = normalize(arxiv_id)
+		tar_path = ARXIV_CACHE / f"{norm_id}.tar.gz"
+		
+		if not tar_path.exists():
+			continue  # No tar file yet, keep as-is
+		
+		try:
+			# Open directly like extraction pipeline does
+			with open(tar_path, "rb") as f:
+				tar = tarfile.open(fileobj=f, mode="r:gz")
+				tar.close()
+		except Exception:
+			# Any exception means corrupted/invalid - blank the count
+			df.at[idx, "latex_render_image_count"] = ""
+			corrupted.append(arxiv_id)
+	
+	print(f"[TAR VALIDATION] Found {len(corrupted)} corrupted tar files till checkpoint")
+	if corrupted:
+		print(f"  Corrupted papers: {corrupted[:10]}{'...' if len(corrupted) > 10 else ''}")
+
+
 def main() -> None:
 	paper_ids = load_paper_ids()
 	normalized_ids = [normalize(pid) for pid in paper_ids]
@@ -99,6 +135,10 @@ def main() -> None:
 		rows.append({"arxiv_id": raw, "latex_render_image_count": count})
 
 	df = pd.DataFrame(rows, columns=["arxiv_id", "latex_render_image_count"])
+	
+	# Validate tar files and mark corrupted ones
+	validate_tar_files(df)
+	
 	df.to_csv(OUTPUT, index=False)
 	print(
 		f"Wrote {OUTPUT} with {len(df)} rows; circuits file exists: {CIRCUITS.exists()}, "

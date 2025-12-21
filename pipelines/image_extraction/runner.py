@@ -28,6 +28,13 @@ from shared.file_utils import FileUtils
 from shared.logging_utils import Logger
 from pipelines.image_extraction.extraction_pipeline import ExtractionPipeline
 from shared import arxiv_validator
+from scripts.populate_image_quantum_problems import (
+    load_images_json,
+    save_images_json,
+    populate_quantum_problems,
+)
+from sentence_transformers import SentenceTransformer
+from core.quantum_problem_classifier import prepare_label_embeddings, DEFAULT_THRESHOLD
 
 
 def print_final_stats(logger, pipeline, processed_count, skipped_count, cache):
@@ -183,6 +190,41 @@ def run():
         logger.print_statistics(pipeline.stats, df)
     else:
         logger.warning("No images were extracted")
+
+    # Populate quantum problems for images.json (isolated from circuit pipeline)
+    print(f"\n{'='*80}")
+    print("[QUANTUM] Populating quantum problem classifications for images...")
+    print(f"{'='*80}")
+    try:
+        # Load images.json
+        images_data = load_images_json()
+        if images_data:
+            # Create separate SBERT model instance (isolated from circuit pipeline)
+            logger.info(f" Loading SBERT model for quantum classification...")
+            qp_model = SentenceTransformer('allenai-specter')
+            
+            # Prepare label embeddings
+            label_keys, label_embeddings = prepare_label_embeddings(qp_model)
+            logger.info(f" Prepared embeddings for {len(label_keys)} quantum problem labels")
+            
+            # Classify all images
+            classified_count = populate_quantum_problems(
+                images_data,
+                qp_model,
+                label_keys,
+                label_embeddings,
+                threshold=DEFAULT_THRESHOLD,
+            )
+            
+            # Save updated images.json
+            if save_images_json(images_data):
+                logger.info(f" ✓ Classified {classified_count}/{len(images_data)} images")
+            else:
+                logger.warning(" Failed to save updated images.json")
+        else:
+            logger.info(" No images to classify")
+    except Exception as e:
+        logger.warning(f" Quantum classification failed: {e}")
 
     print_final_stats(logger, pipeline, processed_count, skipped_count, arxiv_cache)
     logger.info("Extraction completed!")
