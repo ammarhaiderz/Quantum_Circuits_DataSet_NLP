@@ -4,27 +4,27 @@
   "blocks": [
     {
       "index": 0,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_b6756454e84f6705.tex",
-      "length": 190,
-      "block_id": "2407.04826_b6756454e84f6705",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_8925e40534e8b75c.tex",
+      "length": 468,
+      "block_id": "2407.04826_8925e40534e8b75c",
       "panel": 1,
-      "label": "fig:MCT gates"
+      "label": "circuit f1 before decom"
     },
     {
       "index": 1,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_9beb48370dfa0d8d.tex",
-      "length": 189,
-      "block_id": "2407.04826_9beb48370dfa0d8d",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_435f93dd67d152ee.tex",
+      "length": 595,
+      "block_id": "2407.04826_435f93dd67d152ee",
       "panel": 2,
-      "label": "fig:MCT gates"
+      "label": "circuit f1 before decom"
     },
     {
       "index": 2,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p3_e83dab18fc334bce.tex",
-      "length": 194,
-      "block_id": "2407.04826_e83dab18fc334bce",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p3_36deffd1a100709b.tex",
+      "length": 533,
+      "block_id": "2407.04826_36deffd1a100709b",
       "panel": 3,
-      "label": "fig:MCT gates"
+      "label": "circuit f1 before decom"
     }
   ]
 }

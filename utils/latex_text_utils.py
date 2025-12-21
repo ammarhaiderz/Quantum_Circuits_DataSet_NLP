@@ -122,7 +122,9 @@ def find_figure_mentions(raw_text: str, figure_label: Optional[str], figure_numb
             spans.extend((m.start(), m.end()) for m in ref_pattern.finditer(raw_text))
 
         if not spans and figure_number is not None:
-            num_pattern = re.compile(rf"\b(?:fig\.|figure)\s*{re.escape(str(figure_number))}\b", re.IGNORECASE)
+            num = re.escape(str(figure_number))
+            # Support supplemental-style anchors like "Figure S10" alongside numeric ones.
+            num_pattern = re.compile(rf"\b(?:fig\.|figure)\s*(?:s\s*)?{num}\b", re.IGNORECASE)
             spans.extend((m.start(), m.end()) for m in num_pattern.finditer(raw_text))
     except Exception:
         return []

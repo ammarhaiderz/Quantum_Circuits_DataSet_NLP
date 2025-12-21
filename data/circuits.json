@@ -108,7 +108,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into RCCX gates (il- lustrated as CCX gates in the figure) and a single co",
+      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into X gates (il- lustrated as CCX gates in the figure) and a single co",
       "(a). This decomposi- tion is crucial for performing the entire optimiza- tion process in polynomial time, otherwise the identification of redundant control operations re- 2"
     ],
     "text_positions": [
@@ -141,7 +141,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into RCCX gates (il- lustrated as CCX gates in the figure) and a single co",
+      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into X gates (il- lustrated as CCX gates in the figure) and a single co",
       "(a). This decomposi- tion is crucial for performing the entire optimiza- tion process in polynomial time, otherwise the identification of redundant control operations re- 2"
     ],
     "text_positions": [
@@ -174,7 +174,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into RCCX gates (il- lustrated as CCX gates in the figure) and a single co",
+      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into X gates (il- lustrated as CCX gates in the figure) and a single co",
       "(a). This decomposi- tion is crucial for performing the entire optimiza- tion process in polynomial time, otherwise the identification of redundant control operations re- 2"
     ],
     "text_positions": [
@@ -207,7 +207,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into RCCX gates (il- lustrated as CCX gates in the figure) and a single co",
+      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into X gates (il- lustrated as CCX gates in the figure) and a single co",
       "(a). This decomposi- tion is crucial for performing the entire optimiza- tion process in polynomial time, otherwise the identification of redundant control operations re- 2"
     ],
     "text_positions": [
@@ -239,7 +239,7 @@
     "quantum_problem": "Gate decomposition",
     "descriptions": [
       "Example of how redundant CX pairs appear and how to remove them. (a) will decompose a multi-qubit controlled operator into X gates (illustrated as CCX gates in the figure) and a single controlled-U gate. (b) can eliminate redundant control operations depending on the states of qubits. (c) Redundant CX pairs can be removed once they are identified as redundant.",
-      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into RCCX gates (il- lustrated as CCX gates in the figure) and a single co",
+      ": Example of how redundant CX pairs appear and how to remove them. (a) Aqcel will decompose a multi-qubit controlled operator into X gates (il- lustrated as CCX gates in the figure) and a single co",
       "(a). This decomposi- tion is crucial for performing the entire optimiza- tion process in polynomial time, otherwise the identification of redundant control operations re- 2"
     ],
     "text_positions": [
@@ -258,6 +258,840 @@
       [
         3413,
         3421
+      ]
+    ]
+  },
+  "2407.04826__img_0001.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 1,
+    "page": 5,
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": "MCT gate library",
+    "descriptions": [
+      "MCT gates with positive condition (closed ci e) and negative condition (open ci e)",
+      ": MCT gates with positive condition (closed circle) and negative condition (open circle) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        20,
+        106
+      ],
+      [
+        10,
+        18
+      ]
+    ]
+  },
+  "2407.04826__img_0002.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 1,
+    "page": 5,
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": "MCT gate library",
+    "descriptions": [
+      "MCT gates with positive condition (closed ci e) and negative condition (open ci e)",
+      ": MCT gates with positive condition (closed circle) and negative condition (open circle) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        20,
+        106
+      ],
+      [
+        10,
+        18
+      ]
+    ]
+  },
+  "2407.04826__img_0003.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 1,
+    "page": 5,
+    "gates": [
+      "MCX_3"
+    ],
+    "quantum_problem": "MCT gate library",
+    "descriptions": [
+      "MCT gates with positive condition (closed ci e) and negative condition (open ci e)",
+      ": MCT gates with positive condition (closed circle) and negative condition (open circle) • • V • V † NOT CNOT Controlled −V Controlled −V † Figure 2: NCV quantum gate library T+ T H H+ S S+ • Figure 3"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        20,
+        106
+      ],
+      [
+        10,
+        18
+      ]
+    ]
+  },
+  "2407.04826__img_0004.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 2,
+    "page": 5,
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "NCV quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        168,
+        192
+      ],
+      [
+        158,
+        166
+      ]
+    ]
+  },
+  "2407.04826__img_0005.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 2,
+    "page": 5,
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "NCV quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        168,
+        192
+      ],
+      [
+        158,
+        166
+      ]
+    ]
+  },
+  "2407.04826__img_0006.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 2,
+    "page": 5,
+    "gates": [
+      "V"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "NCV quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        168,
+        192
+      ],
+      [
+        158,
+        166
+      ]
+    ]
+  },
+  "2407.04826__img_0007.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 2,
+    "page": 5,
+    "gates": [
+      "V_DG"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "NCV quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": NCV quantum gate library T+ T H H+ S S+ • Figure 3: Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        168,
+        192
+      ],
+      [
+        158,
+        166
+      ]
+    ]
+  },
+  "2407.04826__img_0008.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0009.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "T_DG"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0010.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "T"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0011.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "H"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0012.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "H_DG"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0013.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "S"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0014.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "S_DG"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0015.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 3,
+    "page": 5,
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": "Quantum gate library illustration",
+    "descriptions": [
+      "Clifford +T quantum gate library",
+      "includes gate with any number of controls. The denotes the gate where is a set of control qubits and is a target qubit such that . The number of control",
+      ": Clifford + T quantum gate library the quantum cost of the quantum circuit. The CNOT(C; t) gate with |C| = 2 can be decomposed into five elementary gates [4, 7]. There are many realizations of decomp"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        253
+      ],
+      [
+        210,
+        218
+      ]
+    ]
+  },
+  "2407.04826__img_0016.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 4,
+    "page": 5,
+    "gates": [
+      "V",
+      "CNOT",
+      "V_DG"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        728
+      ],
+      [
+        517,
+        523
+      ],
+      [
+        642,
+        650
+      ]
+    ]
+  },
+  "2407.04826__img_0017.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 4,
+    "page": 5,
+    "gates": [
+      "V_DG",
+      "CNOT",
+      "V"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        728
+      ],
+      [
+        517,
+        523
+      ],
+      [
+        642,
+        650
+      ]
+    ]
+  },
+  "2407.04826__img_0018.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 4,
+    "page": 5,
+    "gates": [
+      "V_DG",
+      "CNOT",
+      "V"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        728
+      ],
+      [
+        517,
+        523
+      ],
+      [
+        642,
+        650
+      ]
+    ]
+  },
+  "2407.04826__img_0019.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 4,
+    "page": 5,
+    "gates": [
+      "V",
+      "CNOT",
+      "V_DG"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c 1,c 2,t) with positive conditions on control qubits.",
+      "-3pt 1",
+      "and Fig. 5 respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qu",
+      ": Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯c2 t V V + V V + V V + V + V V + ¯c1 ¯c2 V V + V t′ Figure 5: Decomposition of CNOT(¯c1, ¯c2, t) with negative condi"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        728
+      ],
+      [
+        517,
+        523
+      ],
+      [
+        642,
+        650
+      ]
+    ]
+  },
+  "2407.04826__img_0020.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 5,
+    "page": 5,
+    "gates": [
+      "V",
+      "CNOT",
+      "V_DG"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
+      ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1",
+      "respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯",
+      ": Decomposition of CNOT(¯c1, ¯c2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        727
+      ],
+      [
+        528,
+        534
+      ],
+      [
+        786,
+        794
+      ]
+    ]
+  },
+  "2407.04826__img_0021.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 5,
+    "page": 5,
+    "gates": [
+      "V_DG",
+      "CNOT",
+      "V"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
+      ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1",
+      "respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯",
+      ": Decomposition of CNOT(¯c1, ¯c2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        727
+      ],
+      [
+        528,
+        534
+      ],
+      [
+        786,
+        794
+      ]
+    ]
+  },
+  "2407.04826__img_0022.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 5,
+    "page": 5,
+    "gates": [
+      "V_DG",
+      "CNOT",
+      "V"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
+      ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1",
+      "respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯",
+      ": Decomposition of CNOT(¯c1, ¯c2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        727
+      ],
+      [
+        528,
+        534
+      ],
+      [
+        786,
+        794
+      ]
+    ]
+  },
+  "2407.04826__img_0023.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 5,
+    "page": 5,
+    "gates": [
+      "V",
+      "CNOT",
+      "V_DG"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Decomposition of CNOT(c̅ 1,c̅ 2,t) with negative conditions on control qubits",
+      ", the positive condition and the negative condition. If control qubits have positive conditions, then the state of target qubit will be inverted if the values of control qubits are set to $ 1",
+      "respectively. c1 • • • c2 • • t V V + V • • • • • V + V V + • • • • • V + V V + • • • c1 • • c2 V V + V t′ Figure 4: Decomposition of CNOT(c1, c2, t) with positive conditions on control qubits. ¯c1 ¯",
+      ": Decomposition of CNOT(¯c1, ¯c2, t) with negative conditions on control qubits The basic definitions that are used later are reviewed as follows: Definition 1 The quantum cost QC of a quantum circuit"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        412,
+        727
+      ],
+      [
+        528,
+        534
+      ],
+      [
+        786,
+        794
+      ]
+    ]
+  },
+  "2407.04826__img_0024.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 6,
+    "page": 6,
+    "gates": [
+      "MCX_4",
+      "MCX_3"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "Common-Target Rule (CTR)",
+      "Synthesizing a reversible Boolean circuit with minimal quantum cost depe",
+      "x1 • x2 • • x3 • • x4 • • 0 ≡ • • • • • • • ≡ x1 • x2 • x3 • x4 f = ¯x1x2x3x4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
+      ": Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantum cost de- pends on the form and the number of terms of the corresponding Boolean funct"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        1052,
+        1076
+      ],
+      [
+        1288,
+        1294
+      ],
+      [
+        1373,
+        1381
+      ]
+    ]
+  },
+  "2407.04826__img_0025.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 6,
+    "page": 6,
+    "gates": [
+      "MCX_3",
+      "MCX_4"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "Common-Target Rule (CTR)",
+      "Synthesizing a reversible Boolean circuit with minimal quantum cost depe",
+      "x1 • x2 • • x3 • • x4 • • 0 ≡ • • • • • • • ≡ x1 • x2 • x3 • x4 f = ¯x1x2x3x4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
+      ": Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantum cost de- pends on the form and the number of terms of the corresponding Boolean funct"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        1052,
+        1076
+      ],
+      [
+        1288,
+        1294
+      ],
+      [
+        1373,
+        1381
+      ]
+    ]
+  },
+  "2407.04826__img_0026.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 6,
+    "page": 6,
+    "gates": [
+      "MCX_4"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "Common-Target Rule (CTR)",
+      "Synthesizing a reversible Boolean circuit with minimal quantum cost depe",
+      "x1 • x2 • • x3 • • x4 • • 0 ≡ • • • • • • • ≡ x1 • x2 • x3 • x4 f = ¯x1x2x3x4 Figure 6: Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantu",
+      ": Common-Target Rule (CTR) [6] 3 Background Methods Synthesizing a reversible Boolean circuit with minimal quantum cost de- pends on the form and the number of terms of the corresponding Boolean funct"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        1052,
+        1076
+      ],
+      [
+        1288,
+        1294
+      ],
+      [
+        1373,
+        1381
+      ]
+    ]
+  },
+  "2407.04826__img_0027.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 7,
+    "page": 7,
+    "gates": [
+      "MCX_4",
+      "MCX_3",
+      "TOFFOLI",
+      "X"
+    ],
+    "quantum_problem": "MCT gate library",
+    "descriptions": [
+      "The synthesized quantum circuit using the direct method of the Boolean function in Eq.( )",
+      "0 CNOT(C; t)$ gate with control qubits of positive conditions for each product term of the Boolean fu",
+      ". f(x1, x2, x3, x4) = x1x2x3x4 ⊕¯x1x2x4 ⊕¯x2x3x4 ⊕x3x4 ⊕1. (3) x1 • x1 x2 • • x2 x3 • • • x3 x4 • • • • x4 0 f Figure 7: The synthesized quantum circuit using the direct method [28] of the Boolean fun",
+      ": The synthesized quantum circuit using the direct method [28] of the Boolean function in Eq.(3) 7"
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        43,
+        1287
+      ],
+      [
+        1066,
+        1072
+      ],
+      [
+        1183,
+        1191
       ]
     ]
   }

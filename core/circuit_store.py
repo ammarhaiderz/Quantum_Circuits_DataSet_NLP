@@ -64,7 +64,9 @@ def _find_figure_mentions_pdf(raw_page_text: str, figure_number: int | None) -> 
     if figure_number is None:
         return []
     try:
-        pattern = re.compile(rf"\b(?:fig\.|figure)\s*{re.escape(str(figure_number))}\b", re.IGNORECASE)
+        num = re.escape(str(figure_number))
+        # Allow supplemental anchors such as "Figure S10" in addition to numeric references.
+        pattern = re.compile(rf"\b(?:fig\.|figure)\s*(?:s\s*)?{num}\b", re.IGNORECASE)
         return [(m.start(), m.end()) for m in pattern.finditer(raw_page_text)]
     except Exception:
         return []

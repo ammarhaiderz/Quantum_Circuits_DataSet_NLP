@@ -13,7 +13,7 @@ import os
 ID_FILE = "paper_list_36.txt"
 
 # Image pipeline paths (kept identical to previous values for compatibility)
-IMAGE_PIPELINE_OUTPUT_DIR = "images_test_50_preproc_cached_"
+IMAGE_PIPELINE_OUTPUT_DIR = "images_extracted"
 IMAGE_PIPELINE_CACHE_DIR = "arxiv_cache"  # Tar.gz source cache
 IMAGE_PIPELINE_PDF_CACHE_DIR = "arxiv_pdf_cache"  # Extracted PDF cache (faster reaccess)
 
