@@ -22,6 +22,7 @@ except Exception:
 from config.settings import (
     IMAGE_PIPELINE_CACHE_DIR,
     IMAGE_PIPELINE_PDF_CACHE_DIR,
+    LATEX_RENDER_DIR,
     USE_STOPWORDS,
     NORMALIZE_HYPHENS,
 )
@@ -199,62 +200,146 @@ def normalize_caption_text(s: str) -> str:
     except Exception:
         return s
 
-
-
-def _sanitize_description_snippet(text: str, *, strip_latex: bool = True, max_len: int = 600) -> str:
-    """Clean non-caption description text for embedding/transformer use.
-
-    Parameters
-    ----------
-    text : str
-        Input snippet.
-    strip_latex : bool, optional
-        Whether to remove LaTeX commands/math markers. Default is ``True``.
-    max_len : int, optional
-        Maximum length (in characters) after cleaning. Default is 600; use 0 to disable.
-
-    Returns
-    -------
-    str
-        Sanitized snippet, or empty string if no alphabetic characters remain.
+def strip_latex_environments(text: str) -> str:
     """
+    Remove all LaTeX environments completely:
+    \begin{...} ... \end{...}
+
+    This is generic and does NOT rely on environment names.
+    """
+    pattern = re.compile(
+        r"\\begin\{[^}]+\}.*?\\end\{[^}]+\}",
+        flags=re.DOTALL
+    )
+    return re.sub(pattern, " ", text)
+def is_natural_language_paragraph(p: str) -> bool:
+    """
+    Heuristic to decide whether a paragraph is real prose
+    suitable for text-to-image supervision.
+    """
+
+    p = p.strip()
+
+    # Reject empty or very short
+    if len(p) < 40:
+        return False
+
+    # Reject LaTeX commands at start
+    if p.startswith(("\\", "{", "[", "@")):
+        return False
+
+    # Reject pure labels
+    if re.fullmatch(r"\\label\{[^}]+\}", p):
+        return False
+
+    # Reject section headers
+    if re.match(r"^\d+(\.\d+)*\s+[A-Z]", p):
+        return False
+
+    # Reject symbol-dominated text
+    symbol_ratio = sum(
+        c in "•≡⊕⊗⟂|⟩⟨"
+        for c in p
+    ) / max(len(p), 1)
+    if symbol_ratio > 0.05:
+        return False
+
+    # Must contain at least one verb-ish word
+    if not re.search(r"\b(is|are|was|were|has|have|can|will|depends|constructed|applies)\b", p):
+        return False
+
+    # Must contain alphabetic words
+    if not re.search(r"[A-Za-z]{4,}", p):
+        return False
+
+    return True
+
+
+def _sanitize_description_snippet(
+    text: str,
+    *,
+    strip_latex: bool = True,
+    max_len: int = 300
+) -> str:
+    """
+    Clean descriptive text for text-to-image fine-tuning labels.
+
+    The goal is to produce a fluent, natural-language sentence that
+    describes the visual content of a circuit figure.
+
+    This function:
+    - removes LaTeX commands and references
+    - removes figure/label scaffolding
+    - removes citations
+    - normalizes punctuation and whitespace
+    - preserves descriptive semantics
+    """
+
     if not text:
         return ""
-    try:
-        t = text
-        if strip_latex:
-            # remove LaTeX comments and commands
-            t = re.sub(r"%.*", " ", t)
-            t = re.sub(r"\\[a-zA-Z@]+\*?(?:\[[^\]]*\])?(?:\{[^}]*\})?", " ", t)
-            # strip math regions
-            t = re.sub(r"\$[^$]*\$", " ", t)
-            # drop braces/underscores commonly left behind
-            t = re.sub(r"[{}_^~]", " ", t)
 
-        # drop common LaTeX/table artifacts that leak into snippets
-        t = re.sub(r"<ref>|<cit>\.?>?", " ", t, flags=re.IGNORECASE)
-        t = re.sub(r"\\\\", " ", t)  # TeX row separators
-        t = re.sub(r"[&]{2,}", " ", t)  # table column artifacts
-        t = re.sub(r"\b[clrp]{3,}\b", " ", t, flags=re.IGNORECASE)  # column spec like cccc
-        t = re.sub(r"(?:\s*&\s*){3,}", " ", t)  # bare ampersand rows
-        t = re.sub(r"@C=\d+\.\d+em|@R=\d+\.\d+em|@!R", " ", t)
-        t = re.sub(r"\[!ht\]", " ", t)
+    t = text
+        # --- Hard reject figure placement / layout junk ---
+    if re.search(r"\[\s*!?\s*ht\s*\]", t):
+        return ""
+    if re.search(r"@C\s*=\s*[\d\.]+\s*em|@R\s*=\s*[\d\.]+\s*em|@!R", t):
+        return ""
+    if re.search(r"(?:&\s*){3,}", t):
+        return ""
 
-        # remove control chars
-        t = re.sub(r"[\u0000-\u001f]", " ", t)
-        # collapse whitespace
-        t = re.sub(r"\s+", " ", t).strip()
+    # --- Remove LaTeX control and math (softly) ---
+    if strip_latex:
+        # Remove comments
+        t = re.sub(r"%.*", " ", t)
 
-        # Drop snippets that have no alphabetic characters after cleaning
-        if not re.search(r"[A-Za-z]", t):
-            return ""
+        # Remove citations \cite{...}
+        t = re.sub(r"\\cite\{[^}]*\}", " ", t)
 
-        if max_len and len(t) > max_len:
-            t = t[:max_len].rsplit(" ", 1)[0]
+        # Remove references \ref{...}, \cref{...}, etc.
+        t = re.sub(r"\\(?:ref|cref|Cref|autoref)\{[^}]*\}", " ", t)
 
-        return t
-    except Exception:
-        return text
+        # Replace inline math with readable placeholders
+        t = re.sub(r"\$\s*([A-Za-z0-9_,\\ ]+)\s*\$", r"\1", t)
+
+        t = re.sub(
+            r"\$\s*([^$]+?)\s*\$",
+            lambda m: m.group(1).replace(";", ", "),
+            t,
+        )
+
+    # --- Remove figure scaffolding ---
+    # (Figure 3), Figure 3, Fig. 3, etc.
+    t = re.sub(
+        r"\(?\b(?:Figure|Fig\.?)\s+[A-Za-z0-9\-]+\)?",
+        " ",
+        t,
+        flags=re.IGNORECASE,
+    )
+
+    # --- Normalize punctuation ---
+    t = t.replace("–", "-")
+    t = t.replace("—", "-")
+
+    # Remove leftover braces and underscores
+    t = re.sub(r"[{}_]", " ", t)
+
+    # Collapse whitespace
+    t = re.sub(r"\s+", " ", t).strip()
+
+    # --- Sentence sanity ---
+    # Ensure it ends like a sentence
+    if not re.search(r"[.!?]$", t):
+        t = t.rstrip(" ,;:") + "."
+
+    # --- Length sanity ---
+    if len(t.split()) < 5:
+        return ""
+
+    if max_len and len(t) > max_len:
+        t = t[:max_len].rsplit(" ", 1)[0] + "."
+
+    return t
+
 
 def _normalize_descriptions(record: dict) -> None:
     """Normalize and filter description strings in-place.
@@ -467,39 +552,47 @@ def _enrich_record_from_sources(record: dict) -> None:
 
     if latex_text:
         try:
-            span_tex = locate_description_span_raw(latex_text, caption)
-            if span_tex:
-                snippet = extract_context_snippet(latex_text, span_tex, strip_latex=True)
-                snippet = _sanitize_description_snippet(snippet, strip_latex=True)
-                _append_description(record, snippet)
+            # Adjacent paragraph after figure (primary)
+            para = _extract_paragraph_after_figure(latex_text, caption)
+            if para:
+                _append_description(record, para)
+            else:
+                # Fallback: localized snippet
+                span_tex = locate_description_span_raw(latex_text, caption)
+                if span_tex:
+                    snippet = extract_context_snippet(latex_text, span_tex, strip_latex=True)
+                    snippet = _sanitize_description_snippet(snippet, strip_latex=True)
+                    if snippet:
+                        _append_description(record, snippet)
         except Exception:
             pass
 
-    # PDF span and mention snippets
+     #PDF span and mention snippets (POSITIONS ONLY — NO TEXT)
     page_text_pdf = _load_pdf_page_text(arxiv_id, page_val) if page_val else None
-    span_positions = None
     if page_text_pdf:
         try:
+            # Caption span (for alignment only)
             span_pdf = locate_description_span_raw(page_text_pdf, caption)
             if span_pdf:
-                span_positions = [list(span_pdf)]
-                _append_text_positions(record, span_positions)
+                _append_text_positions(record, [list(span_pdf)])
         except Exception:
             pass
 
         try:
+            # Figure mention spans (for alignment only)
             if record.get('figure_number') is not None:
-                mention_spans = _find_figure_mentions_pdf(page_text_pdf, record.get('figure_number'))
+                mention_spans = _find_figure_mentions_pdf(
+                    page_text_pdf,
+                    record.get('figure_number')
+                )
             else:
                 mention_spans = []
+
             if mention_spans:
                 _append_text_positions(record, mention_spans)
-                for sp in mention_spans:
-                    msnip = extract_context_snippet(page_text_pdf, sp, strip_latex=False)
-                    msnip = _sanitize_description_snippet(msnip, strip_latex=False)
-                    _append_description(record, msnip)
+
         except Exception:
-            pass
+            pass    
 
 
 def _write_jsonl_record(record: dict) -> None:
@@ -522,6 +615,30 @@ def _write_jsonl_record(record: dict) -> None:
         _regenerate_json()
     except Exception:
         pass
+
+
+def _get_common_png_dir() -> Path:
+    """Return canonical PNG output directory.
+
+    Uses ``LATEX_RENDER_DIR`` from settings. Supports configurations where
+    ``LATEX_RENDER_DIR`` points at either the rendered root directory (e.g.
+    ``circuit_images/rendered_pdflatex``) or directly at the PNG folder
+    (e.g. ``circuit_images/rendered_pdflatex/png``).
+    """
+
+    try:
+        base = Path(LATEX_RENDER_DIR)
+    except Exception:
+        base = Path('circuit_images') / 'rendered_pdflatex'
+
+    # If the configured path already points to a png folder, keep it.
+    try:
+        if base.name.lower() == 'png':
+            return base
+    except Exception:
+        pass
+
+    return base / 'png'
 
 
 def set_quantum_problem_model(model):
@@ -548,38 +665,43 @@ def set_quantum_problem_model(model):
 
 
 def emit_record(record: dict):
-    """Append a circuit record to JSONL storage.
-
-    Parameters
-    ----------
-    record : dict
-        Circuit record containing at least ``descriptions`` and ``arxiv_id``.
-
-    Returns
-    -------
-    None
-    """
+    """Append a circuit record to JSONL storage."""
 
     try:
         if not isinstance(record, dict):
             return
 
         rec = dict(record)
+
+        # 1. Normalize legacy keys
         _normalize_legacy_fields(rec)
+
+        # 2. Enrich from LaTeX / PDF (adds new descriptions)
+        if rec.get('page') is None:
+            _enrich_record_from_sources(rec)
+
+        # 3. Normalize descriptions ONCE
         _normalize_descriptions(rec)
+
+        # 🔹 4. Unicode normalization (THIS IS WHERE YOUR LINE GOES)
+        if isinstance(rec.get("descriptions"), list):
+            for i, d in enumerate(rec["descriptions"]):
+                if isinstance(d, str):
+                    rec["descriptions"][i] = unicodedata.normalize("NFKC", d)
+
         if not _has_meaningful_descriptions(rec):
             return
 
+        # Optional classifier (now sees final clean text)
         _maybe_classify_record(rec)
-
-        if rec.get('page') is None:
-            _enrich_record_from_sources(rec)
 
         rec.pop('figure', None)
         _write_jsonl_record(rec)
 
     except Exception as exc:
         print(f"[WARN] Failed to write circuit record: {exc}")
+
+
 
 
 def _regenerate_json():
@@ -596,7 +718,7 @@ def _regenerate_json():
 
     tmp = JSON_PATH.with_suffix('.json.tmp')
     records_dict = {}
-    common_png_dir = Path('circuit_images') / 'rendered_pdflatex' / 'png'
+    common_png_dir = _get_common_png_dir()
     with open(JSONL_PATH, 'r', encoding='utf-8') as rf:
         for line in rf:
             line = line.strip()
@@ -948,10 +1070,13 @@ def find_caption_page_in_pdf(arxiv_id: str, caption: str, threshold: float = 0.0
 
     # Caption anchors: require start-of-sentence to be a valid anchor.
     # Capture the figure number so we can return it alongside the page.
-    anchor_re = re.compile(r"(?:^|[\.!?]\s+)(?:Fig\.?|Figure)\s*(\d+)\b", re.IGNORECASE)
+    anchor_re = re.compile(
+    r"(?:^|[\.!?]\s+)(?:Fig\.?|Figure)\s*(S?\d+)\b",
+    re.IGNORECASE
+    )
     stop_re = re.compile(r"(?:^|[\.!?]\s+)(?:Fig\.?|Figure|Table)\s*\d+\b", re.IGNORECASE)
 
-    page_candidates: list[tuple[int, str]] = []
+    page_candidates: list[tuple[int, str, int | None]] = []
 
     for page_num in range(doc.page_count):
         try:
@@ -1157,6 +1282,70 @@ def locate_description_span_raw(
         pass
 
     return None
+
+def _extract_paragraph_after_figure(latex: str, caption: str) -> str | None:
+    """
+    Extract the first natural-language paragraph AFTER a figure,
+    skipping all LaTeX environments and layout junk.
+    """
+
+    idx = latex.find(caption)
+    if idx == -1:
+        return None
+
+    tail = latex[idx:]
+    end_fig = tail.find(r"\end{figure}")
+    if end_fig == -1:
+        return None
+
+    after = tail[end_fig + len(r"\end{figure}"):]
+
+    # Remove ALL LaTeX environments generically
+    after = strip_latex_environments(after)
+
+    # Split into candidate paragraphs
+    paragraphs = [p.strip() for p in after.split("\n\n") if p.strip()]
+
+    for p in paragraphs:
+        # Stop at structural boundaries
+        if p.startswith((
+            "\\section",
+            "\\subsection",
+            "\\begin",
+            "\\definition",
+        )):
+            break
+
+        cleaned = _sanitize_description_snippet(p, strip_latex=True)
+
+        if cleaned and is_natural_language_paragraph(cleaned):
+            return cleaned
+
+    return None
+
+def _extract_sentence_around(text: str, start: int, end: int) -> str:
+    """Extract the full sentence containing a span."""
+    left = max(
+        text.rfind(".", 0, start),
+        text.rfind("?", 0, start),
+        text.rfind("!", 0, start),
+    )
+    right_candidates = [
+        text.find(".", end),
+        text.find("?", end),
+        text.find("!", end),
+    ]
+    right_candidates = [r for r in right_candidates if r != -1]
+    right = min(right_candidates) if right_candidates else len(text)
+
+    sentence = text[left + 1 : right + 1].strip()
+
+    # Reject diagram-like sentences
+    if sum(not c.isalnum() and not c.isspace() for c in sentence) / max(len(sentence), 1) > 0.35:
+        return ""
+
+    return sentence
+
 
 
 

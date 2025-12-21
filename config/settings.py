@@ -46,13 +46,13 @@ USE_COMBINED_SCORE = True  # If True, uses weighted combo; if False, uses cascad
 APLHA = 0.6  # Adjusted alpha for combined scoring
 TFIDF_WEIGHT = APLHA  # Weight for TF-IDF score (lexical precision)
 SBERT_WEIGHT = 1- APLHA  # Weight for SBERT score (semantic understanding)
-COMBINED_THRESHOLD = 0.55  # Combined score threshold for selection (raised to reduce false positives)
+COMBINED_THRESHOLD = 0.50  # Combined score threshold for selection (raised to reduce false positives)
 
 # Custom TF-IDF feature augmentation (can be toggled off)
 USE_CUSTOM_TFIDF_FEATURES = True
 
 USE_NEGATIVE_PENALTY = True
-NEGATIVE_PENALTY_ALPHA = 70.0  # Percentage reduction per negative token (e.g., 5% per token, capped at 90%)
+NEGATIVE_PENALTY_ALPHA = 80.0  # Percentage reduction per negative token (e.g., 5% per token, capped at 90%)
 
 # ================ TEXT PROCESSING ================
 USE_STEMMING = True

@@ -1,30 +1,22 @@
 {
   "source": "2407.04826",
-  "blocks_count": 3,
+  "blocks_count": 2,
   "blocks": [
     {
       "index": 0,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_8925e40534e8b75c.tex",
-      "length": 468,
-      "block_id": "2407.04826_8925e40534e8b75c",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p1_c1d8a642b676454c.tex",
+      "length": 1549,
+      "block_id": "2407.04826_c1d8a642b676454c",
       "panel": 1,
-      "label": "circuit f1 before decom"
+      "label": "fn_ex_decompose_ncv"
     },
     {
       "index": 1,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_435f93dd67d152ee.tex",
-      "length": 595,
-      "block_id": "2407.04826_435f93dd67d152ee",
+      "block_file": "2407.04826\\raw_blocks\\2407.04826_p2_5a8777560b57b164.tex",
+      "length": 1525,
+      "block_id": "2407.04826_5a8777560b57b164",
       "panel": 2,
-      "label": "circuit f1 before decom"
-    },
-    {
-      "index": 2,
-      "block_file": "2407.04826\\raw_blocks\\2407.04826_p3_36deffd1a100709b.tex",
-      "length": 533,
-      "block_id": "2407.04826_36deffd1a100709b",
-      "panel": 3,
-      "label": "circuit f1 before decom"
+      "label": "fn_ex_decompose_ncv"
     }
   ]
 }

@@ -1,0 +1,9 @@
+\begin{quantikz}[slice style=blue] 
+        \lstick{$a_1$}&\ctrl{2}&\ctrl{4}&&&&\ctrl{6}&\rstick{$a_1$}\\
+        \lstick{$a_2$}&\control{}&&\ctrl{4}&&\ctrl{5}&&\rstick{$a_2$}\\
+        \lstick{$a_3$}&\targ{}&&&\ctrl{4}&&&\rstick{$a_3+a_1a_2$}\\
+        \lstick{$a_4$}&&\control{}&\control{}&\control{}&&&\rstick{$a_4$}\\
+        \lstick{$a_5$}&&\targ{}&&&\control{}&&\rstick{$a_5+a_1a_4$}\\
+        \lstick{$a_6$}&&&\targ{}&&&\control{}&\rstick{$a_6+a_2a_4$}\\
+        \lstick{$a_7$}&&&&\targ{}&\targ{}&\targ{}&\rstick{$a_7+a_1a_6+a_2a_5+a_3a_4+a_1a_2a_4$}
+        \end{quantikz}
