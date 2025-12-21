@@ -306,7 +306,35 @@ class ImageExtractor:
             elif ch == '}':
                 depth -= 1
                 if depth == 0:
-                    return block_text[start:k]
+                    caption_text = block_text[start:k]
+                    
+                    # Try to extract figure label/number from the caption itself
+                    # Look for patterns like "FIG. X:", "Figure X:", etc. at the start
+                    fig_label_match = re.match(
+                        r'^((?:FIG\.|Figure|Fig\.?)\s*(?:S\s*)?\d+)\s*[:.]?\s*',
+                        caption_text,
+                        re.IGNORECASE
+                    )
+                    
+                    if fig_label_match:
+                        # Label already in caption, return as-is
+                        return caption_text
+                    
+                    # If no label in caption, check if there's text before \caption that contains figure reference
+                    # Look backwards from caption position for patterns like "FIG. X."
+                    pre_caption = block_text[:i]
+                    fig_ref_match = re.search(
+                        r'((?:FIG\.|Figure|Fig\.?)\s*(?:S\s*)?\d+)\s*[:\.]?\s*$',
+                        pre_caption,
+                        re.IGNORECASE
+                    )
+                    
+                    if fig_ref_match:
+                        # Prepend the figure reference to the caption
+                        fig_label = fig_ref_match.group(1).strip()
+                        return f"{fig_label}: {caption_text}"
+                    
+                    return caption_text
             k += 1
         return None
     

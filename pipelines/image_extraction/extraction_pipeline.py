@@ -21,6 +21,7 @@ from config.settings import (
     SIMILARITY_THRESHOLD
 )
 from core.circuit_store import set_quantum_problem_model
+from core.image_extract_store import generate_image_metadata, emit_image_record, finalize_images_output
 
 
 class ExtractionPipeline:
@@ -97,6 +98,25 @@ class ExtractionPipeline:
                 f.write('[]')
         except Exception:
             pass
+        
+        # Clear image metadata files and start fresh
+        try:
+            data_dir = Path('data')
+            images_jsonl = data_dir / 'images.jsonl'
+            images_json = data_dir / 'images.json'
+            # Remove old files if they exist
+            if images_jsonl.exists():
+                images_jsonl.unlink()
+            if images_json.exists():
+                images_json.unlink()
+            # Create fresh empty files
+            with open(images_jsonl, 'w', encoding='utf-8') as f:
+                pass
+            with open(images_json, 'w', encoding='utf-8') as f:
+                f.write('{}')
+            print("[OK] Cleared previous image metadata files")
+        except Exception as e:
+            print(f"[WARN] Failed to clear image metadata files: {e}")
         
         # Reset the processed blocks set to start fresh
         try:
@@ -405,6 +425,31 @@ class ExtractionPipeline:
         
         self.stats['total_saved'] += len(extracted)
         self.all_extracted.extend(extracted)
+        
+        # Generate and save metadata for extracted images
+        if extracted:
+            print(f"\n[METADATA] Generating metadata for {len(extracted)} images")
+            metadata_count = 0
+            for img in extracted:
+                try:
+                    metadata = generate_image_metadata(
+                        arxiv_id=paper_id,
+                        caption=img.caption,
+                        preprocessed_text=img.preprocessed_text,
+                        img_name=img.filename  # Use filename as unique key
+                    )
+                    emit_image_record(metadata)
+                    metadata_count += 1
+                except Exception as e:
+                    print(f"   [WARN] Failed to generate metadata for {img.img_name}: {e}")
+            print(f"   [OK] Generated metadata for {metadata_count}/{len(extracted)} images")
+            
+            # Regenerate images.json after processing this paper
+            try:
+                finalize_images_output()
+                print(f"   [OK] Updated images.json")
+            except Exception as e:
+                print(f"   [WARN] Failed to update images.json: {e}")
         
         print(f"\n[STATS] CUMULATIVE STATS")
         print(f"   Total papers processed: {self.stats['papers_checked']}")

@@ -27,31 +27,6 @@
   },
   "2509.13247__img_0002.png": {
     "arxiv_id": "2509.13247",
-    "figure_number": 7,
-    "page": 8,
-    "gates": [
-      "CNOT",
-      "TOFFOLI",
-      "MEASURE"
-    ],
-    "quantum_problem": "Constant-depth circuit construction",
-    "descriptions": [
-      "L=2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩ L state of the [[4,2,2]] code (Equation ).",
-      "We investigated the impact and sensitivity of hardware noise further for the circuits in by employing noise scaling analysis to discover their pseudo-thresholding behavior (see Fig. ). We identified the error sources in Sqalesim most likely to have higher hardware drift and scaled them by a."
-    ],
-    "text_positions": [
-      [
-        1827,
-        1981
-      ],
-      [
-        0,
-        0
-      ]
-    ]
-  },
-  "2509.13247__img_0003.png": {
-    "arxiv_id": "2509.13247",
     "figure_number": 15,
     "page": 14,
     "gates": [
@@ -70,6 +45,31 @@
       [
         190,
         454
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.13247__img_0003.png": {
+    "arxiv_id": "2509.13247",
+    "figure_number": 7,
+    "page": 8,
+    "gates": [
+      "CNOT",
+      "TOFFOLI",
+      "MEASURE"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "L=2 Many-hypercube state preparation circuit. The five pairs of qubits are initialized to the logical |0 0⟩ L state of the [[4,2,2]] code (Equation ).",
+      "We investigated the impact and sensitivity of hardware noise further for the circuits in by employing noise scaling analysis to discover their pseudo-thresholding behavior (see Fig. ). We identified the error sources in Sqalesim most likely to have higher hardware drift and scaled them by a."
+    ],
+    "text_positions": [
+      [
+        1827,
+        1981
       ],
       [
         0,
@@ -214,7 +214,7 @@
       ],
       [
         0,
-        360
+        0
       ]
     ]
   },
@@ -237,7 +237,7 @@
       ],
       [
         0,
-        360
+        0
       ]
     ]
   },
@@ -260,7 +260,7 @@
       ],
       [
         0,
-        360
+        0
       ]
     ]
   },
@@ -283,7 +283,7 @@
       ],
       [
         0,
-        508
+        0
       ]
     ]
   },
@@ -306,7 +306,7 @@
       ],
       [
         0,
-        508
+        0
       ]
     ]
   },
@@ -329,7 +329,7 @@
       ],
       [
         0,
-        508
+        0
       ]
     ]
   },
@@ -352,7 +352,7 @@
       ],
       [
         0,
-        508
+        0
       ]
     ]
   },
@@ -375,7 +375,7 @@
       ],
       [
         0,
-        560
+        0
       ]
     ]
   },
@@ -398,7 +398,7 @@
       ],
       [
         0,
-        560
+        0
       ]
     ]
   },
@@ -421,7 +421,7 @@
       ],
       [
         0,
-        560
+        0
       ]
     ]
   },
@@ -444,7 +444,7 @@
       ],
       [
         0,
-        560
+        0
       ]
     ]
   },
@@ -467,7 +467,7 @@
       ],
       [
         0,
-        560
+        0
       ]
     ]
   },
@@ -490,7 +490,7 @@
       ],
       [
         0,
-        560
+        0
       ]
     ]
   },
@@ -513,7 +513,7 @@
       ],
       [
         0,
-        560
+        0
       ]
     ]
   },
@@ -536,7 +536,7 @@
       ],
       [
         0,
-        560
+        0
       ]
     ]
   },
@@ -560,8 +560,8 @@
         729
       ],
       [
-        167,
-        867
+        0,
+        0
       ]
     ]
   },
@@ -585,8 +585,8 @@
         729
       ],
       [
-        167,
-        867
+        0,
+        0
       ]
     ]
   },
@@ -610,8 +610,8 @@
         729
       ],
       [
-        167,
-        867
+        0,
+        0
       ]
     ]
   },
@@ -635,8 +635,8 @@
         729
       ],
       [
-        167,
-        867
+        0,
+        0
       ]
     ]
   },
@@ -660,8 +660,8 @@
         0
       ],
       [
-        178,
-        878
+        0,
+        0
       ]
     ]
   },
@@ -685,8 +685,8 @@
         0
       ],
       [
-        178,
-        878
+        0,
+        0
       ]
     ]
   },
@@ -710,8 +710,8 @@
         0
       ],
       [
-        178,
-        878
+        0,
+        0
       ]
     ]
   },
@@ -735,8 +735,8 @@
         0
       ],
       [
-        178,
-        878
+        0,
+        0
       ]
     ]
   },
@@ -759,8 +759,8 @@
         0
       ],
       [
-        938,
-        1638
+        0,
+        0
       ]
     ]
   },
@@ -783,8 +783,8 @@
         0
       ],
       [
-        938,
-        1638
+        0,
+        0
       ]
     ]
   },
@@ -806,8 +806,8 @@
         0
       ],
       [
-        938,
-        1638
+        0,
+        0
       ]
     ]
   },
@@ -832,8 +832,8 @@
         1290
       ],
       [
-        716,
-        1290
+        0,
+        0
       ]
     ]
   },
@@ -858,7 +858,7 @@
       ],
       [
         0,
-        504
+        0
       ]
     ]
   },
@@ -883,7 +883,7 @@
       ],
       [
         0,
-        504
+        0
       ]
     ]
   },
@@ -908,7 +908,7 @@
       ],
       [
         0,
-        504
+        0
       ]
     ]
   },
@@ -932,8 +932,8 @@
         916
       ],
       [
-        259,
-        959
+        0,
+        0
       ]
     ]
   },
@@ -957,8 +957,8 @@
         916
       ],
       [
-        259,
-        959
+        0,
+        0
       ]
     ]
   },
@@ -982,8 +982,1108 @@
         916
       ],
       [
-        259,
-        959
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0034.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0035.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "V"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0036.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "V_DG"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0037.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "V"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0038.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "V_DG",
+      "CNOT"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0039.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "CNOT",
+      "V_DG"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0040.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "V_DG"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0041.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "V",
+      "CNOT"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0042.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 10,
+    "page": 15,
+    "gates": [
+      "CNOT",
+      "V"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Merge Rules",
+      "If two gates Controlled-Vand Controlled-V or two CNOT gates are adjacent, then these gates can be removed from the quantum cir."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0043.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 11,
+    "page": 15,
+    "gates": [
+      "CNOT"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Delete Rule",
+      "s fig . For any two NCV gates $g 1 (c 1 , t 1 )and g 2 (c 2 , t 2 )\\\\ where c 1 , c 2 , t 1 and t 2 are the two controls and targets of g 1 and g."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0044.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 11,
+    "page": 15,
+    "gates": [
+      "V",
+      "V_DG"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Delete Rule",
+      "s fig . For any two NCV gates $g 1 (c 1 , t 1 )and g 2 (c 2 , t 2 )\\\\ where c 1 , c 2 , t 1 and t 2 are the two controls and targets of g 1 and g."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0045.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 11,
+    "page": 15,
+    "gates": [
+      "V_DG",
+      "V"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Delete Rule",
+      "s fig . For any two NCV gates $g 1 (c 1 , t 1 )and g 2 (c 2 , t 2 )\\\\ where c 1 , c 2 , t 1 and t 2 are the two controls and targets of g 1 and g."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0046.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 14,
+    "page": 21,
+    "gates": [
+      "CNOT",
+      "MCX_4",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "the 4 gt 4 2 0 quantum circuit after a ying the reorder method",
+      "The basic definitions that are used later are reviewed as follows."
+    ],
+    "text_positions": [
+      [
+        154,
+        288
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0047.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 15,
+    "page": 22,
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI",
+      "MCX_4"
+    ],
+    "quantum_problem": "MCT gate library",
+    "descriptions": [
+      "The 4 gt 4 2 0 quantum circuit in Eq. after adding extra line.",
+      "The basic definitions that are used later are reviewed as follows."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0048.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 15,
+    "page": 22,
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI",
+      "MCX_4"
+    ],
+    "quantum_problem": "MCT gate library",
+    "descriptions": [
+      "The 4 gt 4 2 0 quantum circuit in Eq. after adding extra line.",
+      "The basic definitions that are used later are reviewed as follows."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0049.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 17,
+    "page": 23,
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI",
+      "MCX_4"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "The 4 gt 4 2 0 circuit.",
+      "The basic definitions that are used later are reviewed as follows."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0050.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 17,
+    "page": 23,
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "The 4 gt 4 2 0 circuit.",
+      "The basic definitions that are used later are reviewed as follows."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0051.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 17,
+    "page": 23,
+    "gates": [
+      "CNOT",
+      "MCX_3",
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Clifford+T gate library",
+    "descriptions": [
+      "The 4 gt 4 2 0 circuit.",
+      "The basic definitions that are used later are reviewed as follows."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0052.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 17,
+    "page": 23,
+    "gates": [
+      "CNOT",
+      "V_DG",
+      "V"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6.",
+      "The basic definitions that are used later are reviewed as follows."
+    ],
+    "text_positions": [
+      [
+        305,
+        370
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2407.04826__img_0053.png": {
+    "arxiv_id": "2407.04826",
+    "figure_number": 17,
+    "page": 23,
+    "gates": [
+      "CNOT",
+      "V",
+      "V_DG"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "The 4 gt 4 2 0 quantum circuit with NCV gates with quantum cost 4 6.",
+      "The basic definitions that are used later are reviewed as follows."
+    ],
+    "text_positions": [
+      [
+        305,
+        370
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2410.00155__img_0001.png": {
+    "arxiv_id": "2410.00155",
+    "figure_number": 4,
+    "page": 9,
+    "gates": [
+      "MEASURE"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "Quantum circuit to implement any arbitrary non-unitary operation.",
+      "For our [3,1] code, we use the circuit in implement R 0 or R 1 depending on the outcome of the projection measurements \\ P 0, P 1\\ . As the implementation of R 0 and R 1 is probabilistic, we can calculate the probability of success p success as the sum of the probability of successfully."
+    ],
+    "text_positions": [
+      [
+        23,
+        92
+      ],
+      [
+        809,
+        899
+      ]
+    ]
+  },
+  "2510.04993__img_0001.png": {
+    "arxiv_id": "2510.04993",
+    "figure_number": 1,
+    "page": 3,
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "A permutation gate in staircase form, consisting of 6 Toffoli gates.",
+      "Our first main result, which was presented in an earlier version of this paper~ , states that every permutation in \\cC 3^\\sym can be written in staircase form. We remark that there are permutations in staircase form which are not in \\cC 3. To derive a full characterization, we consider bilinear."
+    ],
+    "text_positions": [
+      [
+        149,
+        218
+      ],
+      [
+        218,
+        770
+      ]
+    ]
+  },
+  "2510.04993__img_0002.png": {
+    "arxiv_id": "2510.04993",
+    "figure_number": 2,
+    "page": 6,
+    "gates": [
+      "SWAP"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "Circuit diagram for the Gottesman–Mochon seven-qubit gate G (with time flowing from left to right).",
+      "Our first main result, which was presented in an earlier version of this paper~ , states that every permutation in \\cC 3^\\sym can be written in staircase form. We remark that there are permutations in staircase form which are not in \\cC 3. To derive a full characterization, we consider bilinear."
+    ],
+    "text_positions": [
+      [
+        2408,
+        2508
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2510.04993__img_0003.png": {
+    "arxiv_id": "2510.04993",
+    "figure_number": null,
+    "page": 25,
+    "gates": [
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Permutation circuit realization",
+    "descriptions": [
+      "This circuit for 1,2,4 1,3,4 1,2,3 is in staircase form but not mismatch-free, as qubit 3 is used as a control for 1,3,4 and a target for 1,2,3.",
+      "Our first main result, which was presented in an earlier version of this paper~ , states that every permutation in \\cC 3^\\sym can be written in staircase form. We remark that there are permutations in staircase form which are not in \\cC 3. To derive a full characterization, we consider bilinear."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2405.14951__img_0001.png": {
+    "arxiv_id": "2405.14951",
+    "figure_number": 4,
+    "page": 22,
+    "gates": [
+      "H",
+      "CNOT",
+      "MEASURE"
+    ],
+    "quantum_problem": "Hamiltonian simulation",
+    "descriptions": [
+      "Quantum circuit used in our simulations of rendezvous games on the 3-vertex cycle graph K 3. From top to bottom, the first qubit represents the quantum subs-system held by Alice and the second qubit that held by Bob.",
+      "Following Ref.~ we introduce Boolean variables W,E,S defining the type of game played on a given graph. They determine, respectively, whether waiting is a valid move, whether players can meet on edges upon transposition of their locations, and whether the initial random positions include the."
+    ],
+    "text_positions": [
+      [
+        0,
+        252
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2405.14951__img_0002.png": {
+    "arxiv_id": "2405.14951",
+    "figure_number": 4,
+    "page": 22,
+    "gates": [
+      "MEASURE"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "Quantum circuit used in our simulations of rendezvous games on cubic graphs. From top to bottom, the first two qubits represent the part of the share quantum system held by Alice and the third and fourth qubits represent the subs-system held by Bob.",
+      "In order to facilitate comparison with the results in Ref.~ we played the game on the graph 2 K 4 formed by the vertices and edges of two disconnected tetrahedra (denoted as ``cubic-4''). As noted in footnote the winning probability can be related to that on the 4-site complete graph \\it via P(K."
+    ],
+    "text_positions": [
+      [
+        0,
+        252
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.01912__img_0001.png": {
+    "arxiv_id": "2509.01912",
+    "figure_number": 3,
+    "page": 2,
+    "gates": [
+      "X",
+      "Y"
+    ],
+    "quantum_problem": "Quantum oracle construction",
+    "descriptions": [
+      "Circuit demonstration of a Quantum Oracle where the input is |x⟩ and the output result is stored on |y⟩, along with k auxiliary qubits initialized to |0⟩.",
+      "Let N=2^n, there are 2^N n-bit Boolean functions in total. This bi-exponential growth greatly increases the number of Boolean functions, making analysis on a case-by-case basis impossible. For instance, there are 2 5 6 functions when n=3, and 2^ 2^4 =6 5 5 3 6 when n=4. To simplify the analysis, we adopt."
+    ],
+    "text_positions": [
+      [
+        5250,
+        5407
+      ],
+      [
+        2733,
+        3067
+      ]
+    ]
+  },
+  "2509.01912__img_0002.png": {
+    "arxiv_id": "2509.01912",
+    "figure_number": 4,
+    "page": 4,
+    "gates": [
+      "MCX_3",
+      "MCX_9"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "An example of algorithm:1.",
+      "Let N=2^n, there are 2^N n-bit Boolean functions in total. This bi-exponential growth greatly increases the number of Boolean functions, making analysis on a case-by-case basis impossible. For instance, there are 2 5 6 functions when n=3, and 2^ 2^4 =6 5 5 3 6 when n=4. To simplify the analysis, we adopt."
+    ],
+    "text_positions": [
+      [
+        1814,
+        1833
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2509.01912__img_0003.png": {
+    "arxiv_id": "2509.01912",
+    "figure_number": 5,
+    "page": 6,
+    "gates": [
+      "CNOT",
+      "TOFFOLI",
+      "MCX_3"
+    ],
+    "quantum_problem": "Quantum oracle construction",
+    "descriptions": [
+      "An example of a quantum circuit for the oracle of a 4-bit Boolean function."
+    ],
+    "text_positions": [
+      [
+        4496,
+        4575
+      ]
+    ]
+  },
+  "2404.06059__img_0001.png": {
+    "arxiv_id": "2404.06059",
+    "figure_number": 1,
+    "page": 3,
+    "gates": [
+      "CNOT",
+      "MCX_4",
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "The quantum circuit implementing the F 8 gate.",
+      "Note that the quantum fan-out gate F n is composed solely of CNOT gates, resulting in a T-depth of 0."
+    ],
+    "text_positions": [
+      [
+        2458,
+        2507
+      ],
+      [
+        1722,
+        1824
+      ]
+    ]
+  },
+  "2404.06059__img_0002.png": {
+    "arxiv_id": "2404.06059",
+    "figure_number": 7,
+    "page": 8,
+    "gates": [
+      "X",
+      "TOFFOLI"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "The quantum circuit implementing the ReLU function with input x∈{0,1}^5 includes input qubits |x i⟩ and output qubits |0⟩ j.",
+      "Note that the quantum fan-out gate F n is composed solely of CNOT gates, resulting in a T-depth of 0."
+    ],
+    "text_positions": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2404.06059__img_0003.png": {
+    "arxiv_id": "2404.06059",
+    "figure_number": 8,
+    "page": 10,
+    "gates": [],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "The quantum circuit of SWAP operator for x∈{0,1}^3.",
+      "Note that the quantum fan-out gate F n is composed solely of CNOT gates, resulting in a T-depth of 0."
+    ],
+    "text_positions": [
+      [
+        1118,
+        1174
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__img_0001.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 1,
+    "page": 12,
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "A quantum circuit implementing the block-encoding of 1, denoted by U 1.",
+      "Next, we consider the block-encoding of \\mathcal B in . The bi-diagonal matrix can be decomposed as \\[ = + =: \\M 4 + \\M 5,\\] where \\M 4\\in \\mathbb R^ p\\times p is similar to \\M 1 but with different size and opposite signs. To introduce the negative sign, we use a negative Pauli gate Z. The quantum."
+    ],
+    "text_positions": [
+      [
+        56,
+        161
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__img_0002.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 2, denoted by U 2.",
+      "Next, we consider the block-encoding of \\mathcal B in . The bi-diagonal matrix can be decomposed as \\[ = + =: \\M 4 + \\M 5,\\] where \\M 4\\in \\mathbb R^ p\\times p is similar to \\M 1 but with different size and opposite signs. To introduce the negative sign, we use a negative Pauli gate Z. The quantum."
+    ],
+    "text_positions": [
+      [
+        1035,
+        1143
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__img_0003.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "X",
+      "Z"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 4, denoted by U 4.",
+      "Next, we consider the block-encoding of \\mathcal B in . The bi-diagonal matrix can be decomposed as \\[ = + =: \\M 4 + \\M 5,\\] where \\M 4\\in \\mathbb R^ p\\times p is similar to \\M 1 but with different size and opposite signs. To introduce the negative sign, we use a negative Pauli gate Z. The quantum."
+    ],
+    "text_positions": [
+      [
+        1035,
+        1143
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__img_0004.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "RY"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 5, denoted by U 5.",
+      "Next, we consider the block-encoding of \\mathcal B in . The bi-diagonal matrix can be decomposed as \\[ = + =: \\M 4 + \\M 5,\\] where \\M 4\\in \\mathbb R^ p\\times p is similar to \\M 1 but with different size and opposite signs. To introduce the negative sign, we use a negative Pauli gate Z. The quantum."
+    ],
+    "text_positions": [
+      [
+        1035,
+        1143
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__img_0005.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 6,
+    "page": 14,
+    "gates": [
+      "H",
+      "CTRL"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of B, denoted by U B.",
+      "Next, we consider the block-encoding of \\mathcal B in . The bi-diagonal matrix can be decomposed as \\[ = + =: \\M 4 + \\M 5,\\] where \\M 4\\in \\mathbb R^ p\\times p is similar to \\M 1 but with different size and opposite signs. To introduce the negative sign, we use a negative Pauli gate Z. The quantum."
+    ],
+    "text_positions": [
+      [
+        625,
+        742
+      ],
+      [
+        234,
+        305
+      ]
+    ]
+  },
+  "2504.06948__img_0006.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "CTRL"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 1, denoted by U 1.",
+      "Next, we consider the block-encoding of \\mathcal B in . The bi-diagonal matrix can be decomposed as \\[ = + =: \\M 4 + \\M 5,\\] where \\M 4\\in \\mathbb R^ p\\times p is similar to \\M 1 but with different size and opposite signs. To introduce the negative sign, we use a negative Pauli gate Z. The quantum."
+    ],
+    "text_positions": [
+      [
+        1035,
+        1143
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__img_0007.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 6, denoted by U 6.",
+      "Next, we consider the block-encoding of \\mathcal B in . The bi-diagonal matrix can be decomposed as \\[ = + =: \\M 4 + \\M 5,\\] where \\M 4\\in \\mathbb R^ p\\times p is similar to \\M 1 but with different size and opposite signs. To introduce the negative sign, we use a negative Pauli gate Z. The quantum."
+    ],
+    "text_positions": [
+      [
+        1035,
+        1143
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2504.06948__img_0008.png": {
+    "arxiv_id": "2504.06948",
+    "figure_number": 2,
+    "page": 12,
+    "gates": [
+      "X"
+    ],
+    "quantum_problem": "Gate decomposition",
+    "descriptions": [
+      "A quantum circuit that implements the block-encoding of 7, denoted by U 7.",
+      "Next, we consider the block-encoding of \\mathcal B in . The bi-diagonal matrix can be decomposed as \\[ = + =: \\M 4 + \\M 5,\\] where \\M 4\\in \\mathbb R^ p\\times p is similar to \\M 1 but with different size and opposite signs. To introduce the negative sign, we use a negative Pauli gate Z. The quantum."
+    ],
+    "text_positions": [
+      [
+        1035,
+        1143
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2409.00792__img_0001.png": {
+    "arxiv_id": "2409.00792",
+    "figure_number": 3,
+    "page": 3,
+    "gates": [
+      "CNOT",
+      "MEASURE"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "Binary neuron quantum circuit to calculate neuron activation between a finge int sample Φ^l, and a user sample Ψ. |γ i⟩ represents the joint system state at different positions in the circuit.",
+      "In this paper, we use a quantum implementation of this binary neuron to estimate the user floor number, where the finge int samples are the inputs to the neuron and the user's sample represents the neuron weight. The output activation value of this neuron is going to be used as an indicator of."
+    ],
+    "text_positions": [
+      [
+        57,
+        175
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2409.00792__img_0002.png": {
+    "arxiv_id": "2409.00792",
+    "figure_number": 4,
+    "page": 4,
+    "gates": [
+      "H",
+      "Z",
+      "X",
+      "TOFFOLI",
+      "MEASURE"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "Binary neuron quantum circuits to calculate neuron activation values between the finge int samples Φ^l i and the user sample Ψ=[1,1,1,1].",
+      "In this paper, we use a quantum implementation of this binary neuron to estimate the user floor number, where the finge int samples are the inputs to the neuron and the user's sample represents the neuron weight. The output activation value of this neuron is going to be used as an indicator of."
+    ],
+    "text_positions": [
+      [
+        399,
+        545
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2409.00792__img_0003.png": {
+    "arxiv_id": "2409.00792",
+    "figure_number": 4,
+    "page": 4,
+    "gates": [
+      "H",
+      "Z",
+      "X",
+      "TOFFOLI",
+      "MEASURE"
+    ],
+    "quantum_problem": "Non-unitary operation implementation",
+    "descriptions": [
+      "Binary neuron quantum circuits to calculate neuron activation values between the finge int samples Φ^l i and the user sample Ψ=[1,1,1,1].",
+      "In this paper, we use a quantum implementation of this binary neuron to estimate the user floor number, where the finge int samples are the inputs to the neuron and the user's sample represents the neuron weight. The output activation value of this neuron is going to be used as an indicator of."
+    ],
+    "text_positions": [
+      [
+        399,
+        545
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2502.05362__img_0001.png": {
+    "arxiv_id": "2502.05362",
+    "figure_number": 6,
+    "page": 4,
+    "gates": [
+      "RZ",
+      "RX"
+    ],
+    "quantum_problem": "MCT gate library",
+    "descriptions": [
+      "Quantum circuit for the 2-qubits experiment used to measure cross-talk induced on qubit a due to simultaneous drive b.",
+      "For a given pair of qubits, we perform a series of measurements, varying the phase of the virtual R z(\\Delta\\phi)rotation a ied to drive bin the range \\in [0,2\\pi]. According to our \\xt\\ model, the \\Delta\\phi dependence of the expectation values measured in the z-basis is described by Eq.~\\eqref."
+    ],
+    "text_positions": [
+      [
+        2479,
+        2563
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "2502.05362__img_0002.png": {
+    "arxiv_id": "2502.05362",
+    "figure_number": 6,
+    "page": 4,
+    "gates": [
+      "RZ",
+      "RX"
+    ],
+    "quantum_problem": "NCV gate library",
+    "descriptions": [
+      "Quantum circuit for 3 qubits experiment used to verify learned cross-talk model.",
+      "Since the number of possible choices of 3 or 4 qubits out of 8 is very large, we limited experimental verification to about 4 0 qubits multiplets, chosen at random. Similarly, for each mutiplet we collected data at 3 3 uniformly distributed values of \\Delta\\phi, taking 1 0 0 0 shots per data point,."
+    ],
+    "text_positions": [
+      [
+        2479,
+        2563
+      ],
+      [
+        2563,
+        2916
+      ]
+    ]
+  },
+  "2507.20599__img_0001.png": {
+    "arxiv_id": "2507.20599",
+    "figure_number": 15,
+    "page": 22,
+    "gates": [
+      "H",
+      "CNOT"
+    ],
+    "quantum_problem": "Constant-depth circuit construction",
+    "descriptions": [
+      "A quantum circuit for the (even) extension operator U ext,ψ. Here, U +1 denotes the quantum incrementer gate.",
+      "The RSR method is not efficient for the case of large N because the number of repetitions needs to be O(N) in general. In this paper, we consider the quantum state that is based on an unknown (continuous) real-valued function f: [0,L]\\rightarrow \\mathbb R where L>0 is the size of the domain. In."
+    ],
+    "text_positions": [
+      [
+        30,
+        147
+      ],
+      [
+        0,
+        386
       ]
     ]
   }
