@@ -1,7 +1,0 @@
-\Qcircuit @C=1.4em @R=1.2em {
-        \lstick{\ket{0}} & \gate{X} & \gate{H} & \ctrl{1} & \ctrl{1} & \gate{H} & \gate{X} & \meter \\
-        & \qw & \qw & \multigate{2}{U_{t+1,0}} & \multigate{2}{U_{t+1,j}^\dagger} & \qw & \qw & \qw \\
-        &  \qvdots & \nghost{} & \nghost{U_{t+1,0}} & \nghost{U_{t+1,j}^\dagger}  & \qvdots &   \\
-        & \qw & \qw & \ghost{U_{t+1,0}}  & \ghost{U_{t+1,j}^\dagger} & \qw & \qw  & \qw
-        \inputgroupv{2}{4}{0.8em}{2.1em}{\ket{\phi_t}\;} \\
-        }

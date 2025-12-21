@@ -1,9 +1,0 @@
-\Qcircuit @C=.75em @R=1em {
-            \ket{\phi_{\xi_0}} \quad \quad \quad & \multigate{3}{e^{i\theta (b_{\xi_1} + b^\dagger_{\xi_1})\sigma^z_{\xi_0}}} & \qw & 
-                & \quad & \qswap & \qw & \qswap & \qw \\
-            \ket{\psi_{\xi_0}} \quad \quad \quad & \oghost{e^{i\theta (b_{\xi_1} + b^\dagger_{\xi_1})\sigma^z_{\xi_0}}} & \ow & \raisebox{-2.5em}{=} && \qwx \ow & \ow & \qwx \ow & \ow\\
-            \ket{\phi_{\xi_1}} \quad \quad \quad & \ghost{e^{i\theta (b_{\xi_1} + b^\dagger_{\xi_1})\sigma^z_{\xi_0}}} & \qw & 
-                & \quad &\qswap \qwx & \multigate{1}{\text{CD}(i\theta)} & \qswap \qwx & \qw \\
-            \ket{\psi_{\xi_1}} \quad \quad \quad & \oghost{e^{i\theta (b_{\xi_1} + b^\dagger_{\xi_1})\sigma^z_{\xi_0}}} & \ow & 
-                & \quad & \ow & \oghost{\text{CD}(i\theta)} & \ow & \ow
-            }

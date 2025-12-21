@@ -1,8 +1,0 @@
-\begin{quantikz}[wire types={q,q,n,q,b},classical gap=0.1cm, column sep = 0.3cm, row sep=0.2cm]
-    \lstick[4]{$|0\rangle^{\otimes K}$}&\gate{H}&\ctrl{4}\gategroup[5,steps=4,style={rounded corners,fill=green!10, inner
-    sep=2pt},background]{nested Paulis}&&&&\gate{H}&\meter{}\\
-    &\gate{H}&&\ctrl{3}&&&\gate{H}&\meter{}\\
-    \vdots &&&&\cdots&\vdots\\
-    &\gate{H}&&&&\ctrl{1}&\gate{H}&\meter{}\\
-    \lstick{$|\psi\rangle$}&&\gate[style={fill=red!20}]{B_0} & \gate[style={fill=red!20}]{B_1} &\ \cdots \ & \gate[style={fill=red!20}]{B_{K-1}}&& \rstick{$\mathds{H}|\psi\rangle$} 
-    \end{quantikz}

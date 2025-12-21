@@ -1,9 +1,0 @@
-\Qcircuit @C=0.32em @R=.4em {
-            \lstick{}&\multigate{3}{L_3}&\multigate{3}{L_2}&\multigate{3}{L_1}&\multigate{3}{U}&\multigate{3}{\Lambda}&\multigate{3}{R_1}&\multigate{3}{R_2}&\multigate{3}{R_3}&\qw&\\
-            \lstick{}&\ghost{L_3}       &\ghost{L_2}       &\ghost{L_1}       &\ghost{U}       &\ghost{\Lambda}       &\ghost{R_1}       &\ghost{R_2}       &\ghost{R_3}       &\qw&\\
-            \lstick{}&\nghost{L_3}      &\nghost{L_2}      &\nghost{L_1}      &\nghost{U}      &\nghost{\Lambda}      &\nghost{R_1}      &\nghost{R_2}      &\nghost{R_3}      &\cdots &\\
-            \lstick{}&\ghost{L_3}       &\ghost{L_2}       &\ghost{L_1}       &\ghost{U}       &\ghost{\Lambda}       &\ghost{R_1}       &\ghost{R_1}       &\ghost{R_2}       &\qw&\\
-  \lstick{|+\rangle} &\qw               &\qw               &\ctrl{-1}         &\qw             &\qw                   &\ctrl{-1}         &\qw               &\qw               &\measuretab{M_X}  \\
-  \lstick{|+\rangle} &\qw               &\ctrl{-2}         &\qw               &\qw             &\qw                   &\qw               &\ctrl{-2}         &\qw               &\measuretab{M_X}  \\
-  \lstick{|+\rangle} &\ctrl{-3}         &\qw               &\qw               &\qw             &\qw                   &\qw               &\qw               &\ctrl{-3}         &\measuretab{M_X} \inputgroupv{1}{4}{1em}{2em}{n_q} \gategroup{1}{5}{4}{6}{.3em}{--}\\
-        }

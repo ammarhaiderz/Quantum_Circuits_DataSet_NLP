@@ -1,9 +1,0 @@
-\begin{quantikz}[wire types={q,q,n,b,n},classical
-gap=0.08cm]
-\lstick{$\ket{0^n}$} & \qw & \qw & \targ{} & \permute{1, 5, 3, 4, 2} & \qw & \qw & \qw \\
-% \makeebit{$\ket{\text{EPR}}$}& \qw & \qw & \qw & & \qw & \qw & \qw \\
-\lstick{$\ket{0^n}$} & \qw & \qw & \qw & \qw & \qw& \qw & \qw \\
-& \gate[3]{\mathrm{QFT}_{\rep}} & \qw{\lambda}  \setwiretype{q} & \ctrl{-2} & \qw & \qw & \gate[3]{\mathrm{QFT}_{\rep}^\dagger} & \setwiretype{n} & \\
-\lstick{$\ket{\psi}$} & & \qw{i} \setwiretype{q} & \qw & \qw & \qw & \qw & \qw \setwiretype{b} \\
-& & \qw{j} \setwiretype{q} & \qw & \qw & \qw & \qw &  \setwiretype{n}
-\end{quantikz}

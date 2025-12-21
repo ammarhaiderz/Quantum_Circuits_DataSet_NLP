@@ -1,8 +1,0 @@
-\Qcircuit @C=0.72em @R=1em {
-            \ket{\phi_{\xi_0}} &&&& \multigate{2}{e^{i\frac{\theta}{2} \sigma^x_{\xi_0}\sigma^x_{(\xi+1)_0}}} & \qw &  
-                & \quad & \qw & \multigate{1}{\mathrm{R}_{XX}(\theta)} & \qw & \qw \\
-            \ket{\phi_{\xi_1}} &&&& \ghost{e^{i\theta \sigma^+_{\xi_0}\sigma^-_{(\xi+1)_0}}} & \qw & = 
-                & \quad & \qswap & \ghost{\mathrm{R}_{XX}(\theta)} & \qswap & \qw \\
-            \ket{\phi_{(\xi+1)_0}} \quad &&&& \ghost{e^{i\theta \sigma^+_{\xi_0}\sigma^-_{(\xi+1)_0}}} & \qw & 
-                & \quad & \qswap \qwx & \qw & \qswap \qwx & \qw
-            }

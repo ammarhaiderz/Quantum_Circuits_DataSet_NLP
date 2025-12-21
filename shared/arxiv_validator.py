@@ -9,9 +9,9 @@ from typing import Mapping, MutableMapping, Optional
 
 import requests
 
-from config.settings import REQUEST_DELAY, CACHE_DIR
+from config.settings import CATEGORY_CACHE_FILE, REQUEST_DELAY
 
-_DEFAULT_CACHE_FILE = os.path.join(CACHE_DIR, "arxiv_category_cache.json")
+_DEFAULT_CACHE_FILE = CATEGORY_CACHE_FILE
 _GLOBAL_CACHE: dict[str, bool] = {}
 
 

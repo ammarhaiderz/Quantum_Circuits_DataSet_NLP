@@ -17,6 +17,9 @@ IMAGE_PIPELINE_OUTPUT_DIR = "images_test_50_preproc_cached_"
 IMAGE_PIPELINE_CACHE_DIR = "arxiv_cache"  # Tar.gz source cache
 IMAGE_PIPELINE_PDF_CACHE_DIR = "arxiv_pdf_cache"  # Extracted PDF cache (faster reaccess)
 
+# Category cache path (moved out of arxiv_cache)
+CATEGORY_CACHE_FILE = os.path.join("data", "arxiv_category_cache.json")
+
 # Latex render pipeline paths
 LATEX_LIVE_BLOCKS_ROOT = "circuit_images/live_blocks"
 LATEX_BLOCKS_ROOT = "circuit_images/blocks"
@@ -26,6 +29,7 @@ LATEX_RENDER_DIR = "circuit_images/rendered_pdflatex"
 OUTPUT_DIR = IMAGE_PIPELINE_OUTPUT_DIR
 CACHE_DIR = IMAGE_PIPELINE_CACHE_DIR
 PDF_CACHE_DIR = IMAGE_PIPELINE_PDF_CACHE_DIR
+CATEGORY_CACHE = CATEGORY_CACHE_FILE
 
 # ================ EXTRACTION LIMITS ================
 MAX_IMAGES = 250
@@ -74,6 +78,9 @@ def setup_directories():
     os.makedirs(IMAGE_PIPELINE_OUTPUT_DIR, exist_ok=True)
     os.makedirs(IMAGE_PIPELINE_CACHE_DIR, exist_ok=True)
     os.makedirs(IMAGE_PIPELINE_PDF_CACHE_DIR, exist_ok=True)
+
+    # Category cache directory
+    os.makedirs(os.path.dirname(CATEGORY_CACHE_FILE), exist_ok=True)
 
     # Latex render directories
     os.makedirs(LATEX_LIVE_BLOCKS_ROOT, exist_ok=True)
