@@ -18,6 +18,7 @@ from config.settings import (
     IMAGE_PIPELINE_OUTPUT_DIR,
     IMAGE_PIPELINE_CACHE_DIR,
     IMAGE_PIPELINE_PDF_CACHE_DIR,
+    PDF_CACHE_DIR,
 )
 from config.queries import FILENAME_NEGATIVE_TOKENS
 
