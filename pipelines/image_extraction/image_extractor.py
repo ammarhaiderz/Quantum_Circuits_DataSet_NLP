@@ -106,7 +106,7 @@ class ImageExtractor:
                 return io.BytesIO(f.read())
         
         # Download with delay
-        print(f"\n📥 Downloading {arxiv_id}")
+        print(f"\n Downloading {arxiv_id}")
         time.sleep(REQUEST_DELAY)
         
         url = f"https://arxiv.org/e-print/{arxiv_id}"
@@ -147,7 +147,7 @@ class ImageExtractor:
                 return None
         
         # Download with delay
-        print(f"📥 Downloading PDF for {arxiv_id}")
+        print(f"\n Downloading PDF for {arxiv_id}")
         time.sleep(REQUEST_DELAY)
         
         url = f"https://arxiv.org/pdf/{arxiv_id}.pdf"
