@@ -6,8 +6,8 @@ import ghostscript
 from tqdm import tqdm
 
 
-RAW_DIR = "images_test_50_preproc_cached_"        # Folder containing mixed files
-OUT_DIR = "clean_images_50_preproc_cached"      # Folder where PNGs will be saved
+RAW_DIR = "images_extracted"        # Folder containing mixed files
+OUT_DIR = "images_extracted_converted"      # Folder where PNGs will be saved
 os.makedirs(OUT_DIR, exist_ok=True)
 
 

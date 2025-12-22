@@ -4,7 +4,7 @@
     "figure_number": 3,
     "img_name": "2507_16255_0_simple-not-circuit.png",
     "page": 5,
-    "quantum_problem": null,
+    "quantum_problem": "Clifford+T gate library",
     "description": [
       "Simple circuit with a single X gate."
     ]
@@ -14,7 +14,7 @@
     "figure_number": 10,
     "img_name": "2410_18746_0_n7.png",
     "page": 9,
-    "quantum_problem": null,
+    "quantum_problem": "MCT gate library",
     "description": [
       "Single-shot rotation algorithm circuit, n = 7."
     ]
@@ -24,7 +24,7 @@
     "figure_number": 10,
     "img_name": "2410_18746_1_n8.png",
     "page": 9,
-    "quantum_problem": null,
+    "quantum_problem": "MCT gate library",
     "description": [
       "Single-shot rotation algorithm circuit, n = 8."
     ]
@@ -34,7 +34,7 @@
     "figure_number": 10,
     "img_name": "2410_18746_2_n6.png",
     "page": 9,
-    "quantum_problem": null,
+    "quantum_problem": "MCT gate library",
     "description": [
       "Single-shot rotation algorithm circuit, n = 6."
     ]
@@ -44,7 +44,7 @@
     "figure_number": 10,
     "img_name": "2410_18746_3_n5.png",
     "page": 9,
-    "quantum_problem": null,
+    "quantum_problem": "MCT gate library",
     "description": [
       "Single-shot rotation algorithm circuit, n = 5."
     ]
@@ -54,7 +54,7 @@
     "figure_number": 10,
     "img_name": "2410_18746_4_n4.png",
     "page": 9,
-    "quantum_problem": null,
+    "quantum_problem": "MCT gate library",
     "description": [
       "Single-shot rotation algorithm circuit, n = 4."
     ]
@@ -64,7 +64,7 @@
     "figure_number": 18,
     "img_name": "2407_04826_0_reorder.png",
     "page": 23,
-    "quantum_problem": null,
+    "quantum_problem": "Clifford+T gate library",
     "description": [
       "The 4 gt 4 2 0 quantum circuit with MCT gates using IBM."
     ]
@@ -74,7 +74,7 @@
     "figure_number": 19,
     "img_name": "2407_04826_1_decompNCV.png",
     "page": 24,
-    "quantum_problem": null,
+    "quantum_problem": "NCV gate library",
     "description": [
       "The 4 gt 4 2 0 quantum circuit with NCV gates using IBM."
     ]
@@ -84,7 +84,7 @@
     "figure_number": 5,
     "img_name": "2404_19458_0_fig16.png",
     "page": 4,
-    "quantum_problem": null,
+    "quantum_problem": "Gate decomposition",
     "description": [
       "GHZ-state purification of our protocol."
     ]
@@ -94,7 +94,7 @@
     "figure_number": 6,
     "img_name": "2504_11846_0_figure6.png",
     "page": 7,
-    "quantum_problem": null,
+    "quantum_problem": "NCV gate library",
     "description": [
       "Entanglement circuit with repeated layers for VQC."
     ]
@@ -104,7 +104,7 @@
     "figure_number": 7,
     "img_name": "2504_11846_1_figure7.png",
     "page": 7,
-    "quantum_problem": null,
+    "quantum_problem": "Non-unitary operation implementation",
     "description": [
       "SWAP two-qubit circuit for U ent."
     ]
@@ -114,7 +114,7 @@
     "figure_number": 1,
     "img_name": "2504_11846_2_figure1.png",
     "page": 4,
-    "quantum_problem": null,
+    "quantum_problem": "Clifford+T gate library",
     "description": [
       "The corresponding structural diagram."
     ]
@@ -124,9 +124,2169 @@
     "figure_number": 5,
     "img_name": "2504_11846_3_figure5.png",
     "page": 6,
-    "quantum_problem": null,
+    "quantum_problem": "Variational Quantum Eigensolver",
     "description": [
       "VQC circuit diagram."
+    ]
+  },
+  "2507_10395_0_Fig1x.pdf": {
+    "arxiv_id": "2507.10395",
+    "figure_number": 1,
+    "img_name": "2507_10395_0_Fig1x.pdf",
+    "page": 3,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Zero-controlled NOT gate and zero-controlled Z gate."
+    ]
+  },
+  "2407_16345_0_Fig9.png": {
+    "arxiv_id": "2407.16345",
+    "figure_number": 9,
+    "img_name": "2407_16345_0_Fig9.png",
+    "page": 18,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Quantum circuit of increment gate U +1 and its controlled version according to Exercise 4.2 7 in ."
+    ]
+  },
+  "2407_16345_1_Fig2.png": {
+    "arxiv_id": "2407.16345",
+    "figure_number": 2,
+    "img_name": "2407_16345_1_Fig2.png",
+    "page": 4,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "(a) Proposed quantum circuit of LIU based on a linear interpolated diagonal unitary matrix. The controlled W j gate with control qubit |k p^'⟩ and target register |k⟩ m is denoted by CW j^(p). (b) Quantum circuit of CW j^(p) using two U M^(j), a controlled increment gate U +1, and its inverse."
+    ]
+  },
+  "2505_09320_0__circuit_hsim2.pdf": {
+    "arxiv_id": "2505.09320",
+    "figure_number": 2,
+    "img_name": "2505_09320_0__circuit_hsim2.pdf",
+    "page": 3,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Two simplest quantum circuits for exp (-i H 2 τ). The circuits of exp (-i cl^-1 h j τ) (1 ≤ j ≤ n) are concatenated in the increasing order (above) and the decreasing order (below)."
+    ]
+  },
+  "2505_09320_1__c4rz_vchain.pdf": {
+    "arxiv_id": "2505.09320",
+    "figure_number": 7,
+    "img_name": "2505_09320_1__c4rz_vchain.pdf",
+    "page": 6,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "The Z rotation gate with four control qubits (left) and its vchain decomposition (right)."
+    ]
+  },
+  "2505_09320_2__c4rz.pdf": {
+    "arxiv_id": "2505.09320",
+    "figure_number": 7,
+    "img_name": "2505_09320_2__c4rz.pdf",
+    "page": 6,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "The Z rotation gate with four control qubits (left) and its vchain decomposition (right)."
+    ]
+  },
+  "2409_00792_0_NM_vs_nM-eps-converted-to.pdf": {
+    "arxiv_id": "2409.00792",
+    "figure_number": 6,
+    "img_name": "2409_00792_0_NM_vs_nM-eps-converted-to.pdf",
+    "page": 5,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "The complexity of the classical algorithm (o(MN)) and the proposed quantum algorithm (o(MLog(N)))."
+    ]
+  },
+  "2508_07977_0_fig1.png": {
+    "arxiv_id": "2508.07977",
+    "figure_number": 1,
+    "img_name": "2508_07977_0_fig1.png",
+    "page": 3,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Left. Circuit for deterministic preparation of a |W^3⟩ state from three separable qubits. Right. Circuit for deterministic expansion of a three-qubit W state into a four-qubit Dicke state."
+    ]
+  },
+  "2403_07100_0_singlets_triplets.pdf": {
+    "arxiv_id": "2403.07100",
+    "figure_number": 4,
+    "img_name": "2403_07100_0_singlets_triplets.pdf",
+    "page": 10,
+    "quantum_problem": "Quantum state preparation",
+    "description": [
+      "a) Circuit Û s for preparing the |ϕ 0⟩ state on 4 qubits. b) Circuit for preparing the |ϕ 1⟩ state on 8 qubits."
+    ]
+  },
+  "2501_01214_0_concat.pdf": {
+    "arxiv_id": "2501.01214",
+    "figure_number": 1,
+    "img_name": "2501_01214_0_concat.pdf",
+    "page": 20,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Two ways of concatenating circuits which use workspace qubits."
+    ]
+  },
+  "2501_01214_1_Dicke.pdf": {
+    "arxiv_id": "2501.01214",
+    "figure_number": 7,
+    "img_name": "2501_01214_1_Dicke.pdf",
+    "page": 33,
+    "quantum_problem": "NCV gate library",
+    "description": [
+      "An n-symmetric circuit for preparing the Dicke state |D^n k⟩."
+    ]
+  },
+  "2406_06288_0_number_qubits_b_2sparsity_level_0_number_gates_log.pdf": {
+    "arxiv_id": "2406.06288",
+    "figure_number": null,
+    "img_name": "2406_06288_0_number_qubits_b_2sparsity_level_0_number_gates_log.pdf",
+    "page": 3,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Single qubit gates."
+    ]
+  },
+  "2406_06288_1_number_qubits_b_2sparsity_level_0_number_two_qubit_gates_log.pdf": {
+    "arxiv_id": "2406.06288",
+    "figure_number": null,
+    "img_name": "2406_06288_1_number_qubits_b_2sparsity_level_0_number_two_qubit_gates_log.pdf",
+    "page": 3,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Single qubit gates."
+    ]
+  },
+  "2504_19053_0_circ.png": {
+    "arxiv_id": "2504.19053",
+    "figure_number": null,
+    "img_name": "2504_19053_0_circ.png",
+    "page": 13,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "The quantum circuit in QFGN."
+    ]
+  },
+  "2404_07034_0_example_transpile.png": {
+    "arxiv_id": "2404.07034",
+    "figure_number": 11,
+    "img_name": "2404_07034_0_example_transpile.png",
+    "page": 14,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The circuit with virtual qubits"
+    ]
+  },
+  "2404_07034_2_transpilation.jpg": {
+    "arxiv_id": "2404.07034",
+    "figure_number": 11,
+    "img_name": "2404_07034_2_transpilation.jpg",
+    "page": 14,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The circuit with virtual qubits"
+    ]
+  },
+  "2508_12444_0_PassProcess.pdf": {
+    "arxiv_id": "2508.12444",
+    "figure_number": null,
+    "img_name": "2508_12444_0_PassProcess.pdf",
+    "page": 8,
+    "quantum_problem": "Fault-tolerant circuit construction",
+    "description": [
+      "Imperfect defect-assisted braiding procedure. The golden dashed lines represent the residual coupling strength δ between the zero modes and other parts of the tri-junction as the zero modes pass through the local defect."
+    ]
+  },
+  "2401_07574_0_fig1.png": {
+    "arxiv_id": "2401.07574",
+    "figure_number": 1,
+    "img_name": "2401_07574_0_fig1.png",
+    "page": 2,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Schematic diagram of the two qubits TC model. The two green balls denote two qubits. The interaction exists only between the qubit and the optical field; there is no interaction between the two qubits."
+    ]
+  },
+  "2403_05908_0_circuit3.pdf": {
+    "arxiv_id": "2403.05908",
+    "figure_number": 12,
+    "img_name": "2403_05908_0_circuit3.pdf",
+    "page": 21,
+    "quantum_problem": "NCV gate library",
+    "description": [
+      "Ancilla-free quantum circuit that evaluates ℐm[⟨ψ |V̂^† 2 V̂ 1|ψ⟩]. Two circuits are required, one with the multi-qubit gate e^iπσ̂ 1/4 and the other with e^-iπσ̂ 1/4."
+    ]
+  },
+  "2403_05908_1_ising_circuit.pdf": {
+    "arxiv_id": "2403.05908",
+    "figure_number": 2,
+    "img_name": "2403_05908_1_ising_circuit.pdf",
+    "page": 6,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Ansatz construction. (a) 3 qubit TFIM. The ci es represent the qubits and the lines the nearest-neighbor interactions. (b) Parameterized circuit Û, composed of N l repetitions of single-qubit R̂ x gates and two-qubit R̂ zz gates (see Eq.( )). The total number of parameterized gates is N l(n+E), with E the number of ⟨ i,j⟩ pairs of nearest neighbouring sites."
+    ]
+  },
+  "2502_14240_0_E_QKD.png": {
+    "arxiv_id": "2502.14240",
+    "figure_number": 2,
+    "img_name": "2502_14240_0_E_QKD.png",
+    "page": 5,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Our entanglement-based satellite quantum communication system. HWP: Half-wave plate; PBS: Polarizing beam splitter; SPD: Single-photon detector; BS: Beam splitter."
+    ]
+  },
+  "2501_08793_0_Hamiltonian_averaging.pdf": {
+    "arxiv_id": "2501.08793",
+    "figure_number": 6,
+    "img_name": "2501_08793_0_Hamiltonian_averaging.pdf",
+    "page": 14,
+    "quantum_problem": "Variational quantum algorithm",
+    "description": [
+      "Diagram highlighting the correspondence between the classical Krylov-Bogoliubov and quantum van Vleck Floquet expansions to obtain an effective Hamiltonian for the stroboscopic dynamics."
+    ]
+  },
+  "2510_17140_0_fig4.pdf": {
+    "arxiv_id": "2510.17140",
+    "figure_number": 4,
+    "img_name": "2510_17140_0_fig4.pdf",
+    "page": 10,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Circuit decomposition of a Z gate with α = θ/4."
+    ]
+  },
+  "2411_08928_0_fig3_feynmanrandomckts.jpg": {
+    "arxiv_id": "2411.08928",
+    "figure_number": 3,
+    "img_name": "2411_08928_0_fig3_feynmanrandomckts.jpg",
+    "page": 6,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Feynman-path diagram for a Random quantum circuit."
+    ]
+  },
+  "2401_07302_0_26.pdf": {
+    "arxiv_id": "2401.07302",
+    "figure_number": null,
+    "img_name": "2401_07302_0_26.pdf",
+    "page": 12,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Electrical circuit diagram of a three-qubit device ."
+    ]
+  },
+  "2401_07302_1_4.png": {
+    "arxiv_id": "2401.07302",
+    "figure_number": null,
+    "img_name": "2401_07302_1_4.png",
+    "page": 10,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Quantum circuit for creating the GHZ state."
+    ]
+  },
+  "2401_07302_2_3.png": {
+    "arxiv_id": "2401.07302",
+    "figure_number": null,
+    "img_name": "2401_07302_2_3.png",
+    "page": 10,
+    "quantum_problem": "Quantum state preparation",
+    "description": [
+      "Quantum circuit for creating the Bell state."
+    ]
+  },
+  "2401_07302_4_36.pdf": {
+    "arxiv_id": "2401.07302",
+    "figure_number": null,
+    "img_name": "2401_07302_4_36.pdf",
+    "page": 12,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Schematic circuit of a three-qubit Grover's algorithm ."
+    ]
+  },
+  "2401_07302_5_42.png": {
+    "arxiv_id": "2401.07302",
+    "figure_number": null,
+    "img_name": "2401_07302_5_42.png",
+    "page": 12,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Schematic circuit of the three-qubit Grover algorithm ."
+    ]
+  },
+  "2401_07302_6_2.png": {
+    "arxiv_id": "2401.07302",
+    "figure_number": null,
+    "img_name": "2401_07302_6_2.png",
+    "page": 10,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Quantum circuit representation for CNOT gate. Here x,y=0 or 1 and ⊕ denotes the addition modulo 2, while the vertical line between the control and target qubit represents the circuit diagram of CNOT gate."
+    ]
+  },
+  "2401_07302_7_39.pdf": {
+    "arxiv_id": "2401.07302",
+    "figure_number": null,
+    "img_name": "2401_07302_7_39.pdf",
+    "page": 12,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Schematic circuit of Grover's algorithm ."
+    ]
+  },
+  "2401_07302_8_13.png": {
+    "arxiv_id": "2401.07302",
+    "figure_number": null,
+    "img_name": "2401_07302_8_13.png",
+    "page": 47,
+    "quantum_problem": "Circuit illustration example",
+    "description": [
+      "a) Circuit diagram corresponding to the Cooper pair box schematic in Fig. ( a). b) Circuit diagram corresponding to the Cooper pair box schematic in Fig. ( b)."
+    ]
+  },
+  "2409_11876_0_States.png": {
+    "arxiv_id": "2409.11876",
+    "figure_number": 1,
+    "img_name": "2409_11876_0_States.png",
+    "page": 6,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Schematic representation of our protocol."
+    ]
+  },
+  "2407_06415_0_twoQubitGatePool.eps": {
+    "arxiv_id": "2407.06415",
+    "figure_number": 4,
+    "img_name": "2407_06415_0_twoQubitGatePool.eps",
+    "page": 8,
+    "quantum_problem": "Quantum gate library illustration",
+    "description": [
+      "Two qubit gate pool block diagram"
+    ]
+  },
+  "2407_06415_1_oneQubitGatePool.eps": {
+    "arxiv_id": "2407.06415",
+    "figure_number": 3,
+    "img_name": "2407_06415_1_oneQubitGatePool.eps",
+    "page": 7,
+    "quantum_problem": "Quantum gate library illustration",
+    "description": [
+      "One qubit gate pool block diagram"
+    ]
+  },
+  "2403_03667_0_lambda_1-Phi.pdf": {
+    "arxiv_id": "2403.03667",
+    "figure_number": 2,
+    "img_name": "2403_03667_0_lambda_1-Phi.pdf",
+    "page": 10,
+    "quantum_problem": "Bernstein–Vazirani algorithm",
+    "description": [
+      "The quantities λ 1,2(Φ) associated to a quantum channel Φ : d→d."
+    ]
+  },
+  "2403_03667_1_lambda_2-Phi.pdf": {
+    "arxiv_id": "2403.03667",
+    "figure_number": 2,
+    "img_name": "2403_03667_1_lambda_2-Phi.pdf",
+    "page": 10,
+    "quantum_problem": "Bernstein–Vazirani algorithm",
+    "description": [
+      "The quantities λ 1,2(Φ) associated to a quantum channel Φ : d→d."
+    ]
+  },
+  "2405_12030_0_metrology.pdf": {
+    "arxiv_id": "2405.12030",
+    "figure_number": 2,
+    "img_name": "2405_12030_0_metrology.pdf",
+    "page": 4,
+    "quantum_problem": "Quantum phase estimation",
+    "description": [
+      "Diagram depicting the typical steps in quantum parameter estimation."
+    ]
+  },
+  "2408_01234_0_teleportation.pdf": {
+    "arxiv_id": "2408.01234",
+    "figure_number": 20,
+    "img_name": "2408_01234_0_teleportation.pdf",
+    "page": 48,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Quantum teleportation: an unknown qubit is transferred from Alice to Bob by consuming an entangled pair A-B shared between Alice and Bob."
+    ]
+  },
+  "2412_03939_0_real_circuit.pdf": {
+    "arxiv_id": "2412.03939",
+    "figure_number": 13,
+    "img_name": "2412_03939_0_real_circuit.pdf",
+    "page": 21,
+    "quantum_problem": "Variational quantum algorithm",
+    "description": [
+      "Quantum circuit for solving the spring-mass problem using qANM, executed on the Quafu quantum processor."
+    ]
+  },
+  "2502_20799_0_H2O_gap.pdf": {
+    "arxiv_id": "2502.20799",
+    "figure_number": 2,
+    "img_name": "2502_20799_0_H2O_gap.pdf",
+    "page": 15,
+    "quantum_problem": "Simon's algorithm",
+    "description": [
+      "The absolute spectral gap δ obtained by diagonalizing the transition matrix 𝒫 of each proposal for the ground state of H 2 O. For the Quantum proposal, δ is obtained as the maximal absolute spectral gap by scanning τ from 0.1 to 4 0.0 with a step size of 0.2. δ for the classical proposals, Quantum and Effective proposals with or without the hopping term in the OAO (a) or CMO (b) basis. δ for the Quantum (hopping) and the Effective (hopping) proposals with different γ e selections in the OAO (c) or CMO (d)."
+    ]
+  },
+  "2410_12660_0_circuit-execution.pdf": {
+    "arxiv_id": "2410.12660",
+    "figure_number": 2,
+    "img_name": "2410_12660_0_circuit-execution.pdf",
+    "page": 4,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "A single-qubit circuit, which a ies the Pauli gates X, Y, and Z in succession."
+    ]
+  },
+  "2410_12660_1_two-qubit-circuit.pdf": {
+    "arxiv_id": "2410.12660",
+    "figure_number": 3,
+    "img_name": "2410_12660_1_two-qubit-circuit.pdf",
+    "page": 5,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "A two-qubit circuit, which executes a Pauli X gate on the first qubit and a Pauli Y gate on the second qubit"
+    ]
+  },
+  "2402_08136_0_gate_fusion.png": {
+    "arxiv_id": "2402.08136",
+    "figure_number": null,
+    "img_name": "2402_08136_0_gate_fusion.png",
+    "page": 1,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Four possible gate fusion strategies for a icable gates. The individual gates on the left-hand side are combined into one fused gate on the right-hand side. The priorities among four strategies is from top to the bottom: first, one-qubit gates are fused; then two different fusion between one-qubit and two-qubit gates happen; and finally, two-qubit gates are fused together."
+    ]
+  },
+  "2405_04490_1_grover-3.jpg": {
+    "arxiv_id": "2405.04490",
+    "figure_number": 1,
+    "img_name": "2405_04490_1_grover-3.jpg",
+    "page": 5,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Grover's Algorithm with 3 qubits"
+    ]
+  },
+  "2510_15726_0_h1w10a.pdf": {
+    "arxiv_id": "2510.15726",
+    "figure_number": 1,
+    "img_name": "2510_15726_0_h1w10a.pdf",
+    "page": 6,
+    "quantum_problem": "Bernstein–Vazirani algorithm",
+    "description": [
+      "Trajectory of the quantum state given by Equations ( )( ) related to the initial condition (left) a⃗(0)=(1,0,0)^T and (right) a⃗(0)=(1/√(2))(1,0,1)^T , with the Hamiltonian H=ω 0σ z, where ω 0=1 0, h=1."
+    ]
+  },
+  "2510_15726_1_h1w10b.pdf": {
+    "arxiv_id": "2510.15726",
+    "figure_number": 1,
+    "img_name": "2510_15726_1_h1w10b.pdf",
+    "page": 6,
+    "quantum_problem": "Bernstein–Vazirani algorithm",
+    "description": [
+      "Trajectory of the quantum state given by Equations ( )( ) related to the initial condition (left) a⃗(0)=(1,0,0)^T and (right) a⃗(0)=(1/√(2))(1,0,1)^T , with the Hamiltonian H=ω 0σ z, where ω 0=1 0, h=1."
+    ]
+  },
+  "2401_03759_0_circuit.png": {
+    "arxiv_id": "2401.03759",
+    "figure_number": 3,
+    "img_name": "2401_03759_0_circuit.png",
+    "page": 13,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The 2-qubit quantum circuit used in this study. The state of the quantum circuit is adjusted by 4 parameterized R y gates."
+    ]
+  },
+  "2412_13878_0_QNN.png": {
+    "arxiv_id": "2412.13878",
+    "figure_number": 2,
+    "img_name": "2412_13878_0_QNN.png",
+    "page": 2,
+    "quantum_problem": "Quantum adder",
+    "description": [
+      "QNN with pairwise entangling gates"
+    ]
+  },
+  "2507_10939_0_amp_img.png": {
+    "arxiv_id": "2507.10939",
+    "figure_number": 3,
+    "img_name": "2507_10939_0_amp_img.png",
+    "page": 4,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The image (top) can be normalized and encoded into a quantum circuit (bottom)."
+    ]
+  },
+  "2507_10939_1_amp_circ.png": {
+    "arxiv_id": "2507.10939",
+    "figure_number": 3,
+    "img_name": "2507_10939_1_amp_circ.png",
+    "page": 4,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The image (top) can be normalized and encoded into a quantum circuit (bottom)."
+    ]
+  },
+  "2402_11806_0_Appendix_Figure_Noise_limitation.pdf": {
+    "arxiv_id": "2402.11806",
+    "figure_number": 16,
+    "img_name": "2402_11806_0_Appendix_Figure_Noise_limitation.pdf",
+    "page": 15,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Noise limitation. The quantum channel length is 1 0 0 km."
+    ]
+  },
+  "2402_11806_1_Appendix_Figure_Fidelity_of_different_paths_under_integrated_conditions.pdf": {
+    "arxiv_id": "2402.11806",
+    "figure_number": 16,
+    "img_name": "2402_11806_1_Appendix_Figure_Fidelity_of_different_paths_under_integrated_conditions.pdf",
+    "page": 15,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Noise limitation. The quantum channel length is 1 0 0 km."
+    ]
+  },
+  "2401_11351_0_Fig13.jpg": {
+    "arxiv_id": "2401.11351",
+    "figure_number": 10,
+    "img_name": "2401_11351_0_Fig13.jpg",
+    "page": 37,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "A quantum to classical channel."
+    ]
+  },
+  "2401_11351_1_Fig6.jpg": {
+    "arxiv_id": "2401.11351",
+    "figure_number": 6,
+    "img_name": "2401_11351_1_Fig6.jpg",
+    "page": 25,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Circuits for HHL algorithm ."
+    ]
+  },
+  "2405_03032_0_UnencodedCircuit.pdf": {
+    "arxiv_id": "2405.03032",
+    "figure_number": 4,
+    "img_name": "2405_03032_0_UnencodedCircuit.pdf",
+    "page": 5,
+    "quantum_problem": "Variational quantum algorithm",
+    "description": [
+      "The unencoded two-qubit UCC single parameter VQE ansatz."
+    ]
+  },
+  "2405_03032_1_unenc_3qROD.pdf": {
+    "arxiv_id": "2405.03032",
+    "figure_number": 4,
+    "img_name": "2405_03032_1_unenc_3qROD.pdf",
+    "page": 5,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Unencoded UCC ansatz with encoding for [3,1]-RED using qubits r i,s i for i ∈ [0,1] for VQE"
+    ]
+  },
+  "2510_19467_0_qaoa_part1.pdf": {
+    "arxiv_id": "2510.19467",
+    "figure_number": null,
+    "img_name": "2510_19467_0_qaoa_part1.pdf",
+    "page": 2,
+    "quantum_problem": "Quantum Approximate Optimization Algorithm",
+    "description": [
+      "The original (top) circuit can be partitioned into 2 subcircuits (bottom) using 3 cuts (1 wire cut and 2 gate cuts)"
+    ]
+  },
+  "2510_19467_1_qaoa_part2.pdf": {
+    "arxiv_id": "2510.19467",
+    "figure_number": null,
+    "img_name": "2510_19467_1_qaoa_part2.pdf",
+    "page": 2,
+    "quantum_problem": "Quantum Approximate Optimization Algorithm",
+    "description": [
+      "The original (top) circuit can be partitioned into 2 subcircuits (bottom) using 3 cuts (1 wire cut and 2 gate cuts)"
+    ]
+  },
+  "2510_19467_2_vqe.pdf": {
+    "arxiv_id": "2510.19467",
+    "figure_number": 8,
+    "img_name": "2510_19467_2_vqe.pdf",
+    "page": 12,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Number of circuit executions with different max qwc groups for a 6-qubit Efficient SU 2 circuit"
+    ]
+  },
+  "2510_19467_3_hamilton.pdf": {
+    "arxiv_id": "2510.19467",
+    "figure_number": 8,
+    "img_name": "2510_19467_3_hamilton.pdf",
+    "page": 12,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Number of circuit executions with different max qwc groups for a 6-qubit Efficient SU 2 circuit"
+    ]
+  },
+  "2509_20141_0_orthogonal-pilot-tone-assisted-fast-polarization-tracking.jpg": {
+    "arxiv_id": "2509.20141",
+    "figure_number": null,
+    "img_name": "2509_20141_0_orthogonal-pilot-tone-assisted-fast-polarization-tracking.jpg",
+    "page": 13,
+    "quantum_problem": "Quantum phase estimation",
+    "description": [
+      "Orthogonal pilot-tone-assisted fast polarization tracking algorithm schematic. Reproduced from ."
+    ]
+  },
+  "2402_07866_0_comment_circuit.pdf": {
+    "arxiv_id": "2402.07866",
+    "figure_number": null,
+    "img_name": "2402_07866_0_comment_circuit.pdf",
+    "page": 3,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Under the assumption of 𝒰 ℰ=ℰ𝒰, the unitary channel can be moved before the first cswap gate."
+    ]
+  },
+  "2402_07866_1_separate_control_circuit.pdf": {
+    "arxiv_id": "2402.07866",
+    "figure_number": 14,
+    "img_name": "2402_07866_1_separate_control_circuit.pdf",
+    "page": 24,
+    "quantum_problem": "NCV gate library",
+    "description": [
+      "Circuit for virtual channel purification with separate control qubits for each cswap."
+    ]
+  },
+  "2410_10543_0_fig_physical_proc.pdf": {
+    "arxiv_id": "2410.10543",
+    "figure_number": 5,
+    "img_name": "2410_10543_0_fig_physical_proc.pdf",
+    "page": 7,
+    "quantum_problem": "Variational quantum algorithm",
+    "description": [
+      "Physical processes related to the primary instability of the coupled BEC system with components Ψ 1 and Ψ 2, indicated by the upper and lower elongated shapes, respectively: a) excitation of a pair of particles from the first condensate, where one particle further tunnels to the second condensate; b): excitation of a pair from the first condensate that tunnels to the second one; c) and d): excitation of a pair of particles from each of the two condensates."
+    ]
+  },
+  "2508_11848_0_highly-entangled.png": {
+    "arxiv_id": "2508.11848",
+    "figure_number": 3,
+    "img_name": "2508_11848_0_highly-entangled.png",
+    "page": 7,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "A strongly entangled quantum circuit with m layers. In this circuit, each layer comprises a series of rotation gates followed by an entangling layer that fully entangles all the qubits."
+    ]
+  },
+  "2508_11848_1_tree-like.png": {
+    "arxiv_id": "2508.11848",
+    "figure_number": 4,
+    "img_name": "2508_11848_1_tree-like.png",
+    "page": 7,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "A simple tree tensor quantum circuit."
+    ]
+  },
+  "2403_15761_0_Fig13.pdf": {
+    "arxiv_id": "2403.15761",
+    "figure_number": 13,
+    "img_name": "2403_15761_0_Fig13.pdf",
+    "page": 10,
+    "quantum_problem": "Parameterized quantum circuit",
+    "description": [
+      "Schematic diagram of lossy MZI with CS mixed PCSVS as input."
+    ]
+  },
+  "2405_11245_0_QKD.pdf": {
+    "arxiv_id": "2405.11245",
+    "figure_number": 9,
+    "img_name": "2405_11245_0_QKD.pdf",
+    "page": 9,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Schematic diagram depicting QKD. CAC is an abbreviation for Classical Authenticated Channel."
+    ]
+  },
+  "2505_08928_0_camera.pdf": {
+    "arxiv_id": "2505.08928",
+    "figure_number": 3,
+    "img_name": "2505_08928_0_camera.pdf",
+    "page": 2,
+    "quantum_problem": "Quantum compilation",
+    "description": [
+      "Compiled circuit diagram with additional SWAPs."
+    ]
+  },
+  "2505_08928_1_swap.pdf": {
+    "arxiv_id": "2505.08928",
+    "figure_number": 3,
+    "img_name": "2505_08928_1_swap.pdf",
+    "page": 2,
+    "quantum_problem": "Quantum compilation",
+    "description": [
+      "Compiled circuit diagram with additional SWAPs."
+    ]
+  },
+  "2505_08928_2_swapsym.pdf": {
+    "arxiv_id": "2505.08928",
+    "figure_number": 3,
+    "img_name": "2505_08928_2_swapsym.pdf",
+    "page": 2,
+    "quantum_problem": "Quantum compilation",
+    "description": [
+      "Compiled circuit diagram with additional SWAPs."
+    ]
+  },
+  "2503_00445_0_HashingNetwork.pdf": {
+    "arxiv_id": "2503.00445",
+    "figure_number": 1,
+    "img_name": "2503_00445_0_HashingNetwork.pdf",
+    "page": 1,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "During the protocol, each party only has access to their part of the initial quantum state."
+    ]
+  },
+  "2407_06421_0_VQA_overview.pdf": {
+    "arxiv_id": "2407.06421",
+    "figure_number": 1,
+    "img_name": "2407_06421_0_VQA_overview.pdf",
+    "page": 2,
+    "quantum_problem": "Deutsch–Jozsa algorithm",
+    "description": [
+      "Components of a Variational Quantum Algorithm."
+    ]
+  },
+  "2403_19778_0_Fig_1.pdf": {
+    "arxiv_id": "2403.19778",
+    "figure_number": 1,
+    "img_name": "2403_19778_0_Fig_1.pdf",
+    "page": 3,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Schematic depiction of the different structures of an EBQN, where c.c. is short for communication channels. Note that the classical c.c., the quantum c.c. and the entanglement do not exactly match."
+    ]
+  },
+  "2504_10860_0_F7a.pdf": {
+    "arxiv_id": "2504.10860",
+    "figure_number": 7,
+    "img_name": "2504_10860_0_F7a.pdf",
+    "page": 11,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "ID of ρ I,II with respect to ϑ and η for φ=π/4, φ=π/5 and φ=π/8. The green line represents the minimal ID at η."
+    ]
+  },
+  "2504_10860_1_F7b.pdf": {
+    "arxiv_id": "2504.10860",
+    "figure_number": 7,
+    "img_name": "2504_10860_1_F7b.pdf",
+    "page": 11,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "ID of ρ I,II with respect to ϑ and η for φ=π/4, φ=π/5 and φ=π/8. The green line represents the minimal ID at η."
+    ]
+  },
+  "2504_10860_2_F7c.pdf": {
+    "arxiv_id": "2504.10860",
+    "figure_number": 7,
+    "img_name": "2504_10860_2_F7c.pdf",
+    "page": 11,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "ID of ρ I,II with respect to ϑ and η for φ=π/4, φ=π/5 and φ=π/8. The green line represents the minimal ID at η."
+    ]
+  },
+  "2411_07698_1_CCNR4d.png": {
+    "arxiv_id": "2411.07698",
+    "figure_number": null,
+    "img_name": "2411_07698_1_CCNR4d.png",
+    "page": 23,
+    "quantum_problem": "Simon's algorithm",
+    "description": [
+      "Homology basis (N=3): Homology basis for Σ 3 is shown above, the horizontal lines represent branch cuts."
+    ]
+  },
+  "2502_11728_0_MLQC.png": {
+    "arxiv_id": "2502.11728",
+    "figure_number": 5,
+    "img_name": "2502_11728_0_MLQC.png",
+    "page": 5,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The schematic diagram of the MLQC algorithm framework."
+    ]
+  },
+  "2401_15529_0_threat_model.pdf": {
+    "arxiv_id": "2401.15529",
+    "figure_number": 1,
+    "img_name": "2401_15529_0_threat_model.pdf",
+    "page": 3,
+    "quantum_problem": "Fault-tolerant circuit construction",
+    "description": [
+      "Schematic of the threat model. (a) Without OTP, the state of the victim circuit is leaked to the attacker circuit; (b) with OTP, the state leakage can be mitigated."
+    ]
+  },
+  "2412_10238_0_tripartite_final.png": {
+    "arxiv_id": "2412.10238",
+    "figure_number": 16,
+    "img_name": "2412_10238_0_tripartite_final.png",
+    "page": 13,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Causal scenarios with different intermediate layer structures."
+    ]
+  },
+  "2412_10238_1_bipartites_final.png": {
+    "arxiv_id": "2412.10238",
+    "figure_number": 16,
+    "img_name": "2412_10238_1_bipartites_final.png",
+    "page": 13,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Causal scenarios with different intermediate layer structures."
+    ]
+  },
+  "2411_10343_0_flowchart.pdf": {
+    "arxiv_id": "2411.10343",
+    "figure_number": 4,
+    "img_name": "2411_10343_0_flowchart.pdf",
+    "page": 10,
+    "quantum_problem": "Bernstein–Vazirani algorithm",
+    "description": [
+      "State machine"
+    ]
+  },
+  "2502_01653_0_network_ijndc.r1.pdf": {
+    "arxiv_id": "2502.01653",
+    "figure_number": 6,
+    "img_name": "2502_01653_0_network_ijndc.r1.pdf",
+    "page": 17,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "A schematic of the global quantum internet."
+    ]
+  },
+  "2502_01653_1_stack.r1.pdf": {
+    "arxiv_id": "2502.01653",
+    "figure_number": 10,
+    "img_name": "2502_01653_1_stack.r1.pdf",
+    "page": 28,
+    "quantum_problem": "Fault-tolerant circuit construction",
+    "description": [
+      "State-of-the-art quantum internet protocol stacks. Meter et al. , Wehner et al. , and Dür et al. ."
+    ]
+  },
+  "2412_11220_0_slot_iso.pdf": {
+    "arxiv_id": "2412.11220",
+    "figure_number": 7,
+    "img_name": "2412_11220_0_slot_iso.pdf",
+    "page": 8,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The action of a quantum comb represented with slot channel."
+    ]
+  },
+  "2502_13166_0_fig_vqc.pdf": {
+    "arxiv_id": "2502.13166",
+    "figure_number": 13,
+    "img_name": "2502_13166_0_fig_vqc.pdf",
+    "page": 19,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Architecture of our backbone quantum circuit. The number of rotation gates in this study is fixed as 3."
+    ]
+  },
+  "2410_08294_0_active_learning.pdf": {
+    "arxiv_id": "2410.08294",
+    "figure_number": 14,
+    "img_name": "2410_08294_0_active_learning.pdf",
+    "page": 18,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Schematic of the Bayesian active learning framework."
+    ]
+  },
+  "2401_17190_0_Deterministic_Controller.png": {
+    "arxiv_id": "2401.17190",
+    "figure_number": 3,
+    "img_name": "2401_17190_0_Deterministic_Controller.png",
+    "page": 6,
+    "quantum_problem": "Amplitude amplification",
+    "description": [
+      "Basic Controller block scheme"
+    ]
+  },
+  "2506_09555_0_NearV.png": {
+    "arxiv_id": "2506.09555",
+    "figure_number": null,
+    "img_name": "2506_09555_0_NearV.png",
+    "page": 12,
+    "quantum_problem": "NCV gate library",
+    "description": [
+      "Algorithm using near non-quantum vertices"
+    ]
+  },
+  "2506_09555_1_MaxGP.png": {
+    "arxiv_id": "2506.09555",
+    "figure_number": null,
+    "img_name": "2506_09555_1_MaxGP.png",
+    "page": 12,
+    "quantum_problem": "NCV gate library",
+    "description": [
+      "Algorithm using near non-quantum vertices"
+    ]
+  },
+  "2405_10113_0_Reduction.pdf": {
+    "arxiv_id": "2405.10113",
+    "figure_number": 2,
+    "img_name": "2405_10113_0_Reduction.pdf",
+    "page": 3,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Unitary entanglement localisation in M-symmetric states. Within each group, users cooperate to concentrate the entanglement they share, and we can describe the situation from the point of view of M “super users,\" which are the M groups of users."
+    ]
+  },
+  "2406_06719_0_protocol2.png": {
+    "arxiv_id": "2406.06719",
+    "figure_number": null,
+    "img_name": "2406_06719_0_protocol2.png",
+    "page": 8,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "The Frauchiger-Renner protocol. The grey region prepares the Bell-basis. The qubit legs for Ursula and Wigner are only displayed at the end for clarity."
+    ]
+  },
+  "2404_04620_4_E1.pdf": {
+    "arxiv_id": "2404.04620",
+    "figure_number": 4,
+    "img_name": "2404_04620_4_E1.pdf",
+    "page": 11,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "The quantum circuit used to estimate the term ⟨ψ k|i[H 1,H 0] |ψ k⟩."
+    ]
+  },
+  "2404_04620_5_O1.pdf": {
+    "arxiv_id": "2404.04620",
+    "figure_number": 4,
+    "img_name": "2404_04620_5_O1.pdf",
+    "page": 11,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "The quantum circuit used to estimate the term ⟨ψ k|i[H 1,H 0] |ψ k⟩."
+    ]
+  },
+  "2404_04620_6_O2.pdf": {
+    "arxiv_id": "2404.04620",
+    "figure_number": 4,
+    "img_name": "2404_04620_6_O2.pdf",
+    "page": 11,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "The quantum circuit used to estimate the term ⟨ψ k|i[H 1,H 0] |ψ k⟩."
+    ]
+  },
+  "2404_04620_7_Ge1.pdf": {
+    "arxiv_id": "2404.04620",
+    "figure_number": 4,
+    "img_name": "2404_04620_7_Ge1.pdf",
+    "page": 11,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "The quantum circuit used to estimate the term ⟨ψ k^+ϵ|H 0|ψ k^+ϵ⟩."
+    ]
+  },
+  "2404_04620_8_Ge2.pdf": {
+    "arxiv_id": "2404.04620",
+    "figure_number": 4,
+    "img_name": "2404_04620_8_Ge2.pdf",
+    "page": 11,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "The quantum circuit used to estimate the term ⟨ψ k^+ϵ|H 0|ψ k^+ϵ⟩."
+    ]
+  },
+  "2409_05117_0_fig7_v2.pdf": {
+    "arxiv_id": "2409.05117",
+    "figure_number": 7,
+    "img_name": "2409_05117_0_fig7_v2.pdf",
+    "page": 10,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "A gate-biased Cooper-pair box"
+    ]
+  },
+  "2502_18639_0_Grover.png": {
+    "arxiv_id": "2502.18639",
+    "figure_number": 2,
+    "img_name": "2502_18639_0_Grover.png",
+    "page": 7,
+    "quantum_problem": "Deutsch–Jozsa algorithm",
+    "description": [
+      "Grover's Algorithm"
+    ]
+  },
+  "2507_00400_0_8-log_mcmt_su2.pdf": {
+    "arxiv_id": "2507.00400",
+    "figure_number": 8,
+    "img_name": "2507_00400_0_8-log_mcmt_su2.pdf",
+    "page": 6,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Logarithmic-depth decomposition of an n-controlled m-target SU(2) gate. The white diamond in k 2 is used as a conditionally clean ancilla qubit for the k 1-qubit m-target Toffoli gate. The design allows parallelization of gate blocks to minimize depth, using k 2 as a conditionally clean ancilla qubit."
+    ]
+  },
+  "2504_13815_0_Fig1.png": {
+    "arxiv_id": "2504.13815",
+    "figure_number": 1,
+    "img_name": "2504_13815_0_Fig1.png",
+    "page": 1,
+    "quantum_problem": "Quantum Fourier Transform",
+    "description": [
+      "Quantum sensing of monitored systems. The parameterized unitary mediating the emitter-radiation interaction U θ: 𝒮⊗ℋ t→𝒮⊗ℋ t induces an isometry V θ≡ U θ|0⟩ d. The task of estimating the parameter is rooted in the scaling of the quantum Fisher information F(τ) with the number of emitted radiation quanta τ, with the ultimate precision determined by the Cramér-Rao bound."
+    ]
+  },
+  "2501_11174_0_VQC.drawio.pdf": {
+    "arxiv_id": "2501.11174",
+    "figure_number": 2,
+    "img_name": "2501_11174_0_VQC.drawio.pdf",
+    "page": 7,
+    "quantum_problem": "Variational quantum algorithm",
+    "description": [
+      "Scheme of a hybrid quantum-classical VQC."
+    ]
+  },
+  "2501_11174_1_rxansatz2.drawio.pdf": {
+    "arxiv_id": "2501.11174",
+    "figure_number": 6,
+    "img_name": "2501_11174_1_rxansatz2.drawio.pdf",
+    "page": 11,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The more expressive ansatz used, characterized by rotations on RX, followed by RZ and finally RX, preceded by angle encoding."
+    ]
+  },
+  "2501_11174_2_basic1.drawio.pdf": {
+    "arxiv_id": "2501.11174",
+    "figure_number": 5,
+    "img_name": "2501_11174_2_basic1.drawio.pdf",
+    "page": 11,
+    "quantum_problem": "Amplitude amplification",
+    "description": [
+      "The basic ansatz used, characterized by rotations only on RX, preceded by angle encoding."
+    ]
+  },
+  "2501_11174_3_qldm.drawio.pdf": {
+    "arxiv_id": "2501.11174",
+    "figure_number": 4,
+    "img_name": "2501_11174_3_qldm.drawio.pdf",
+    "page": 10,
+    "quantum_problem": "Variational quantum algorithm",
+    "description": [
+      "Architecture of the proposed quantum latent diffusion model. It consists of three different variational circuits: the first processes only the input latent vector; the second works on the temporally embedded sinusoidal information; the third works on both the latent vector of the image and the temporal information."
+    ]
+  },
+  "2501_11174_4_diffq.drawio.pdf": {
+    "arxiv_id": "2501.11174",
+    "figure_number": 3,
+    "img_name": "2501_11174_4_diffq.drawio.pdf",
+    "page": 8,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Architecture of quantum latent diffusion model and classical convolutional autoencoder."
+    ]
+  },
+  "2407_15499_0_MA_circuit_2qIds.png": {
+    "arxiv_id": "2407.15499",
+    "figure_number": 1,
+    "img_name": "2407_15499_0_MA_circuit_2qIds.png",
+    "page": 8,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Modified circuit for our circuit-to-Hamiltonian mapping. We first make sure that the number of qubits in our verification circuit is even (by adding an auxiliary, if needed). This ensures we can a y n'/2 many 2-qubit identity gates. Each unitary U here is either a Toffoli gate or an identity gate."
+    ]
+  },
+  "2401_15020_0_evolve_5ecl6.pdf": {
+    "arxiv_id": "2401.15020",
+    "figure_number": 7,
+    "img_name": "2401_15020_0_evolve_5ecl6.pdf",
+    "page": 6,
+    "quantum_problem": "Grover search",
+    "description": [
+      "Soliton detector: The triplets represent the cases of C ⊥=0 for a kick strength. Each of the triplets contains three chains. The specific parameters are C ||=1, L=2 5 6 and M=1 0."
+    ]
+  },
+  "2402_08952_0_msequito.pdf": {
+    "arxiv_id": "2402.08952",
+    "figure_number": 5,
+    "img_name": "2402_08952_0_msequito.pdf",
+    "page": 33,
+    "quantum_problem": "Grover search",
+    "description": [
+      "MSE and infidelity versus the total number of copies N t for the CNOT process using ibmq quito 5-qubit system."
+    ]
+  },
+  "2402_15879_0_image7.jpg": {
+    "arxiv_id": "2402.15879",
+    "figure_number": 2,
+    "img_name": "2402_15879_0_image7.jpg",
+    "page": 14,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Diagram depicting the VQE algorithm, from \\href{https://arxiv.org/pdf/1 3 0 4.3 0 6 1.pdf}{the original VQE paper}."
+    ]
+  },
+  "2402_15879_1_02_with_ansatz.png": {
+    "arxiv_id": "2402.15879",
+    "figure_number": 4,
+    "img_name": "2402_15879_1_02_with_ansatz.png",
+    "page": 27,
+    "quantum_problem": "Amplitude amplification",
+    "description": [
+      "Adding an ansatz to our previous diagram"
+    ]
+  },
+  "2510_16264_0_fig3.png": {
+    "arxiv_id": "2510.16264",
+    "figure_number": null,
+    "img_name": "2510_16264_0_fig3.png",
+    "page": 12,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "A schematic of the 2 DEG in the QMF of a flux qubit."
+    ]
+  },
+  "2507_17235_0_rank1_percentage_p0.05.pdf": {
+    "arxiv_id": "2507.17235",
+    "figure_number": 6,
+    "img_name": "2507_17235_0_rank1_percentage_p0.05.pdf",
+    "page": 12,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Variation in the percentage of rank-1 cases with the number of qubits."
+    ]
+  },
+  "2406_17447_1_delta-rho-notation.pdf": {
+    "arxiv_id": "2406.17447",
+    "figure_number": 10,
+    "img_name": "2406_17447_1_delta-rho-notation.pdf",
+    "page": 10,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "of a ψ-ψ̅ pair to get ρ A̅. The dotted line represents insertion of δρ A̅ instead of ρ A̅."
+    ]
+  },
+  "2407_09990_0_protok_chain.eps": {
+    "arxiv_id": "2407.09990",
+    "figure_number": 3,
+    "img_name": "2407_09990_0_protok_chain.eps",
+    "page": 7,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Quantum protocol for studies of the entanglement of qubit q[1] with other qubits in quantum state ( )."
+    ]
+  },
+  "2410_23857_0_qftgate.pdf": {
+    "arxiv_id": "2410.23857",
+    "figure_number": 3,
+    "img_name": "2410_23857_0_qftgate.pdf",
+    "page": 5,
+    "quantum_problem": "Quantum gate library illustration",
+    "description": [
+      "Gate count of QFT"
+    ]
+  },
+  "2410_23857_1_qaoagate.pdf": {
+    "arxiv_id": "2410.23857",
+    "figure_number": 3,
+    "img_name": "2410_23857_1_qaoagate.pdf",
+    "page": 5,
+    "quantum_problem": "Quantum gate library illustration",
+    "description": [
+      "Gate count of QFT"
+    ]
+  },
+  "2410_23857_2_qftswap.pdf": {
+    "arxiv_id": "2410.23857",
+    "figure_number": 4,
+    "img_name": "2410_23857_2_qftswap.pdf",
+    "page": 5,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "QFT SWAP"
+    ]
+  },
+  "2410_23857_3_qaoaswap.pdf": {
+    "arxiv_id": "2410.23857",
+    "figure_number": 4,
+    "img_name": "2410_23857_3_qaoaswap.pdf",
+    "page": 5,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "QFT SWAP"
+    ]
+  },
+  "2410_23857_4_qftcross.pdf": {
+    "arxiv_id": "2410.23857",
+    "figure_number": 4,
+    "img_name": "2410_23857_4_qftcross.pdf",
+    "page": 5,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "QFT SWAP"
+    ]
+  },
+  "2410_23857_5_qaoacross.pdf": {
+    "arxiv_id": "2410.23857",
+    "figure_number": 4,
+    "img_name": "2410_23857_5_qaoacross.pdf",
+    "page": 5,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "QFT SWAP"
+    ]
+  },
+  "2503_07331_0_6CCrule.pdf": {
+    "arxiv_id": "2503.07331",
+    "figure_number": 6,
+    "img_name": "2503_07331_0_6CCrule.pdf",
+    "page": 5,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Rules for gate cancellation and commutation of X and CNOT gates"
+    ]
+  },
+  "2503_07331_1_large.pdf": {
+    "arxiv_id": "2503.07331",
+    "figure_number": 11,
+    "img_name": "2503_07331_1_large.pdf",
+    "page": 9,
+    "quantum_problem": "Circuit optimization",
+    "description": [
+      "Comparison of total CNOT gates and circuit depth for large-scale quantum circuits on IBM Q 2 0 (normalize to NASSC)"
+    ]
+  },
+  "2503_07331_2_middle.pdf": {
+    "arxiv_id": "2503.07331",
+    "figure_number": 10,
+    "img_name": "2503_07331_2_middle.pdf",
+    "page": 8,
+    "quantum_problem": "Circuit optimization",
+    "description": [
+      "Comparison of total CNOT gates and circuit depth for medium-scale quantum circuits on IBM Q 2 0 (normalize to NASSC)"
+    ]
+  },
+  "2503_07331_3_small.pdf": {
+    "arxiv_id": "2503.07331",
+    "figure_number": 10,
+    "img_name": "2503_07331_3_small.pdf",
+    "page": 8,
+    "quantum_problem": "Circuit optimization",
+    "description": [
+      "Comparison of total CNOT gates and circuit depth for small-scale quantum circuits on IBM Q 2 0 (normalize to NASSC)"
+    ]
+  },
+  "2503_07331_4_Rochester.pdf": {
+    "arxiv_id": "2503.07331",
+    "figure_number": 12,
+    "img_name": "2503_07331_4_Rochester.pdf",
+    "page": 10,
+    "quantum_problem": "Circuit optimization",
+    "description": [
+      "Comparison of total CNOT gates and circuit depth for chemistry-related quantum circuits on IBM Rochester Q 5 3 (normalize to NASSC)"
+    ]
+  },
+  "2407_15783_0_1QB_RB.pdf": {
+    "arxiv_id": "2407.15783",
+    "figure_number": null,
+    "img_name": "2407_15783_0_1QB_RB.pdf",
+    "page": 2,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Single-qubit gate RB. (a), (b) Individual and simultaneous RB for qubit A, B, respectively."
+    ]
+  },
+  "2503_09693_0_PT-Choi.png": {
+    "arxiv_id": "2503.09693",
+    "figure_number": 17,
+    "img_name": "2503_09693_0_PT-Choi.png",
+    "page": 31,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Choi State of a Quantum Comb. Here we depict the Choi state of an n=3-step quantum comb. As previously, this is constructed by swapping in half of a maximally entangled state Φ^+ at every open slot."
+    ]
+  },
+  "2503_09693_1_HOQO-Choi-2.png": {
+    "arxiv_id": "2503.09693",
+    "figure_number": 6,
+    "img_name": "2503_09693_1_HOQO-Choi-2.png",
+    "page": 18,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Choi States for HOQOs. Just as the Choi state of a channel can be constructed by feeding in half of a maximally entangled state, the Choi state of any HOQO can be constructed by swapping in half of a maximally entangled state Φ^+ at each open slot (denoted by the vertical line with an on both ends). (a) The superchannel 𝒯 gets mapped to a four-partite Choi state 𝖳 ; (b) The process matrix 𝒲 gets mapped to a four-partite Choi state 𝖶. Throughout, we will reserve orange and yellow to depict processes with a fixed causal order (see Sec. ) and processes with indefinite causal order (see Sec. ), respectively."
+    ]
+  },
+  "2503_09693_2_HOQO-Choi-3.png": {
+    "arxiv_id": "2503.09693",
+    "figure_number": 6,
+    "img_name": "2503_09693_2_HOQO-Choi-3.png",
+    "page": 18,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Choi States for HOQOs. Just as the Choi state of a channel can be constructed by feeding in half of a maximally entangled state, the Choi state of any HOQO can be constructed by swapping in half of a maximally entangled state Φ^+ at each open slot (denoted by the vertical line with an on both ends). (a) The superchannel 𝒯 gets mapped to a four-partite Choi state 𝖳 ; (b) The process matrix 𝒲 gets mapped to a four-partite Choi state 𝖶. Throughout, we will reserve orange and yellow to depict processes with a fixed causal order (see Sec. ) and processes with indefinite causal order (see Sec. ), respectively."
+    ]
+  },
+  "2501_03785_2_figure1.pdf": {
+    "arxiv_id": "2501.03785",
+    "figure_number": 1,
+    "img_name": "2501_03785_2_figure1.pdf",
+    "page": 5,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Sketch of a sequential quantum algorithm."
+    ]
+  },
+  "2501_03785_5_figure2.pdf": {
+    "arxiv_id": "2501.03785",
+    "figure_number": 1,
+    "img_name": "2501_03785_5_figure2.pdf",
+    "page": 6,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Sketch of a quantum ground-state (e.g., adiabatic) algorithm."
+    ]
+  },
+  "2503_05884_0_Combonto.png": {
+    "arxiv_id": "2503.05884",
+    "figure_number": 19,
+    "img_name": "2503_05884_0_Combonto.png",
+    "page": 29,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "An entanglement breaking channel and a dual."
+    ]
+  },
+  "2503_05884_1_proofe.png": {
+    "arxiv_id": "2503.05884",
+    "figure_number": 15,
+    "img_name": "2503_05884_1_proofe.png",
+    "page": 20,
+    "quantum_problem": "Variational quantum algorithm",
+    "description": [
+      "The proof that nonclassicality is preserved under reconceptualizing classical inputs and outputs as dephased quantum systems."
+    ]
+  },
+  "2503_05884_2_TreatCl.png": {
+    "arxiv_id": "2503.05884",
+    "figure_number": 16,
+    "img_name": "2503_05884_2_TreatCl.png",
+    "page": 21,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "(a) A set of bipartite states. (b) A set of bipartite classical-quantum states (none of which can be entangled); viewed as assemblages, however, some such sets are nonclassical (in the sense that they are steerable)."
+    ]
+  },
+  "2503_05884_3_Globalcomb.png": {
+    "arxiv_id": "2503.05884",
+    "figure_number": 18,
+    "img_name": "2503_05884_3_Globalcomb.png",
+    "page": 28,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Global comb can be decomposed as pairs of state and effect."
+    ]
+  },
+  "2510_13051_0_RB_fig3.png": {
+    "arxiv_id": "2510.13051",
+    "figure_number": 3,
+    "img_name": "2510_13051_0_RB_fig3.png",
+    "page": 5,
+    "quantum_problem": "Hamiltonian simulation",
+    "description": [
+      "RB protocol in the presence of non-Markovian noise: The process matrix construction provides a natural framework to study non-Markovian effects in RB. Each noisy gate {𝒞 1, 𝒞 2, ⋯,𝒞 m+1} can be divided into ideal Clifford gates {G 1,G 2,⋯,G m+1} which act only on the system and the noise is captured by the process matrix comb (in grey)."
+    ]
+  },
+  "2410_06429_0_Restrictions_2.pdf": {
+    "arxiv_id": "2410.06429",
+    "figure_number": 7,
+    "img_name": "2410_06429_0_Restrictions_2.pdf",
+    "page": 11,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Boards with restrictions. The blue cells have the values previously set, while the red cells have their values determined by the constraints. a) Vertical repetition, b) Horizontal repetition, c) Regularity, d) Symbol '=', e) Symbol 'x'."
+    ]
+  },
+  "2504_16258_0_2_qubit_PQC.png": {
+    "arxiv_id": "2504.16258",
+    "figure_number": 6,
+    "img_name": "2504_16258_0_2_qubit_PQC.png",
+    "page": 16,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Two-qubit parameterized quantum circuit similar to Fig. . The two-qubit gate is the controlled-Z gate."
+    ]
+  },
+  "2501_05847_0_ansatzSO4.pdf": {
+    "arxiv_id": "2501.05847",
+    "figure_number": 9,
+    "img_name": "2501_05847_0_ansatzSO4.pdf",
+    "page": 12,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "The SO(4) ansatz a ied to a 6-qubit system, shown with a single layer composed of universal SO(4) gates acting on adjacent qubit pairs."
+    ]
+  },
+  "2501_05847_1_EfficientSU2_Ansatz.pdf": {
+    "arxiv_id": "2501.05847",
+    "figure_number": 4,
+    "img_name": "2501_05847_1_EfficientSU2_Ansatz.pdf",
+    "page": 9,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "EfficientSU 2 ansatz with two layers."
+    ]
+  },
+  "2505_19917_0_circuit.pdf": {
+    "arxiv_id": "2505.19917",
+    "figure_number": 1,
+    "img_name": "2505_19917_0_circuit.pdf",
+    "page": 4,
+    "quantum_problem": "Quantum adder",
+    "description": [
+      "Swap circuit for state and observables for arbitrary n"
+    ]
+  },
+  "2405_17021_0_03_shor_v4_N21_a2_m5_uver2_0_circuit.jpg": {
+    "arxiv_id": "2405.17021",
+    "figure_number": 6,
+    "img_name": "2405_17021_0_03_shor_v4_N21_a2_m5_uver2_0_circuit.jpg",
+    "page": 17,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "The Shor factoring circuit in Qiskit for N=2 1, a=2, n = 5, and m=5."
+    ]
+  },
+  "2410_01935_0_circuit_linear_cnot.pdf": {
+    "arxiv_id": "2410.01935",
+    "figure_number": 2,
+    "img_name": "2410_01935_0_circuit_linear_cnot.pdf",
+    "page": 3,
+    "quantum_problem": "Deutsch–Jozsa algorithm",
+    "description": [
+      "Linear-CNOT ansatz for L=3."
+    ]
+  },
+  "2507_12485_0_AnsatzA.png": {
+    "arxiv_id": "2507.12485",
+    "figure_number": 4,
+    "img_name": "2507_12485_0_AnsatzA.png",
+    "page": 3,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Ansatz comprises parameterised Rz gates, entangling C-NOT ring and controlled, parameterised Ry gates."
+    ]
+  },
+  "2412_20486_0_fig9_sam.pdf": {
+    "arxiv_id": "2412.20486",
+    "figure_number": 10,
+    "img_name": "2412_20486_0_fig9_sam.pdf",
+    "page": 8,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Schematic diagrams of SAM designs. (a) and (b) shows point-SAM and line-SAM architectures, respectively."
+    ]
+  },
+  "2505_16908_0_REs-by-weight.png": {
+    "arxiv_id": "2505.16908",
+    "figure_number": 6,
+    "img_name": "2505_16908_0_REs-by-weight.png",
+    "page": 5,
+    "quantum_problem": "Circuit optimization",
+    "description": [
+      "Gate-aware depth's median %RE for different values of non-RZ single-qubit gate weights w s. The thin vertical lines show the value of w s that minimize median %RE for a given device, and the thick ones show the real values calculated for the Eagle and Heron architectures in Section ."
+    ]
+  },
+  "2409_10254_0_Fig4.pdf": {
+    "arxiv_id": "2409.10254",
+    "figure_number": 4,
+    "img_name": "2409_10254_0_Fig4.pdf",
+    "page": 5,
+    "quantum_problem": "Fault-tolerant circuit construction",
+    "description": [
+      "(a) Schematic representation of the 2 D model ( ) with λ 3=0 on the superconducting quantum processor, which consists of L x× L y transmon superconducting qubits and (L x-1)L y+(L y-1)L x tunable couplers. (b) The circuit diagram of neighboring qubits and the coupler between them."
+    ]
+  },
+  "2510_18864_0_f3a_l1l20rz0.5_grid.pdf": {
+    "arxiv_id": "2510.18864",
+    "figure_number": null,
+    "img_name": "2510_18864_0_f3a_l1l20rz0.5_grid.pdf",
+    "page": 14,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "|r x| vs. ϕ when r x = r y, r z = 0.5"
+    ]
+  },
+  "2510_18864_1_f3b_l1l20rz0.1-1.pdf": {
+    "arxiv_id": "2510.18864",
+    "figure_number": null,
+    "img_name": "2510_18864_1_f3b_l1l20rz0.1-1.pdf",
+    "page": 14,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "|r x| vs. ϕ when r x = r y, r z = 0.5"
+    ]
+  },
+  "2504_10592_0_image_2000_1_4_qubits_21_L1=0.13205.png": {
+    "arxiv_id": "2504.10592",
+    "figure_number": 7,
+    "img_name": "2504_10592_0_image_2000_1_4_qubits_21_L1=0.13205.png",
+    "page": 9,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "From the top left to bottom right images: 1 block, 2 1 qubit; 8 blocks, 8 × 1 8=1 4 4 qubits; 3 2 blocks, 3 2×1 6 = 5 1 2 qubits; 1 2 8 blocks, 1 2 8× 1 4 = 1 7 9 2 qubits; 5 1 2 blocks, 5 1 2 × 1 2 = 6 1 4 4 qubits; 2 0 4 8 blocks, 2 0 4 8 × 1 0 = 2 0 K qubits"
+    ]
+  },
+  "2504_10592_1_full_image_2048_1024_split_04_2.png": {
+    "arxiv_id": "2504.10592",
+    "figure_number": 7,
+    "img_name": "2504_10592_1_full_image_2048_1024_split_04_2.png",
+    "page": 9,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "From the top left to bottom right images: 1 block, 2 1 qubit; 8 blocks, 8 × 1 8=1 4 4 qubits; 3 2 blocks, 3 2×1 6 = 5 1 2 qubits; 1 2 8 blocks, 1 2 8× 1 4 = 1 7 9 2 qubits; 5 1 2 blocks, 5 1 2 × 1 2 = 6 1 4 4 qubits; 2 0 4 8 blocks, 2 0 4 8 × 1 0 = 2 0 K qubits"
+    ]
+  },
+  "2504_10592_2_full_image_2048_1024_split_08_4.png": {
+    "arxiv_id": "2504.10592",
+    "figure_number": 7,
+    "img_name": "2504_10592_2_full_image_2048_1024_split_08_4.png",
+    "page": 9,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "From the top left to bottom right images: 1 block, 2 1 qubit; 8 blocks, 8 × 1 8=1 4 4 qubits; 3 2 blocks, 3 2×1 6 = 5 1 2 qubits; 1 2 8 blocks, 1 2 8× 1 4 = 1 7 9 2 qubits; 5 1 2 blocks, 5 1 2 × 1 2 = 6 1 4 4 qubits; 2 0 4 8 blocks, 2 0 4 8 × 1 0 = 2 0 K qubits"
+    ]
+  },
+  "2504_10592_3_full_image_2048_1024_split_16_8.png": {
+    "arxiv_id": "2504.10592",
+    "figure_number": 7,
+    "img_name": "2504_10592_3_full_image_2048_1024_split_16_8.png",
+    "page": 9,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "From the top left to bottom right images: 1 block, 2 1 qubit; 8 blocks, 8 × 1 8=1 4 4 qubits; 3 2 blocks, 3 2×1 6 = 5 1 2 qubits; 1 2 8 blocks, 1 2 8× 1 4 = 1 7 9 2 qubits; 5 1 2 blocks, 5 1 2 × 1 2 = 6 1 4 4 qubits; 2 0 4 8 blocks, 2 0 4 8 × 1 0 = 2 0 K qubits"
+    ]
+  },
+  "2504_10592_4_full_image_2048_1024_split_32_16.png": {
+    "arxiv_id": "2504.10592",
+    "figure_number": 7,
+    "img_name": "2504_10592_4_full_image_2048_1024_split_32_16.png",
+    "page": 9,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "From the top left to bottom right images: 1 block, 2 1 qubit; 8 blocks, 8 × 1 8=1 4 4 qubits; 3 2 blocks, 3 2×1 6 = 5 1 2 qubits; 1 2 8 blocks, 1 2 8× 1 4 = 1 7 9 2 qubits; 5 1 2 blocks, 5 1 2 × 1 2 = 6 1 4 4 qubits; 2 0 4 8 blocks, 2 0 4 8 × 1 0 = 2 0 K qubits"
+    ]
+  },
+  "2504_10592_5_full_image_2048_1024_split_64_32.png": {
+    "arxiv_id": "2504.10592",
+    "figure_number": 7,
+    "img_name": "2504_10592_5_full_image_2048_1024_split_64_32.png",
+    "page": 9,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "From the top left to bottom right images: 1 block, 2 1 qubit; 8 blocks, 8 × 1 8=1 4 4 qubits; 3 2 blocks, 3 2×1 6 = 5 1 2 qubits; 1 2 8 blocks, 1 2 8× 1 4 = 1 7 9 2 qubits; 5 1 2 blocks, 5 1 2 × 1 2 = 6 1 4 4 qubits; 2 0 4 8 blocks, 2 0 4 8 × 1 0 = 2 0 K qubits"
+    ]
+  },
+  "2504_10592_6_ibm-loaded-images-2.pdf": {
+    "arxiv_id": "2504.10592",
+    "figure_number": 11,
+    "img_name": "2504_10592_6_ibm-loaded-images-2.pdf",
+    "page": 14,
+    "quantum_problem": "Circuit illustration example",
+    "description": [
+      "Loaded images for different number of CNOTs using BAE. In the smallest circuits, one can see rough shapes but no details in the cars or road. Around 1 0 0 0 CX gates, lanes and a license plate start to become visible."
+    ]
+  },
+  "2412_06977_0_rx_circuit.png": {
+    "arxiv_id": "2412.06977",
+    "figure_number": 3,
+    "img_name": "2412_06977_0_rx_circuit.png",
+    "page": 10,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Transpiled quantum circuit for R x(4π/1 1) gate."
+    ]
+  },
+  "2412_05595_0_mypaper-diagram-13.jpg": {
+    "arxiv_id": "2412.05595",
+    "figure_number": 4,
+    "img_name": "2412_05595_0_mypaper-diagram-13.jpg",
+    "page": 38,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Mapping from finite-state automaton to MPS diagram. Image from Ref. ."
+    ]
+  },
+  "2509_15106_0_ADoDPh2.pdf": {
+    "arxiv_id": "2509.15106",
+    "figure_number": 7,
+    "img_name": "2509_15106_0_ADoDPh2.pdf",
+    "page": 24,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Bounds on the quantum capacity of the damping-dephasing channel p,p(·)."
+    ]
+  },
+  "2509_15106_1_ADoER2.pdf": {
+    "arxiv_id": "2509.15106",
+    "figure_number": 7,
+    "img_name": "2509_15106_1_ADoER2.pdf",
+    "page": 24,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Bounds on the quantum capacity of the damping-dephasing channel p,p(·)."
+    ]
+  },
+  "2501_04526_0_interaction_NM.pdf": {
+    "arxiv_id": "2501.04526",
+    "figure_number": 1,
+    "img_name": "2501_04526_0_interaction_NM.pdf",
+    "page": 2,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Schematic diagram of system-environment interaction. Here N parties, A 1 to A N each holding a single qubit, share an entangled state and each qubit of the system is interacting with N identical non-interacting reservoirs, R 1 to R N."
+    ]
+  },
+  "2501_09568_0_QDHscheme_v2.png": {
+    "arxiv_id": "2501.09568",
+    "figure_number": 1,
+    "img_name": "2501_09568_0_QDHscheme_v2.png",
+    "page": 3,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "(Color online) Schematic representation of the quantum Diffie-Hellman key-exchange scheme under consideration."
+    ]
+  },
+  "2405_19643_0_X_CNOT_comm.pdf": {
+    "arxiv_id": "2405.19643",
+    "figure_number": 1,
+    "img_name": "2405_19643_0_X_CNOT_comm.pdf",
+    "page": 6,
+    "quantum_problem": "Quantum adder",
+    "description": [
+      "Commutation rules between Paulis and CNOT"
+    ]
+  },
+  "2405_19643_1_Z_CNOT_comm.pdf": {
+    "arxiv_id": "2405.19643",
+    "figure_number": 1,
+    "img_name": "2405_19643_1_Z_CNOT_comm.pdf",
+    "page": 6,
+    "quantum_problem": "Quantum adder",
+    "description": [
+      "Commutation rules between Paulis and CNOT"
+    ]
+  },
+  "2405_19643_2_Y_CNOT_comm.pdf": {
+    "arxiv_id": "2405.19643",
+    "figure_number": 1,
+    "img_name": "2405_19643_2_Y_CNOT_comm.pdf",
+    "page": 6,
+    "quantum_problem": "Quantum adder",
+    "description": [
+      "Commutation rules between Paulis and CNOT"
+    ]
+  },
+  "2408_01511_0_protok_evolution.eps": {
+    "arxiv_id": "2408.01511",
+    "figure_number": 1,
+    "img_name": "2408_01511_0_protok_evolution.eps",
+    "page": 9,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Quantum protocol for quantifying |⟨ U ⟩|^2 with quantum programming."
+    ]
+  },
+  "2409_20011_0_bell.png": {
+    "arxiv_id": "2409.20011",
+    "figure_number": 1,
+    "img_name": "2409_20011_0_bell.png",
+    "page": 2,
+    "quantum_problem": "Quantum state preparation",
+    "description": [
+      "Quantum circuit to create Bell state"
+    ]
+  },
+  "2507_10319_0_classesofstates.pdf": {
+    "arxiv_id": "2507.10319",
+    "figure_number": 1,
+    "img_name": "2507_10319_0_classesofstates.pdf",
+    "page": 2,
+    "quantum_problem": "Variational quantum algorithm",
+    "description": [
+      "Relationship between three classes of density matrices: fully separable states (Eq. ( )), simply separable states (a.k.a. tensor product states, Eq. ( )), and quantum i.i.d. states (Eq. ( )). In the present paper, we investigate conditions for an open quantum many-body system to have a quantum i.i.d. steady state."
+    ]
+  },
+  "2406_14584_0_Figure2.pdf": {
+    "arxiv_id": "2406.14584",
+    "figure_number": 3,
+    "img_name": "2406_14584_0_Figure2.pdf",
+    "page": 3,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "(Color online). Schematic polygon inequalities of EMPS. (a) 3-qubit pure states; (b) 5-qubit pure states; (c) 8-qubit pure states. The length of each side corresponds to the value of EMPS."
+    ]
+  },
+  "2505_12441_0_Entanglement_swapping-new.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 6,
+    "img_name": "2505_12441_0_Entanglement_swapping-new.png",
+    "page": 13,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Entanglement swapping with n=6 qubits."
+    ]
+  },
+  "2505_12441_2_Bell_state_transfer-new.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 4,
+    "img_name": "2505_12441_2_Bell_state_transfer-new.png",
+    "page": 11,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Bell-state transfer with n=6 qubits"
+    ]
+  },
+  "2505_12441_3_Teleportation-new.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 5,
+    "img_name": "2505_12441_3_Teleportation-new.png",
+    "page": 12,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Teleportation with n=6 qubits."
+    ]
+  },
+  "2505_12441_4_failed_cat.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 22,
+    "img_name": "2505_12441_4_failed_cat.png",
+    "page": 27,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Failed-to-show quantumness — the cat-state protocol, for M=4 and J=3."
+    ]
+  },
+  "2505_12441_5_borderline_cat.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 22,
+    "img_name": "2505_12441_5_borderline_cat.png",
+    "page": 27,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "Failed-to-show quantumness — the cat-state protocol, for M=4 and J=3."
+    ]
+  },
+  "2505_12441_6_Brisbane_entanglement_swapping_non-single.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 6,
+    "img_name": "2505_12441_6_Brisbane_entanglement_swapping_non-single.png",
+    "page": 13,
+    "quantum_problem": "Entangled state preparation",
+    "description": [
+      "Entanglement swapping protocol on Brisbane on a non-single path."
+    ]
+  },
+  "2505_12441_7_do_nothing-new.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 2,
+    "img_name": "2505_12441_7_do_nothing-new.png",
+    "page": 9,
+    "quantum_problem": "Unspecified quantum circuit",
+    "description": [
+      "Do nothing protocol with n=6 qubits"
+    ]
+  },
+  "2505_12441_8_cat_state-new.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 8,
+    "img_name": "2505_12441_8_cat_state-new.png",
+    "page": 15,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Cat-state protocol with n=6 qubits, and with [M=4;J=2]"
+    ]
+  },
+  "2505_12441_9_borderline_cat_v2.png": {
+    "arxiv_id": "2505.12441",
+    "figure_number": 23,
+    "img_name": "2505_12441_9_borderline_cat_v2.png",
+    "page": 27,
+    "quantum_problem": "NCV gate library",
+    "description": [
+      "Borderline-quantumness of the cat-state protocol, for M=4 and J=2."
+    ]
+  },
+  "2505_13681_0_Lemma2.pdf": {
+    "arxiv_id": "2505.13681",
+    "figure_number": null,
+    "img_name": "2505_13681_0_Lemma2.pdf",
+    "page": 9,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Supermap described in Lemma with the intervention by maximally entangled state ϕ^+ X:= 1/(X)∑ i,j|i⟩⟨j| X⊗|i⟩⟨j| X at systems X∈{A 1, B 1}, where X≃X and {|i⟩} i is an orthonormal basis at X. Note after the interventions, the overall process becomes isomorphic to a pure state τ∈ A 0⊗A 1⊗B 0⊗B 1⊗F⊗Q 2."
+    ]
+  },
+  "2504_08984_0_3-qubit.pdf": {
+    "arxiv_id": "2504.08984",
+    "figure_number": 7,
+    "img_name": "2504_08984_0_3-qubit.pdf",
+    "page": 8,
+    "quantum_problem": "Circuit illustration example",
+    "description": [
+      "An exemplary entanglement of three qubits"
+    ]
+  },
+  "2408_02587_0_eb_scaling_qubits.pdf": {
+    "arxiv_id": "2408.02587",
+    "figure_number": null,
+    "img_name": "2408_02587_0_eb_scaling_qubits.pdf",
+    "page": 8,
+    "quantum_problem": "Amplitude amplification",
+    "description": [
+      "Grover rotations."
+    ]
+  },
+  "2408_02587_1_predefined_runtime.pdf": {
+    "arxiv_id": "2408.02587",
+    "figure_number": 10,
+    "img_name": "2408_02587_1_predefined_runtime.pdf",
+    "page": 14,
+    "quantum_problem": "Amplitude amplification",
+    "description": [
+      "Estimated runtime for a single Grover rotation."
+    ]
+  },
+  "2408_02587_2_predefined_qubits.pdf": {
+    "arxiv_id": "2408.02587",
+    "figure_number": 10,
+    "img_name": "2408_02587_2_predefined_qubits.pdf",
+    "page": 14,
+    "quantum_problem": "Amplitude amplification",
+    "description": [
+      "Estimated runtime for a single Grover rotation."
+    ]
+  },
+  "2408_02587_3_current_runtime.pdf": {
+    "arxiv_id": "2408.02587",
+    "figure_number": 10,
+    "img_name": "2408_02587_3_current_runtime.pdf",
+    "page": 14,
+    "quantum_problem": "Amplitude amplification",
+    "description": [
+      "Estimated runtime for a single Grover rotation."
+    ]
+  },
+  "2408_02587_4_current_qubits.pdf": {
+    "arxiv_id": "2408.02587",
+    "figure_number": 10,
+    "img_name": "2408_02587_4_current_qubits.pdf",
+    "page": 14,
+    "quantum_problem": "Amplitude amplification",
+    "description": [
+      "Estimated runtime for a single Grover rotation."
+    ]
+  },
+  "2203_00110_0_3RxCQBC.pdf": {
+    "arxiv_id": "2203.00110",
+    "figure_number": 1,
+    "img_name": "2203_00110_0_3RxCQBC.pdf",
+    "page": 2,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Communicating classical information over a 3 CQBC."
+    ]
+  },
+  "2408_03864_0_fig02.matching_complexity.png": {
+    "arxiv_id": "2408.03864",
+    "figure_number": 2,
+    "img_name": "2408_03864_0_fig02.matching_complexity.png",
+    "page": 5,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "The quantum query complexity of the k-matching problem."
+    ]
+  },
+  "2402_18548_0_PureAndMixed.pdf": {
+    "arxiv_id": "2402.18548",
+    "figure_number": 1,
+    "img_name": "2402_18548_0_PureAndMixed.pdf",
+    "page": 2,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "(a) 1 D noiseless quantum circuit. ℒ(A) and ℒ(C) are denoted by the regions enclosed by blue and red dashed lines, respectively. The gates outside of ℒ(A) ∪ℒ(B) are colored grey. (b) Quantum circuit with noise. After two layers of random Clifford gates, a fraction of p of the qubits in B are completely depolarized. (c) Due to the gates U 1 and U 2 in (b), A and C effectively share m Bell pairs with B, respectively."
+    ]
+  },
+  "2402_18548_1_coarse_noiseless.pdf": {
+    "arxiv_id": "2402.18548",
+    "figure_number": null,
+    "img_name": "2402_18548_1_coarse_noiseless.pdf",
+    "page": 12,
+    "quantum_problem": "Simon's algorithm",
+    "description": [
+      "(a) Stabilizer tableau after a ying the first layer of the random Clifford gates on the even pairs of blocks. The box of each pair of blocks is denoted by black dashed lines. Here, k 1 = 2 m and k 2 = 0. The maximal scrambling ansatz is a ied to each box. (b) Stabilizer tableau at the timestep t, with k 1 = k 1(t) and k 2 = k 2(t) (c) The stabilizer tableau at the timestep t+1. Because of the layer of random Clifford gates at t+1, the height of each box increases. (d) Stabilizer tableau after omitting the microscopic details. It consists of a diagonal stripe with the slope of k 1/2 m and the width of k 2."
+    ]
+  },
+  "2510_07726_0_Fig12.jpg": {
+    "arxiv_id": "2510.07726",
+    "figure_number": 3,
+    "img_name": "2510_07726_0_Fig12.jpg",
+    "page": 8,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Fundamental concepts for advancing research into utilizing quantum effects for the advancement of communications."
+    ]
+  },
+  "2510_07726_1_Fig8.jpg": {
+    "arxiv_id": "2510.07726",
+    "figure_number": 8,
+    "img_name": "2510_07726_1_Fig8.jpg",
+    "page": 14,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Basic Scenario in the Shannon's concept for cryptology. One can obtain the drastic quantum advantage in physical encryption based on quantum modulation-demodulation protocol."
+    ]
+  },
+  "2410_17048_0_QT.pdf": {
+    "arxiv_id": "2410.17048",
+    "figure_number": 2,
+    "img_name": "2410_17048_0_QT.pdf",
+    "page": 3,
+    "quantum_problem": "MCT gate library",
+    "description": [
+      "Single-Qubit teleportation circuit diagram."
+    ]
+  },
+  "2509_15705_0_vqc.png": {
+    "arxiv_id": "2509.15705",
+    "figure_number": null,
+    "img_name": "2509_15705_0_vqc.png",
+    "page": null,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "One layer of the variational circuit for a random choice of parameters."
+    ]
+  },
+  "2406_11360_6_cxnumber37p.png": {
+    "arxiv_id": "2406.11360",
+    "figure_number": null,
+    "img_name": "2406_11360_6_cxnumber37p.png",
+    "page": null,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "The number of CNOT gates after transpilation for the pseudo circuit constructed using the original a oach and our a oach for 𝙼𝙾𝙳 3 7."
+    ]
+  },
+  "2403_06522_0_Fig4n.pdf": {
+    "arxiv_id": "2403.06522",
+    "figure_number": null,
+    "img_name": "2403_06522_0_Fig4n.pdf",
+    "page": null,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Degree of entanglement for various bipartite states is exhibited. The QD in a bipartite state `A' and another QD in a bipartite state `B' as shown in are entangled. Four possible entanglement are reported here. (i) Both QDs in bipartite state `A', represented as A 1→ A 2, (ii) Both QDs in bipartite state `B', represented as B 1→ B 2, and (iii)/(iv) one QD in state `A' and the other in `B' represented by A 1→ B 2 and B 1→ A 2."
+    ]
+  },
+  "2405_07129_0_research_problem.eps": {
+    "arxiv_id": "2405.07129",
+    "figure_number": null,
+    "img_name": "2405_07129_0_research_problem.eps",
+    "page": null,
+    "quantum_problem": "Constant-depth circuit construction",
+    "description": [
+      "A quantum circuit for the quantum search algorithm used to solve the TSP."
+    ]
+  },
+  "2508_05738_0_rules_new.pdf": {
+    "arxiv_id": "2508.05738",
+    "figure_number": null,
+    "img_name": "2508_05738_0_rules_new.pdf",
+    "page": null,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "Block properties that enable the algebraic compression of quantum circuits . Matchgates satisfy the (a) fusion, (b) commutation and (c) turnover properties. Fusion and turnover properties involve a change in the angles of the gate, while commutation does not. These properties lead to (d) algebraic compression, which states that a triangle can absorb any matchgate. The arrows show how the incoming matchgates travel through the triangle."
+    ]
+  },
+  "2408_13015_0_finalfig23.png": {
+    "arxiv_id": "2408.13015",
+    "figure_number": null,
+    "img_name": "2408_13015_0_finalfig23.png",
+    "page": null,
+    "quantum_problem": "Entangled state preparation",
+    "description": [
+      "Young diagram representation and entanglement structure analysis of multi-body systems. (a) All possible Young diagrams for a 4-particle system; (b) The separability hierarchy of N-qubit states; (c) Characterization of the entanglement structure of a 9-body system using Young diagrams, where it can be divided into h=4 subsystems, with an entanglement depth of w=5, corresponding to the height h and width w of the Young diagram."
+    ]
+  },
+  "2406_13319_0_Figure1.eps": {
+    "arxiv_id": "2406.13319",
+    "figure_number": null,
+    "img_name": "2406_13319_0_Figure1.eps",
+    "page": null,
+    "quantum_problem": "Gate decomposition",
+    "description": [
+      "(Color online). Schematic polygon inequalities of MEG. (a) 3-qubit pure states; (b) 4-qubit pure state; The length of each side represents correspondingly to the value of MEG."
+    ]
+  },
+  "2506_03841_0_Penrose.png": {
+    "arxiv_id": "2506.03841",
+    "figure_number": null,
+    "img_name": "2506_03841_0_Penrose.png",
+    "page": null,
+    "quantum_problem": "Simon's algorithm",
+    "description": [
+      "Penrose diagram of a black hole formed by gravitational collapse. On the right, the near-horizon region has been enlarged, showing the trajectory of a uniformly accelerated observer. Figure adapted from ."
+    ]
+  },
+  "2405_06183_0_imagegate1.png": {
+    "arxiv_id": "2405.06183",
+    "figure_number": null,
+    "img_name": "2405_06183_0_imagegate1.png",
+    "page": null,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Number of Two Qubit Gates"
+    ]
+  },
+  "2405_06183_1_imagegate2.png": {
+    "arxiv_id": "2405.06183",
+    "figure_number": null,
+    "img_name": "2405_06183_1_imagegate2.png",
+    "page": null,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Number of Two Qubit Gates"
+    ]
+  },
+  "2405_06183_2_pulseimage.png": {
+    "arxiv_id": "2405.06183",
+    "figure_number": null,
+    "img_name": "2405_06183_2_pulseimage.png",
+    "page": null,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Number of Two Qubit Layers"
+    ]
+  },
+  "2405_06183_3_imagepulse2.png": {
+    "arxiv_id": "2405.06183",
+    "figure_number": null,
+    "img_name": "2405_06183_3_imagepulse2.png",
+    "page": null,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Number of Two Qubit Layers"
+    ]
+  },
+  "2405_06183_4_imageintuitionbary.png": {
+    "arxiv_id": "2405.06183",
+    "figure_number": null,
+    "img_name": "2405_06183_4_imageintuitionbary.png",
+    "page": null,
+    "quantum_problem": "Qubit mapping and routing",
+    "description": [
+      "Cross minimization through calculation of the barycenter of neighbors residing in the other layer of qubits. In an ideal scenario, qubits are aligned perfectly with neighbors in the other layer"
+    ]
+  },
+  "2403_10078_0_Wavefunction_widths_versus_displacement_c_g_10_insets.eps": {
+    "arxiv_id": "2403.10078",
+    "figure_number": null,
+    "img_name": "2403_10078_0_Wavefunction_widths_versus_displacement_c_g_10_insets.eps",
+    "page": null,
+    "quantum_problem": "Simon's algorithm",
+    "description": [
+      "Spatial extents ⟨ x n^2 ⟩ of the first two bosonic eigenstates (n=0,2) and the fermionic ground state (n=1) with respect to the displacement c at g=+1 0. The dash and dash-dotted ci es mark the onset of triple degeneracy points [Fig. ]. The horizontal dash-dotted lines correspond to the widths of the non-interacting eigenstates ⟨ x^2 n ⟩ = (2 n+1)."
+    ]
+  },
+  "2403_02396_0_Tele_Sq_Circuit.pdf": {
+    "arxiv_id": "2403.02396",
+    "figure_number": null,
+    "img_name": "2403_02396_0_Tele_Sq_Circuit.pdf",
+    "page": null,
+    "quantum_problem": "Fault-tolerant circuit construction",
+    "description": [
+      "Square GKP passive teleportation error-correction circuit. The GKP qunaught state and the 5 0-5 0 beamsplitter gates used in the circuit are defined in respectively. The arrows adjacent to the beamsplitter symbols are there simply to indicate which of the modes picks up the minus sign in ."
+    ]
+  },
+  "2409_18559_0_Fig25.png": {
+    "arxiv_id": "2409.18559",
+    "figure_number": null,
+    "img_name": "2409_18559_0_Fig25.png",
+    "page": null,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Quantum circuit for the squared distance register."
+    ]
+  },
+  "2501_00604_0_SC+SE+SD_state_trapped.png": {
+    "arxiv_id": "2501.00604",
+    "figure_number": null,
+    "img_name": "2501_00604_0_SC+SE+SD_state_trapped.png",
+    "page": null,
+    "quantum_problem": "Bernstein–Vazirani algorithm",
+    "description": [
+      "Exemplary states representing schematically: (a) string-contraction, (b) string-expansion, and (c) displaced undistorted string in the same chain as in Fig. ."
+    ]
+  },
+  "2509_10876_0_rep1.2.pdf": {
+    "arxiv_id": "2509.10876",
+    "figure_number": null,
+    "img_name": "2509_10876_0_rep1.2.pdf",
+    "page": null,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "The top line of Fig. but modified to include the handles of Fig. ."
+    ]
+  },
+  "2401_07405_0_measurement.pdf": {
+    "arxiv_id": "2401.07405",
+    "figure_number": null,
+    "img_name": "2401_07405_0_measurement.pdf",
+    "page": null,
+    "quantum_problem": "Non-unitary operation implementation",
+    "description": [
+      "Quantum circuit for extracting the feature Õ mn."
+    ]
+  },
+  "2412_05104_0_our_cats_activity.png": {
+    "arxiv_id": "2412.05104",
+    "figure_number": null,
+    "img_name": "2412_05104_0_our_cats_activity.png",
+    "page": null,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Cell configurations that correspond to some of the cats we present in this paper. (A) Cat A - |GHZ⟩ (magnets have been omitted in the image for clarity, but all cells are entangled), (B) Cat B - |+⟩^⊗ N - in one of its superposition states, (C) Bell state cat - |Φ^+⟩^⊗ N/2 - in one of its superposition states."
+    ]
+  },
+  "2409_12738_0_CM.eps": {
+    "arxiv_id": "2409.12738",
+    "figure_number": null,
+    "img_name": "2409_12738_0_CM.eps",
+    "page": null,
+    "quantum_problem": "Clifford+T gate library",
+    "description": [
+      "Collision model: the system S composed of a three-level qutrit undergoes sequence successive collisions with the ancilla qubits in bath 1 and bath 2."
     ]
   }
 }

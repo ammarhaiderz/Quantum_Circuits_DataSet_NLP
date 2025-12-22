@@ -38,21 +38,21 @@ TOP_K_PER_PAPER = 10
 PRINT_TOP_CAPTIONS = 5
 
 # ================ SIMILARITY THRESHOLDS ================
-SIMILARITY_THRESHOLD = 0.2  # TF-IDF gate (first filter) - raised for precision
-SBERT_MIN_SIM = 0.85  # SBERT gate (optional, see USE_COMBINED_SCORE)
+SIMILARITY_THRESHOLD = 0.3  # TF-IDF gate (first filter) - raised for precision
+SBERT_MIN_SIM = 0.4  # SBERT gate (optional, see USE_COMBINED_SCORE)
 
 # Weighted combination scoring (recommended)
-USE_COMBINED_SCORE = True  # If True, uses weighted combo; if False, uses cascade gates
-APLHA = 0.6  # Adjusted alpha for combined scoring
-TFIDF_WEIGHT = APLHA  # Weight for TF-IDF score (lexical precision)
-SBERT_WEIGHT = 1- APLHA  # Weight for SBERT score (semantic understanding)
-COMBINED_THRESHOLD = 0.50  # Combined score threshold for selection (raised to reduce false positives)
+USE_COMBINED_SCORE = False  # If True, uses weighted combo; if False, uses cascade gates
+ALPHA = 0.7  # Adjusted alpha for combined scoring
+TFIDF_WEIGHT = ALPHA  # Weight for TF-IDF score (lexical precision)
+SBERT_WEIGHT = 1- ALPHA  # Weight for SBERT score (semantic understanding)
+COMBINED_THRESHOLD = 0.55  # Combined score threshold for selection (raised to reduce false positives)
 
 # Custom TF-IDF feature augmentation (can be toggled off)
 USE_CUSTOM_TFIDF_FEATURES = True
 
 USE_NEGATIVE_PENALTY = True
-NEGATIVE_PENALTY_ALPHA = 80.0  # Percentage reduction per negative token (e.g., 5% per token, capped at 90%)
+NEGATIVE_PENALTY_ALPHA = 90.0  # Percentage reduction per negative token (e.g., 5% per token, capped at 90%)
 
 # ================ TEXT PROCESSING ================
 USE_STEMMING = True

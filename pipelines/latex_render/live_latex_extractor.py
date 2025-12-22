@@ -589,7 +589,7 @@ def _extract_gates_from_block(block: str):
                 inferred.append('X')
 
         if not inferred:
-            for txt in re.findall(r"\b(H|X|Y|Z|CNOT|CX|SWAP|TOFFOLI|CCX|S|T|RZ|RX|RY)\b", block, re.IGNORECASE):
+            for txt in re.findall(r"\b(H|X|Y|Z|P|O|D|Q|G|A|C|CNOT|CX|SWAP|TOFFOLI|CCX|S|T|RZ|RX|RY)\b", block, re.IGNORECASE):
                 inferred.append(txt.upper())
 
         out = []
