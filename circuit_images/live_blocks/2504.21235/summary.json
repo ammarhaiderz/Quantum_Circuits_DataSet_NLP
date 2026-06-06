@@ -1,0 +1,14 @@
+{
+  "source": "2504.21235",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2504.21235\\raw_blocks\\2504.21235_p1_5bbddfc8e3228569.tex",
+      "length": 312,
+      "block_id": "2504.21235_5bbddfc8e3228569",
+      "panel": 1,
+      "label": "fig:teleport_circuit"
+    }
+  ]
+}

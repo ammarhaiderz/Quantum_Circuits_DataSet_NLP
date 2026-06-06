@@ -1,0 +1,9 @@
+\begin{quantikz}
+       \quad \lstick{A} & \ctrl{3} &   \ctrl{5}    &&&&&&   & \measure{\sigma_z} && \measure{\sigma_z} &\rstick[3]{out}\\  
+        \quad \lstick{B} &&    &&& \targ{}  &&&&&&& \\
+        \quad \lstick{C} &&   &&&&  \targ{} &&&&&& \\
+       \lstick[2]{$\ket{\Phi^+}$} \push{A1} \quad & \targ{} & & \gate{Z}   \\
+       \push{B1} \quad &&& \targ{} \wire[u][1]{q} &&  \ctrl{-3} &&& \gate{H} & \gate{Z} \wire[u][4]{q}\\
+       \lstick[2]{$\ket{\Phi^+}$} \push{A2}\quad && \targ{} &&  \gate{Z}            \\
+       \push{C1}\quad  &&&& \targ{} \wire[u][1]{q} &&\ctrl{-4} && \gate{H} &&& \gate{Z} \wire[u][6]{q}
+\end{quantikz}

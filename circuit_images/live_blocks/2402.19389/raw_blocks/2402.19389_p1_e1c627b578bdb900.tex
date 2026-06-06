@@ -1,0 +1,6 @@
+\begin{quantikz}[wire types = {q,q,n}]
+        \lstick{$\ket{0}$} & \qwbundle{n-k} & \gate[2]{\text{Encoder}} & \gate[3]{\text{Detector}} \gategroup[3,steps=4,style={dashed,rounded corners,fill=blue!20, inner xsep=1pt},background,label style={label position=below,anchor=north,yshift=-0.2cm}]{{Decoder}}
+        && \gate[2]{\text{Corrector}} & \gate[2]{\text{(Encoder)}^{\dagger}} & \rstick[2]{$\ket{\psi_d}$}\\
+        \lstick{$\ket{\psi_i}$} & \qwbundle{k} &&&&&& \\
+        &&\lstick{$\ket{+}$}& \setwiretype{q} & \setwiretype{c} & \ctrl[vertical wire=c]{-1} & \wireoverride{n} & \wireoverride{n} & \wireoverride{n}
+    \end{quantikz}

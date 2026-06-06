@@ -1,0 +1,14 @@
+{
+  "source": "2412.04791",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2412.04791\\raw_blocks\\2412.04791_p1_95c9b6f080698a98.tex",
+      "length": 713,
+      "block_id": "2412.04791_95c9b6f080698a98",
+      "panel": 1,
+      "label": "fig:encoded-deutsch-jozsa"
+    }
+  ]
+}

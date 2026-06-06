@@ -1,0 +1,8 @@
+\begin{quantikz}
+\lstick[4]{\ket{\psi}} & \qw &  & \gate[4]{U_{\text{QFT}}^\dag} & \targX{} & \qw & \qw & \\[-0cm]
+ & \qw &  &  & \targX{} & \qw & \qw & \\[-0cm]
+\setwiretype{n}\vdots &  & \vdots & \vdots & \vdots & \vdots & \vdots & \\
+ & \qw &  &  & \targX{} & \qw & \qw & \\
+\lstick{\ket{0}} & \qwbundle{n} & \gate{H^{\otimes n}} & \gate{U_{\text{ph}}[g_{N,0,x}]} & \targX{} & \qw & \qw & \\
+\lstick{\ket{0}} & \qw & \qw & \gate{H} & \ctrl{-5} & \gate{H} & \meter{0/1}\arrow[r] & \rstick{\ket{0}} 
+\end{quantikz}

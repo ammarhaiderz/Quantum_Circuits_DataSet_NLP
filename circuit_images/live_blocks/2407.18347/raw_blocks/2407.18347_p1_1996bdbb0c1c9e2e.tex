@@ -1,0 +1,11 @@
+\begin{quantikz}
+        \lstick{$\ket{i}_n$} & \gate[4]{\dom}
+        \gategroup[4,steps=5,style={dashed,rounded
+        corners,fill=blue!20, inner
+        xsep=2pt},background,label style={label
+        position=below,anchor=north,yshift=-0.2cm}]{{$\widetilde{V}$}}
+        & \gate[2]{V_\text{max}} & \gate[2]{ V} & \gate[2]{V_\text{min}} & \gate[4]{\dom^\dag} & \\
+        \lstick{$\ket{j}_n$} & & & & & & \\
+        \lstick{$\ket{0}$} & & \octrl{-1} & \octrl{-1} & \ctrl{-1} & & \\
+        \lstick{$\ket{0}$} & & \octrl{-2} & \ctrl{-2} & \octrl{-2} & &
+    \end{quantikz}

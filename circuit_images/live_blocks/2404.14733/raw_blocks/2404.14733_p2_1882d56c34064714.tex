@@ -1,0 +1,5 @@
+\begin{quantikz}
+\lstick[1]{raw key} \setwiretype{c} & \gate[2]{CO}\gategroup[2,steps=2,style={dashed,rounded corners, inner xsep=2pt}]{IR} & \gate[1]{CO}& & \gate[2]{CO}\gategroup[2,steps=1,style={dashed,rounded corners, inner xsep=2pt}]{PA} & \\
+\lstick[1]{secret key} \setwiretype{c} & & \ctrl[vertical wire=c]{-1}& \setwiretype{n} & \setwiretype{c}  & \\
+\setwiretype{n} &&&{\text{secret key}} \wire[u][1]{c} &&&
+\end{quantikz}

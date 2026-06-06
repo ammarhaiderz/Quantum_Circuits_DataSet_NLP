@@ -1,0 +1,7 @@
+\begin{quantikz}
+\lstick[1]{noisy EPR} & \ctrl{1} \gategroup[2,steps=2,style={dashed,rounded
+corners, inner xsep=2pt}]{IR} & \gate{X} & & \targ{} \gategroup[2,steps=1,style={dashed,rounded
+corners, inner xsep=2pt}]{PA}&\meter{} &\setwiretype{c}\rstick[2]{secret keys} \\
+\lstick[1]{perfect EPR}  & \targ{} &\meter{} \wire[u][1]{c}& \setwiretype{n} & \ctrl{-1} \setwiretype{q}  & \meter{} &\setwiretype{c}\\
+\setwiretype{n} &&&{\text{perfect EPR}} \wire[u][1]{q} &&&
+\end{quantikz}

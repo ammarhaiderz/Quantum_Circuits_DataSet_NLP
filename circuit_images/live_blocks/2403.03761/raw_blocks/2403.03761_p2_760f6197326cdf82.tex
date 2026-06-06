@@ -1,0 +1,37 @@
+\Qcircuit @C=0.8em @R=0.8em {
+    & \lstick{\ket{0}} & \qw
+& \qw & \multigate{2}{G}
+& \gate{X} & \multigate{2}{G^\dag}
+& \qw & \qw & \multigate{2}{G}
+& \gate{X} & \multigate{2}{G^\dag}\barrier[0em]{3}
+& \qw \raisebox{3.5em}{$\ket{\Psi_{\text{IV}}}$}
+& \qw 
+& \qw
+& \rstick{\ket{0}} \qw\\
+    & \lstick{\ket{0}} & \gate{H} 
+& \multigate{2}{\cQ_{\Uin}} & \ghost{G} 
+& \multigate{2}{\cQ_{\Uin}} & \ghost{G^\dag}
+& \multigate{2}{\cQ_{\Uin}} & \ctrlo{1} & \ghost{G} 
+& \multigate{2}{\cQ_{\Uin}} & \ghost{G^\dag}
+& \qw
+& \multigate{2}{\cQ_{\Uin}} 
+& \gate{H}
+& \rstick{\ket{0}} \qw\\
+    & \lstick{\ket{0}} & \gate{H} 
+& \ghost{\cQ_{\Uin}} & \ghost{G}
+& \ghost{\cQ_{\Uin}} & \ghost{G^\dag}
+& \ghost{\cQ_{\Uin}} & \gate{-Z} & \ghost{G}
+& \ghost{\cQ_{\Uin}} & \ghost{G^\dag}
+& \qw
+& \ghost{\cQ_{\Uin}} 
+& \gate{H}
+& \rstick{\ket{0}} \qw\\
+    & \lstick{\ket{\varphi}} & \qw 
+& \ghost{\cQ_{\Uin}} & \qw
+& \ghost{\cQ_{\Uin}} & \qw
+& \ghost{\cQ_{\Uin}} & \qw & \qw
+& \ghost{\cQ_{\Uin}} & \qw
+& \qw
+& \ghost{\cQ_{\Uin}} 
+& \qw
+& \rstick{\Uin^{-1} \ket{\varphi}} \qw}

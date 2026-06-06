@@ -1,0 +1,14 @@
+{
+  "source": "2509.05924",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2509.05924\\raw_blocks\\2509.05924_p1_75e7ea530968ab33.tex",
+      "length": 261,
+      "block_id": "2509.05924_75e7ea530968ab33",
+      "panel": 1,
+      "label": "fig:classification_flow"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+\begin{quantikz}
+                \ket{0} & \gate{H}       & \gate{R_Y(x_1)}\gategroup[6,steps=1,style={dashed,rounded
+ corners,fill=blue!20, inner
+ xsep=2pt},background,label style={label
+ position=below,anchor=north,yshift=-0.2cm}]{{\sc
+encoding}} & \ctrl{1}\gategroup[6,steps=3,style={dashed,rounded
+ corners,fill=blue!20, inner
+ xsep=2pt},background,label style={label
+ position=below,anchor=north,yshift=-0.2cm}]{{\sc
+ $U_{1}(\theta)$}} & \qw & \gate{R_Y(\theta_1)} & \ldots & \ctrl{1}\gategroup[6,steps=3,style={dashed,rounded
+ corners,fill=blue!20, inner
+ xsep=2pt},background,label style={label
+ position=below,anchor=north,yshift=-0.2cm}]{{\sc
+ $U_{L}(\theta)$}} & \qw & \gate{R_Y(\theta_7)} & \meter{} \\
+                \ket{0} & \gate{H}       & \gate{R_Y(x_2)} & \targ{}  & \ctrl{1} & \gate{R_Y(\theta_2)} &\ldots &\targ{}& \ctrl{1} & \gate{R_Y(\theta_8)} & \meter{}\\
+                \ket{0} & \gate{H}       & \gate{R_Y(x_3)} & \ctrl{1}      & \targ{}  &  \gate{R_Y(\theta_3)} &\ldots & \ctrl{1} & \targ{}& \gate{R_Y(\theta_9)} & \meter{} \\
+                \ket{0} & \gate{H}       & \gate{R_Y(x_4)} & \targ{}      & \ctrl{1} &  \gate{R_Y(\theta_4)} &\ldots & \targ{} & \ctrl{1} &\gate{R_Y(\theta_{10})} & \meter{} \\
+
+                \ket{0} & \gate{H}       & \gate{R_Y(x_5)} & \ctrl{1}      & \targ{} & \gate{R_Y(\theta_5)} &\ldots & \ctrl{1} & \targ{} &\gate{R_Y(\theta_{11})}& \meter{} \\
+                \ket{0} & \gate{H}       & \gate{R_Y(x_6)} & \targ{}      & \qw & \gate{R_Y(\theta_6)} &\ldots &\targ{}& \qw &\gate{R_Y(\theta_{12})}& \meter{} 
+            \end{quantikz}

@@ -1,0 +1,19 @@
+\Qcircuit @R=1em @C=0.75em {
+     \\
+     &\lstick{}& \qw&                \qw&         \qw    &         \qw    &\targ    \qw    &         \qw    &         \qw    &         \qw    &\control \qw    &         \qw    &\meter\\
+     &\lstick{}& \qw&                \qw&         \qw    &         \qw    &         \qw\qwx&\targ    \qw    &         \qw    &         \qw    &         \qw\qwx&\control \qw    &       \meter\\
+     &\lstick{}& \qw&\gate{\text{H}} \qw&\control \qw    &         \qw    &\control \qw\qwx&         \qw\qwx&         \qw    &         \qw    &         \qw\qwx&         \qw\qwx&       \meter\\
+     &\lstick{}& \qw&\gate{\text{H}} \qw&         \qw\qwx&\control \qw    &         \qw    &\control \qw\qwx&         \qw    &         \qw    &         \qw\qwx&         \qw\qwx&       \meter\\
+     &\lstick{}& \qw&                \qw&\targ    \qw\qwx&         \qw\qwx&\control \qw    &         \qw    &         \qw    &         \qw    &         \qw\qwx&         \qw\qwx&       \meter\\
+     &\lstick{}& \qw&                \qw&         \qw    &\targ    \qw\qwx&         \qw\qwx&\control \qw    &         \qw    &         \qw    &         \qw\qwx&         \qw\qwx&       \meter\\
+     &\lstick{}& \qw&                \qw&         \qw    &         \qw    &\targ    \qw\qwx&         \qw\qwx&\control \qw    &         \qw    &         \qw\qwx&         \qw\qwx&       \meter\\
+     &\lstick{}& \qw&                \qw&         \qw    &         \qw    &         \qw    &\targ    \qw\qwx&         \qw\qwx&\control \qw    &         \qw\qwx&         \qw\qwx&       \meter\\
+     &\lstick{}& \qw&                \qw&         \qw    &         \qw    &         \qw    &         \qw    &\targ    \qw\qwx&         \qw\qwx&\targ    \qw\qwx&         \qw\qwx&       \meter\\
+     &\lstick{}& \qw&                \qw&         \qw    &         \qw    &         \qw    &         \qw    &         \qw    &\targ    \qw\qwx&         \qw    &\targ    \qw\qwx&       \meter
+     \inputgroupv{2}{3}{0.8em}{0.8em}{\ket{00}_L\;\;}
+     \inputgroupv{4}{5}{0.8em}{0.8em}{\ket{00}_L\;\;}
+     \inputgroupv{6}{7}{0.8em}{0.8em}{\ket{00}_L\;\;}
+     \inputgroupv{8}{9}{0.8em}{0.8em}{\ket{00}_L\;\;}
+     \inputgroupv{10}{11}{0.8em}{0.8em}{\ket{00}_L\;\;}
+     \\
+    }

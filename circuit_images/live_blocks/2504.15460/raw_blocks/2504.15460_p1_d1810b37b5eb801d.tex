@@ -1,0 +1,7 @@
+\begin{quantikz}[row sep=0.2cm]
+        \lstick{$\ket{0}_\mathrm{f}$} &  &  &  &  & \gate{X} \gategroup[4, steps=2, style={dashed,rounded corners, fill=blue!20, inner xsep=2pt, inner ysep=-1pt}, background, label style={label={above:$F$}}]{} & \targ{} & \\[-0.2cm]
+        \lstick{$\ket{0}_\mathrm{\ell'}$} & \gate{H} \gategroup[4, steps=4, style={dashed,rounded corners, fill=blue!20, inner xsep=2pt, inner ysep=-1pt}, background, label style={label={above:$\frac{1}{2}\mathds{1} - \frac{1}{2}X$}}]{} & \octrl{3} & \ctrl{3} & \gate{H} & & & \\[-0.15cm]
+        \lstick{$\ket{\psi_0}_\mathrm{d(0)}$} & & & & & & \octrl{-2 }& \\
+        \lstick{$\ket{\psi_1}_\mathrm{d(1)}$} & & & & & & \octrl{-1} & \\[-0.18cm]
+        \lstick{$\ket{\psi_2}_\mathrm{d(2)}$} & & \gate{\mathds{1}} & \gate{-X} & & & & 
+    \end{quantikz}

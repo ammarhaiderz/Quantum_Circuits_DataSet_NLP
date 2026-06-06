@@ -1,0 +1,29 @@
+\Qcircuit @C=1.6 em @R=1.2em{
+  \lstickx{\ket{1}_0} 
+  &\qw &\qw &\qw &\multigate{6}{6} & \qw &\multigate{1}{7} & \qw \\
+  \lstickx{\ket{1}_1} 
+  &\qw &\qw &\multigate{1}{4} &\qw & \qw &\ghost{7} & \qw\\
+  \lstickx{\ket{1}_2} 
+  &\qw  &\multigate{1}{2} &\ghost{4}&\qw  & \qw &\multigate{1}{8}  &\qw\\
+  \lstickx{\ket{1}_3} 
+  &\multigate{1}{1} &\ghost{2} &\multigate{1}{5}&\qw & \qw &\ghost{8} &\qw \\
+  \lstickx{\ket{0}_4} 
+  &\ghost{1} &\multigate{1}{3} &\ghost{5}  &\qw &\qw  &\multigate{1}{9} &\qw\\
+  \lstickx{\ket{0}_5} 
+  &\qw &\ghost{3} &\qw &\qw  &\multigate{6}{6'}& \ghost{9} &\qw\\ 
+  \lstickx{\ket{0}_6} 
+  &\qw &\qw &\qw  &\ghost{6} &\qw & \multigate{1}{7'}  &\qw\\ 
+  \lstickx{\ket{1}_7} 
+  &\qw &\qw  &\multigate{1}{4'} &\qw &\qw &\ghost{7'}  &\qw \\
+  \lstickx{\ket{1}_8} 
+  &\qw  &\multigate{1}{2'} &\ghost{4'} &\qw &\qw&\multigate{1}{8'} &\qw \\
+  \lstickx{\ket{0}_9} 
+  &\multigate{1}{1'} &\ghost{2'} &\multigate{1}{5'}&\qw  &\qw &\ghost{8'} &\qw \\
+  \lstickx{\ket{1}_{10}} 
+  &\ghost{1'} &\multigate{1}{3'} &\ghost{5'} &\qw  &\qw &\multigate{1}{9'} &\qw \\
+  \lstickx{\ket{0}_{11}} 
+  &\qw &\ghost{3'}  &\qw &\qw &\ghost{6'} &\ghost{9'} &\qw\\
+ && \arreq{l} &&&&\arrer{lll}
+  \gategroup{1}{2}{12}{3}{2.0em}{--}
+  \gategroup{1}{4}{12}{7}{3.0em}{--}\\
+}

@@ -1,0 +1,9 @@
+\begin{quantikz}[]%[row sep=3mm]
+    % \lstick[wires=2]{$\ket{0}^{\otimes n}$} &  \qw & \swap{-3} & \qw & \qw &\meter{}\\
+    \lstick{\ket{0}} & \gate{H} & \ctrl{1} & \qw & \qw  & \ctrl{1} & \gate{H} & \meter{} \\
+    % &\qw & \qw & \qw & \meter{} \qw
+    \lstick[wires=3]{$\rho$}& \qw & \gate[3]{C_L} & \gate[3]{U} & \gate[3]{\varepsilon} & \gate[3]{C_R} &  \qw & \rstick[wires=3]{$\rho_{out}$} \qw\\
+    % & &\cdots{}& &\\
+    & \qw  & \qw  & \qw & \qw & \qw & \qw & \qw \\
+    & \qw  & \qw  & \qw & \qw & \qw & \qw & \qw & 
+    \end{quantikz}

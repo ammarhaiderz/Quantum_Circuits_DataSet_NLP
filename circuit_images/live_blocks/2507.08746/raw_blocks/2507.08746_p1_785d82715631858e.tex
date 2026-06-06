@@ -1,0 +1,10 @@
+\begin{quantikz}[column sep=10pt, row sep={20pt,between origins}]
+   &\gate[1]{\omega_2^0}&\ctrl[ ]{1}&\gate[1]{ \omega_4^0}&\ctrl[ ]{2}&&\gate[1]{ \omega_8^0}&\ctrl[ ]{4}&&&&\\
+   &&\control{}&\gate[1]{\omega_4^1}&&\ctrl[ , wire label style={above}]{2}&\gate[1]{ \omega_8^1}&&\ctrl[ ]{4}&&&\\
+   &\gate[1]{ \omega_2^0}&\ctrl[ ]{1}&&\control{}&&\gate[1]{ \omega_8^2}&&&\ctrl[ ]{4}&&\\
+   &&\control{}&&&\control{}&\gate[1]{ \omega_8^3}&&&&\ctrl[ ]{4}&\\
+   &\gate[1]{ \omega_2^0}&\ctrl[ ]{1}&\gate[1]{ \omega_4^0}&\ctrl[ ]{2}&&&\control{}&&&&\\
+   &&\control{}&\gate[1]{ \omega_4^1}&&\ctrl[ ]{2}&&&\control{}&&&\\
+   &\gate[1]{ \omega_2^0}&\ctrl[ ]{1}&&\control{}&&&&&\control{}&&\\
+   &&\control{}&&&\control{}&&&&&\control{}&
+\end{quantikz}

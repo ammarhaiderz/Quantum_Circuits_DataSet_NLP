@@ -1,0 +1,10 @@
+\begin{quantikz}
+    \lstick{$\ket{x_1}$}\slice{t=0} & \slice{t=1} & \slice{t=2} & \ctrl{4} & & \slice{t=3} & \slice{t=4} & \slice{t=5} & \rstick{$\ket{x_1}$} \\
+    \lstick{$\ket{x_2}$} & & & & \ctrl{4} & & & & \rstick{$\ket{x_2}$} \\
+    \lstick{$\vdots$} \\
+    \lstick{$\ket{x_n}$} & & & & & \ctrl{4} & & & \rstick{$\ket{x_n}$} \\
+    \lstick{$\ket{0}$} & \gate{H} & \ctrl{3} & \gate{R_Z(\varphi_k)} & & & \ctrl{3} & \gate{H} & \rstick{$\ket{\mu_{\varphi_k}^{|x|}}$} \\
+    \lstick{$\ket{0}$} & & \targ{} & & \gate{R_Z(\varphi_k)} & & \targ{} & & \rstick{$\ket{0}$} \\
+    \lstick{$\vdots$} \\
+    \lstick{$\ket{0}$} & & \targ{} & & & \gate{R_Z(\varphi_k)} & \targ{} & & \rstick{$\ket{0}$}
+    \end{quantikz}

@@ -1,0 +1,10 @@
+\Qcircuit @C=1em @R=1em {
+    & \lstick{\ket{0}} & \multigate{3}{ \uni{16} } & \qw & \qw & 
+\multigate{3}{ \uni{16} } & \qw & \qw_{\times 4} & \qw \backslash  \\
+    & \lstick{\ket{0}} & \ghost{ \uni{16} } & \qw & \qw & 
+\ghost{ \uni{16} } & \qw  & \qw & \qw \backslash  \\
+    & \lstick{\ket{0}} & \ghost{ \uni{16} }  & \qw & \qw & 
+\ghost{ \uni{16} } & \qw & \qw & \qw \backslash  \\
+    & {} & \ghost{ \uni{16} } & \qw & \gate{\Uin} & 
+\ghost{ \uni{16} } & \qw  & \qw & {}
+    \gategroup{1}{5}{4}{6}{1.5em}{--}}

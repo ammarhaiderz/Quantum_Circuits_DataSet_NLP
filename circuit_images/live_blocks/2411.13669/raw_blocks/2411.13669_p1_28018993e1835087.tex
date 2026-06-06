@@ -1,0 +1,8 @@
+\begin{quantikz} 
+            \lstick{$\ket{j}$} &\qwbundle{\log N} && \gate{j}\wire[d][4]{q} &&&&  \gate{j}\wire[d][4]{q} && \\
+            \lstick{$\ket{x_0}$} & \qwbundle{\log K} &&& \gate[3]{\hspace{0.3cm}\mathtt{Mult}\hspace{0.3cm}} \gateinput{$a$} \gateoutput{$a$} && \gate[3]{\hspace{0.3cm}\mathtt{Mult}^\dagger\hspace{0.3cm}} \gateinput{$a$} \gateoutput{$a$} &&& \\ 
+            \lstick{$\ket{x_1}$} &\qwbundle{\log K} &&& \gateinput{$b$} \gateoutput{$b$} && \gateinput{$b$} \gateoutput{$b$} &&& \\
+            \lstick{$\ket{\vec 0}$} &\qwbundle{2\log K} &&& \gateinput{$0$} \gateoutput{$ab$} & \gate[3]{\hspace{0.3cm}\mathtt{Mult}\hspace{0.3cm}}\gateinput{$a$} \gateoutput{$a$} &\gateinput{$ab$} \gateoutput{$0$}&&&\\
+            \lstick{$\ket{\vec 0}$} & \qwbundle{\log 1/\delta} && \gate{\Delta^2c_{\left(1,1\right)}^{\left(j,j\right)}} && \gateinput{$b$} \gateoutput{$b$} &&  \gate{\Delta^2c_{\left(1,1\right)}^{\left(j,j\right)}} &&\\
+            \lstick{$\ket{R}$} &\qwbundle{\log{1/\delta}} &&&&\gateinput{$c$} \gateoutput{$c+ ab$}&&&&
+        \end{quantikz}

@@ -1,0 +1,22 @@
+{
+  "source": "2409.13147",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2409.13147\\raw_blocks\\2409.13147_p1_7748860dc15de6ea.tex",
+      "length": 210,
+      "block_id": "2409.13147_7748860dc15de6ea",
+      "panel": 1,
+      "label": "fig:kernel-circuit"
+    },
+    {
+      "index": 1,
+      "block_file": "2409.13147\\raw_blocks\\2409.13147_p2_c2a8e0021b45754d.tex",
+      "length": 294,
+      "block_id": "2409.13147_c2a8e0021b45754d",
+      "panel": 2,
+      "label": "fig:kernel-circuit"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "source": "2508.05036",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2508.05036\\raw_blocks\\2508.05036_p1_1c7b225a345bb5af.tex",
+      "length": 1724,
+      "block_id": "2508.05036_1c7b225a345bb5af",
+      "panel": 1,
+      "label": "Fig:QLSTM_VQC_CIRCUIT"
+    }
+  ]
+}

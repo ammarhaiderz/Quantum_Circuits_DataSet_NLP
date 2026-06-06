@@ -6,7 +6,7 @@ from nltk.stem import PorterStemmer
 
 STEMMER = PorterStemmer()
 
-# ================ QUERY SETS ================
+#================ QUERY SETS ================
 # QUERY_SETS = {
 #     "circuit_core": """
 #         quantum circuit diagram
@@ -44,69 +44,69 @@ STEMMER = PorterStemmer()
 #     """
 # }
 
-# QUERY_SETS = {
-#     "circuit_fundamentals": """
-#         quantum circuit diagram
-#         circuit with gates
-#         qubit circuit
-#         gate based quantum circuit
-#         gate sequence
-#         controlled gate
-#         qubit register
-#         circuit depth
-#         multi-qubit gate
-#         single-qubit rotation
-#         entangling gate
-#         two-qubit gate
-#         circuit schematic
-#         quantum gate circuit
-#         qubit connectivity
-#         circuit topology
-#     """,
+QUERY_SETS = {
+    "circuit_fundamentals": """
+        quantum circuit diagram
+        circuit with gates
+        qubit circuit
+        gate based quantum circuit
+        gate sequence
+        controlled gate
+        qubit register
+        circuit depth
+        multi-qubit gate
+        single-qubit rotation
+        entangling gate
+        two-qubit gate
+        circuit schematic
+        quantum gate circuit
+        qubit connectivity
+        circuit topology
+    """,
 
-#     "quantum_algorithms": """
-#         ghz
-#         bell state
-#         Josephson tunnel junction
-#         cooper pair box
-#         deutsch-jozsa algorithm circuit
-#         deutsch-jozsa quantum circuit diagram
-#         bernstein-vazirani circuit
-#         bernstein-vazirani algorithm circuit
-#         simon algorithm circuit
-#         quantum query algorithm circuit
-#         quantum fourier transform circuit
-#         qft circuit diagram
-#         shor algorithm circuit
-#         grover algorithm circuit
-#         grover search quantum circuit
-#         quantum counting circuit
-#         quantum walk circuit
-#     """,
+    "quantum_algorithms": """
+        ghz
+        bell state
+        Josephson tunnel junction
+        cooper pair box
+        deutsch-jozsa algorithm circuit
+        deutsch-jozsa quantum circuit diagram
+        bernstein-vazirani circuit
+        bernstein-vazirani algorithm circuit
+        simon algorithm circuit
+        quantum query algorithm circuit
+        quantum fourier transform circuit
+        qft circuit diagram
+        shor algorithm circuit
+        grover algorithm circuit
+        grover search quantum circuit
+        quantum counting circuit
+        quantum walk circuit
+    """,
 
-#     "variational_circuits": """
-#         variational quantum circuit
-#         parameterized circuit
-#         ansatz circuit
-#         vqe circuit
-#         variational quantum eigensolver
-#         qaoa circuit
-#         quantum approximate optimization
-#         hardware efficient ansatz
-#         variational quantum classifier
-#     """,
+    "variational_circuits": """
+        variational quantum circuit
+        parameterized circuit
+        ansatz circuit
+        vqe circuit
+        variational quantum eigensolver
+        qaoa circuit
+        quantum approximate optimization
+        hardware efficient ansatz
+        variational quantum classifier
+    """,
 
-#     "communication_and_entanglement": """
-#         quantum key distribution circuit
-#         quantum teleportation circuit
-#         bell state measurement circuit
-#         superdense coding circuit
-#         quantum communication protocol
-#         epr pair distribution circuit
-#         entanglement circuit
-#         entangling gates
-#     """
-# }
+    "communication_and_entanglement": """
+        quantum key distribution circuit
+        quantum teleportation circuit
+        bell state measurement circuit
+        superdense coding circuit
+        quantum communication protocol
+        epr pair distribution circuit
+        entanglement circuit
+        entangling gates
+    """
+}
 
 QUERY_SETS = {
     "circuit_fundamentals": """

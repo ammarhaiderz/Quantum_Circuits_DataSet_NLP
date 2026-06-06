@@ -1,0 +1,9 @@
+\Qcircuit @C=1em @R=.7em{
+        \lstick{\ket{\cdot}_1^a}& \qw &\qw \barrier[-1.8em]{6} & \qw &\qw \barrier[-1.8em]{6}& \gate{X} & \gate{X}& \qw& \qw \\
+        \lstick{\ket{\cdot}_1^a}& \qw &\qw & \gate{X} & \qw & \qw & \qw &\qw & \qw\\
+        \lstick{\ket{\cdot}_1}& \multigate{1}{ADD} &\qw & \ctrl{-1}& \qw &\qw & \qw &\qw & \qw\\
+        \lstick{\ket{\cdot}_{\mathfrak m}}& \ghost{ADD}&\qw & \qw & \qw &\qw&\qw & \qw & \qw\\
+        \lstick{\ket{\cdot}_{\mathfrak k}}& \qw &\qw & \qw &\qw & \gate{\widetilde H_{\mathfrak k}}& \ctrlo{-4} & \qw& \qw\\
+        \lstick{\ket{\cdot}_{\mathfrak n}} &\qw &\qw & \qw & \qw&\qw & \qw & \qw& \qw\\
+        & \dstick{U_{\LL_2^{(1)}}} & & \dstick{U_{\M_7}} & & & \dstick{U_{\M_6}}
+    }

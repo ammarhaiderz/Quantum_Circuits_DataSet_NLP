@@ -1,0 +1,5 @@
+\Qcircuit @C=1.5em @R=1.5em {
+        & \lstick{\textrm{ancilla system of dimension } d_a / d} & \qw & \qw & \qw & \qw  \\
+        & \lstick{\textrm{ancilla system of dimension } d} & \multigate{1}{\textrm{SWAP}_d} & \qw & \multigate{1}{\textrm{SWAP}_d} & \qw \\
+        & \lstick{\textrm{Input state}} & \ghost{\textrm{SWAP}_d} & \gate{\textrm{Input slot}} & \ghost{\textrm{SWAP}_d} & \rstick{\textrm{Output state}} \qw
+    }

@@ -1,0 +1,30 @@
+{
+  "source": "2507.19250",
+  "blocks_count": 3,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2507.19250\\raw_blocks\\2507.19250_p1_3ede803df7861e25.tex",
+      "length": 968,
+      "block_id": "2507.19250_3ede803df7861e25",
+      "panel": 1,
+      "label": "Fig:Hadamard_Test"
+    },
+    {
+      "index": 1,
+      "block_file": "2507.19250\\raw_blocks\\2507.19250_p2_1f0a7fb9197381e1.tex",
+      "length": 1500,
+      "block_id": "2507.19250_1f0a7fb9197381e1",
+      "panel": 2,
+      "label": "Fig:Hadamard_Test"
+    },
+    {
+      "index": 2,
+      "block_file": "2507.19250\\raw_blocks\\2507.19250_p3_7bc19a6c9aa52d91.tex",
+      "length": 1467,
+      "block_id": "2507.19250_7bc19a6c9aa52d91",
+      "panel": 3,
+      "label": "Fig:Hadamard_Test"
+    }
+  ]
+}

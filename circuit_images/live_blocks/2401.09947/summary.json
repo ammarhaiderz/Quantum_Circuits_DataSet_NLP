@@ -1,0 +1,14 @@
+{
+  "source": "2401.09947",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2401.09947\\raw_blocks\\2401.09947_p1_764d78ef765968c4.tex",
+      "length": 265,
+      "block_id": "2401.09947_764d78ef765968c4",
+      "panel": 1,
+      "label": "fig:purity"
+    }
+  ]
+}

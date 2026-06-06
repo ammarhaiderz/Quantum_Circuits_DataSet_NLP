@@ -1,0 +1,22 @@
+{
+  "source": "2412.17229",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2412.17229\\raw_blocks\\2412.17229_p1_a25e88f164b4ed7d.tex",
+      "length": 125,
+      "block_id": "2412.17229_a25e88f164b4ed7d",
+      "panel": 1,
+      "label": "fig:AUnitary"
+    },
+    {
+      "index": 1,
+      "block_file": "2412.17229\\raw_blocks\\2412.17229_p2_6fa02c0148a58af9.tex",
+      "length": 176,
+      "block_id": "2412.17229_6fa02c0148a58af9",
+      "panel": 2,
+      "label": "fig:AUnitary"
+    }
+  ]
+}

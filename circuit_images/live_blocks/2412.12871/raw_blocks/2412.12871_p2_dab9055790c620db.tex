@@ -1,0 +1,12 @@
+\Qcircuit @C=.7em @R=1em {
+            \lstick{(\mathrm{DV})}    & \qw{/} & \ctrl{2} & \qw      & \ctrl{2} & \gate{QFT} & \ctrl{2} & \qw      & \ctrl{2} & \qw \\
+            \lstick{(\mathrm{DV})}    & \qw{/} & \qw      & \ctrl{1} & \qw      & \gate{QFT} & \qw      & \ctrl{1} & \qw      & \qw \\
+            \lstick{} & &
+                \push{\boxed{ACD^{(N,\hf{i\lambda})}}} &
+                \push{\boxed{ACD^{(N,    -\lambda )}}} &
+                \push{\boxed{ACD^{(N,\hf{i\lambda})}}} & &
+                \push{\boxed{ACD_*^{(N,-\frac{\pi}{2N\lambda})}}} &
+                \push{\boxed{ACD_*^{(N,-i\frac{\pi}{N\lambda})}}} &
+                \push{\boxed{ACD_*^{(N,-\frac{\pi}{2N\lambda})}}} & \\
+            \lstick{(\mathrm{CV})\ket{\psi}} & \qw & \ctrl{-1} & \ctrl{-1} & \ctrl{-1} & \qw & \ctrl{-1} & \ctrl{-1} & \ctrl{-1} & \qw
+        }

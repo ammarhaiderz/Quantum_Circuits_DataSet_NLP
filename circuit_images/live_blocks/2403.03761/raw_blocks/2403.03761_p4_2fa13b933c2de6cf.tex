@@ -1,0 +1,6 @@
+\label{fig:G decomp}
+\Qcircuit @C=0.8em @R=1.2em {
+    & \qw & \qw & \qw & \gate{X}  & \ctrl{1} & \qw \\
+    \lstick{G = } & \gate{H} & \ctrlo{1} & \gate{H} & \ctrlo{-1} & \multigate{1}{F} & \qw  \\
+    & \gate{H} & \gate{-Z} & \gate{H} & \ctrlo{-1} & \ghost{F} & \qw
+    }

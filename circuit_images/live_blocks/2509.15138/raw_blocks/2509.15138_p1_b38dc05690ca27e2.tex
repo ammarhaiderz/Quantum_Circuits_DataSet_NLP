@@ -1,0 +1,12 @@
+\begin{quantikz}
+        & \gate{H}\gategroup[4,steps=1,style={dashed,rounded corners, inner xsep=2pt},background,label style={label
+position=below,anchor=north,yshift=-0.2cm}]{{\sc State Preparation}} & \gate[4]{U_C\left( T_1 \right)}\gategroup[4,steps=1,style={dashed,rounded corners, inner xsep=2pt},background,label style={label
+position=above,anchor=north,yshift=0.4cm}]{{\sc Cost}} & \gate{R_X(\theta_{1, 1})}\gategroup[4,steps=1,style={dashed,rounded corners, inner xsep=2pt},background,label style={label
+position=below,anchor=north,yshift=-0.2cm}]{{\sc Mixer}} & \qw & \cdots\wireoverride{n} & \wireoverride{n} & \gate[4]{U_C\left( T_q \right)}\gategroup[4,steps=1,style={dashed,rounded corners, inner xsep=2pt},background,label style={label
+position=above,anchor=north,yshift=0.4cm}]{{\sc Cost}} & \gate{R_X \left( \theta_{q, p_q} \right) }\gategroup[4,steps=1,style={dashed,rounded corners, inner xsep=2pt},background,label style={label
+position=below,anchor=north,yshift=-0.2cm}]{{\sc Mixer}} & \meter{}\gategroup[4,steps=1,style={dashed,rounded corners, inner xsep=2pt},background,label style={label
+position=above,anchor=north,yshift=0.4cm}]{{\sc Measurements}} \\ %\lstick{$\ket{0}$} 
+        & \gate{H} & & \gate{R_X(\theta_{1, 1})} & \qw & \cdots\wireoverride{n} & \wireoverride{n} & \qw & \gate{R_X \left( \theta_{q, p_q} \right)} & \meter{} \\ %\lstick{$\ket{0}$}
+        \wireoverride{n} & \wireoverride{n}\vdots & \wireoverride{n} & \wireoverride{n}\vdots & \wireoverride{n} & \wireoverride{n} & \wireoverride{n} & \wireoverride{n} & \wireoverride{n}\vdots & \vdots\wireoverride{n} \\
+        & \gate{H} & & \gate{R_X(\theta_{1, 1})} & \qw & \cdots\wireoverride{n} & \wireoverride{n} & \qw & \gate{R_X \left(\theta_{q, p_q} \right)} & \meter{} %\lstick{$\ket{0}$} 
+    \end{quantikz}

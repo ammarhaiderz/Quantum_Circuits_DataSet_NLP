@@ -1,0 +1,8 @@
+\Qcircuit @C=.5em @R=.9em {
+            & \lstick{\ket{e}} & \tctrlo{2} \gategroup{1}{3}{3}{5}{.3em}{--} & \qw & \tctrlo{2} & \qw & \qw & \qw & \qw & \rstick{\ket{e}} \\ 
+            & \lstick{\ket{f}} & \qw & \tctrlo{1} & \qw & \qw & \qw & \qw & \qw & \rstick{\ket{f}} \\ 
+            & \lstick{\ket{0}} & \gate{X_{02}} & \gate{X_{01}} & \gate{X_{12}} & \gate{X_{12}} \gategroup{3}{6}{6}{8}{.3em}{--} & \gate{X_{12}} & \tctrlt{3} & \qw & \rstick{\ket{\text{dirty}}} \\ 
+            & \lstick{\ket{g}} & \tctrlo{2} \gategroup{4}{3}{6}{5}{.3em}{--} & \qw & \tctrlo{2} & \qw & \qw & \qw & \qw & \rstick{\ket{g}} \\ 
+            & \lstick{\ket{h}} & \qw & \tctrlo{1} & \qw & \qw & \qw & \qw & \qw & \rstick{\ket{h}} \\ 
+            & \lstick{\ket{0}} & \gate{X_{02}} & \gate{X_{01}} & \gate{X_{12}} & \qw & \tctrlo{-3} & \gate{X_{01}} & \qw & \rstick{\ket{1\in\{e,f,g,h\}}}
+        }
