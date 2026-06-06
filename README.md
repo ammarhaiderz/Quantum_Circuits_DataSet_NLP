@@ -1,5 +1,8 @@
 # Quantum Dataset NLP Pipelines
 
+## RAG Pipeline Overview
+![App demo](./docs/RAG_New.gif)
+
 This project extracts quantum-circuit figures and LaTeX circuit blocks from arXiv sources, scores them (TF-IDF + SBERT), and renders LaTeX circuits when needed.
 
 ## What it does
