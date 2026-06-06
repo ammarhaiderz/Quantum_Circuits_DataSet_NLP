@@ -1,0 +1,5 @@
+\Qcircuit @C=0.9em @R=0.7em {
+  & \lstick{\ket{\rho}_{Q_{0}}} & \ctrl{1} & \gate{H} & \meter & \cw & \rstick{m_{1}}\qw \\
+  & \lstick{\ket{0}_{Q_{1}}}    & \targ    & \qw      & \meter & \cw & \rstick{m_{2}}\qw \\
+  & \lstick{\ket{0}_{Q_{2}}}    & \qw      & \qw      & \qw    & \gate{X^{m_{2}}Z^{m_{1}}} & \qw
+}

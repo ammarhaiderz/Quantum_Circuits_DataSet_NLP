@@ -1,0 +1,33 @@
+\Qcircuit @R=1em @C=1em {
+%
+\lstick{\ket{0}_{\reg{R}}}
+    & \qw
+    & \multigate{2}{A^{(1)}}
+    & \gate{U^{\tmpop_1}}
+    & \multigate{2}{A^{(2)}}
+    & \gate{U^{\tmpop_2}}
+    & \multigate{2}{A^{(3)}}
+    & \qw
+    & \multigate{2}{A^{(4)}}
+    & \qw  \\
+\lstick{\ket{0}_{\reg{C}}}
+    & \qw
+    & \ghost{A^{(1)}}
+    & \gate{\proj{1}}
+    & \ghost{A^{(2)}}
+    & \gate{\proj{1}}
+    & \ghost{A^{(3)}}
+    & \gate{\proj{0}}
+    & \ghost{A^{(4)}}
+    & \qw  \\
+\lstick{\ket{0}_{\reg{S}}}
+    & \qw
+    & \ghost{A^{(1)}}
+    & \qw
+    & \ghost{A^{(2)}}
+    & \qw
+    & \ghost{A^{(3)}}
+    & \qw
+    & \ghost{A^{(4)}}
+    & \qw  
+}

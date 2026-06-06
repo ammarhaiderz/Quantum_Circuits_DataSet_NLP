@@ -1,0 +1,5 @@
+\begin{quantikz}[wire types={b,q,b},classical gap=0.12cm]
+            \lstick{$\ket{0}^{\otimes n}$} &  & \gate[style={fill=green!20}]{\hat{U}_{\mathrm{max}}} & \targ{} & \qw & \qw \\
+            \lstick{$\ket{0}$} & \gate{H} & \octrl{-1} & \control{} & \gate{H} & \qw \\
+            \lstick{$\ket{0}^{\otimes n}$} & & & \ctrl{-2} & \qw & \qw \\
+        \end{quantikz}

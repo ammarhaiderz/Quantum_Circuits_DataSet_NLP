@@ -1,0 +1,14 @@
+{
+  "source": "2404.06545",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2404.06545\\raw_blocks\\2404.06545_p1_e90e57e52b46a047.tex",
+      "length": 723,
+      "block_id": "2404.06545_e90e57e52b46a047",
+      "panel": 1,
+      "label": "fig:tuple-indexing"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+\Qcircuit @C=0.2em @R=.5em   {                 
+&\qw &\multigate{1}{\tilde{L}_1}&\multigate{1}{V}&\multigate{1}{\tilde{R}_1}&\cds{1}{\cdots}&\cds{1}{\cdots}  &\qw               &\multigate{1}{\tilde{L}_n}&\multigate{1}{V}&\multigate{1}{\tilde{R}_n}&\qw \\
+ &\qw &\ghost{\tilde{L}_1}       &\ghost{V}      &\ghost{\tilde{R}_1}       &\qw            &\qw              &\qw               &\ghost{\tilde{L}_n}        &\ghost{V}      &\ghost{\tilde{R}_n}       &\qw           \\
+\lstick{|+\rangle}&\qw &\ctrl{-1}         &\qw              &\ctrl{-1}         &\measuretab{M_X}&                &\lstick{|+\rangle}&\ctrl{-1}        &\qw           &\ctrl{-1}         &\measuretab{M_X}   }

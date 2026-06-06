@@ -1,0 +1,15 @@
+\begin{quantikz}
+        \lstick{$\ket{i}_n$} & \gate[3]{\comp}
+        \gategroup[7,steps=18,style={dashed,rounded
+        corners,fill=blue!20, inner
+        xsep=2pt},background,label style={label
+        position=below,anchor=north,yshift=-0.2cm}]{{$\dom$}}
+        & \gate[2]{\mathrm{SWAP}} & \gate[2]{\mathrm{DIFF}} & \swap{3} & \gate[3]{\comp} & & \gate[3]{\comp^\dag} & \swap{3} & & & \swap{3} & \gate[3]{\comp} & & \gate[3]{\comp^\dag} & \swap{3} & \gate[2]{\mathrm{DIFF}^\dag} & \gate[2]{\mathrm{SWAP}} & \gate[3]{\comp^\dag} & \rstick{$\ket{i}_n$}\\
+        \lstick{$\ket{j}_n$} & & & & & & & & & & & & & & & & & & & \rstick{$\ket{j}_n$} \\
+        \lstick{$\ket{0}$} & & \octrl{-1} & \swap{2} & & & \octrl{4} & & & & & & & \octrl{3} & & & \swap{2} & \octrl{-1} & & \rstick{$\ket{0}$} \\
+        \lstick{$\ket{0}_n$} & \gate{S^{(r_\text{min})}} & & & \targX{} & & & & \targX{} & \gate{S^{(r_\text{min})\dag}} & \gate{S^{(r_\text{max})}} & \targX{} & & & & \targX{} & & & \gate{S^{(r_\text{max})\dag}} & \rstick{$\ket{0}_n$}\\
+        \lstick{$\ket{0}$} & & & \targX{} & & & & &\hphantomgate{} & & & & & & & & \targX{} & & & \rstick{$\ket{0}$}\\
+        % flag qubits for domain
+        \lstick{$\ket{0}$} & & & & & &\hphantomgate{} & &\hphantomgate{} & & & & & \targ{} & \ctrl{1} & & & & & \rstick[2]{domain\\flags} \\
+        \lstick{$\ket{0}$} & & & & & & \targ{} & & & & & & & & \targ{} & & & & &
+    \end{quantikz}

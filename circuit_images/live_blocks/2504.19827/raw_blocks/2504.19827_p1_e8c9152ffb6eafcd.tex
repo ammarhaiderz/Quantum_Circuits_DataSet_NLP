@@ -1,0 +1,9 @@
+\begin{quantikz}[wire types={b,b,b,q},classical gap=0.07cm]
+			\lstick{$|a\rangle$} &\gate[4,label style={yshift=5mm}]{\mathrm{SUB}} &\gate[3]{\mathrm{ADD}} &\rstick{$|a\rangle$}
+			\\
+			\lstick{$\blue{|0\rangle}$} &&&\rstick{$\blue{|0\rangle}$}
+			\\
+			\lstick{$|b\rangle$} &\gateoutput{$\rightarrow$} &\gateoutput{$\rightarrow$} &\rstick{$|b\rangle$}
+			\\
+			\lstick{$|0\rangle$} &\gateoutput{$\rightarrow$} &\rstick{$|\sgnb{b-a}\rangle=|a>b\rangle$}
+		\end{quantikz}

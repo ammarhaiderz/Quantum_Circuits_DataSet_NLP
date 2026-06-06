@@ -1,0 +1,16 @@
+\begin{quantikz}[wire types = {q,n,q,q,n,q}, row sep={1.5cm,between origins}, font=\huge]
+\lstick{}&&\grx{02}{-}\gategroup[6,steps=1,style={rounded
+corners,fill=violet!10,draw=violet!20, inner
+xsep=2pt},background,label style={label
+position=above,anchor=north,yshift=0.8cm}]{{
+Global gate}}&&&\grx{02}{}\gategroup[6,steps=1,style={rounded
+corners,fill=cyan!10,draw=cyan!20, inner
+xsep=2pt},background,label style={label
+position=above,anchor=north,yshift=0.8cm}]{{
+Global gate}}&\\[-0.5cm]
+\lstick{}&&\vdots&&\ghost{R^{10}_y}&\vdots&\\[-0.3cm]
+\lstick{}&\gry{01}{-}&\grx{02}{-}&\gry{01}{}&\gate[wires=2]{\xx{}{\frac{\pi}{2}}}&\grx{02}{}&\\
+\lstick{}&&\grx{02}{-}&&&\grx{02}{}&\\[-0.5cm]
+\lstick{}&&\vdots&&\ghost{R^{10}_y}&\vdots&\\[-0.3cm]
+\lstick{}&&\grx{02}{-}&&&\grx{02}{}&
+\end{quantikz}

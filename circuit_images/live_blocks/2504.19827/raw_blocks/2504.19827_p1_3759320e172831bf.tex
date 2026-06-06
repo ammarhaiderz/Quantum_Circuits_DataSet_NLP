@@ -1,0 +1,7 @@
+\begin{quantikz}[wire types={b,b,q},classical gap=0.07cm]
+			\lstick{$|a\rangle$} &\gate[2]{\mathrm{CNOT}^{\otimes r}}&&&&\gate[2]{\mathrm{CNOT}^{\otimes r}} &\rstick{$|a\rangle$}
+			\\
+			\lstick{$|b\rangle$} &\gateoutput{$\rightarrow$}&\gate{X^{\otimes r}}&\ctrl{1}&\gate{X^{\otimes r}}&\gateoutput{$\rightarrow$}&\rstick{$|b\rangle$}
+			\\
+			\lstick{$|0\rangle$} &&&\targ{}&&&\rstick{$|\delta_{ab}\rangle$}
+		\end{quantikz}

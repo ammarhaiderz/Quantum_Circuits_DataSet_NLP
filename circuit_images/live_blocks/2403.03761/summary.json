@@ -1,0 +1,46 @@
+{
+  "source": "2403.03761",
+  "blocks_count": 5,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2403.03761\\raw_blocks\\2403.03761_p1_6bb529315ba2736b.tex",
+      "length": 514,
+      "block_id": "2403.03761_6bb529315ba2736b",
+      "panel": 1,
+      "label": "fig:4 3 pqc"
+    },
+    {
+      "index": 1,
+      "block_file": "2403.03761\\raw_blocks\\2403.03761_p2_ad00df377f112b8b.tex",
+      "length": 852,
+      "block_id": "2403.03761_ad00df377f112b8b",
+      "panel": 2,
+      "label": "fig:4 3 pqc"
+    },
+    {
+      "index": 2,
+      "block_file": "2403.03761\\raw_blocks\\2403.03761_p3_45a1ff16360e7ceb.tex",
+      "length": 757,
+      "block_id": "2403.03761_45a1ff16360e7ceb",
+      "panel": 3,
+      "label": "fig:4 3 pqc"
+    },
+    {
+      "index": 3,
+      "block_file": "2403.03761\\raw_blocks\\2403.03761_p4_7aa872e194993913.tex",
+      "length": 626,
+      "block_id": "2403.03761_7aa872e194993913",
+      "panel": 4,
+      "label": "fig:4 3 pqc"
+    },
+    {
+      "index": 4,
+      "block_file": "2403.03761\\raw_blocks\\2403.03761_p5_5dad330a782395a9.tex",
+      "length": 1171,
+      "block_id": "2403.03761_5dad330a782395a9",
+      "panel": 5,
+      "label": "fig:4 3 pqc"
+    }
+  ]
+}

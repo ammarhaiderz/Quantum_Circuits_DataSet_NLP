@@ -1,0 +1,11 @@
+\begin{quantikz}
+\lstick[wires=4]{$x$} & \gate[9]{\text{  $U_f$  }} &  \gate[4]{\text{  $R^\dagger(\mu)$  }} & \gate{X} & \ctrl{1} & \qw & \ctrl{1} & \gate{X} & \gate[4]{\text{  $R(\mu)$  }} & \qw \\
+& & & \gate{X} & \ctrl{1} & \qw & \ctrl{1} & \gate{X} & & \qw \\
+& & & \gate{X} & \ctrl{1} & \qw & \ctrl{1} & \gate{X} & & \qw \\
+& & & \gate{X} & \ctrl{5} & \qw & \ctrl{5} & \gate{X} & & \qw \\
+\lstick[wires=4]{$y$} & & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+& & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+& & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+& & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw \\
+\lstick{\ket{0}} & & \qw & \qw & \targ{} & \gate{Z_\alpha} & \targ{} & \qw & \qw & \qw \\
+\end{quantikz}

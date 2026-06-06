@@ -1,0 +1,8 @@
+\begin{quantikz}
+        \lstick{$\substack{\ket{+}^{\otimes s}  \propto \\ \sum_{q=0}^{2^s-1} \ket{q}}$} & \qwbundle{k} & \gate[1]{\mbox{Input }q}\wire[d][3]{q}&&\gate[1]{\mbox{Input }q}\wire[d][3]{q}&\\
+        \lstick{$\ket{x_1}$} & \qwbundle{n} & &\gate[5]{\EC}&&\\
+        \lstick{$\ket{y_1}$} & \qwbundle{n} & &&&\\
+        \lstick{$\ket{x_2=0}$} & \qwbundle{n} &\gate[2]{\mbox{Look-up }(x_2,y_2) = [q]R} &&\gate[2]{\mbox{Un-look-up}}&\\
+        \lstick{$\ket{y_2=0}$} & \qwbundle{n} &\wire[d][1]{q}&&\wire[d][1]{q}&\\
+        \lstick{$\ket{0}$} & \qwbundle{n} &\gate[1]{\mbox{Look-up }\lambda_r(x_2,y_2)}&&\gate[1]{\mbox{Un-look-up}}&\\
+    \end{quantikz}

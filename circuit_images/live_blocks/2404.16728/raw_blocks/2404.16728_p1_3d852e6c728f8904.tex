@@ -1,0 +1,13 @@
+\begin{quantikz}
+\ghost{}&\lstick{$\ket{\psi}_1$}& \qw   &  \qw   & \qw     &\ctrl{1}\gategroup[2,steps=4,style={rounded
+corners,fill=red!20, inner
+xsep=2pt},background,label style={label
+position=above,anchor=north,yshift=0.2cm}]{{\sc
+Bell state meas.}}&\gate{H}& \qw  & \meter{}  \vcw{2} &      \\
+\ghost{}\gategroup[2,steps=5,style={rounded
+corners,fill=blue!20, inner
+xsep=2pt},background,label style={label
+position=below,anchor=north,yshift=-0.2cm}]{{\sc
+Bell state prep.}}&\lstick{$\ket{0}_2$}   & \qw   &\gate{H}&\ctrl{1} &\targ{} & \qw    &\meter{}   \vcw{1}         & &\\
+\ghost{}&\lstick{$\ket{0}_3$}   & \qw   &   \qw  &\targ{}  & \qw    &  \qw   &\gate{X}                &\gate{Z} &  \qw   \rstick{$\ket{\psi}_3$} 
+\end{quantikz}

@@ -1,0 +1,14 @@
+{
+  "source": "2401.01009",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2401.01009\\raw_blocks\\2401.01009_p1_1dc48b25181d26ce.tex",
+      "length": 650,
+      "block_id": "2401.01009_1dc48b25181d26ce",
+      "panel": 1,
+      "label": "fig:exact-synthesis-dicke-state"
+    }
+  ]
+}

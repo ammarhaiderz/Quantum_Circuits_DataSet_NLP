@@ -1,0 +1,8 @@
+\begin{quantikz}
+\lstick[6]{N-qubits}  & \gate{H} &\gate{R_Z(\theta_n)}& \ctrl{1} &\qw&\qw &\qw  &\gate{H}&\qw\\
+&\qw&\qw&  \targ{}  &\ctrl{1} & \qw & \qw   &\gate{H}&\qw      \\
+&\qw&\qw&  \qw & \targ{} & \ctrl{1} & \qw&\gate{H}&\qw \\
+&&&&& \vdots  &&& \\
+&\qw&\qw&  \qw & \qw&  \targ{}  & \ctrl{1}&\gate{H}&\qw \\
+&\qw&\qw&  \qw & \qw & \qw & \targ{}  &\gate{H}&\qw\\
+\end{quantikz}

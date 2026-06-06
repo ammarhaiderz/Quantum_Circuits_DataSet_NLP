@@ -1,0 +1,7 @@
+\begin{quantikz}[font=\normalsize{}]
+\lstick[wires=4, label style = {blue}]{$q_s: |0\rangle^{\otimes n_\text{DM}}$}& &\targ{} & & &   \gate{\text{R}_x(\phi)} & & & \targ{} &\ctrl{4} &\\
+& \gate[1]{H} &  \ctrl{-1} & \targ{} & &  \gate[1]{\text{R}_x(\phi)} & & \targ{} & \ctrl{-1} & &\\
+& \gate[1]{H} & & \ctrl{-1} & \targ{} & \gate[1]{\text{R}_x(\phi)}  & \targ{} & \ctrl{-1} & & &\\
+& \gate{H} &  & & \ctrl{-1} & \gate{\text{R}_x(\phi)} & \ctrl{-1} & & & & \\
+\lstick[label style={red}]{$q_m: {|0\rangle}$} & & & & & & & & & \targ{} & \gate[1]{\text{Delay}(\tau)} & \meter{}
+\end{quantikz}

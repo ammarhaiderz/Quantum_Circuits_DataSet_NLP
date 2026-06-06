@@ -1,0 +1,33 @@
+\Qcircuit @C=2.0 em @R=1.8em{
+  \lstickx{\ket{0}_1} 
+  &\multigate{1}{1}
+  &\multigate{0}{n}
+  &\qw &\qw \\
+  \lstickx{\ket{0}_2} 
+  &\ghost{1} 
+  &\multigate{1}{2} 
+  &\qw &\qw \\
+  \lstickx{\ket{0}_3} 
+  &\multigate{1}{3}
+  &\ghost{2}       
+  &\qw &\qw  \\
+  \lstickx{\ket{0}_4} 
+  &\ghost{3} 
+  &\multigate{1}{4} 
+  &\qw &\qw \\
+  \lstickx{\ket{0}_5} 
+  &\multigate{0}{5}
+  &\ghost{4}       
+  &\qw &\qw \\ 
+  &{\vdots}  &{\vdots}  \\
+  \\
+  \lstickx{\ket{0}_{n-1}} 
+  &\multigate{1}{n-1} 
+  &\multigate{0}{n-2} 
+  &\qw &\qw \\
+  \lstickx{\ket{0}_n} 
+  &\ghost{n-1} 
+  &\multigate{0}{n} 
+  &\qw &\qw \\
+ &&& \arrep{ll}
+  \gategroup{1}{2}{9}{4}{1.0em}{--}}

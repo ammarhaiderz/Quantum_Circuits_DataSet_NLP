@@ -1,0 +1,14 @@
+{
+  "source": "2505.08069",
+  "blocks_count": 1,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2505.08069\\raw_blocks\\2505.08069_p1_9d9ff8d7d58783ef.tex",
+      "length": 369,
+      "block_id": "2505.08069_9d9ff8d7d58783ef",
+      "panel": 1,
+      "label": "fig:LearnPauli"
+    }
+  ]
+}

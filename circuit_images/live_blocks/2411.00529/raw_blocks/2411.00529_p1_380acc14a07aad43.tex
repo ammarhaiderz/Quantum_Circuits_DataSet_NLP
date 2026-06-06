@@ -1,0 +1,6 @@
+\begin{quantikz}[wire types={q,n,b,n},classical                 gap=0.08cm,row sep={0.5cm,between origins}]
+            \lstick{$\ket{0^n}$} & \qw & & \targ{} &  & \qw  & \meter{} \\[0.5cm]
+            & \gate[3]{\mathrm{QFT}_{\rep}} & \qw{\lambda} \setwiretype{q} & \ctrl{-1} &  & \gate[3]{\mathrm{QFT}_{\rep}^\dagger} & \setwiretype{n} \\
+            \lstick{$\ket{\psi}$} &  & \setwiretype{n} &  &  &  & \setwiretype{b} \\
+            &  & \qw{i} \setwiretype{q} &  &  &  & \setwiretype{n} \\
+        \end{quantikz}

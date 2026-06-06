@@ -1,0 +1,10 @@
+\Qcircuit @C=1em @R=1em {
+    & \lstick{\ket{0}} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & 
+\multigate{2}{ \uni{8} } & \qw & \qw_{\times 4} & \qw & \rstick{\ket{0}} \qw  \\
+    & \lstick{\ket{0}} & \gate{H} & \qw & \qw & \ctrl{2} & \qw & \ctrl{2} & \qw & 
+\ghost{ \uni{8} } & \qw & \qw & \ctrl{2} & \qw \backslash  \\
+    & \lstick{\ket{0}} & \gate{H}  & \qw & \ctrl{1} & \qw & \qw & \qw & \ctrl{1} & 
+\ghost{ \uni{8} } & \qw & \ctrl{1} & \qw & \qw \backslash  \\
+    & {} & \qw & \qw & \gate{X} & \gate{Y} & \gate{\Uin} & \gate{Y} & \gate{X} & 
+\qw & \qw  & \gate{Y} & \gate{X} & \qw
+    \gategroup{1}{5}{4}{10}{1.5em}{--}}

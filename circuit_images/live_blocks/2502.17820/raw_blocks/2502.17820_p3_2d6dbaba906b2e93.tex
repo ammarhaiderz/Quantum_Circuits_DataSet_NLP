@@ -1,0 +1,5 @@
+\Qcircuit @C=0.9em @R=0.1em {
+                \lstick{\ket{\phi}} & \multigate{2}{\mathcal{E}_{\rm dep}} & \qw &&& \qw & \ctrl{2} & \qw & \qw\\
+                &\nghost{\mathcal{E}_{\rm dep}}&&=&&&&&&&&\\
+                \lstick{\ket{0}} & \ghost{\mathcal{E}_{\rm dep}} & \qw &&& \gate{R_y(\theta)} & \gate{Z}& \meter & \qw
+            }

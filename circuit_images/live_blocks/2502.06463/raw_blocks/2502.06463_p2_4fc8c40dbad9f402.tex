@@ -1,0 +1,11 @@
+\begin{quantikz}[row sep=0.3cm]
+% First qubit
+\lstick{$\ket{0}$} & \gate{\mathcal{P}_1 H^h \mathcal{Z}^{\prime}} & \gate[wires=5, nwires=4]{\mathcal{J}(\mathcal{H}, t, \epsilon, 1)} & \gate{\mathcal{Z}^{\prime} H^h \mathcal{P}_1} & \meterD{\mathcal{Z}}\\
+% Second qubit
+\lstick{$\ket{0}$} & \gate{\mathcal{P}_2 H^h \mathcal{Z}^{\prime}}  &  & \gate{\mathcal{Z}^{\prime} H^h \mathcal{P}_2}&  \meterD{\mathcal{Z}}\\
+% Third qubit
+\lstick{$\ket{0}$} & \gate{\mathcal{P}_3 H^h \mathcal{Z}^{\prime}} &   &\gate{\mathcal{Z}^{\prime} H^h \mathcal{P}_3} & \meterD{\mathcal{Z}}\\
+ & \vdots & & \vdots &  & \\
+% Fourth qubit
+\lstick{$\ket{0}$} & \gate{\mathcal{P}_N H^h \mathcal{Z}^{\prime}} &  & \gate{\mathcal{Z}^{\prime} H^h \mathcal{P}_N} & \meterD{\mathcal{Z}}
+\end{quantikz}

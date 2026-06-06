@@ -1,0 +1,34 @@
+\begin{quantikz}[row sep=0.6cm, column sep=0.4cm]
+    \lstick[3]{$d-1$} 
+        &\wireoverride{n} 
+        &\wireoverride{n}
+    \lstick{$|0\rangle$} 
+    & \gate{H_\mathfrak{d}} 
+    & \gateO{*} \vqw{3} 
+    & \ldots \ldots  
+    & \qw  
+    & \gate{H_\mathfrak{d}^{\dagger}} 
+    & \meter{k_1} \\
+     &\wireoverride{n} 
+        &\wireoverride{n}
+    \lstick{$\vdots$}      \\
+     &\wireoverride{n} 
+        &\wireoverride{n}
+    \lstick{$|0\rangle$} 
+    & \gate{H_\mathfrak{d}} 
+    & \qw  
+    & \ldots \ldots 
+    & \gateO{*} 
+    \vqw{1} 
+    & \gate{H_\mathfrak{d}^{\dagger}} 
+    & \meter{k_{d-1}} \\
+     &\wireoverride{n} 
+        &\wireoverride{n}
+    \lstick{$|\psi(d, \vec{\xi})\rangle^{\otimes n}$} 
+    & \qw 
+    & \gate{\mathcal{U}^{(1)}} 
+    & \ldots \ldots 
+    & \gate{\mathcal{U}^{(d-1)}} 
+    & \qw  
+    & \rstick{$|D^{n}(\vec{k})\rangle$}
+\end{quantikz}

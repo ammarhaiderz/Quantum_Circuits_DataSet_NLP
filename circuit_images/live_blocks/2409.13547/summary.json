@@ -1,0 +1,30 @@
+{
+  "source": "2409.13547",
+  "blocks_count": 3,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2409.13547\\raw_blocks\\2409.13547_p1_448f78f26a3ec054.tex",
+      "length": 160,
+      "block_id": "2409.13547_448f78f26a3ec054",
+      "panel": 1,
+      "label": "fig:PPgate"
+    },
+    {
+      "index": 1,
+      "block_file": "2409.13547\\raw_blocks\\2409.13547_p2_568daf0cc2dded4e.tex",
+      "length": 169,
+      "block_id": "2409.13547_568daf0cc2dded4e",
+      "panel": 2,
+      "label": "fig:PPgate"
+    },
+    {
+      "index": 2,
+      "block_file": "2409.13547\\raw_blocks\\2409.13547_p3_52adea594c89d4dd.tex",
+      "length": 130,
+      "block_id": "2409.13547_52adea594c89d4dd",
+      "panel": 3,
+      "label": "fig:PPgate"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+\begin{quantikz}
+        \lstick{$\ket{0}$}&\gate{H}
+        \gategroup[7,steps=9,style={dashed,rounded
+        corners,fill=blue!20, inner
+        xsep=2pt},background,label style={label
+        position=below,anchor=north,yshift=-0.2cm}]{{$(2(\lambda + \beta), m+l)$-BE$({\mathcal{L}})$}}
+        &&&&&\octrl{3}&&\ctrl{3}&\gate{H}&\bra{0} \\
+        \lstick{$\ket{0}$}&\gate{H}&\octrl{1}&&\octrl{1}& &\ctrl{1}&&\ctrl{1}&\gate{H}&\bra{0}\\
+        \lstick{$\ket{0}$}&\gate{H}&\octrl{1}&&\ctrl{2}& &&&&\gate{H}&\bra{0}\\
+        \lstick{$\ket{00}$}&\gate[2]{\textsc{dom}}&\vqw{1}&&\gate{U_f}&&\vqw{1}&&\gate{U_{f'}}\vqw{1}&\gate[2]{\textsc{dom}^\dagger}&\bra{00}\\
+        \lstick{$\ket{x}$}&&\gate[2]{U_L}&&\gate[2]{U_L}&&\gate[3]{U_B}&&\gate[3]{U_B}&&(\frac{1}{2\lambda}\Pi_{\Omega}\mathcal{L} + \frac{1}{2\beta}\Pi_{\partial\Omega}\mathcal{B})\ket{x} \\
+        \lstick{$\ket{0}$}&& &\bra{0}\ket{0}&&\bra{0}\\
+        \lstick{$\ket{0}$}&&&&&&&\bra{0}\ket{0}&&\bra{0}
+    \end{quantikz}

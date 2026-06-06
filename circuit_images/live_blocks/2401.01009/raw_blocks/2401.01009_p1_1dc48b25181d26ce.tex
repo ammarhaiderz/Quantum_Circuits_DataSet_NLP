@@ -1,0 +1,6 @@
+\Qcircuit @C=.5em @R=.7em {
+        \lstick{q_1:} & \qw                       & \qw       & \qw                    & \qw       & \targ{}      & \qw & \qw & \targ{} & \qw \\
+        \lstick{q_2:} & \gate{\text{$\text{R}_y$}(\pi/4)} & \targ{}   & \gate{\text{$\text{R}_y$}(\pi/4)}  & \targ{}   & \qw  & \qw  & \targ{} & \ctrl{-1} & \qw \\
+        \lstick{q_3:} & \gate{\text{$\text{R}_y$}(\pi/2)} & \qw       & \qw                      & \qw       & \qw  & \ctrlo{1} & \ctrlo{-1} & \qw & \qw  \\
+        \lstick{q_4:} & \gate{\text{$\text{R}_y$}(0.39\pi)} & \ctrl{-2} & \qw                    & \ctrl{-2} & \ctrlo{-3} & \targ{} & \qw & \qw  & \qw
+    }

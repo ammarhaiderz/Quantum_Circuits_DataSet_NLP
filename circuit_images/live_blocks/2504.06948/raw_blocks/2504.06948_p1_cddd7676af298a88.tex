@@ -1,0 +1,4 @@
+\Qcircuit @C=1em @R=.7em{
+    \lstick{\ket{\cdot}_1^a}& \gate{Z} & \gate{R_{Y}(\theta_2)}& \ctrlo{1}& \ctrl{1}& \gate{Z}& \gate{R_Y(\theta_2)}& \qw\\
+    \lstick{\ket{\cdot}^a_{\mathfrak d + 3}}& \qw & \qw & \multigate{1}{U_{\LL_1}}& \multigate{1}{U_{\LL_2}}& \qw & \qw& \qw\\
+    \lstick{\ket{\cdot}_{\mathfrak k + \mathfrak m + \mathfrak n + 1}}& \qw & \qw & \ghost{U_{\LL_1}}& \ghost{U_{\LL_2}}& \qw & \qw &\qw}

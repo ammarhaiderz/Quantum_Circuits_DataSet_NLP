@@ -1,0 +1,12 @@
+\Qcircuit @C=1.0em @R=1.0em @!R {
+				\nghost{{q}_{0} :  } & \lstick{{q}_{0} :  } & \gate{\hat{U}_{\mu}(\beta_{\uparrow})} & \qw & \multigate{1}{\hat{U}_{U}(\theta_{U})} & \qw & \qw & \multigate{1}{\hat{U}_{t}(\theta_{t})} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+				\nghost{{q}_{1} :  } & \lstick{{q}_{1} :  } & \gate{\hat{U}_{\mu}(\beta_{\downarrow})} & \qw & \ghost{\hat{U}_{U}(\theta_{U})} & \qw & \qswap      & \ghost{\hat{U}_{t}(\theta_{t})} & \qswap      & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+				\nghost{{q}_{2} :  } & \lstick{{q}_{2} :  } & \gate{\hat{U}_{\mu}(\beta_{\uparrow})} & \qw & \multigate{1}{\hat{U}_{U}(\theta_{U})} & \qw & \qswap \qwx[-1] & \multigate{1}{\hat{U}_{t}(\theta_{t})} & \qswap \qwx[-1] & \qw & \qw & \multigate{1}{\hat{U}_{t}(\theta_{t})} & \qw & \qw & \qw & \qw\\
+				\nghost{{q}_{3} :  } & \lstick{{q}_{3} :  } & \gate{\hat{U}_{\mu}(\beta_{\downarrow})} & \qw & \ghost{\hat{U}_{U}(\theta_{U})} & \qw & \qw & \ghost{\hat{U}_{t}(\theta_{t})} & \qw & \qw & \qswap & \ghost{\hat{U}_{t}(\theta_{t})} & \qswap & \qw & \qw & \qw\\
+				\nghost{{q}_{4} :  } & \lstick{{q}_{4} :  } & \gate{\hat{U}_{\mu}(\beta_{\uparrow})} & \qw & \multigate{1}{\hat{U}_{U}(\theta_{U})} & \qw & \qw & \multigate{1}{\hat{U}_{t}(\theta_{t})} & \qw & \qw & \qswap \qwx[-1] & \multigate{1}{\hat{U}_{t}(\theta_{t})} & \qswap \qwx[-1] & \qw & \qw & \qw\\
+				\nghost{{q}_{5} :  } & \lstick{{q}_{5} :  } & \gate{\hat{U}_{\mu}(\beta_{\downarrow})} & \qw & \ghost{\hat{U}_{U}(\theta_{U})} & \qw & \qswap & \ghost{\hat{U}_{t}(\theta_{t})} & \qswap & \qw & \qw & \ghost{\hat{U}_{t}(\theta_{t})} & \qw & \qw & \qw & \qw\\
+				\nghost{{q}_{6} :  } & \lstick{{q}_{6} :  } & \gate{\hat{U}_{\mu}(\beta_{\uparrow})} & \qw & \multigate{1}{\hat{U}_{U}(\theta_{U})} & \qw & \qswap \qwx[-1] & \multigate{1}{\hat{U}_{t}(\theta_{t})} & \qswap \qwx[-1] & \qw & \qw & \qw & \qw & \qw & \qw & \qw\\
+				\nghost{{q}_{7} :  } & \lstick{{q}_{7} :  } & \gate{\hat{U}_{\mu}(\beta_{\downarrow})} & \qw & \ghost{\hat{U}_{U}(\theta_{U})} & \qw & \qw & \ghost{\hat{U}_{t}(\theta_{t})} & \qw & \qw & \qw & \qw & \qw & \qw & \qw & \qw
+				\gategroup{1}{7}{8}{9}{.8em}{-}
+				\gategroup{1}{11}{8}{13}{.8em}{--}
+			}

@@ -1,0 +1,22 @@
+{
+  "source": "2404.19712",
+  "blocks_count": 2,
+  "blocks": [
+    {
+      "index": 0,
+      "block_file": "2404.19712\\raw_blocks\\2404.19712_p1_988a347286bd4eb7.tex",
+      "length": 545,
+      "block_id": "2404.19712_988a347286bd4eb7",
+      "panel": 1,
+      "label": "fig:PCSscheme"
+    },
+    {
+      "index": 1,
+      "block_file": "2404.19712\\raw_blocks\\2404.19712_p2_64a316a559d3c7f8.tex",
+      "length": 555,
+      "block_id": "2404.19712_64a316a559d3c7f8",
+      "panel": 2,
+      "label": "fig:PCSscheme"
+    }
+  ]
+}
