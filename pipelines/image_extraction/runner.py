@@ -43,7 +43,7 @@ def print_final_stats(logger, pipeline, processed_count, skipped_count, cache):
     print("[STATS] FINAL EXTRACTION SUMMARY")
     print(f"{'='*80}")
     
-    print(f"\n🎯 PAPERS:")
+    print(f"\n PAPERS:")
     print(f"   Total papers checked: {processed_count + skipped_count}")
     print(f"   Quantum papers processed: {processed_count}")
     print(f"   Non-quantum papers skipped: {skipped_count}")
