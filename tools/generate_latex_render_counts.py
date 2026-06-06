@@ -118,6 +118,10 @@ def main() -> None:
 	normalized_ids = [normalize(pid) for pid in paper_ids]
 	circuit_counts = count_circuits()
 	category_flags = load_category_flags()
+
+	# Count how many paper IDs are flagged as non-quant-ph in the category cache
+	non_quant_count = sum(1 for nid in normalized_ids if not category_flags.get(nid, True))
+	print(f"[CATEGORY] Non-quant-ph papers: {non_quant_count}/{len(normalized_ids)}")
 	checkpoint_limit = load_checkpoint_limit()
 
 	rows = []
